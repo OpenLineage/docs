@@ -55,7 +55,7 @@ const config = {
         title: 'Docs',
         logo: {
           alt: 'OpenLineage Docs',
-          src: 'img/ol-small.svg',
+          src: 'img/ol-logo.svg',
         },
         items: [
           {
