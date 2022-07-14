@@ -3,10 +3,11 @@ title: Getting Started
 sidebar_position: 2
 ---
 
-OpenLineage is an open framework for data lineage collection and analysis. At its core is an extensible specification that systems can use to interoperate with lineage metadata.
+:::info
+This page is in need of some refactoring. Suggestions are welcome using the Edit link at the bottom.
+:::
 
 This guide covers how you can quickly get started collecting _dataset_, _job_, and _run_ metadata using OpenLineage. We'll first introduce you to OpenLineage's core model, show how to collect _run-level_ metadata as OpenLineage events using [Marquez](https://marquezproject.ai) as the [HTTP backend](https://github.com/OpenLineage/OpenLineage#scope), then explore lineage metadata via the Marquez UI.
-
 
 ## OpenLineage Core Model
 

@@ -4,16 +4,54 @@ sidebar_position: 5
 
 # Python
 
-Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Cras mattis consectetur purus sit amet fermentum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+:::info
+This page has not yet been written! You're welcome to contribute using the Edit link at the bottom.
+:::
 
-Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Sed posuere consectetur est at lobortis. Sed posuere consectetur est at lobortis.
+## Example
 
-Maecenas sed diam eget risus varius blandit sit amet non magna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec sed odio dui. Aenean lacinia bibendum nulla sed consectetur. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+```python
+#!/usr/bin/env python3
 
-## Additional Resources
+from openlineage.client.run import RunEvent, RunState, Run, Job, Dataset
+from openlineage.client.client import OpenLineageClient
+from datetime import datetime
+from uuid import uuid4
 
-Etiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis.
+# Initialize the OpenLineage client
+client = OpenLineageClient.from_environment()
 
-* Etiam porta sem malesuada
-* Magna mollis euismod
-* Maecenas sed diam eget risus
+# Specify the producer of this lineage metadata
+producer = "https://github.com/OpenLineage/workshops"
+
+# Create some basic Dataset objects
+monthly_summary = Dataset(namespace="postgres://workshop-db:None", name="workshop.public.monthly_summary")
+commissions = Dataset(namespace="postgres://workshop-db:None", name="workshop.public.commissions")
+taxes = Dataset(namespace="postgres://workshop-db:None", name="workshop.public.taxes")
+
+# Create a Job object
+job = Job(namespace="workshop", name="monthly_accounting")
+
+# Create a Run object with a unique ID
+run = Run(str(uuid4()))
+
+# Emit a START run event
+client.emit(
+    RunEvent(
+        RunState.START,
+        datetime.now().isoformat(),
+        run, job, producer
+    )
+)
+
+# Emit a COMPLETE run event
+client.emit(
+    RunEvent(
+        RunState.COMPLETE,
+        datetime.now().isoformat(),
+        run, job, producer,
+        inputs=[monthly_summary],
+        outputs=[commissions, taxes],
+    )
+)
+```

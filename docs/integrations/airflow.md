@@ -4,6 +4,10 @@ sidebar_position: 2
 
 # Apache Airflow
 
+:::caution
+This content is **out of date** and may result in a frustrating experience. Please refer to the instructions in the [`integration/airflow` folder of the OpenLineage GitHub repo](https://github.com/OpenLineage/OpenLineage/tree/main/integration/airflow) for the time being.
+:::
+
 **Airflow** is a widely-used workflow automation and scheduling platform that can be used to author and manage data pipelines. Airflow uses workflows made of directed acyclic graphs (DAGs) of tasks. To learn more about Airflow, check out the Airflow [documentation](https://airflow.apache.org/docs/apache-airflow/stable/index.html).
 
 ## How does Airflow work with OpenLineage?

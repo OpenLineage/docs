@@ -4,6 +4,10 @@ sidebar_position: 3
 
 # Apache Spark
 
+:::caution
+This content is **out of date** and may result in a frustrating experience. Please refer to the instructions in the [`integration/airflow` folder of the OpenLineage GitHub repo](https://github.com/OpenLineage/OpenLineage/tree/main/integration/airflow) for the time being.
+:::
+
 Spark jobs typically run on clusters of machines. A single machine hosts the "driver" application,
 which constructs a graph of jobs - e.g., reading data from a source, filtering, transforming, and
 joining records, and writing results to some sink- and manages execution of those jobs. Spark's

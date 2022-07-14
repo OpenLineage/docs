@@ -6,6 +6,10 @@ sidebar_position: 1
 
 #### Adapted from a [blog post](https://openlineage.io/blog/openlineage-spark/) by Michael Collado
 
+:::caution
+This guide was developed using an **earlier version** of this integration and may require modification for recent releases.
+:::
+
 Adding OpenLineage to Spark is refreshingly uncomplicated, and this is thanks to Spark's SparkListener interface. OpenLineage integrates with Spark by implementing SparkListener and collecting information about jobs executed inside a Spark application. To activate the listener, add the following properties to your Spark configuration in your cluster's `spark-defaults.conf` file or, alternatively, add them to specific jobs on submission via the `spark-submit` command:
 
 ```

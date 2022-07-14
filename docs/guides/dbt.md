@@ -6,6 +6,10 @@ sidebar_position: 2
 
 #### Adapted from a [blog post](https://openlineage.io/blog/dbt-with-marquez/) by Ross Turk
 
+:::caution
+This guide was developed using an **earlier version** of this integration and may require modification.
+:::
+
 Each time it runs, dbt generates a trove of metadata about datasets and the work it performs with them. This tutorial covers the harvesting and effective use of this metadata. For data, the tutorial makes use of the Stackoverflow public data set in BigQuery. The end-product will be two tables of data about trends in Stackoverflow discussions of ELT.
 
 ### Prerequisites
