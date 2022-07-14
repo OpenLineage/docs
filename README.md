@@ -1,26 +1,48 @@
 # OpenLineage Docs
 
-NOTE: These docs are a work in progress.
+NOTE: These docs are a work in progress. For current documentation, consult the various `README.md` files that can be found in the [OpenLineage Repository](https://github.com/OpenLineage/openlineage).
 
-### Installation
+This is a Docusaurus site, and all content can be found in `docs/`. Contributions are welcome in the form of issues or pull requests. Pages that require attention have been marked with Docusaurus Admonitions.
+
+## Local development
+
+First, clone the repo.
+
+Install the [node version manager](https://github.com/nvm-sh/nvm) and use it to create a Node 16 environment:
 
 ```
 $ nvm install 16
+$ nvm use 16
+```
+
+Install Yarn and the Gatsby CLI:
+
+```
+$ npm install -g yarn gatsby-cli
+```
+
+Run Yarn to install all of the Node dependencies for the project:
+
+```
 $ yarn
 ```
 
-### Local Development
+Tell Yarn to start a development server:
 
 ```
 $ yarn start
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+This command provides a URL where the doc site can be viewed. Most changes are reflected live without having to restart the server.
 
-### Build
+## Local site build
 
 ```
 $ yarn build
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+This command generates static content into the `build` directory. If you want to look at it, try `cd build && python3 -m http.server`.
+
+## Deployment
+
+Once the site has been launched, pull requests to `main` will cause a new doc site to be shipped via GitHub Pages.
