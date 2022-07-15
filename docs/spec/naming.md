@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Naming
+# Naming Conventions
 
 :::info
 This page has some initial content but is not yet complete. Contribute are welcome via the Edit link below.
@@ -32,6 +32,10 @@ Runs are named using client-generated UUIDs. The client is responsible for gener
 from openlineage.client.run import Run
 run = Run(str(uuid4()))
 ```
+
+## Why Naming Matters
+
+![image](./naming-correlations.svg)
 
 ## Additional Resources
 
