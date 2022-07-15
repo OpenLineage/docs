@@ -9,7 +9,7 @@ const config = {
   title: 'OpenLineage Docs',
   tagline: 'OpenLineage Docs',
   url: 'https://docs.openlineage.io',
-  baseUrl: '/',
+  baseUrl: '/docs/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
   favicon: 'img/favicon.ico',
