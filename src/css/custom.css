@@ -31,3 +31,13 @@
 :root {
   --ifm-font-family-base: 'Didact Gothic';
 }
+
+.navbar__title {
+  margin-left: -0.45rem;
+  font-weight: normal;
+}
+
+a.navbar__brand:hover {
+  color: var(--ifm-navbar-link-color);
+  text-decoration: none;
+}
