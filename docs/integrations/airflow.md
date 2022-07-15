@@ -17,7 +17,7 @@ Understanding complex inter-DAG dependencies and providing up-to-date runtime vi
 ![image](./af-schematic.svg)
 
 
-The integration is implemented using the [marquez-airflow](https://pypi.org/project/marquez-airflow)  integration library, which sends OpenLineage events to [Marquez](https://marquezproject.ai). The DAG metadata collected can answer questions like:
+The integration is implemented using the [openlineage-airflow](https://pypi.org/project/openlinage-airflow) integration library, which we'll use to send OpenLineage events to [Marquez](https://marquezproject.ai). The DAG metadata collected can answer questions like:
 
 * Why has a DAG failed?
 * Why has the DAG runtime increased after a code change?
@@ -28,11 +28,11 @@ The integration is implemented using the [marquez-airflow](https://pypi.org/proj
 
 #### PREREQUISITES
 
-To use the OpenLineage Airflow integration, you'll need a running Airflow instance. You'll also need an OpenLineage compatible [HTTP backend](https://github.com/OpenLineage/OpenLineage#scope). In this guide, we'll be using the `marquez-airflow` library to automatically send OpenLineage events to [Marquez](https://marquezproject.ai).
+To use the OpenLineage Airflow integration, you'll need a running Airflow instance. You'll also need an OpenLineage compatible [HTTP backend](https://github.com/OpenLineage/OpenLineage#scope). In this guide, we'll be using the `openlineage-airflow` library to automatically send OpenLineage events to [Marquez](https://marquezproject.ai).
 
 #### INSTALLATION
 
-To download and install the latest `marquez-airflow` library, update the `requirements.txt` file of your running Airflow instance with: 
+To download and install the latest `openlineage-airflow` library, update the `requirements.txt` file of your running Airflow instance with: 
 
 ```
 marquez-airflow
@@ -67,7 +67,7 @@ When enabled, the library will:
 ## Where can I learn more?
 
 * Take a look at Marquez's Airflow [example](https://github.com/MarquezProject/marquez/tree/main/examples/airflow) to learn how to enable OpenLineage metadata collection for Airflow DAGs and troubleshoot failing DAGs using Marquez.
-* Watch [Data Lineage with Apache Airflow](https://www.youtube.com/watch?v=dfRetdg9444)
+* Watch [Data Lineage with OpenLineage and Airflow](https://www.youtube.com/watch?v=2s013GQy1Sw)
 
 ## Feedback
 
