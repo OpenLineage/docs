@@ -36,7 +36,9 @@ Managing lineage metadata with Marquez clears up much of the ambiguity that has 
 - Docker Compose
 - jq
 
-Note: if using macOS Monterey (macOS 12), port 5000 will have to be released by [disabling the AirPlay Receiver](https://developer.apple.com/forums/thread/682332). Also, port 3000 will need to be free if access to the Marquez web UI is desired.
+:::info
+If you are using macOS Monterey (macOS 12), port 5000 will have to be released by [disabling the AirPlay Receiver](https://developer.apple.com/forums/thread/682332). Also, port 3000 will need to be free if access to the Marquez web UI is desired.
+:::
 
 ### Query the Lineage Graph
 

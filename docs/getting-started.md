@@ -34,7 +34,9 @@ Before you begin, make sure you have installed:
 * [Docker 17.05](https://docs.docker.com/install)+
 * [Docker Compose](https://docs.docker.com/compose/install)
 
-> **Note:** In this guide, we'll be using Marquez as the OpenLineage HTTP backend and running the HTTP server via Docker.
+:::info
+In this guide, we'll be using Marquez as the OpenLineage HTTP backend and running the HTTP server via Docker.
+:::
 
 ### Run Marquez with [Docker](https://github.com/MarquezProject/marquez/blob/main/Dockerfile)
 
@@ -46,7 +48,9 @@ $ git clone git@github.com:MarquezProject/marquez.git && cd marquez
 $ ./docker/up.sh
 ```
 
-> **Tip:** Pass the `--build` flag to the script to build images from source, or `--tag X.Y.Z` to use a tagged image.
+:::info
+Pass the `--build` flag to the script to build images from source, or `--tag X.Y.Z` to use a tagged image.
+:::
 
 To view the Marquez UI and verify it's running, open [http://localhost:3000](http://localhost:3000). The UI enables you to discover dependencies between jobs and the datasets they produce and consume via the lineage graph, view run-level metadata of current and previous job runs, and much more.
 
@@ -56,7 +60,9 @@ Marquez is an [LF AI & DATA](https://lfaidata.foundation) incubation project to 
 
 In this example, we show how you can collect dataset and job metadata using Marquez. Using the [LineageAPI](https://marquezproject.github.io/marquez/openapi.html#tag/Lineage), metadata will be collected as OpenLineage events using the run ID `d46e465b-d358-4d32-83d4-df660ff614dd`. The run ID will enable the tracking of run-level metadata over time for the job `my-job`. So, let's get started!
 
-> **Note:** The example shows how to collect metadata via direct HTTP API calls using `curl`. But, you can also get started using our client library for [Java](https://github.com/MarquezProject/marquez/tree/main/clients/java) or [Python](https://github.com/MarquezProject/marquez/tree/main/clients/python).
+:::info
+The example shows how to collect metadata via direct HTTP API calls using `curl`. But, you can also get started using our client library for [Java](https://github.com/MarquezProject/marquez/tree/main/clients/java) or [Python](https://github.com/MarquezProject/marquez/tree/main/clients/python).
+:::
 
 ### Step 1: Start a Run
 
