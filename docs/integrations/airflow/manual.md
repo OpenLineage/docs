@@ -1,10 +1,14 @@
-# OpenLineage integration with Airflow to extract lineage manually in absence of extractors
+---
+sidebar_position: 2
+---
+
+# Manually annotated lineage
 
 :::caution
-This feature is only supported with Airflow versions greater than 2.0.0)
+This feature is only supported with Airflow versions greater than 2.1.0)
 :::
 
-Airflow allows operators to track lineage by specifying the input and outputs of the operators via inlets and outlets. OpenLineage tries to find the input and output datasets of the Airflow job via provided extractors or custom extractors. If it fails to find any input or output datasets, then OpenLineage defaults to inlets and outlets of Airflow jobs. 
+Airflow allows operators to track lineage by specifying the input and outputs of the operators via inlets and outlets. OpenLineage tries to find the input and output datasets of the Airflow job via provided extractors or custom extractors. As fallback, if it fails to find any input or output datasets, then OpenLineage defaults to inlets and outlets of Airflow jobs. 
 
 
 OpenLineage supports automated lineage extraction only for selective operators. For other operators and custom-defined ones, users need to write their own custome extractors (by implementing `extract` / `extract_on_complete` method) for Airflow operators that indicate the input and output dataset of the corresponding task. 
@@ -84,6 +88,7 @@ Also note that the *File* entity is not captured by the lineage event currently.
 --- 
 
 ## Conversion from Airflow Table entity to Openlineage Dataset 
-The naming convention followed here is:
+
+The naming convention followed here is: 
 1. `CLUSTER` of the table entity becomes the namespace of OpenLineage's Dataset
-2. The name of dataset is formed by `{{DATABASE}}.{{NAME}}` where `DATABASE` and `NAME` are attributes specified by Airflow's Table entity. 
+2. The name of the dataset is formed by `{{DATABASE}}.{{NAME}}` where `DATABASE` and `NAME` are attributes specified by Airflow's Table entity. 
