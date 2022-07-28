@@ -58,7 +58,7 @@ To view the Marquez UI and verify it's running, open [http://localhost:3000](htt
 
 Marquez is an [LF AI & DATA](https://lfaidata.foundation) incubation project to collect, aggregate, and visualize a data ecosystem’s metadata. Marquez is the reference implementation of the OpenLineage standard.
 
-In this example, we show how you can collect dataset and job metadata using [Marquez](https://marquezproject.github.io/marquez/), Using the [LineageAPI](https://marquezproject.github.io/marquez/openapi.html#tag/Lineage). 
+In this example, we show how you can collect dataset and job metadata using [Marquez](https://marquezproject.github.io/marquez/), Using the [LineageAPI](https://marquezproject.github.io/marquez/openapi.html#tag/Lineage).
 
 When you submit a lineage event, you first need to define an unique `run ID` that would look something like `d46e465b-d358-4d32-83d4-df660ff614dd`. This is usually in UUID format, and should be unique. This run ID will enable the tracking of run-level metadata over time for a _job_ which may have a name, like `my-job`. So, let's get started!
 
