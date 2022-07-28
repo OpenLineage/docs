@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 1
 ---
 
 # Apache Spark
@@ -132,7 +132,7 @@ spark-submit --conf spark.driver.extraJavaOptions=-javaagent:<marquez-spark-jar-
 
 ### From Airflow
 The same parameters passed to `spark-submit` can be supplied from Airflow and other schedulers. If
-using the [marquez-airflow](airflow.md) integration, each task in the DAG has its own Run id
+using the [marquez-airflow](../airflow.md) integration, each task in the DAG has its own Run id
 which can be connected to the Spark job run via the `openlineage.parentRunId` parameter. For example,
 here is an example of a `DataProcPySparkOperator` that submits a Pyspark application on Dataproc:
 
