@@ -77,14 +77,13 @@ The corresponding lineage graph will be -
 
 <img width="1792" alt="marquez_lineage" src="https://user-images.githubusercontent.com/32615205/181394536-ad6d516d-a894-4bac-9b57-353c1092492f.png" />
 
-(The image is shown with the **Marquez** UI (metadata collector of OpenLineage events). More info about it [here](https://marquezproject.github.io/marquez/))
+(The image is shown with the **Marquez** UI (metadata collector of OpenLineage events). More info can be found [here](https://marquezproject.github.io/marquez/).
 
 Also note that the *File* entity is not captured by the lineage event currently. 
 
 --- 
 
 ## Conversion from Airflow Table entity to Openlineage Dataset 
-
-The naming convention followed here is - 
+The naming convention followed here is:
 1. `CLUSTER` of the table entity becomes the namespace of OpenLineage's Dataset
-2. The name of the dataset is formed by {{DATABASE}}.{{NAME}} where `DATABASE` and `NAME` are attributes specified by Airflow's Table entity. 
+2. The name of dataset is formed by `{{DATABASE}}.{{NAME}}` where `DATABASE` and `NAME` are attributes specified by Airflow's Table entity. 
