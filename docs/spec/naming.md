@@ -21,7 +21,7 @@ This page has some initial content but is not yet complete. Contribute are welco
 
 | Formula                    | Examples                     |
 | -------------------------- | ---------------------------- |
-| honamespace + name         | staging.load_orders_from_csv |
+| namespace + name         | staging.load_orders_from_csv |
 | namespace + project + name | prod.orders_etl.count_orders |
 
 ## Run Naming

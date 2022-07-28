@@ -81,7 +81,7 @@ The corresponding lineage graph will be -
 
 <img width="1792" alt="marquez_lineage" src="https://user-images.githubusercontent.com/32615205/181394536-ad6d516d-a894-4bac-9b57-353c1092492f.png" />
 
-(The image is shown with the **Marquez** UI (metadata collector of OpenLineage events). More info about it [here](https://marquezproject.github.io/marquez/))
+(The image is shown with the **Marquez** UI (metadata collector of OpenLineage events). More info can be found [here](https://marquezproject.github.io/marquez/).
 
 Also note that the *File* entity is not captured by the lineage event currently. 
 
