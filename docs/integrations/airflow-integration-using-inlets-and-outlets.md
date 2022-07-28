@@ -1,7 +1,8 @@
 # OpenLineage integration with Airflow to extract lineage manually in absence of extractors
 
-
-##### ***(only supported with Airflow versions greater than 2.0.0)***
+:::caution
+This feature is only supported with Airflow versions greater than 2.0.0)
+:::
 
 Airflow allows operators to track lineage by specifying the input and outputs of the operators via inlets and outlets. OpenLineage tries to find the input and output datasets of the Airflow job via provided extractors or custom extractors. If it fails to find any input or output datasets, then OpenLineage defaults to inlets and outlets of Airflow jobs. 
 
@@ -11,7 +12,9 @@ This can be circumvented by specifying the input and output datasets using opera
 
 While specifying the DAG, inlets and outlets can be provided as lists of Tables for every operator. 
 
-> *Note: Airflow supports inlets and outlets to be either a Table, Column, File or User entity. However, currently OpenLineage only extracts lineage via Table entity*
+:::note
+Airflow supports inlets and outlets to be either a Table, Column, File or User entity. However, currently OpenLineage only extracts lineage via Table entity*
+:::
 
 ## Example
 
@@ -67,19 +70,18 @@ if __name__ == "__main__":
     dag.cli()
 ```
 
-<hr /> 
-
+---
 
 The corresponding lineage graph will be - 
 
 
-<img width="1792" alt="marquez_lineage" src="https://user-images.githubusercontent.com/32615205/181394536-ad6d516d-a894-4bac-9b57-353c1092492f.png"/>
+<img width="1792" alt="marquez_lineage" src="https://user-images.githubusercontent.com/32615205/181394536-ad6d516d-a894-4bac-9b57-353c1092492f.png" />
 
 (The image is shown with the **Marquez** UI (metadata collector of OpenLineage events). More info can be found [here](https://marquezproject.github.io/marquez/).
 
 Also note that the *File* entity is not captured by the lineage event currently. 
 
-<hr /> 
+--- 
 
 ## Conversion from Airflow Table entity to Openlineage Dataset 
 The naming convention followed here is:
