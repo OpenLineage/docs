@@ -10,7 +10,16 @@ This page has not yet been written! You're welcome to contribute using the Edit 
 
 OpenLineage is an open framework for data lineage collection and analysis. At its core is an extensible specification that systems can use to interoperate with lineage metadata.
 
-![Where OpenLineage Fits](where-ol-fits.svg)
+### Design
+
+OpenLineage is an _Open Standard_ for lineage metadata collection designed to record metadata for a _job_ in execution.
+
+The standard defines a generic model of _dataset_, _job_, and _run_ entities uniquely identified using consistent naming strategies. The core model is highly extensible via facets. A **facet** is user-defined metadata and enables entity enrichment. We encourage you to familiarize yourself with the core model below:
+
+![image](./model.svg)
+
+
+### How OpenLineage Benefits the Ecosystem
 
 Below, we illustrate the challenges of collecting lineage metadata from multiple sources, schedulers and/or data processing frameworks. We then outline the design benefits of defining an _Open Standard_ for lineage metadata collection.
 
