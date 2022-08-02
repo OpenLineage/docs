@@ -7,25 +7,7 @@ sidebar_position: 2
 This page is in need of some refactoring. Suggestions are welcome using the Edit link at the bottom.
 :::
 
-This guide covers how you can quickly get started collecting _dataset_, _job_, and _run_ metadata using OpenLineage. We'll first introduce you to OpenLineage's core model, show how to collect _run-level_ metadata as OpenLineage events using [Marquez](https://marquezproject.ai) as the [HTTP backend](https://github.com/OpenLineage/OpenLineage#scope), then explore lineage metadata via the Marquez UI.
-
-## OpenLineage Core Model
-
-### Design
-
-OpenLineage is an _Open Standard_ for lineage metadata collection designed to record metadata for a _job_ in execution. The standard defines a generic model of _dataset_, _job_, and _run_ entities uniquely identified using consistent naming strategies. The core model is highly extensible via facets. A **facet** is user-defined metadata and enables entity enrichment. We encourage you to familiarize yourself with the core model below:
-
-![image](./model.svg)
-
-### Benefits
-
-* An **open standard** with a specification for collecting **lineage** metadata.
-* Focuses on **job-level** execution.
-  * Runs
-  * Datasets
-* **Event-based** metadata collection.
-* **Extensible** model via **facets**.
-
+This guide covers how you can quickly get started collecting _dataset_, _job_, and _run_ metadata using OpenLineage. We'll show how to collect _run-level_ metadata as OpenLineage events using [Marquez](https://marquezproject.ai) as the [HTTP backend](https://github.com/OpenLineage/OpenLineage#scope), then explore lineage metadata via the Marquez UI.
 
 ## Prerequisites
 
