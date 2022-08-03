@@ -20,7 +20,7 @@ First, we specify where we want Great Expectations to send OpenLineage events by
 OPENLINEAGE_URL=http://localhost:5000
 ```
 
-If data is being sent to Datakin, then the URL should be `https://[your-account].datakin.com`. Additionally, the `OPENLINEAGE_API_KEY` must be specified.
+If data is being sent to an endpoint with an API key, then that key must be supplied as well:
 
 ```bash
 OPENLINEAGE_API_KEY=123456789
@@ -78,8 +78,6 @@ name: openlineage
 ```
 
 Then run your Great Expecations checkpoint with the CLI or your integration of choice.
-
-## Where can I learn more?
 
 ## Feedback
 
