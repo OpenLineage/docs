@@ -43,3 +43,17 @@ you to specify fully-qualified table name every time you're refering to it.
 
 For this reason, bare SQL parser might be insufficient to fully understand which tables the query refers to. 
 We recommend to process the data that you acquired from SQL parser to take that into account.
+
+### Usage
+
+OpenLineage SQL parser is available as part of the integrations that contains extractors that need to parse SQL statements. An example would be Apache Airflow integrations which houses multiple operators that executes SQL statements.
+
+SQL parser is included as part of the library for such integrations (e.g. `integration-airflow`). However, you can explicitly install and use the SQL parser via pip:
+
+```text
+pip install openlineage-sql 
+```
+
+For details about using the SQL parser, please refer to its git [README](https://github.com/OpenLineage/OpenLineage/tree/main/integration/sql)
+
+There is also a python tester script [here](https://github.com/OpenLineage/OpenLineage/blob/main/integration/sql/tests/python/sql_tester.py) which you can use to run parsing tests against any arbitrary SQL statements to verify whether the SQL parser can properly parse them.
