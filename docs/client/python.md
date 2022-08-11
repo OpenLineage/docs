@@ -80,7 +80,7 @@ To try out the client, follow the steps below to install and explore OpenLineage
 
 ### Install OpenLineage and Marquez
 
-Clone the Marqez Github repository:
+Clone the Marquez Github repository:
 ```
 git clone https://github.com/MarquezProject/marquez.git
 ```
