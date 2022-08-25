@@ -47,6 +47,10 @@ Use the following options to configure the client:
 > **Note:** By default, the client will give you sane defaults, but you can easily override them.
 >
 
+### Environment Variables
+
+The list of available environment varaibles can be found [here](../development/developing#environment-variables).
+
 `YAML`
 
 ```yaml

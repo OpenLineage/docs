@@ -47,6 +47,10 @@ transport:
 
 The type property (required) is a fully qualified class name that can be imported.
 
+### Environment Variables
+
+The list of available environment varaibles can be found [here](../development/developing#environment-variables).
+
 ### Built-in Transport Types
 
 ##### HTTP
