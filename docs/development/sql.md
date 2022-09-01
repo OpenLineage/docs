@@ -36,6 +36,22 @@ def parse(
 ) -> Optional[SqlMeta] 
 ```
 
+### SQL dialects 
+
+Optional `dialect` can be specified when using the parser to specify a specific flavor of SQL statement that is required to be parsed. The following dialects are currently available:
+
+- ansi
+- bigquery
+- hive
+- mssql
+- mysql
+- postgres
+- postgresql
+- snowflake
+- sqlite
+
+If no dialect is specified, the dialect defaults to `generic` which parses generic SQL statements.
+
 ### Default databases and schemas
 
 SQL processing engines and databases sometimes rely on some _implicit_ information. For example, they often allow you to set current database or schema, instead of forcing
