@@ -10,7 +10,7 @@ However, OpenLineage project also provides libraries you could use to write your
 
 ### Clients
 
-For [Python](../client/python.md) and [Java](../client/java.md), we've created clients that you can use to properly create and emit OpenLineage events to HTTP, Kafka, and other consumers.
+For [Python](../../client/python.md) and [Java](../../client/java.md), we've created clients that you can use to properly create and emit OpenLineage events to HTTP, Kafka, and other consumers.
 
 ### Common Library (Python)
 
@@ -31,4 +31,4 @@ The following environment variables are available commonly for both Java and Pyt
 ### SQL parser
 
 We've created SQL parser that allows you to extract lineage from SQL statements. The parser is implemented in Rust, however, it's also available as a [Python library](https://pypi.org/project/openlineage-sql/).
-You can take a look at it's documentation [here](./sql) or code on [GitHub](https://github.com/OpenLineage/OpenLineage/tree/main/integration/sql).
+You can take a look at it's documentation [here](../sql) or code on [GitHub](https://github.com/OpenLineage/OpenLineage/tree/main/integration/sql).
