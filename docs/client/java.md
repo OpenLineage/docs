@@ -10,7 +10,7 @@ The Java client is a SDK for Java programming language that users can use to gen
 
 The OpenLineage Java client enables the creation of lineage metadata events with Java code. The core data structures currently offered by the client are the `RunEvent`, `RunState`, `Run`, `Job`, `Dataset`, and `Transport` classes, along with various `Facets` that can come under run, job, and dataset.
 
-There are various transport classes that the library provivdes that carries the lineage events into various target endpoints (e.g. HTTP).
+There are various transport classes that the library provides that carry the lineage events into various target endpoints (e.g. HTTP).
 
 You can also use the Java client to create your own custom integrations.
 
@@ -34,7 +34,7 @@ or Gradle:
 implementation 'io.openlineage:openlineage-java:0.12.0'
 ```
 
-For more information on the available versions of the `openliange-java`, please refer to the [maven repository](https://search.maven.org/artifact/io.openlineage/openlineage-java).
+For more information on the available versions of the `openlineage-java`, please refer to the [maven repository](https://search.maven.org/artifact/io.openlineage/openlineage-java).
 
 ## Configuration
 
