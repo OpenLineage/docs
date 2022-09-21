@@ -47,6 +47,7 @@ Optional `dialect` can be specified when using the parser to specify a specific 
 - mysql
 - postgres
 - postgresql
+- redshift
 - snowflake
 - sqlite
 
