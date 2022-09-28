@@ -138,6 +138,15 @@ Then, in the same file, initialize the Python client:
 client = OpenLineageClient.from_environment()
 ```
 
+It is also possible to specify parameters such as URL for client to connect to, without using environment variables or `openlineage.yaml` file, by directly setting it up when instantiating OpenLineageClient:
+
+```
+client = OpenLineageClient(url="http://localhost:5000")
+```
+
+> For more details about options to setup OpenLineageClient such as API tokens or HTTP transport settings, please refer to the following [example](https://github.com/OpenLineage/OpenLineage/blob/main/client/python/tests/test_http.py)
+
+
 Specify the producer of the new lineage metadata with a string:
 ```
 producer = “OpenLineage.io/website/blog”
