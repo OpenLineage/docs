@@ -9,7 +9,7 @@ Column level lineage for Spark is turned on by default and requires no additiona
 :::
 
 
-Column level lineage provides fine grained information on datasets' dependencies. Not only we know the dependency exist, but we are also able to understand which input columns are used to produce output columns. This allows answering questions like *Which root input columns are used to construct column x?* 
+Column level lineage provides fine grained information on datasets' dependencies. Not only do we know the dependency exists, but we are also able to understand which input columns are used to produce output columns. This allows for answering questions like *Which root input columns are used to construct column x?* 
 
 ## Standard specification
 
