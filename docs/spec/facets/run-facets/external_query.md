@@ -10,11 +10,19 @@ The facet that describes the identification of the query that the run is related
 Example:
 
 ```json
-"sql": {
-	"_producer": "https://some.producer.com/version/1.0",
-    "_schemaURL": "https://github.com/OpenLineage/OpenLineage/blob/main/spec/facets/ExternalQueryRunFacet.json",
-	"externalQueryId": "my-project-1234:US.bquijob_123x456_123y123z123c",
-    "source": "bigquery"
+{
+    ...
+    "run": {
+        "facets": {
+            "externalQuery": {
+                "_producer": "https://some.producer.com/version/1.0",
+                "_schemaURL": "https://github.com/OpenLineage/OpenLineage/blob/main/spec/facets/ExternalQueryRunFacet.json",
+                "externalQueryId": "my-project-1234:US.bquijob_123x456_123y123z123c",
+                "source": "bigquery"
+            }
+        }
+    }
+    ...
 }
 ```
 

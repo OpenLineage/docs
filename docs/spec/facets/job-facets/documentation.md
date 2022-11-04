@@ -9,10 +9,18 @@ Contains the documentation or description of the job.
 Example:
 
 ```json
-"documentation": {
-    "_producer": "https://some.producer.com/version/1.0",
-    "_schemaURL": "https://github.com/OpenLineage/OpenLineage/blob/main/spec/facets/DocumentationJobFacet.json",
-	"description": "This is the documentation of something."
+{
+    ...
+    "job": {
+        "facets": {
+            "documentation": {
+                "_producer": "https://some.producer.com/version/1.0",
+                "_schemaURL": "https://github.com/OpenLineage/OpenLineage/blob/main/spec/facets/DocumentationJobFacet.json",
+                "description": "This is the documentation of something."
+            }
+        }
+    }
+    ...
 }
 ```
 

@@ -12,14 +12,22 @@ To do that, the scheduler system should have a way to pass its own job and run i
 Example: 
 
 ```json
-"parent": {
-    "job": {
-      "name": "the-execution-parent-job", 
-      "namespace": "the-namespace"
-    },
-    "run": {
-      "runId": "f99310b4-3c3c-1a1a-2b2b-c1b95c24ff11"
+{
+  ...
+  "run": {
+    "facets": {
+      "parent": {
+        "job": {
+          "name": "the-execution-parent-job", 
+          "namespace": "the-namespace"
+        },
+        "run": {
+          "runId": "f99310b4-3c3c-1a1a-2b2b-c1b95c24ff11"
+        }
+      }
     }
+  }
+  ...
 }
 ```
 
