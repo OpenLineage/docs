@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 6
 ---
 
 # Schema Dataset Facet
@@ -12,6 +12,8 @@ Example:
 
 ```json
 "schema": {
+  "_producer": "https://some.producer.com/version/1.0",
+  "_schemaURL": "https://openlineage.io/spec/facets/1-0-0/SchemaDatasetFacet.json",
   "fields": [
     {
       "name": "id",
@@ -32,4 +34,4 @@ Example:
 }
 ```
 
-The facet specification can be found [here](https://github.com/OpenLineage/OpenLineage/blob/main/spec/facets/SchemaDatasetFacet.json).
+The facet specification can be found [here](https://openlineage.io/spec/facets/1-0-0/SchemaDatasetFacet.json).

@@ -13,7 +13,7 @@ Column level lineage provides fine grained information on datasets' dependencies
 
 ## Standard specification
 
-Collected information is sent in OpenLineage event within `columnLineage` dataset facet described [here](spec/facets/column_lineage_facet.md). 
+Collected information is sent in OpenLineage event within `columnLineage` dataset facet described [here](spec/facets/dataset-facets/column_lineage_facet.md). 
 
 ## Code architecture and its mechanics
 

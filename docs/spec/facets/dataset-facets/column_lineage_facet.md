@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 1
 ---
 
 # Column Level Lineage Dataset Facet
@@ -11,6 +11,8 @@ Example:
 
 ```json
       "columnLineage": {
+        "_producer": "https://some.producer.com/version/1.0",
+        "_schemaURL": "https://openlineage.io/spec/facets/1-0-1/ColumnLineageDatasetFacet.json",
         "fields": {
           "a": {
             "inputFields": [
@@ -39,4 +41,4 @@ Example:
       }
 ```
 
-The facet specification can be found [here](https://github.com/OpenLineage/OpenLineage/blob/main/spec/facets/ColumnLineageDatasetFacet.json).
+The facet specification can be found [here](https://openlineage.io/spec/facets/1-0-1/ColumnLineageDatasetFacet.json).
