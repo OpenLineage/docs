@@ -10,10 +10,18 @@ The SQL Job Facet contains a SQL query that was used in a particular job.
 Example:
 
 ```json
-"sql": {
-	"_producer": "https://some.producer.com/version/1.0",
-    "_schemaURL": "https://github.com/OpenLineage/OpenLineage/blob/main/spec/facets/SQLJobFacet.json",
-	"query": "select id, name from schema.table where id = 1"
+{
+    ...
+    "job": {
+        "facets": {
+			"sql": {
+				"_producer": "https://some.producer.com/version/1.0",
+				"_schemaURL": "https://github.com/OpenLineage/OpenLineage/blob/main/spec/facets/SQLJobFacet.json",
+				"query": "select id, name from schema.table where id = 1"
+			}
+		}
+	}
+	...
 }
 ```
 

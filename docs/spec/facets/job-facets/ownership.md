@@ -10,15 +10,23 @@ The facet that contains the information regarding users or group who owns this p
 Example:
 
 ```json
-"ownership": {
-    "_producer": "https://some.producer.com/version/1.0",
-    "_schemaURL": "https://openlineage.io/spec/facets/1-0-0/OwnershipJobFacet.json",
-	"owners": [
-        {
-            "name": "maintainer_one",
-            "type": "MAINTAINER"
+{
+    ...
+    "job": {
+        "facets": {
+            "ownership": {
+                "_producer": "https://some.producer.com/version/1.0",
+                "_schemaURL": "https://openlineage.io/spec/facets/1-0-0/OwnershipJobFacet.json",
+                "owners": [
+                    {
+                        "name": "maintainer_one",
+                        "type": "MAINTAINER"
+                    }
+                ]
+            }
         }
-    ]
+    }
+    ...
 }
 ```
 

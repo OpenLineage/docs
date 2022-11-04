@@ -7,15 +7,23 @@ sidebar_position: 5
 Example:
 
 ```json
-"ownership": {
-    "_producer": "https://some.producer.com/version/1.0",
-    "_schemaURL": "https://openlineage.io/spec/facets/1-0-0/OwnershipDatasetFacet.json",
-	"owners": [
-        {
-            "name": "maintainer_one",
-            "type": "MAINTAINER"
+{
+    ...
+    "inputs": {
+        "facets": {
+            "ownership": {
+                "_producer": "https://some.producer.com/version/1.0",
+                "_schemaURL": "https://openlineage.io/spec/facets/1-0-0/OwnershipDatasetFacet.json",
+                "owners": [
+                    {
+                        "name": "maintainer_one",
+                        "type": "MAINTAINER"
+                    }
+                ]
+            }
         }
-    ]
+    }
+    ...
 }
 ```
 
