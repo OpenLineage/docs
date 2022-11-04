@@ -32,4 +32,4 @@ Example:
 }
 ```
 
-The facet specification can be found [here](https://github.com/OpenLineage/OpenLineage/blob/main/spec/facets/SchemaDatasetFacet.json).
+The facet specification can be found [here](https://openlineage.io/spec/facets/1-0-0/SchemaDatasetFacet.json).

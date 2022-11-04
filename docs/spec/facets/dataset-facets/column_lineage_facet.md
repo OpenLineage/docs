@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 1
 ---
 
 # Column Level Lineage Dataset Facet
@@ -39,4 +39,4 @@ Example:
       }
 ```
 
-The facet specification can be found [here](https://github.com/OpenLineage/OpenLineage/blob/main/spec/facets/ColumnLineageDatasetFacet.json).
+The facet specification can be found [here](https://openlineage.io/spec/facets/1-0-1/ColumnLineageDatasetFacet.json).
