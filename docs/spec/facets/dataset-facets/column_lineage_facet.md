@@ -11,6 +11,8 @@ Example:
 
 ```json
       "columnLineage": {
+        "_producer": "https://some.producer.com/version/1.0",
+        "_schemaURL": "https://openlineage.io/spec/facets/1-0-1/ColumnLineageDatasetFacet.json",
         "fields": {
           "a": {
             "inputFields": [
