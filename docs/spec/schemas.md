@@ -43,9 +43,6 @@ Make sure to add changes to the unit tests for [python](https://github.com/OpenL
 ## Test the SPEC change using code generation and integration tests
 When you have modified the SPEC file(s), always make sure to perform code generation and unit tests by going into `client/java` and running `./gradlew generateCode` and `./gradlew test`. As for python, cd into `client/python` and run `pytest`.
 
-> Note: Some of the tests may fail due to the fact that they require external systems like kafka. You can ignore those errors.
-
-
 :::info
 This page has not yet been written! You're welcome to contribute using the Edit link at the bottom.
 :::
