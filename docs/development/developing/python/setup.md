@@ -20,6 +20,6 @@ $ python -m pip install -e .\[dev\]
 
 To make Airflow integration setup easier you can use run following command in package directory:
 ```bash
-$ pip install -r dev-requirements-2.x.txt
+$ pip install -r dev-requirements.txt
 ```
 This should install all needed integrations locally.
