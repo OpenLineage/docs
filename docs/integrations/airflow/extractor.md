@@ -52,9 +52,7 @@ Inputs and outputs are lists of plain [OpenLineage datasets](../../client/python
 `run_facets` and `job_facets` are dictionaries of optional [JobFacets](../../client/python.md) and [RunFacets](../../client/python.md) that would be attached to the job - for example,
 you might want to attach `SqlJobFacet` if your operator is executing SQL.
 
-:::info
-Add spec description that would be used in those links.
-:::
+To learn more about facets in OpenLineage, please visit this [section](../../spec/facets).
 
 
 ## Registering custom extractor
@@ -79,6 +77,30 @@ OPENLINEAGE_EXTRACTORS: >-
   full.path.to.SecondExtractor
 ``` 
 
+Second method to register extractors - as a workaround for Airflow 1.10.x only - is to register all additional operator-extractor pairings by 
+providing `lineage_custom_extractors` argument in `openlineage.airflow.DAG`.
+
+## Adding extractor to OpenLineage Airflow integration package
+
+All Openlineage extractors are defined in [this path](https://github.com/OpenLineage/OpenLineage/blob/main/integration/airflow/openlineage/airflow/extractors).
+In order to add new extractor you should put your code in this directory. Additionally, you need to add the class to `_extractors` list in [extractors.py](https://github.com/OpenLineage/OpenLineage/blob/main/integration/airflow/openlineage/airflow/extractors/extractors.py), e.g.:
+
+```python
+_extractors = list(
+    filter(
+        lambda t: t is not None,
+        [
+            try_import_from_string(
+                'openlineage.airflow.extractors.postgres_extractor.PostgresExtractor'
+            ),
+            ... # other extractors are listed here
++           try_import_from_string(
++               'openlineage.airflow.extractors.new_extractor.ExtractorClass'
++           ),
+        ]
+    )
+)
+```
 
 ## Debugging issues
 
@@ -92,3 +114,5 @@ Airflow worker itself starts, any import from Airflow can be unnoticeably cyclic
 
 To avoid this issue, import from Airflow only locally - in `extract` or `extract_on_complete` methods. If you need imports for 
 type checking, guard them behind `typing.TYPE_CHECKING`.
+
+You can also check [Development section](../../development/developing/) to learn more about how to setup development environment and create tests.

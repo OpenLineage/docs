@@ -8,8 +8,7 @@ As a way of extending the OpenLineage Airflow integration, we are providing a wa
 This is great for people who want to add integration with external operators - for example, a regular Airflow user who wants to support, for example, `GCSToS3Operator`.
 
 However, it's too cumbersome for people who own operators, and want to add the default implementation of OpenLineage for their operators for external users. 
-This is why we have an additional way to expose lineage: the `get_openlineage_facets` method that can be implemented on your Operator.
-When it's present, OpenLineage's `DefaultExtractor` uses it to get lineage data.
+This is why we have an additional way to expose lineage: the `get_openlineage_facets_on_start` and `get_openlineage_facets_on_complete` methods that can be implemented on your Operator.<br />When any of those are present, OpenLineage's `DefaultExtractor` uses them to get lineage data. If you don't define `get_openlineage_facets_on_complete` it will run `get_openlineage_facets_on_start` instead.
 
 For example, let's assume you want to expose lineage from an operator that copies data from one table to another:
 
@@ -29,7 +28,7 @@ class YourCopyTableOperator(BaseOperator):
     def execute(self, context) -> Any:
         ...  # your implementation
 
-    def get_openlineage_facets(self) -> OperatorLineage:
+    def get_openlineage_facets_on_start(self) -> OperatorLineage:
         return OperatorLineage(
             inputs=[Dataset(namespace=self.database, name=self.source_table)],
             outputs=[Dataset(namespace=self.database, name=self.target_table)],
@@ -37,3 +36,15 @@ class YourCopyTableOperator(BaseOperator):
             job_facets={}
         )
 ```
+
+Both methods should return `OperatorLineage` structure:
+
+```
+@attr.s
+class OperatorLineage:
+    inputs: List[Dataset] = attr.ib(factory=list)
+    outputs: List[Dataset] = attr.ib(factory=list)
+    run_facets: Dict[str, BaseFacet] = attr.ib(factory=dict)
+    job_facets: Dict[str, BaseFacet] = attr.ib(factory=dict)
+```
+similar to `TaskMetadata` described in [Custom extractors](./extractor.md#interface).
