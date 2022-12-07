@@ -4,9 +4,9 @@ sidebar_position: 1
 
 # Testing custom extractors
 
-When you deploy your [Airflow DAG](https://docs.astronomer.io/learn/dags) on Astro, the deployment comes with OpenLineage installed and configured to emit data lineage events to a data observability backend. However, there may be cases where the extractor does not exist for an operator you’re using, like a custom operator you wrote.
+OpenLineage comes with a variet of extractors for Airflow operators out of the box, but not every operator is covered. And if you are using a custom operator you or your team wrote, you'll certainly need to write a custom extractor. This guide will walk you through how to set up testing in a local dev environment, the most important data structures to write tests for, unit testing private functions, and some notes on troubleshooting.
 
-For details on multiple ways to write extractors, check out the Astronomer blog on [extractors](https://www.astronomer.io/blog/3-ways-to-extract-data-lineage-from-airflow/#using-custom-extractors-for-airflow-operators). This post builds on [Pursuing Lineage from Airflow using Custom Extractors](https://openlineage.io/blog/extractors/), and it is recommended to read that post first. To learn more about how Operators and Extractors work together under the hood, check out this [guide](https://openlineage.io/blog/operators-and-extractors-technical-deep-dive/).
+We assume prior knowledge of writing custom extractors. For details on multiple ways to write extractors, check out the Astronomer blog on [extractors](https://www.astronomer.io/blog/3-ways-to-extract-data-lineage-from-airflow/#using-custom-extractors-for-airflow-operators). This post builds on [Pursuing Lineage from Airflow using Custom Extractors](https://openlineage.io/blog/extractors/), and it is recommended to read that post first. To learn more about how Operators and Extractors work together under the hood, check out this [guide](https://openlineage.io/blog/operators-and-extractors-technical-deep-dive/).
 
 ## Testing set-up
 
