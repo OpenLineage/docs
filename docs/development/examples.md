@@ -3,10 +3,6 @@ title: Example Lineage Events
 sidebar_position: 2
 ---
 
-:::info
-This page needs your contribution! Please contribute new examples using the edit link at the bottom.
-:::
-
 ## Simple Examples
 
 ### START event with single input 
