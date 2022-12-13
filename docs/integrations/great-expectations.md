@@ -32,7 +32,10 @@ We can optionally specify a namespace where the lineage events will be stored. F
 OPENLINEAGE_NAMESPACE=dev
 ```
 
-With these environment variables set, we can add the OpenLineage action to the action list of the Great Expecations checkpoint. Note: this must be done for *each* checkpoint.
+With these environment variables set, we can add the OpenLineage action to the action list of the Great Expecations checkpoint.
+Note: this must be done for *each* checkpoint.
+Note: when using the `GreatExpectationsOperator>=0.2.0` in Airflow, there is a boolean parameter, defaulting to `True`, that will automatically create this action list item when it detects the OpenLineage environment specified in the previous step.
+
 
 In a python checkpoint, this looks like:
 

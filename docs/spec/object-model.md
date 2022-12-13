@@ -39,6 +39,8 @@ Facets that can be used to augment the metadata of a Job include:
 
 - **sourceCode**: Captures the language (e.g. python) and complete source code of the job. Using this source code, users can gain useful information about what the job does.
 
+For more details, please refer to the [Job Facets](./facets/job-facets).
+
 ## Run
 A Run is an instance of a Job that represents one of its occurrences in time.
 
@@ -57,6 +59,8 @@ Facets that can be used to augment the metadata of a Run include:
 - **errorMessage**: Captures potential error messages - and optionally stack traces - with which the run failed.
 
 - **sql**: Captures the SQL query, if this job runs one.
+
+For more details, please refer to the [Run Facets](./facets/run-facets).
 
 ## Dataset
 A Dataset is an abstract representation of data. This can refer to a small amount or large amount of data, as long as it's discrete. For databases, this should be a table. For cloud storage, this is often an object in a bucket. This can represent a directory of a filesystem.
@@ -86,3 +90,5 @@ Input Datasets have the following facets:
 
 Output Datasets have the following facets:
 - **outputStatistics**: Captures the size of the output written to a dataset (e.g., row count and byte size)
+
+For more details, please refer to the [Dataset Facets](./facets/dataset-facets).
