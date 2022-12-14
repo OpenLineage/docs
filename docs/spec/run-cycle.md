@@ -4,24 +4,27 @@ sidebar_position: 4
 
 # The Run Cycle
 
-The OpenLineage [object model](object-model.md) is event-based, with each event called a Run State Updates. These updates inform an OpenLineage backend about the ongoing status of a Job.
+The OpenLineage [object model](object-model.md) is event-based, and each event is called a Run State Update. These updates provide an OpenLineage backend with details about the activities of a Job.
 
-The OpenLineage Run Cycle has several defined events that correspond to changes in the running statuses of a pipeline task. When a task transitions between these states - e.g. it is initiated, finishes, or fails - a Run State Update is sent that describes that event.
+The OpenLineage Run Cycle has several defined states that correspond to changes in the state of a pipeline task. When a task transitions between these - e.g. it is initiated, finishes, or fails - a Run State Update is sent that describes what happened.
 
-Each Run State Update contains the Run State along with metadata about the Job, its current Run, and its input and output Datasets. It is common to add additional metadata throughout the lifecycle of the run as it becomes available.
+Each Run State Update contains the run state (i.e., `START`) along with metadata about the Job, its current Run, and its input and output Datasets. It is common to add additional metadata throughout the lifecycle of the run as it becomes available.
 
 ## Run States
 
-There are five run states. 
-* ``START`` to indicate the beginning of a Job
+There are five run states currently defined in the OpenLineage [spec](https://openlineage.io/apidocs/openapi/):
 
-* ``CONTINUE`` to provide additional information about a running Job
+* `START` to indicate the beginning of a Job
 
-* ``COMPLETE`` to signify that execution of the Job has concluded
+* `RUNNING` to provide additional information about a running Job
 
-* ``ABORT`` to signify that the Job has been stopped abnormally
+* `COMPLETE` to signify that execution of the Job has concluded
 
-* ``FAIL`` to signify that the Job has failed
+* `ABORT` to signify that the Job has been stopped abnormally
+
+* `FAIL` to signify that the Job has failed
+
+* `OTHER` to provide additional metadata outside of the standard run cycle - e.g., on a run that has already completed
 
 
 ## Typical Scenarios
@@ -30,6 +33,6 @@ A batch Job - e.g., an Airflow task or a dbt model - will typically be represent
 
 ![image](./run-cycle-batch.svg)
 
-A long-running Job - e.g., a microservice or a stream - will typically be represented by a `START` event followed by a series of `CONTINUE` events that report changes in the run or emit performace metrics. Occasionally, a `COMPLETE`, `ABORT`, or `FAIL` event will followed by a `START` event as the job is reinitiated. 
+A long-running Job - e.g., a microservice or a stream - will typically be represented by a `START` event followed by a series of `RUNNING` events that report changes in the run or emit performace metrics. Occasionally, a `COMPLETE`, `ABORT`, or `FAIL` event will occur, often followed by a `START` event as the job is reinitiated. 
 
 ![image](./run-cycle-stream.svg)
