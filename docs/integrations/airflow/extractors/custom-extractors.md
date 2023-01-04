@@ -4,14 +4,11 @@ sidebar_position: 1
 
 # Custom extractors
 
-OpenLineage integration works by detecting which Airflow operators your dag is using, and extracting lineage 
-data from them using extractors. 
+OpenLineage integration works by detecting which Airflow operators your dag is using, and extracting lineage data from them using extractors. 
 
-However, there are hundreds of operators in Airflow. In addition, many people and teams write their own operators to 
-automate repeatable work - like using the same code from `PythonOperator` everywhere.
+However, not all operators are covered, in particular third party providers might not. To handle this situation, OpenLineage allows you to provide custom extractors for any operators.
 
-So, most of those operators aren't directly supported in OpenLineage out of the box. 
-To handle this situation, OpenLineage allows you to provide custom extractors for any operators.
+If you want to extract lineage from your own Operators, you will prefer directly implementing [lineage support as described here](../operator.md).
 
 
 ## Interface
@@ -47,12 +44,12 @@ class TaskMetadata:
     job_facets: Dict[str, BaseFacet] = attr.ib(factory=dict)
 ```
 
-Inputs and outputs are lists of plain [OpenLineage datasets](../../client/python.md) 
+Inputs and outputs are lists of plain [OpenLineage datasets](../../../client/python.md) 
 
-`run_facets` and `job_facets` are dictionaries of optional [JobFacets](../../client/python.md) and [RunFacets](../../client/python.md) that would be attached to the job - for example,
+`run_facets` and `job_facets` are dictionaries of optional [JobFacets](../../../client/python.md) and [RunFacets](../../../client/python.md) that would be attached to the job - for example,
 you might want to attach `SqlJobFacet` if your operator is executing SQL.
 
-To learn more about facets in OpenLineage, please visit this [section](../../spec/facets).
+To learn more about facets in OpenLineage, please visit this [section](../../../spec/facets).
 
 
 ## Registering custom extractor
@@ -115,4 +112,4 @@ Airflow worker itself starts, any import from Airflow can be unnoticeably cyclic
 To avoid this issue, import from Airflow only locally - in `extract` or `extract_on_complete` methods. If you need imports for 
 type checking, guard them behind `typing.TYPE_CHECKING`.
 
-You can also check [Development section](../../development/developing/) to learn more about how to setup development environment and create tests.
+You can also check [Development section](../../../development/developing/) to learn more about how to setup development environment and create tests.
