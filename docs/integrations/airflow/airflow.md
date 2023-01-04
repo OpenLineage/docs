@@ -26,13 +26,13 @@ To instrument your Airflow instance with OpenLineage, follow [these instructions
 
 ## How to add lineage coverage for more operators?
 
-OpenLineage provides a set of `extractors` to extract lineage from operators. 
+OpenLineage provides a set of `extractors` that extract lineage from operators. 
 
-If you want to add lineage coverage for you own custom operators, follow [instructions to add lineage to operators](operator.md).
+If you want to add lineage coverage for your own custom operators, follow these [instructions to add lineage to operators](operator.md).
 
 If you want to add coverage for operators you can not modify, follow [instructions to add custom extractors](extractors/custom-extractors.md).
 
-If you want to expose lineage as a one off in your workflow, [you can also manually annotate the tasks](manual.md).
+If you want to expose lineage as a one off in your workflow, [you can also manually annotate the tasks in your DAG](manual.md).
 
 ## Where can I learn more?
 
