@@ -121,8 +121,8 @@ def get_openlineage_facets_on_start(self):
         )
 
         input_facet = {
-            "DataSourceDatasetFacet": input_source,
-            "SchemaDatasetFacet": SchemaDatasetFacet(
+            "datasource": input_source,
+            "schema": SchemaDatasetFacet(
                 fields=[
                     SchemaField(name=col_name, type=col_type)
                     for col_name, col_type in self.col_types.items()
@@ -147,8 +147,8 @@ def get_openlineage_facets_on_start(self):
         )
 
         output_facet = {
-            "DataSourceDatasetFacet": output_source,
-            "SchemaDatasetFacet": SchemaDatasetFacet(
+            "datasource": output_source,
+            "schema": SchemaDatasetFacet(
                 fields=[
                     SchemaField(name=col_name, type=col_type)
                     for col_name, col_type in self.col_types.items()
@@ -254,12 +254,12 @@ output_source = DataSourceDatasetFacet(
 
 ### 2. Inputs
 
-Next we’ll create the input dataset object. As we are moving data from a dataframe to GCS in this operator, we’ll make sure that we are capturing all the info in the dataframe being extracted in a `Dataset`. To create the `Dataset` object, we’ll need `namespace`, `name`, and `facets` objects. The first two are strings, and `facets` is a dictionary. Our `namespace` will come from the operator, where we use `self.data_source` again. The `name` parameter for this facet will be the table, again coming from the operator’s parameter list. The `facets` will contain two entries, our `DataSourceDatasetFacet` from the previous step and a `SchemaDatasetFacet` that will be built with a list comprehension that creates a `SchemaField` object for each column. The `inputs` parameter to `OperatorLineage` is a list of `Dataset` objects, so we’ll end up adding a single `Dataset` object to the list later. The creation of the `Dataset` object looks as follows:
+Next we’ll create the input dataset object. As we are moving data from a dataframe to GCS in this operator, we’ll make sure that we are capturing all the info in the dataframe being extracted in a `Dataset`. To create the `Dataset` object, we’ll need `namespace`, `name`, and `facets` objects. The first two are strings, and `facets` is a dictionary. Our `namespace` will come from the operator, where we use `self.data_source` again. The `name` parameter for this facet will be the table, again coming from the operator’s parameter list. The `facets` will contain two entries, our `DataSourceDatasetFacet` with key "datasource" from the previous step and a `SchemaDatasetFacet` with key "schema" that will be built with a list comprehension that creates a `SchemaField` object for each column. The `inputs` parameter to `OperatorLineage` is a list of `Dataset` objects, so we’ll end up adding a single `Dataset` object to the list later. The creation of the `Dataset` object looks as follows:
 
 ```python
 input_facet = {
-    "DataSourceDatasetFacet": input_source,
-    "SchemaDatasetFacet": SchemaDatasetFacet(
+    "datasource": input_source,
+    "schema": SchemaDatasetFacet(
         fields=[
             SchemaField(name=col_name, type=col_type)
             for col_name, col_type in self.col_types.items()
@@ -276,8 +276,8 @@ Our output facet will look almost identical to the input facet, except it will u
 
 ```python
 output_facet = {
-    "DataSourceDatasetFacet": output_source,
-    "SchemaDatasetFacet": SchemaDatasetFacet(
+    "datasource": output_source,
+    "schema": SchemaDatasetFacet(
         fields=[
             SchemaField(name=col_name, type=col_type)
             for col_name, col_type in self.col_types.items()
