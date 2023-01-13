@@ -42,7 +42,7 @@ An operator can also includes data quality assertions. The [DataQuality facet sp
 
 ## Implementation
 Each `Operator` implements the following methods returning the structure defined below:
- - get_openlineage_facets_on_start(ti)
+ - get_openlineage_facets_on_start()
  - get_openlineage_facets_on_complete(ti)
 Facets are the JSON facets defined in the OpenLineage specification
 
@@ -67,7 +67,7 @@ OutputDataset:
 ```	
 (all facets are optional)
 
-When the task starts/completes, the OpenLineage TaskInstanceListener uses the selected method if available to construct lineage events. The order of selection of the method is as follows: if there is no extractor defined (based on get_operator_classnames) it will fall back to DefaultExtractor. DefaultExtractor uses get_openlineage_facets_* methods. If the get_openlineage_facets_on_complete(ti) is not available it falls back to get_openlineage_facets_on_start(ti).
+When the task starts/completes, the OpenLineage TaskInstanceListener uses the selected method if available to construct lineage events. The order of selection of the method is as follows: if there is no extractor defined (based on get_operator_classnames) it will fall back to DefaultExtractor. DefaultExtractor uses get_openlineage_facets_* methods. If the get_openlineage_facets_on_complete(ti) is not available it falls back to get_openlineage_facets_on_start().
 
 Example:
 
