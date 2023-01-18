@@ -313,7 +313,7 @@ job_facets = {
 
 ### 5. Run facets
 
-A Run is the element of state for a Job that gets updated based on based on the current state of the associated task. For example, when an Airflow Operator begins execution, the Run state of the OpenLineage Job transitions to Start, then to Running. When writing an Extractor, this means a Run facet should contain information pertinent to the specific instance of the job, something that could change every Run.
+A Run is and instance of a Job execution. For example, when an Airflow Operator begins execution, the Run state of the OpenLineage Job transitions to Start, then to Running. When writing an Extractor, this means a Run facet should contain information pertinent to the specific instance of the job, something that could change every Run.
 
 In this example, we will emit an error message when there is an empty dataframe, using the existing `ErrorMessageRunFacet`.
 
