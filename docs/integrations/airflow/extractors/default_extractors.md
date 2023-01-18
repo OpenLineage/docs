@@ -4,96 +4,13 @@ sidebar_position: 1
 
 # Default extractors
 
-Default extractors are a new way in Airflow 2.3+ and OpenLineage 0.17.0+ to easily add lineage to your data pipelines by modifying your Airflow operators directly. This means custom operators—built in house or forked from another project—can provide you and your team with lineage data without having to modify the OpenLineage project directly or set any environment variables.
+Default extractors are a new way in Airflow 2.3+ and OpenLineage 0.17.0+ to easily add lineage to your data pipelines by modifying your Airflow operators directly. This means custom operators—built in house or forked from another project—can provide you and your team with lineage data without having to modify the OpenLineage project directly, with data sent to your lineage backend of choice, most commonly using the `OPENLINEAGE_URL` environment variable.
 
 The default extractor works a bit differently under the hood than other extractors. While extractors in the OpenLineage project have a getter method for operator names that they’re associated with, the default extractor looks for two specific methods in the operator itself and will call them directly if found. This means that the implementation for the extractor is just two methods in your operator.
 
 Those methods are `get_openlineage_facets_on_start()` and `get_openlineage_facets_on_complete()`, called when the operator is first scheduled to run and when the operator has finished execution respectively. Either, or both, of the methods may be implemented by the operator.
 
-In the rest of this post, we’ll see how to write these methods within an operator class called `DfToGcsOperator`. This operator moves a Dataframe from an arbitrary source table using a supplied python callable to a specified path in GCS. Most of the `__init__()` and `execute()` methods of the operator aren’t necessary to see to put together the extractor, but an abbreviated version of each method is given below for context.
-
-```sql
-def __init__(
-    self,
-    task_id,
-    python_callable,
-    data_source,
-    bucket=None,
-    table=None,
-		security_group,
-		pipeline_phase,
-    col_types=None,
-    check_cols=True,
-    **kwargs,
-):
-    """Initialize a DfToGcsOperator."""
-    super().__init__(task_id=task_id, **kwargs)
-    self.python_callable = python_callable
-    self.data_source = data_source
-    self.table = table if table is not None else task_id
-    self.bucket = bucket
-		self.security_group = security_group
-		self.pipeline_phase = pipeline_phase
-		# col_types is a dict that stores expected column names and types, 
-    self.col_types = col_types
-    self.check_cols = check_cols
-
-    self.base_path = "/".join(
-        [self.security_group, self.pipeline_phase, self.data_source, self.table]
-    )
-		# Holds meta information about the dataframe, col names and col types,
-		# that are used in the extractor.
-    self.df_meta = None
-
-def execute(self, context):
-    """
-    Run a DfToGcs task.
-
-    The task will run the python_callable and save
-    the resulting dataframe to GCS under the proper object path
-    <security_group>/<pipeline_phase>/<data_source>/<table>/.
-    """
-		...
-		df = get_python_callable_result(self.python_callable, context)
-    if len(df) > 0:
-        df.columns = [clean_column_name(c) for c in df.columns]
-
-        if self.col_types and self.check_cols:
-            check_cols = [c.lower().strip() for c in self.col_types.keys()]
-            missing = [m for m in check_cols if m not in df.columns]
-            assert (
-                len(missing) == 0
-            ), "Columns present in col_types but not in DataFrame: " + ",".join(
-                missing
-            )
-
-        # ----------- #
-        # Save to GCS #
-        # ----------- #
-
-        # Note: this is an imported helper function.
-        df_to_gcs(df, self.bucket, save_to_path)
-
-        # ----------- #
-        # Return Data #
-        # ----------- #
-
-        # Allow us to extract additional lineage information
-        # about all of the fields available in the dataframe
-        self.df_meta = extract_df_fields(df)
-    else:
-        print("Empty dataframe, no artifact saved to GCS.")
-
-def extract_df_fields(df):
-		from openlineage.common.dataset import SchemaField
-    """Extract a list of SchemaFields from a DataFrame."""
-    fields = []
-    for (col, dtype) in zip(df.columns, df.dtypes):
-        fields.append(SchemaField(name=col, type=str(dtype)))
-    return fields
-```
-
-Here’s the sample code that we’ll put together piece-by-piece below, you can use this to base your own default extractor on:
+In the rest of this post, we’ll see how to write these methods within an operator class called `DfToGcsOperator`. This operator moves a Dataframe from an arbitrary source table using a supplied python callable to a specified path in GCS. Most of the `__init__()` and `execute()` methods of the operator aren’t necessary to see to put together the extractor, but an abbreviated version of each method is given below for context. The final two methods in the class are `get_openlineage_facets_on_start()` and `get_openlineage_facets_on_complete()`, which we will be implementing piece-by-piece in the rest of the guide, but are provided here in their entirety for completeness.
 
 ```python
 from openlineage.airflow.extractors.base import OperatorLineage
@@ -107,92 +24,173 @@ from openlineage.client.facet import (
 )
 from openlineage.client.run import Dataset
 
-def get_openlineage_facets_on_start(self):
-    """Add lineage to DfToGcsOperator on task start."""
-    if not self.bucket:
-        ol_bucket = get_env_bucket()
-    else:
-        ol_bucket = self.bucket
 
-    input_uri = "://".join([self.data_source, self.table])
-    input_source = DataSourceDatasetFacet(
-        name=self.table,
-        uri=input_uri,
-    )
+class DfToGcsOperator():
+    def __init__(
+        self,
+        task_id,
+        python_callable,
+        data_source,
+        bucket=None,
+        table=None,
+            security_group,
+            pipeline_phase,
+        col_types=None,
+        check_cols=True,
+        **kwargs,
+    ):
+        """Initialize a DfToGcsOperator."""
+        super().__init__(task_id=task_id, **kwargs)
+        self.python_callable = python_callable
+        self.data_source = data_source
+        self.table = table if table is not None else task_id
+        self.bucket = bucket
+            self.security_group = security_group
+            self.pipeline_phase = pipeline_phase
+            # col_types is a dict that stores expected column names and types, 
+        self.col_types = col_types
+        self.check_cols = check_cols
 
-    input_facet = {
-        "datasource": input_source,
-        "schema": SchemaDatasetFacet(
-            fields=[
-                SchemaField(name=col_name, type=col_type)
-                for col_name, col_type in self.col_types.items()
-            ]
-        ),
-    }
+        self.base_path = "/".join(
+            [self.security_group, self.pipeline_phase, self.data_source, self.table]
+        )
+            # Holds meta information about the dataframe, col names and col types,
+            # that are used in the extractor.
+        self.df_meta = None
 
-    input = Dataset(namespace=self.data_source, name=self.table, facets=input_facet)
+    def execute(self, context):
+        """
+        Run a DfToGcs task.
 
-    output_namespace = "gs://" + ol_bucket
-    output_name = self.base_path
-    output_uri = "/".join(
-        [
-            output_namespace,
-            output_name,
-        ]
-    )
+        The task will run the python_callable and save
+        the resulting dataframe to GCS under the proper object path
+        <security_group>/<pipeline_phase>/<data_source>/<table>/.
+        """
+            ...
+            df = get_python_callable_result(self.python_callable, context)
+        if len(df) > 0:
+            df.columns = [clean_column_name(c) for c in df.columns]
 
-    output_source = DataSourceDatasetFacet(
-        name=output_name,
-        uri=output_uri,
-    )
+            if self.col_types and self.check_cols:
+                check_cols = [c.lower().strip() for c in self.col_types.keys()]
+                missing = [m for m in check_cols if m not in df.columns]
+                assert (
+                    len(missing) == 0
+                ), "Columns present in col_types but not in DataFrame: " + ",".join(
+                    missing
+                )
 
-    output_facet = {
-        "datasource": output_source,
-        "schema": SchemaDatasetFacet(
-            fields=[
-                SchemaField(name=col_name, type=col_type)
-                for col_name, col_type in self.col_types.items()
-            ]
-        ),
-    }
+            # ----------- #
+            # Save to GCS #
+            # ----------- #
 
-    output = Dataset(
-        namespace=output_namespace,
-        name=output_name,
-        facets=output_facet,
-    )
+            # Note: this is an imported helper function.
+            df_to_gcs(df, self.bucket, save_to_path)
 
-    return OperatorLineage(
-        inputs=[input],
-        outputs=[output],
-        run_facets={},
-        job_facets={
-            "documentation": DocumentationJobFacet(
-                description=f"""
-            Takes data from the data source {input_uri}
-            and puts it in GCS at the path: {output_uri}
-            """
-            ),
-            "ownership": OwnershipJobFacet(
-                owners=[OwnershipJobFacetOwners(name=self.owner, type=self.email)]
+            # ----------- #
+            # Return Data #
+            # ----------- #
+
+            # Allow us to extract additional lineage information
+            # about all of the fields available in the dataframe
+            self.df_meta = extract_df_fields(df)
+        else:
+            print("Empty dataframe, no artifact saved to GCS.")
+
+    def extract_df_fields(df):
+            from openlineage.common.dataset import SchemaField
+        """Extract a list of SchemaFields from a DataFrame."""
+        fields = []
+        for (col, dtype) in zip(df.columns, df.dtypes):
+            fields.append(SchemaField(name=col, type=str(dtype)))
+        return fields
+
+    def get_openlineage_facets_on_start(self):
+        """Add lineage to DfToGcsOperator on task start."""
+        if not self.bucket:
+            ol_bucket = get_env_bucket()
+        else:
+            ol_bucket = self.bucket
+
+        input_uri = "://".join([self.data_source, self.table])
+        input_source = DataSourceDatasetFacet(
+            name=self.table,
+            uri=input_uri,
+        )
+
+        input_facet = {
+            "datasource": input_source,
+            "schema": SchemaDatasetFacet(
+                fields=[
+                    SchemaField(name=col_name, type=col_type)
+                    for col_name, col_type in self.col_types.items()
+                ]
             ),
         }
-    )
 
-def get_openlineage_facets_on_complete(self, task_instance):
-    """Add lineage to DfToGcsOperator on task completion."""
-    starting_facets = self.get_openlineage_facets_on_start()
-    if task_instance.task.df_meta is not None:
-        for i in starting_facets.inputs:
-            i.facets["SchemaDatasetFacet"].fields = task_instance.task.df_meta
-    else:
-        starting_facets.run_facets = {
-            "errorMessage": ErrorMessageRunFacet(
-                    message="Empty dataframe, no artifact saved to GCS.",
-                    programmingLanguage="python"
-            )
+        input = Dataset(namespace=self.data_source, name=self.table, facets=input_facet)
+
+        output_namespace = "gs://" + ol_bucket
+        output_name = self.base_path
+        output_uri = "/".join(
+            [
+                output_namespace,
+                output_name,
+            ]
+        )
+
+        output_source = DataSourceDatasetFacet(
+            name=output_name,
+            uri=output_uri,
+        )
+
+        output_facet = {
+            "datasource": output_source,
+            "schema": SchemaDatasetFacet(
+                fields=[
+                    SchemaField(name=col_name, type=col_type)
+                    for col_name, col_type in self.col_types.items()
+                ]
+            ),
         }
-    return starting_facets
+
+        output = Dataset(
+            namespace=output_namespace,
+            name=output_name,
+            facets=output_facet,
+        )
+
+        return OperatorLineage(
+            inputs=[input],
+            outputs=[output],
+            run_facets={},
+            job_facets={
+                "documentation": DocumentationJobFacet(
+                    description=f"""
+                Takes data from the data source {input_uri}
+                and puts it in GCS at the path: {output_uri}
+                """
+                ),
+                "ownership": OwnershipJobFacet(
+                    owners=[OwnershipJobFacetOwners(name=self.owner, type=self.email)]
+                ),
+            }
+        )
+
+    def get_openlineage_facets_on_complete(self, task_instance):
+        """Add lineage to DfToGcsOperator on task completion."""
+        starting_facets = self.get_openlineage_facets_on_start()
+        if task_instance.task.df_meta is not None:
+            for i in starting_facets.inputs:
+                i.facets["SchemaDatasetFacet"].fields = task_instance.task.df_meta
+        else:
+            starting_facets.run_facets = {
+                "errorMessage": ErrorMessageRunFacet(
+                        message="Empty dataframe, no artifact saved to GCS.",
+                        programmingLanguage="python"
+                )
+            }
+        return starting_facets
 ```
 
 ## Implementing Default Extractors
@@ -297,7 +295,7 @@ output = Dataset(
 
 ### 4. Job Facets
 
-A Job in OpenLineage can be either a batch Job or a long-running Job, like a microservice or a stream, and in either case it is the entire sequence of events known to OpenLineage from start to completion. This means the facets we would want to capture in at the Job level are independent of the state the Job is in. Custom facets can be created to capture this job data. For our operator, we stuck with pre-existing job facets, the `DocumentationJobFacet` and the `OwnershipJobFacet`:
+A Job in OpenLineage is a process definition that consumes and produces datasets. The Job evolves over time, and that change is captured when the job runs. This means the facets we would want to capture in at the Job level are independent of the state the Job is in. Custom facets can be created to capture this job data. For our operator, we stuck with pre-existing job facets, the `DocumentationJobFacet` and the `OwnershipJobFacet`:
 
 ```python
 job_facets = {
@@ -357,7 +355,7 @@ And with that final piece of the puzzle, we have a working extractor for our cus
 
 ### Custom Facets
 
-The OpenLineage spec may not contain all the facets you need to write your extractor, in which case you will have to make changes to the OpenLineage project itself. This may involve forking the repository and adding facets as classes to the appropriate facets file(s). More on creating custom facets can be found [here](https://openlineage.io/blog/extending-with-facets/).
+The OpenLineage spec may not contain all the facets you need to write your extractor, in which case you will have to make your own [custom facets](https://openlineage.io/docs/spec/facets/custom-facets). More on creating custom facets can be found [here](https://openlineage.io/blog/extending-with-facets/).
 
 ### Testing
 
