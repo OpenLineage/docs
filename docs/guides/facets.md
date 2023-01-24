@@ -2,9 +2,9 @@
 sidebar_position: 5
 ---
 
-# Facets
+# Understanding and Using Facets
 
-#### From [OpenLineage.md](https://github.com/OpenLineage/OpenLineage/blob/main/spec/OpenLineage.md)
+#### Adapted from the OpenLineage [spec](https://github.com/OpenLineage/OpenLineage/blob/main/spec/OpenLineage.md).
 
 Facets are pieces of metadata that can be attached to the core entities of the spec:
 - Run
@@ -13,7 +13,7 @@ Facets are pieces of metadata that can be attached to the core entities of the s
 
 A facet is an atomic piece of metadata identified by its name. This means that emitting a new facet with the same name for the same entity replaces the previous facet instance for that entity entirely. It is defined as a JSON object that can be either part of the spec or a custom facet defined in a different project.
 
-Custom facets must use a distinct prefix named after the project defining them to avoid collision with standard facets defined in the [OpenLineage.json](OpenLineage.json) spec.
+Custom facets must use a distinct prefix named after the project defining them to avoid collision with standard facets defined in the [OpenLineage.json](https://github.com/OpenLineage/OpenLineage/blob/main/spec/OpenLineage.json) spec.
 They have a `\_schemaURL` field pointing to the corresponding version of the facet schema (as a JSONPointer: [$ref URL location](https://swagger.io/docs/specification/using-ref/) ).
 
 For example: https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/MyCustomJobFacet
@@ -25,7 +25,7 @@ Custom facets can be promoted to the standard by including them in the spec.
 #### Custom Facet Naming
 
 The naming of custom facets should follow the pattern `{prefix}{name}{entity}Facet` PascalCased.  
-The prefix must be a distinct identifier named after the project defining it to avoid colision with standard facets defined in the [OpenLineage.json](OpenLineage.json) spec.
+The prefix must be a distinct identifier named after the project defining it to avoid colision with standard facets defined in the [OpenLineage.json](https://github.com/OpenLineage/OpenLineage/blob/main/spec/OpenLineage.json) spec.
 The entity is the core entity for which the facet is attached.
 
 When attached to the core entity, the key should follow the pattern `{prefix}_{name}`, where both prefix and name follow snakeCase pattern. 
@@ -62,7 +62,7 @@ An example of a valid name is `BigQueryStatisticsJobFacet` and its key `bigQuery
 
 - **version**: Captures the dataset version when versioning is defined by database (e.g., Iceberg snapshot ID).
 
-- [**columnLineage**](facets/ColumnLineageDatasetFacet.md): Captures the column-level lineage.
+- [**columnLineage**](https://github.com/OpenLineage/OpenLineage/blob/main/spec/facets/ColumnLineageDatasetFacet.json): Captures the column-level lineage.
 
 - **ownership**: Captures the owners of the dataset.
 
