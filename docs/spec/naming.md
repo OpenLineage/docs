@@ -16,14 +16,14 @@ Jobs and Datasets have their own namespaces, job namespaces being derived from s
 
 A dataset, or `table`, is organized according to a producer, namespace, database and (optionally) schema.
 
-| Producer | Formula                  | Example URI                                  |
-| --------- | ------------------------- | ----------------------------------------- |
-| Postgres | producer + host + port + database + table   | postgres://db.foo.com:6543/metrics.sales.orders |
+| Producer | Formula | Example URI |
+| -------- | ------- | ----------- |
+| Postgres | producer + host + port + database + table | postgres://db.foo.com:6543/metrics.sales.orders |
 | MySQL | producer + host + port + database + table | mysql://db.foo.com:6543/metrics.orders | 
-| S3 | producer + bucket + path             | s3://sales-metrics/orders.csv             |
+| S3 | producer + bucket + path | s3://sales-metrics/orders.csv |
 | GCS | producer + bucket + path | gcs://sales-metrics/orders.csv |
-| HDFS | producer + host + port + path        | hdfs://stg.foo.com:3000/salesorders.csv   |
-| BigQuery | producer + project + dataset + table | bigquery:metrics.sales.orders             |
+| HDFS | producer + host + port + path | hdfs://stg.foo.com:3000/salesorders.csv |
+| BigQuery | producer + project + dataset + table | bigquery:metrics.sales.orders |
 | Redshift | producer + host + port + database + schema + table | redshift://examplecluster.XXXXXXXXXXXX.us-west-2.redshift.amazonaws.com:5439/metrics.sales.orders |
 | Athena | producer + host + catalog + database + table | awsathena://athena.us-west-2.amazonaws.com/metrics.sales.orders |
 | Azure Synapse | producer + host + port + database + schema + table | sqlserver://XXXXXXXXXXXX.sql.azuresynapse.net:1433;database=SQLPool1/sales.orders |
@@ -32,18 +32,18 @@ A dataset, or `table`, is organized according to a producer, namespace, database
 ## Job Naming
 
 A `Job` is a recurring data transformation with inputs and outputs. Each execution is captured as a `Run` with corresponding metadata.
-A `Run` event identifies the `Job` of which it is an instance by providing the job’s unique identifier.
-The `Job` identifier is composed of a `Namespace` and a `Name`. The job name is unique within that namespace.
+A `Run` event identifies the `Job` it instances by providing the job’s unique identifier.
+The `Job` identifier is composed of a `Namespace` and `Name`. The job name is unique within its namespace.
 
 
-| Formula                   | Example                     |
-| -------------------------- | ---------------------------- |
-| namespace + name         | staging.load_orders_from_csv |
-| namespace + project + name | prod.orders_etl.count_orders |
+| Producer | Formula | Example |
+| -------- | ------- | ------- |
+| Airflow | namespace + DAG + task | airflow-staging.orders_etl.count_orders |
+| SQL | namespace + name | gx.validate_datasets |
 
 ## Run Naming
 
-Runs are named using client-generated UUIDs. The client is responsible for generating them and maintaining them throughout the duration of the runcycle.
+Runs are named using client-generated UUIDs. The OpenLineage client is responsible for generating them and maintaining them throughout the duration of the runcycle.
 
 ```python
 from openlineage.client.run import Run
@@ -52,8 +52,11 @@ run = Run(str(uuid4()))
 
 ## Why Naming Matters
 
+Naming enables focused insight into data flows, even when datasets and workflows are distributed across an organization. This focus enabled by naming is key to the production of useful lineage.
+
 ![image](./naming-correlations.svg)
 
 ## Additional Resources
 
 * [The OpenLineage Naming Spec](https://github.com/OpenLineage/OpenLineage/blob/main/spec/Naming.md)
+* [What's in a Namespace Blog Post](https://openlineage.io/blog/whats-in-a-namespace/)
