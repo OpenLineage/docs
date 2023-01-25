@@ -15,10 +15,10 @@ Follow the steps below to enable OpenLineage on Databricks.
     * [Azure Databricks CLI](https://docs.microsoft.com/en-us/azure/databricks/dev-tools/cli/)
     * [GCP Databricks CLI](https://docs.gcp.databricks.com/dev-tools/cli/index.html)
     * [AWS Databricks CLI](https://docs.databricks.com/dev-tools/cli/index.html)
-* Run `upload-to-databricks.sh` or `upload-to-databricks.ps1`.
+* Run [`upload-to-databricks.sh`](https://github.com/OpenLineage/OpenLineage/blob/main/integration/spark/databricks/upload-to-databricks.sh) or [`upload-to-databricks.ps1`](https://github.com/OpenLineage/OpenLineage/blob/main/integration/spark/databricks/upload-to-databricks.ps1).
     * This creates a folder in DBFS to store the openlineage jar.
     * Copies the jar to the DBFS folder
-    * Copies the `init` script to the DBFS folder
+    * Copies the [`init` script](https://github.com/OpenLineage/OpenLineage/blob/main/integration/spark/databricks/open-lineage-init-script.sh) to the DBFS folder
 * Create an interactive or job cluster with the relevant Spark configs:
     ```
     spark.openlineage.endpoint api/v1/lineage
