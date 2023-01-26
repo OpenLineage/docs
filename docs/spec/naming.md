@@ -4,10 +4,6 @@ sidebar_position: 3
 
 # Naming Conventions
 
-:::info
-This page has some initial content but is not yet complete. Contributions are welcome via the Edit link below.
-:::
-
 Employing a unique naming strategy per resource ensures that the spec is followed uniformly regardless of metadata producer.
 
 Jobs and Datasets have their own namespaces, job namespaces being derived from schedulers and dataset namespaces from datasources.
