@@ -33,8 +33,8 @@ class DfToGcsOperator():
         data_source,
         bucket=None,
         table=None,
-            security_group,
-            pipeline_phase,
+        security_group,
+        pipeline_phase,
         col_types=None,
         check_cols=True,
         **kwargs,
@@ -45,17 +45,17 @@ class DfToGcsOperator():
         self.data_source = data_source
         self.table = table if table is not None else task_id
         self.bucket = bucket
-            self.security_group = security_group
-            self.pipeline_phase = pipeline_phase
-            # col_types is a dict that stores expected column names and types, 
+        self.security_group = security_group
+        self.pipeline_phase = pipeline_phase
+        # col_types is a dict that stores expected column names and types, 
         self.col_types = col_types
         self.check_cols = check_cols
 
         self.base_path = "/".join(
             [self.security_group, self.pipeline_phase, self.data_source, self.table]
         )
-            # Holds meta information about the dataframe, col names and col types,
-            # that are used in the extractor.
+        # Holds meta information about the dataframe, col names and col types,
+        # that are used in the extractor.
         self.df_meta = None
 
     def execute(self, context):
@@ -66,11 +66,11 @@ class DfToGcsOperator():
         the resulting dataframe to GCS under the proper object path
         <security_group>/<pipeline_phase>/<data_source>/<table>/.
         """
-            ...
-            df = get_python_callable_result(self.python_callable, context)
+        ...
+        
+        df = get_python_callable_result(self.python_callable, context)
         if len(df) > 0:
             df.columns = [clean_column_name(c) for c in df.columns]
-
             if self.col_types and self.check_cols:
                 check_cols = [c.lower().strip() for c in self.col_types.keys()]
                 missing = [m for m in check_cols if m not in df.columns]
@@ -98,7 +98,7 @@ class DfToGcsOperator():
             print("Empty dataframe, no artifact saved to GCS.")
 
     def extract_df_fields(df):
-            from openlineage.common.dataset import SchemaField
+        from openlineage.common.dataset import SchemaField
         """Extract a list of SchemaFields from a DataFrame."""
         fields = []
         for (col, dtype) in zip(df.columns, df.dtypes):
@@ -167,9 +167,9 @@ class DfToGcsOperator():
             job_facets={
                 "documentation": DocumentationJobFacet(
                     description=f"""
-                Takes data from the data source {input_uri}
-                and puts it in GCS at the path: {output_uri}
-                """
+                    Takes data from the data source {input_uri}
+                    and puts it in GCS at the path: {output_uri}
+                    """
                 ),
                 "ownership": OwnershipJobFacet(
                     owners=[OwnershipJobFacetOwners(name=self.owner, type=self.email)]
@@ -186,8 +186,8 @@ class DfToGcsOperator():
         else:
             starting_facets.run_facets = {
                 "errorMessage": ErrorMessageRunFacet(
-                        message="Empty dataframe, no artifact saved to GCS.",
-                        programmingLanguage="python"
+                    message="Empty dataframe, no artifact saved to GCS.",
+                    programmingLanguage="python"
                 )
             }
         return starting_facets
@@ -301,9 +301,9 @@ A Job in OpenLineage is a process definition that consumes and produces datasets
 job_facets = {
     "documentation": DocumentationJobFacet(
         description=f"""
-        Takes data from the data source {input_uri}
-        and puts it in GCS at the path: {output_uri}
-        """
+            Takes data from the data source {input_uri}
+            and puts it in GCS at the path: {output_uri}
+            """
     ),
     "ownership": OwnershipJobFacet(
         owners=[OwnershipJobFacetOwners(name=self.owner, type=self.email)]
@@ -344,8 +344,8 @@ def get_openlineage_facets_on_complete(self, task_instance):
     else:
         starting_facets.run_facets = {
             "errorMessage": ErrorMessageRunFacet(
-                    message="Empty dataframe, no artifact saved to GCS.",
-                    programmingLanguage="python"
+                message="Empty dataframe, no artifact saved to GCS.",
+                programmingLanguage="python"
             )
         }
 	return starting_facets
