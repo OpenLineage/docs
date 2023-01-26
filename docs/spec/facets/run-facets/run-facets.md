@@ -4,4 +4,4 @@ sidebar_position: 1
 
 # Run Facets
 
-Specifies `instance` of a particular running _job_. Every run will have a uniquely identifiable `run ID` that is usually in [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format, that can later be tracked.
+Run Facets apply to a specifies `instance` of a particular running _job_. Every run will have a uniquely identifiable `run ID` that is usually in [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format, that can later be tracked.

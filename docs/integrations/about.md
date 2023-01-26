@@ -2,11 +2,7 @@
 sidebar_position: 1
 ---
 
-# Integrating With OpenLineage
-
-:::info
-This page has not yet been written! You're welcome to contribute using the Edit link at the bottom.
-:::
+# OpenLineage Integrations
 
 ## Capability Matrix
 
@@ -35,6 +31,10 @@ An empty column means it is not yet documented if the mechanism implements this 
 *** Uses Snowflake query logs
 
 ## Integration strategies
+
+:::info
+This section could use some more detail! You're welcome to contribute using the Edit link at the bottom.
+:::
 
 ### Integrating with pipelines
 
