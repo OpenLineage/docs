@@ -63,6 +63,10 @@ The list of available environment varaibles can be found [here](../development/d
 - api_key - string setting the Authentication HTTP header as the Bearer. (required if `api_key` is set)
 
 ##### Kafka
+
+Kafka transport requires `confluent-kafka` package to be additionally installed.
+It can be installed also by specifying kafka client extension: `pip install openlineage-client[kafka]` 
+
 - type - string (required)
 - config - string containing a Kafka producer config (required)
 - topic - string specifying the topic (required)
