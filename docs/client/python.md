@@ -65,7 +65,7 @@ The list of available environment varaibles can be found [here](../development/d
 ##### Kafka
 
 Kafka transport requires `confluent-kafka` package to be additionally installed.
-It can be installed also by specifying kafka client extension: `pip install openlineage-client[kafka]` 
+It can be installed also by specifying kafka client extension: `pip install openlineage-python[kafka]` 
 
 - type - string (required)
 - config - string containing a Kafka producer config (required)
