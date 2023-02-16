@@ -4,10 +4,6 @@ sidebar_position: 1
 
 # Integrating With OpenLineage
 
-:::info
-This page has not yet been written! You're welcome to contribute using the Edit link at the bottom.
-:::
-
 ## Capability Matrix
 
 :::caution
@@ -33,6 +29,16 @@ An empty column means it is not yet documented if the mechanism implements this 
 * Uses the Rest SQL parser
 ** Uses the BigQuery API
 *** Uses Snowflake query logs
+
+## Compatibility matrix
+
+This matrix shows which data sources are known to work with each integration, along with the minimum versions required in the target system or framework.
+
+| Platform	| Version	| Data Sources |
+|:-------------------|:-------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Apache Airflow     | 1.10+<br />2.0+                | PostgreSQL<br />MySQL<br />Snowflake<br />Amazon Athena<br />Amazon Redshift<br />Amazon SageMaker<br />Amazon S3 Copy<br />Google BigQuery<br />Great Expectations<br />SFTP      |
+| Apache Spark | 2.4+ | JDBC<br />HDFS<br />Google Cloud Storage<br />Google BigQuery<br />Amazon S3<br />Azure Blob Storage<br />Azure Data Lake Gen2<br />Azure Synapse |
+| dbt | 0.20+ | Snowflake<br /> Google BigQuery |
 
 ## Integration strategies
 
