@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Integrating With OpenLineage
+# OpenLineage Integrations
 
 ## Capability Matrix
 
@@ -41,6 +41,10 @@ This matrix shows which data sources are known to work with each integration, al
 | dbt | 0.20+ | Snowflake<br /> Google BigQuery |
 
 ## Integration strategies
+
+:::info
+This section could use some more detail! You're welcome to contribute using the Edit link at the bottom.
+:::
 
 ### Integrating with pipelines
 
