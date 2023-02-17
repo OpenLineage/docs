@@ -7,6 +7,8 @@ OpenLineage provides an integration with Apache Airflow. As Airflow is actively 
 * 2.1.4 (2.0+ upgrade)
 * 2.2.4
 * 2.3.4 (TaskListener API introduced)
+* 2.4.3
+* 2.5.0
 
 ### Unit tests
 In order to make running unit tests against multiple Airflow versions easier there is possibility to use [tox](https://tox.wiki/).
@@ -23,6 +25,8 @@ that should list:
 py3-airflow-2.1.4
 py3-airflow-2.2.4
 py3-airflow-2.3.4
+py3-airflow-2.4.3
+py3-airflow.2.5.0
 ```
 Then you can run tests in chosen environment, e.g.:
 ```

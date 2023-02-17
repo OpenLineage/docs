@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Default extractors
 
-Default extractors are a new way in Airflow 2.3+ and OpenLineage 0.17.0+ to easily add lineage to your data pipelines by modifying your Airflow operators directly. This means custom operators—built in house or forked from another project—can provide you and your team with lineage data without having to modify the OpenLineage project directly, with data sent to your lineage backend of choice, most commonly using the `OPENLINEAGE_URL` environment variable.
+Default extractors are a new way in OpenLineage 0.17.0+ to easily add lineage to your data pipelines by modifying your Airflow operators directly. This means custom operators—built in house or forked from another project—can provide you and your team with lineage data without having to modify the OpenLineage project directly, with data sent to your lineage backend of choice, most commonly using the `OPENLINEAGE_URL` environment variable.
 
 The default extractor works a bit differently under the hood than other extractors. While extractors in the OpenLineage project have a getter method for operator names that they’re associated with, the default extractor looks for two specific methods in the operator itself and will call them directly if found. This means that the implementation for the extractor is just two methods in your operator.
 

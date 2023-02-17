@@ -74,9 +74,6 @@ OPENLINEAGE_EXTRACTORS: >-
   full.path.to.SecondExtractor
 ``` 
 
-Second method to register extractors - as a workaround for Airflow 1.10.x only - is to register all additional operator-extractor pairings by 
-providing `lineage_custom_extractors` argument in `openlineage.airflow.DAG`.
-
 ## Adding extractor to OpenLineage Airflow integration package
 
 All Openlineage extractors are defined in [this path](https://github.com/OpenLineage/OpenLineage/blob/main/integration/airflow/openlineage/airflow/extractors).
