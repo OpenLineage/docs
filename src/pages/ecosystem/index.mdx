@@ -1,0 +1,37 @@
+---
+title: Ecosystem
+template: basepage
+description: Data lineage is the foundation for a new generation of powerful, context-aware data tools and best practices. OpenLineage enables consistent collection of lineage metadata, creating a deeper understanding of how data is produced and used.
+---
+<div className="EcosystemPage">
+
+<div className="title px-4 py-12 text-center lg:py-14 lg:px-0">
+    <h2 className="text-5xl text-color-1">
+        Ecosystem
+    </h2>
+</div>
+
+<div class="text-2xl">OpenLineage defines the metadata produced by pipelines and consumed by observability tools. A configurable backend allows the user to select a protocol for receiving events. Services using the OpenLineage standard can either consume or produce metadata.</div>
+
+<div class="text-center pt-8"><h2>Consumers</h2></div>
+
+| <div class="pl-5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> | <div class="pl-5">&nbsp;</div> |
+| ----------- | ----------- |
+| <div class="py-5">![Amundsen logo](./images/amundsen_logo.svg)</div> | <div class="text-xl pl-5">Amundsen's <a href="https://www.amundsen.io/amundsen/databuilder/#openlineagetablelineageextractor">OpenLineageTableLineageExtractor</a> extracts table lineage information from OpenLineage events.</div> |
+| <div class="py-5">![Egeria logo](./images/egeria_logo.svg)</div> | <div class="text-xl pl-5">Egeria's <a href="https://egeria-project.org/features/lineage-management/overview/#the-openlineage-standard">OpenLineage integration</a> can capture OpenLineage events directly via HTTP or the proxy backend.</div> |
+| <div class="py-5">![Marquez logo](./images/mqz_logo.svg)</div> | <div class="text-xl pl-5"><a href="https://marquezproject.ai/">Marquez</a> is a metadata server offering an OpenLineage-compatible endpoint for real-time collection of information about running jobs and applications.</div> |
+| <div class="py-5">![MANTA logo](./images/manta_logo_bkgd.svg)</div> | <div class="text-xl pl-5"><a href="https://getmanta.com/?utm_source=partner&utm_medium=referral&utm_campaign=OpenLineage">MANTA</a>'s OpenLineage Scanner uses job facets to ingest OpenLineage metadata and enrich overall enterprise data pipeline analysis.</div> |
+
+<div class="text-center pt-8"><h2>Producers</h2></div>
+
+| <div class="pl-5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div> | <div class="pl-5">&nbsp;</div> |
+| ----------- | ----------- |
+| <div class="py-5">![Great Expectations logo](./images/GE_logo_bkgd_2-01.svg)</div> | <div class="text-xl pl-5">The `OpenLineageValidationAction` collects dataset metadata from [Great Expectations](https://greatexpectations.io/)' `ValidationAction`.</div> |
+| <div class="py-5">![Spark logo](./images/spark_logo_bkgd_2.svg)</div> | <div class="text-xl pl-5">The OpenLineage [Spark](https://spark.apache.org/) Agent uses jvm instrumentation to emit OpenLineage metadata.</div> |
+| <div class="py-5">![dbt logo](./images/dbt_logo_bkgd_2.svg)</div> | <div class="text-xl pl-5">A wrapper script uses the OpenLineage client for automatic collection of metadata from [dbt](https://www.getdbt.com/).</div> |
+| <div class="py-5">![Airflow logo](./images/airflow_logo_bkgd_2.svg)</div> | <div class="text-xl pl-5">A library integrates [Airflow](https://github.com/OpenLineage/OpenLineage/blob/main/integration/airflow) [DAG](https://github.com/OpenLineage/OpenLineage/blob/main/integration/airflow)s for automatic metadata collection.</div> |
+| <div class="py-5">![Flink logo](./images/flink-header-logo-corners-01.svg)</div> | <div class="text-xl pl-5">The OpenLineage [Flink](https://flink.apache.org/) Agent uses jvm instrumentation to emit OpenLineage metadata.</div> |
+| <div class="py-5">![Dagster logo](./images/dagster_logo.svg)</div> | <div class="text-xl pl-5">A library converts [Dagster](https://dagster.io/) events to OpenLineage events and emits them to an OpenLineage backend.</div> |
+| <div class="py-5">![Egeria logo](./images/egeria_logo.svg)</div> | <div class="text-xl pl-5">Egeria's <a href="https://egeria-project.org/features/lineage-management/overview/#the-openlineage-standard">OpenLineage integration</a> publishes events to lineage integration connectors with OpenLineage listeners registered in the same instance of the Lineage Integrator OMIS.</div> |
+
+</div>

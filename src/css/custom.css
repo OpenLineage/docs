@@ -4,6 +4,12 @@
  * work well for content-centric websites.
  */
 
+@import "tailwindcss/base";
+@import "tailwindcss/utilities";
+@import "tailwindcss/components";
+
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #b6420b;
@@ -13,6 +19,12 @@
   --ifm-color-primary-light: #c8490c;
   --ifm-color-primary-lighter: #d14c0d;
   --ifm-color-primary-lightest: #ed560e;
+  --deckgo-highlight-code-carbon-toolbar-display: none;
+  --deckgo-highlight-code-carbon-overflow: scroll;
+  --deckgo-highlight-code-scroll: scroll;
+  --deckgo-highlight-code-width: max-content;
+  --deckgo-highlight-code-carbon-margin: 30px 20px;
+  --ifm-font-family-base: 'Didact Gothic';
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -26,10 +38,37 @@
   --ifm-color-primary-lightest: #b2ccda;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+body {
+  font-family: "Didact Gothic", sans-serif;
+  font-size: 18px;
+}
 
-:root {
-  --ifm-font-family-base: 'Didact Gothic';
+p {
+  line-height: 165%;
+}
+
+svg {
+  display: inline-block;
+}
+
+.boxed {
+  @apply max-w-screen-lg w-full mx-auto px-4;
+}
+
+@screen lg {
+  .boxed {
+      @apply max-w-screen-md;
+  }
+}
+
+@screen xl {
+  .boxed {
+      @apply max-w-screen-lg;
+  }
+}
+
+.large-container {
+  max-width: 2100px;
 }
 
 .navbar__title {
@@ -40,4 +79,342 @@
 a.navbar__brand:hover {
   color: var(--ifm-navbar-link-color);
   text-decoration: none;
+}
+
+.nav .nav-links li{
+  @apply relative inline-block mx-2;
+}
+
+.nav .nav-links li a{
+  @apply inline-block p-1 relative z-10;
+}
+
+.nav .nav-links li:before{
+  content: "";
+  @apply absolute w-0 h-0 rounded-full bg-primary left-0 right-0 bottom-0 top-0 m-auto opacity-25;
+  transition: width .25s, height .25s;
+}
+
+.nav .nav-links li.active a ,.nav .nav-links li:hover a {
+  color: #f26522;
+}
+
+.nav .nav-links .theme-switcher:before{
+  display: none;
+}
+
+.nav .line {
+  width: 0;
+  transition: width 0.50s;
+}
+
+code .token-line {
+  font-size: 14px;
+}
+
+.nav.scrolled .line{
+  @apply w-full;
+}
+
+.title h1{
+  @apply text-color-1;
+}
+
+.btn {
+  @apply h-12 px-6 outline-none inline-flex relative overflow-hidden items-center;
+}
+
+.btn.disabled {
+  @apply opacity-50;
+}
+
+.btn span {
+  @apply relative z-10;
+}
+
+.btn:before{
+  content: "";
+  @apply absolute w-full h-full top-0;
+  left: 100%;
+  transition: left 0.25s;
+  transition-timing-function: cubic-bezier(1, 2.13, 1, -0.1);
+  z-index: 1;
+}
+
+.btn .icon-right {
+  @apply ml-3;
+}
+
+.btn .icon-left {
+  @apply mr-3;
+}
+
+.btn:focus {
+  @apply outline-none;
+}
+
+.btn-primary {
+  @apply bg-primary my-4;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-primary:before {
+  @apply bg-secondary;
+}
+
+.btn-primary:hover:before,.btn-primary:focus:before {
+  left: 0;
+}
+
+.integration-item .image {
+  clip-path: polygon(0 0, 0% 0, 0% 100%, 0% 100%);
+  transition: clip-path 0.50s;
+  transition-timing-function: ease-in-out;
+  z-index: 3;
+  transform: translateY(0);
+}
+
+.integration-item.even .image {
+  clip-path: polygon(100% 0, 100% 0, 100% 99%, 100% 100%);
+}
+
+.integration-item.begin-animation .image{
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.integration-item .to-up {
+  transform: translate(0, 50px);
+  transition: transform 0.25s;
+}
+
+.integration-item .to-up:nth-child(2){
+  transition-delay: 0.2s;
+}
+
+.integration-item.begin-animation .to-up {
+  transform: translate(0, 0px);
+}
+
+.footer-links li{
+  @apply mx-3;
+}
+
+.animated-link-parent a {
+  @apply inline-block relative;
+}
+
+.animated-link-parent a:after {
+  content: "";
+  transition-property: width;
+  @apply absolute bg-gradient-primary duration-300 w-0 left-0 bottom-0;
+  height: 2px;
+}
+
+.animated-link-parent a:hover:after,.animated-link-parent a:focus:after,.animated-link-parent a:active:after {
+  @apply w-full;
+}
+
+.post-content p {
+  @apply my-3;
+}
+
+.post-content h1, h2, h3, h4, h5, h6 {
+  @apply text-color-2 my-8;
+}
+
+.post-content h1 {
+  @apply text-5xl;
+}
+
+.post-content h2 {
+  @apply text-4xl;
+}
+
+.post-content h3 {
+  @apply text-3xl;
+}
+
+.post-content h4 {
+  @apply text-2xl;
+}
+
+.post-content h5 {
+  @apply text-xl;
+}
+
+.post-content h5 {
+  @apply text-lg;
+}
+
+.post-content hr {
+  @apply my-4 border-medium;
+}
+
+.post-content ul {
+  list-style: disc;
+}
+
+.post-content ol {
+  list-style: decimal;
+}
+
+.post-content ul, .post-content ol {
+  @apply ml-4;
+}
+
+.post-content ul ul, .post-content ol ol {
+  @apply ml-3;
+}
+
+.post-content li {
+  @apply my-2;
+  margin-left: 1.5rem;
+}
+
+.post-content table {
+  @apply w-full my-6;
+}
+
+.post-content table tr {
+  border-bottom: 2px solid #eee;
+  @apply border-medium;
+}
+
+.theme-dark .post-content table tr  {
+  border-bottom: 2px solid #444;
+}
+
+.post-content table tr td, .post-content table tr th {
+  @apply p-2 py-3 text-left;
+}
+
+.post-content blockquote{
+  @apply border-l-4 border-primary p-3;
+  padding: 0rem 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.post-content iframe {
+  max-width: 100%;
+}
+
+.input.focused {
+  @apply px-4;
+}
+
+.theme-dark .input.focused {
+  background: theme("themes.dark.medium");
+}
+
+.theme-dark .blog-item .focused{
+  background: theme("themes.dark.medium");
+}
+
+.spin {
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  0%{
+      transform: rotate(0deg);
+  }
+  100%{
+      transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 640px) {
+  html {
+      font-size: 15px;
+  }
+}
+
+.post-content a {
+  @apply text-color-2 my-4;
+}
+
+.post-content pre {
+  overflow: scroll;
+  color: #fff;
+  background-color: #333;
+  padding: 1rem;
+  margin: 2rem;
+}
+
+.int-title {
+  color: #fff !important;
+}
+
+.integration-list {
+  width: 90%;
+  margin: auto;
+  margin-top: 30px;
+  background-color: #fff;
+}
+
+.integration-list td {
+  border: 3px solid #f8f8f8;
+  vertical-align: top;
+  padding: 8px 13px;
+}
+
+.integration-list th {
+  padding: 10px;
+  border: 3px solid #f8f8f8;
+}
+
+.int-desc {
+  width: 50%;
+}
+
+.table-of-contents {
+  padding: 10px 0;
+  margin: 10px 0px 10px 20px;
+  float: right;
+  background-color: #fff;
+}
+
+.table-of-contents ol {
+  counter-reset: tocnum;
+  padding-left: 10px;
+  margin-left: 0;
+  list-style: none;
+}
+
+.table-of-contents ol li {
+  counter-increment: tocnum;
+  line-height: 100%;
+  padding-left: 0;
+  padding-right: 10px;
+  margin-left: 10px;
+
+}
+
+.table-of-contents ol li:before {
+  content: counters(tocnum, '.') '. ';
+  font-weight: bold;
+}
+
+code {
+  background-color: #dedede;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.85rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+img[src*="#full-width"] {
+  width: 100%;
+}
+
+.EcosystemPage img {
+  width: initial;
 }
