@@ -16,4 +16,6 @@ const getPageData = file => {
     return compiled.frontMatter
 }
 
-export { Link, getPageData }
+const getDate = (date) => new Date(date).toLocaleDateString()
+
+export { Link, getPageData, getDate }

@@ -1,12 +1,11 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom";
 import { Calendar } from "react-feather"
+import { getDate } from "./utils"
 
 export const ItemBlog = ({ data }) => {
 
     const [focused, changeFocused] = useState(false);
-
-    const getDate = (date) => new Date(date).toLocaleDateString() // TODO move to moment and move to utils
 
     return (
         <div className="blog-item w-full md:w-1/2 lg:w-1/3 p-4">
