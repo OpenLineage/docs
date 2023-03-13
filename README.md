@@ -54,12 +54,6 @@ $ nvm install 16
 $ nvm use 16
 ```
 
-Install Yarn and the Gatsby CLI:
-
-```
-$ npm install -g yarn gatsby-cli
-```
-
 Run Yarn to install all of the Node dependencies for the project:
 
 ```
