@@ -12,6 +12,13 @@ const links = [
   { to: '/docs', label: 'Docs', position: 'left' },
 ]
 
+const linksSocial = [
+  { href: 'https://fosstodon.org/@openlineage', label: 'Mastodon' },
+  { href: 'https://twitter.com/OpenLineage', label: 'Twitter' },
+  { href: 'http://bit.ly/OpenLineageSlack', label: 'Slack' },
+  { href: 'https://github.com/OpenLineage/OpenLineage', label: 'GitHub' }
+]
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'OpenLineage Docs',
@@ -21,6 +28,10 @@ const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
   favicon: 'img/favicon.ico',
+  customFields: {
+    links: links,
+    linksSocial: linksSocial
+  },
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -117,22 +128,6 @@ const config = {
             position: 'right',
           }
         ],
-      },
-      footer: {
-        style: 'light',
-        copyright: `Copyright © ${new Date().getFullYear()} Linux Foundation.`,
-        logo: {
-          alt: 'OpenLineage Docs',
-          src: 'img/ol-logo.svg',
-          width: 160,
-        },
-        links: [
-          ...links,
-          { href: 'https://fosstodon.org/@openlineage', label: 'Mastodon' },
-          { href: 'https://twitter.com/OpenLineage', label: 'Twitter' },
-          { href: 'http://bit.ly/OpenLineageSlack', label: 'Slack' },
-          { href: 'https://github.com/OpenLineage/OpenLineage', label: 'GitHub' }
-        ]
       },
       prism: {
         theme: lightCodeTheme,

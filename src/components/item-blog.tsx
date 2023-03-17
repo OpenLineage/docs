@@ -26,11 +26,11 @@ export const ItemBlog = ({ data }) => {
                         <h4 className="text-3xl pt-1">
                             {data.frontMatter.title}
                         </h4>
-                        <div className="flex items-center">
+                        <div className="flex items-center text-color-default">
                             <Calendar className="stroke-current" />
                             <small className="pl-2 font-sans">{getDate(data.metadata.date)} by {data.frontMatter.author}</small>
                         </div>
-                        <p className="pt-3">
+                        <p className="pt-3 text-color-default">
                             {data.frontMatter.description}
                         </p>
                     </div>

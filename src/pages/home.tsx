@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react"
 import Layout from '@theme/Layout';
-import { Content } from "@theme/BlogPostPage";
 import { Button } from "../components/ui"
 import ItemBlog from "../components/item-blog"
+import Footer from "../components/footer"
 import { ArrowRight } from "react-feather"
 import { GitHub } from "react-feather"
 import { Slack } from "react-feather"
@@ -17,9 +17,12 @@ export default function Main({ recentPosts }): JSX.Element {
 
   return (
     <Layout title={seoTitle} description={seoDescription}>
-      <Wall />
-      <About />
-      <Blog>{blogList}</Blog>
+      <div className="bg-bg">
+        <Wall />
+        <About />
+        <Blog>{blogList}</Blog>
+      </div>
+      <Footer />
     </Layout>
   );
 }

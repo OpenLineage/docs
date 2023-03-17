@@ -41,6 +41,7 @@
 body {
   font-family: "Didact Gothic", sans-serif;
   font-size: 18px;
+  background-color: rgb(248, 248, 248);
 }
 
 p {
@@ -51,8 +52,20 @@ svg {
   display: inline-block;
 }
 
+a {
+  color: rgb(116, 164, 188);
+}
+
 .boxed {
   @apply max-w-screen-lg w-full mx-auto px-4;
+}
+
+.bg-bg {
+  background-color: rgb(248, 248, 248);
+}
+
+.bg-bgalt {
+  background-color: rgb(255, 255, 255);
 }
 
 @screen lg {
@@ -200,8 +213,19 @@ code .token-line {
   transform: translate(0, 0px);
 }
 
+.footer {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+}
+
 .footer-links li{
   @apply mx-3;
+}
+
+.footer-links li a {
+  text-decoration: none;
 }
 
 .animated-link-parent a {
@@ -219,87 +243,87 @@ code .token-line {
   @apply w-full;
 }
 
-.post-content p {
+#post-content p {
   @apply my-3;
 }
 
-.post-content h1, h2, h3, h4, h5, h6 {
+#post-content h1, h2, h3, h4, h5, h6 {
   @apply text-color-2 my-8;
 }
 
-.post-content h1 {
+#post-content h1 {
   @apply text-5xl;
 }
 
-.post-content h2 {
+#post-content h2 {
   @apply text-4xl;
 }
 
-.post-content h3 {
+#post-content h3 {
   @apply text-3xl;
 }
 
-.post-content h4 {
+#post-content h4 {
   @apply text-2xl;
 }
 
-.post-content h5 {
+#post-content h5 {
   @apply text-xl;
 }
 
-.post-content h5 {
+#post-content h5 {
   @apply text-lg;
 }
 
-.post-content hr {
+#post-content hr {
   @apply my-4 border-medium;
 }
 
-.post-content ul {
+#post-content ul {
   list-style: disc;
 }
 
-.post-content ol {
+#post-content ol {
   list-style: decimal;
 }
 
-.post-content ul, .post-content ol {
+#post-content ul, #post-content ol {
   @apply ml-4;
 }
 
-.post-content ul ul, .post-content ol ol {
+#post-content ul ul, #post-content ol ol {
   @apply ml-3;
 }
 
-.post-content li {
+#post-content li {
   @apply my-2;
   margin-left: 1.5rem;
 }
 
-.post-content table {
+#post-content table {
   @apply w-full my-6;
 }
 
-.post-content table tr {
+#post-content table tr {
   border-bottom: 2px solid #eee;
   @apply border-medium;
 }
 
-.theme-dark .post-content table tr  {
+.theme-dark #post-content table tr  {
   border-bottom: 2px solid #444;
 }
 
-.post-content table tr td, .post-content table tr th {
+#post-content table tr td, #post-content table tr th {
   @apply p-2 py-3 text-left;
 }
 
-.post-content blockquote{
+#post-content blockquote{
   @apply border-l-4 border-primary p-3;
   padding: 0rem 0.75rem;
   margin: 1.5rem 0;
 }
 
-.post-content iframe {
+#post-content iframe {
   max-width: 100%;
 }
 
@@ -334,11 +358,11 @@ code .token-line {
   }
 }
 
-.post-content a {
+#post-content a {
   @apply text-color-2 my-4;
 }
 
-.post-content pre {
+#post-content pre {
   overflow: scroll;
   color: #fff;
   background-color: #333;
@@ -417,4 +441,23 @@ img[src*="#full-width"] {
 
 .EcosystemPage img {
   width: initial;
+}
+
+.EcosystemPage table thead,
+.EcosystemPage table tr {
+  background-color: transparent !important;
+}
+
+.EcosystemPage table thead tr,
+.EcosystemPage table thead th {
+  border: none !important;
+  background-color: transparent !important;
+}
+
+.EcosystemPage table tr td {
+  border: none !important;
+}
+
+html.docs-doc-page body {
+  background-color: white;
 }
