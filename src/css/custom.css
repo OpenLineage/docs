@@ -461,3 +461,19 @@ img[src*="#full-width"] {
 html.docs-doc-page body {
   background-color: white;
 }
+
+.pagination {
+  display: block;
+}
+
+.pagination a {
+  text-decoration: none;
+}
+
+.pagination a:hover {
+  color: initial;
+}
+
+.pagination a.bg-gradient-primary:hover {
+  color: white;
+}
