@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 import ItemBlog from "../../components/item-blog"
+import Footer from "../../components/footer"
 
 export default function BlogListPageWrapper(props) {
   const { metadata, items } = props;
@@ -58,6 +59,7 @@ export default function BlogListPageWrapper(props) {
           </ul>
         </div>
       </div>
+      <Footer />
     </Layout>
   );
 }
