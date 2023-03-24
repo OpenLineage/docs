@@ -24,5 +24,8 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          external_repository: OpenLineage/OpenLineage.github.io
+          publish_branch: gh-pages  # default: gh-pages
           publish_dir: ./build
+          cname: openlineage.io
