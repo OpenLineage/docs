@@ -17,6 +17,8 @@ jobs:
           cache: yarn
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+      - name: Build openapi docs
+        run: yarn run build:docs
       - name: Build website
         run: yarn build
       - name: Deploy to GitHub Pages
