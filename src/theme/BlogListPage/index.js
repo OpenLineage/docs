@@ -16,7 +16,7 @@ export default function BlogListPageWrapper(props) {
     <Layout title={seoTitle} description={seoDescription}>
       <div className="container mx-auto px-0 pb-40">
         <div className="px-4 py-12 text-center lg:py-14 lg:px-0">
-          <h2 className="text-color-1 text-5xl lg:text-6xl">
+          <h2 className="text-color-1 text-5xl lg:text-4xl">
             Blog
           </h2>
         </div>
