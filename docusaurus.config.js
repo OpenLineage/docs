@@ -5,7 +5,7 @@ const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 const links = [
-  { to: '/docs/getting-started/', label: 'Getting Started', position: 'left' },
+  { to: '/getting-started', label: 'Getting Started', position: 'left' },
   { to: '/resources', label: 'Resources', position: 'left' },
   { to: '/blog', label: 'Blog', position: 'left' },
   { to: '/ecosystem', label: 'Ecosystem', position: 'left' },
