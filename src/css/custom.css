@@ -89,6 +89,10 @@ a {
   font-weight: normal;
 }
 
+.navbar__item svg {
+  display: inline-block !important;
+}
+
 a.navbar__brand:hover {
   color: var(--ifm-navbar-link-color);
   text-decoration: none;
@@ -363,11 +367,8 @@ code .token-line {
 }
 
 #post-content pre {
-  overflow: scroll;
-  color: #fff;
-  background-color: #333;
   padding: 1rem;
-  margin: 2rem;
+  margin: 1rem;
 }
 
 .int-title {
