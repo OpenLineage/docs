@@ -91,6 +91,7 @@ a {
 
 .navbar__item svg {
   display: inline-block !important;
+  vertical-align: baseline;
 }
 
 a.navbar__brand:hover {
