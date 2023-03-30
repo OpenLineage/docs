@@ -80,7 +80,7 @@ const Wall = ({ twoColumnWall = false, capitalizeTitleOnHome = false }) => {
       <span className="py-5">
         <Button
           title="Get Started"
-          to='/docs/getting-started'
+          to='/getting-started'
           type="link"
           iconRight={<ArrowRight />}
           className="mx-5"
