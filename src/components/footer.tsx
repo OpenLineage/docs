@@ -43,7 +43,7 @@ export default function () {
 const ListItem = ({ data }) => {
     return (
         <li className="inline-block mx-3 animated-link-parent">
-            <a href={data.to ? data.to : data.href} title={data.label}>
+            <a href={data.to ? data.to : data.href} title={data.label} rel={data.rel ? data.rel : ""}>
                 <span>{data.label}</span>
             </a>
         </li>
