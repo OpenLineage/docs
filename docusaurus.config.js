@@ -139,6 +139,13 @@ const config = {
         respectPrefersColorScheme: false,
       },  
     }),
+
+  scripts:
+    [{
+      src: 'https://plausible.io/js/script.js',
+      defer: true,
+      'data-domain': 'openlineage.io',
+    }],
 };
 
 module.exports = config;
