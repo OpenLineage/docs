@@ -359,4 +359,4 @@ The OpenLineage spec may not contain all the facets you need to write your extra
 
 ### Testing
 
-See the doc on [testing custom extractors](https://openlineage.io/docs/integrations/airflow/extractor-testing).
+See the doc on [testing custom extractors](https://openlineage.io/docs/integrations/airflow/extractors/extractor-testing).
