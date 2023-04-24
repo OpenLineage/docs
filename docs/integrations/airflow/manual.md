@@ -1,8 +1,7 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
+title: Manually annotated lineage
 ---
-
-# Manually annotated lineage
 
 :::caution
 This feature is only supported with Airflow versions greater than 2.1.0)

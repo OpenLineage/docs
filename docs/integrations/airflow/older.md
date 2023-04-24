@@ -1,8 +1,7 @@
 ---
 sidebar_position: 4
+title: Using OpenLineage with older versions of Airflow
 ---
-
-# Using OpenLineage with older versions of Airflow
 
 For Airflow 2.3+ OpenLineage integration automatically registers itself. Nothing else is required besides specifying where OpenLineage events should end up. However, some additional configuration is required for older OpenLineage versions.
 
