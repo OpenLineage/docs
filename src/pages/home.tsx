@@ -22,8 +22,8 @@ export default function Main({ recentPosts }): JSX.Element {
         <About />
         <Participate />
         <Blog>{blogList}</Blog>
+        <Footer />
       </div>
-      <Footer />
     </Layout>
   );
 }
