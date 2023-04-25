@@ -47,7 +47,7 @@ Each `Operator` implements the following methods returning the structure defined
 Facets are the JSON facets defined in the OpenLineage specification
 
 ```python
-TaskInstanceLineage:
+OperatorLineage:
 	runFacets: dict{}
 	jobFacets: dict{}
 	inputs: [InputDataset]
