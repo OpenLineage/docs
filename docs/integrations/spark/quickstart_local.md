@@ -44,7 +44,7 @@ spark = (SparkSession.builder.master('local')
          .appName('sample_spark')
          .config('spark.extraListeners', 'io.openlineage.spark.agent.OpenLineageSparkListener')
          .config('spark.jars.packages', 'io.openlineage:openlineage-spark:0.12.0')
-         .config('spark.openlineage.consoleTransport', 'true')
+         .config('spark.openlineage.transport.type', 'console')
          .getOrCreate())
 ```
 Once the Spark context is started, we adjust logging level to `INFO` with: 
