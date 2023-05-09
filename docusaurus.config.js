@@ -9,6 +9,7 @@ const links = [
   { to: '/resources', label: 'Resources', position: 'left' },
   { to: '/blog', label: 'Blog', position: 'left' },
   { to: '/ecosystem', label: 'Ecosystem', position: 'left' },
+  { to: '/community', label: 'Community', position: 'left' },
   { to: '/docs', label: 'Docs', position: 'left' },
 ]
 
