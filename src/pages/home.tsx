@@ -20,6 +20,7 @@ export default function Main({ recentPosts }): JSX.Element {
       <div className="bg-bg">
         <Wall />
         <About />
+        <Deploy />
         <Participate />
         <Blog>{blogList}</Blog>
         <Footer />
@@ -199,6 +200,44 @@ const Participate = () => {
                   iconRight={<Calendar />}
               />
 
+          </div>
+      </div>
+  )
+}
+
+const Deploy = () => {
+  let spanAttrs: Partial<{ style: unknown }> = {}
+
+  spanAttrs.style = {
+    margin: '0 auto',
+  }
+  return (
+    <div className="boxed bg-bgalt">
+          <div className="px-4 py-12 text-center lg:py-14">
+              <h2 className="text-color-1 text-3xl lg:text-4xl">
+                  How to Deploy OpenLineage
+              </h2>
+              <p className="mt-5 text-lg py-3">
+                  OpenLineage supports both simple deployments with single consumers and complex deployments with multiple consumers.
+              </p>
+              <h3 className="text-color-1 text-2xl lg:text-3xl">
+                  Simple
+              </h3>
+              <img 
+                src="/img/simple-deployments.png"
+                alt="wireframes of simple deployments"
+                {...spanAttrs}
+                className="h-full w-4/5 max-w-none lg:h-auto lg:w-4/5 py-3 pt-6 mb-6"
+              />
+              <h3 className="text-color-1 text-2xl lg:text-3xl">
+                  Complex
+              </h3>
+              <img 
+                src="/img/complex-deployments.png"
+                alt="wireframe of a complex deployment"
+                {...spanAttrs}
+                className="h-full w-4/5 max-w-none lg:h-auto lg:w-4/5 py-3 pt-6 mb-6"
+              />
           </div>
       </div>
   )
