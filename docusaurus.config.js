@@ -16,6 +16,7 @@ const links = [
 const linksSocial = [
   { href: 'https://fosstodon.org/@openlineage', label: 'Mastodon', rel: 'me' },
   { href: 'https://twitter.com/OpenLineage', label: 'Twitter' },
+  { href: 'https://www.linkedin.com/groups/13927795/', label: 'LinkedIn'},
   { href: 'http://bit.ly/OpenLineageSlack', label: 'Slack' },
   { href: 'https://github.com/OpenLineage/OpenLineage', label: 'GitHub' }
 ]
