@@ -6,6 +6,7 @@ import Footer from "../components/footer"
 import { ArrowRight } from "react-feather"
 import { Calendar } from "react-feather"
 import { Slack } from "react-feather"
+import { Inbox } from "react-feather"
 
 export default function Main({ recentPosts }): JSX.Element {
   const seoTitle = 'Home';
@@ -22,6 +23,7 @@ export default function Main({ recentPosts }): JSX.Element {
         <About />
         <Deploy />
         <Participate />
+        <Newsletter />
         <Blog>{blogList}</Blog>
         <Footer />
       </div>
@@ -175,7 +177,7 @@ const About = () => {
 
 const Participate = () => {
   return (
-      <div className="boxed bg-bgalt">
+      <div className="boxed bg-bgalt mb-24">
           <div className="px-4 py-12 text-center lg:py-14">
               <h2 className="text-color-1 text-3xl lg:text-4xl">
                   How to Participate
@@ -198,6 +200,30 @@ const Participate = () => {
                   to='/meetings'
                   type="link"
                   iconRight={<Calendar />}
+              />
+
+          </div>
+      </div>
+  )
+}
+
+const Newsletter = () => {
+  return (
+      <div className="boxed bg-bgalt">
+          <div className="px-4 py-12 text-center lg:py-14">
+              <h2 className="text-color-1 text-3xl lg:text-4xl">
+                  How to Get the Newsletter
+              </h2>
+              <p className="mt-5 text-lg py-3">
+                  Stay abreast of the latest developments in the community by subscribing to the monthly newsletter.
+              </p>
+
+              <Button
+                  title="Newsletter"
+                  to='bit.ly/OL_news'
+                  type="extbutton"
+                  iconRight={<Inbox />}
+                  className="mx-5"
               />
 
           </div>
