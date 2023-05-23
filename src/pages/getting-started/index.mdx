@@ -75,7 +75,8 @@ $ curl -X POST http://localhost:5000/api/v1/lineage \
           "namespace": "my-namespace",
           "name": "my-input"
         }],  
-        "producer": "https://github.com/OpenLineage/OpenLineage/blob/v1-0-0/client"
+        "producer": "https://github.com/OpenLineage/OpenLineage/blob/v1-0-0/client",
+        "schemaURL": "https://openlineage.io/spec/1-0-5/OpenLineage.json#/definitions/RunEvent"
       }'
 ```
 
@@ -116,7 +117,8 @@ $ curl -X POST http://localhost:5000/api/v1/lineage \
             }
           }
         }],     
-        "producer": "https://github.com/OpenLineage/OpenLineage/blob/v1-0-0/client"
+        "producer": "https://github.com/OpenLineage/OpenLineage/blob/v1-0-0/client",
+        "schemaURL": "https://openlineage.io/spec/1-0-5/OpenLineage.json#/definitions/RunEvent"
       }'
 ```
 
