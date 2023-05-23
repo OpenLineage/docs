@@ -8,7 +8,7 @@ This integration works by detecting which Airflow operators your DAG is using, a
 
 However, not all operators are covered. In particular, third party providers may not be. To handle this situation, OpenLineage allows you to provide custom extractors for any operators where there is not one built-in.
 
-If you want to extract lineage from your own Operators, you may prefer directly implementing [lineage support as described here](../operator.md).
+If you want to extract lineage from your own Operators, you may prefer directly implementing [lineage support as described here](../default-extractors.md).
 
 
 ## Interface

@@ -1,16 +1,15 @@
 ---
 sidebar_position: 2
+title: Exposing lineage in Airflow operators
 ---
 
-# Default extractors
+OpenLineage 0.17.0+ makes adding lineage to your data pipelines easy through support of direct modification of Airflow operators. This means that custom operators—built in-house or forked from another project—can provide you and your team with lineage data without requiring modification of the OpenLineage project. The data will still go to your lineage backend of choice, most commonly using the `OPENLINEAGE_URL` environment variable.
 
-Default extractors are a new way in OpenLineage 0.17.0+ to easily add lineage to your data pipelines by modifying your Airflow operators directly. This means custom operators—built in house or forked from another project—can provide you and your team with lineage data without having to modify the OpenLineage project directly, with data sent to your lineage backend of choice, most commonly using the `OPENLINEAGE_URL` environment variable.
-
-The default extractor works a bit differently under the hood than other extractors. While extractors in the OpenLineage project have a getter method for operator names that they’re associated with, the default extractor looks for two specific methods in the operator itself and will call them directly if found. This means that the implementation for the extractor is just two methods in your operator.
+Lineage extraction works a bit differently under the hood starting with OpenLineage 0.17.0. While extractors in the OpenLineage project have a getter method for operator names that they’re associated with, the default extractor looks for two specific methods in the operator itself and calls them directly if found. This means that implementation now consists of just two methods in your operator.
 
 Those methods are `get_openlineage_facets_on_start()` and `get_openlineage_facets_on_complete()`, called when the operator is first scheduled to run and when the operator has finished execution respectively. Either, or both, of the methods may be implemented by the operator.
 
-In the rest of this post, we’ll see how to write these methods within an operator class called `DfToGcsOperator`. This operator moves a Dataframe from an arbitrary source table using a supplied python callable to a specified path in GCS. Most of the `__init__()` and `execute()` methods of the operator aren’t necessary to see to put together the extractor, but an abbreviated version of each method is given below for context. The final two methods in the class are `get_openlineage_facets_on_start()` and `get_openlineage_facets_on_complete()`, which we will be implementing piece-by-piece in the rest of the guide, but are provided here in their entirety for completeness.
+In the rest of this doc, you will see how to write these methods within an operator class called `DfToGcsOperator`. This operator moves a Dataframe from an arbitrary source table using a supplied Python callable to a specified path in GCS. Thorough understanding of the `__init__()` and `execute()` methods of the operator is not required, but an abbreviated version of each method is given below for context. The final two methods in the class are `get_openlineage_facets_on_start()` and `get_openlineage_facets_on_complete()`, which we will be implementing piece-by-piece in the rest of the doc. They are provided here in their entirety for completeness.
 
 ```python
 from openlineage.airflow.extractors.base import OperatorLineage
@@ -193,9 +192,9 @@ class DfToGcsOperator():
         return starting_facets
 ```
 
-## Implementing Default Extractors
+## Implementing lineage in an operator
 
-To implement a default extractor, first you need an operator class. In this example, we’ll use the `DfToGcsOperator`, a custom operator created by the Astronomer Data team to load arbitrary dataframes to our GCS bucket. We’ll implement both `get_openlineage_facets_on_start()` and `get_openlineage_facets_on_complete()` for our custom operator. The specific details of the implementation will vary from operator to operator, but there will always be five basic steps that these functions will share.
+Not surprisingly, you will need an operator class to implement lineage collection in an operator. Here, we’ll use the `DfToGcsOperator`, a custom operator created by the Astronomer Data team to load arbitrary dataframes to our GCS bucket. We’ll implement both `get_openlineage_facets_on_start()` and `get_openlineage_facets_on_complete()` for our custom operator. The specific details of the implementation will vary from operator to operator, but there will always be five basic steps that these functions will share.
 
 Both the methods return an `OperatorLineage` object, which itself is a collection of facets. Four of the five steps mentioned above are creating these facets where necessary, and the fifth is creating the `DataSourceDatasetFacet`. First, though, we’ll need to import some OpenLineage objects:
 
@@ -213,9 +212,9 @@ Now, we’ll start building the facets for the `OperatorLineage` object in the `
 
 ### 1. `DataSourceDatasetFacet`
 
-The `DataSourceDatasestFacet` is a simple object, containing two fields, `name` and `uri`, which should be populated with the unique name of the data source and the URI. We’ll make two of these objects, an `input_source` to specify where the data came from, and an `output_source` to specify where the data is going.
+The `DataSourceDatasestFacet` is a simple object, containing two fields, `name` and `uri`, which should be populated with the unique name of the data source and the URI. We’ll make two of these objects, an `input_source` to specify where the data came from and an `output_source` to specify where the data is going.
 
-A quick note about the philosophy behind the `name` and `uri`: the `uri` is built from the `namespace` and the `name`, and each is expected to be unique with respect to its environment. This means a `namespace` should be globally unique in the OpenLineage universe, and the `name` unique within the `namespace`. The two are then concatenated to form the `uri`, so that `uri = namespace + name`. The full OpenLineage naming spec can be found [here](https://github.com/OpenLineage/OpenLineage/blob/main/spec/Naming.md).
+A quick note about the philosophy behind the `name` and `uri` in the OpenLineage spec: the `uri` is built from the `namespace` and the `name`, and each is expected to be unique with respect to its environment. This means a `namespace` should be globally unique in the OpenLineage universe, and the `name` unique within the `namespace`. The two are then concatenated to form the `uri`, so that `uri = namespace + name`. The full naming spec can be found [here](https://github.com/OpenLineage/OpenLineage/blob/main/spec/Naming.md).
 
 In our case, the input `name` will be the table we are pulling data from, `self.table`, and the `namespace` will be our `self.data_source`.
 
@@ -253,9 +252,9 @@ output_source = DataSourceDatasetFacet(
 
 Next we’ll create the input dataset object. As we are moving data from a dataframe to GCS in this operator, we’ll make sure that we are capturing all the info in the dataframe being extracted in a `Dataset`. To create the `Dataset` object, we’ll need `namespace`, `name`, and `facets` objects. The first two are strings, and `facets` is a dictionary.
 
-Our `namespace` will come from the operator, where we use `self.data_source` again. The `name` parameter for this facet will be the table, again coming from the operator’s parameter list. The `facets` will contain two entries, the first is our `DataSourceDatasetFacet` with the key "datasource" coming from the previous step and `input_source` as the value. The second has the key "schema", with the value being a `SchemaDatasetFacet`, which itself is a collection of `SchemaField` objects, one for each column, created via a list comprehension over the operator's `self.col_types` parameter.
+Our `namespace` will come from the operator, where we use `self.data_source` again. The `name` parameter for this facet will be the table, again coming from the operator’s parameter list. The `facets` will contain two entries, the first being our `DataSourceDatasetFacet` with the key "datasource" coming from the previous step and `input_source` being the value. The second has the key "schema", with the value being a `SchemaDatasetFacet`, which itself is a collection of `SchemaField` objects, one for each column, created via a list comprehension over the operator's `self.col_types` parameter.
 
-The `inputs` parameter to `OperatorLineage` is a list of `Dataset` objects, so we’ll end up adding a single `Dataset` object to the list later. The creation of the `Dataset` object looks as follows:
+The `inputs` parameter to `OperatorLineage` is a list of `Dataset` objects, so we’ll end up adding a single `Dataset` object to the list later. The creation of the `Dataset` object looks like the following:
 
 ```python
 input_facet = {
@@ -273,7 +272,7 @@ input = Dataset(namespace=self.data_source, name=self.table, facets=input_facet)
 
 ### 3. Outputs
 
-Our output facet will look almost identical to the input facet, except it will use the `output_source` we previously created, and will also have a different `namespace`. Our output facet object will be built as follows:
+Our output facet will closely resemble the input facet, except it will use the `output_source` we previously created, and will also have a different `namespace`. Our output facet object will be built as follows:
 
 ```python
 output_facet = {
@@ -293,9 +292,9 @@ output = Dataset(
 )
 ```
 
-### 4. Job Facets
+### 4. Job facets
 
-A Job in OpenLineage is a process definition that consumes and produces datasets. The Job evolves over time, and that change is captured when the job runs. This means the facets we would want to capture in at the Job level are independent of the state the Job is in. Custom facets can be created to capture this job data. For our operator, we stuck with pre-existing job facets, the `DocumentationJobFacet` and the `OwnershipJobFacet`:
+A Job in OpenLineage is a process definition that consumes and produces datasets. The Job evolves over time, and this change is captured when the Job runs. This means the facets we would want to capture in the Job level are independent of the state of the Job. Custom facets can be created to capture this Job data. For our operator, we went with pre-existing job facets, the `DocumentationJobFacet` and the `OwnershipJobFacet`:
 
 ```python
 job_facets = {
@@ -313,9 +312,9 @@ job_facets = {
 
 ### 5. Run facets
 
-A Run is and instance of a Job execution. For example, when an Airflow Operator begins execution, the Run state of the OpenLineage Job transitions to Start, then to Running. When writing an Extractor, this means a Run facet should contain information pertinent to the specific instance of the job, something that could change every Run.
+A Run is an instance of a Job execution. For example, when an Airflow Operator begins execution, the Run state of the OpenLineage Job transitions to Start, then to Running. When writing an emitter, this means a Run facet should contain information pertinent to the specific instance of the Job, something that could change every Run.
 
-In this example, we will emit an error message when there is an empty dataframe, using the existing `ErrorMessageRunFacet`.
+In this example, we will output an error message when there is an empty dataframe, using the existing `ErrorMessageRunFacet`.
 
 ```python
 starting_facets.run_facets = {
@@ -326,13 +325,13 @@ starting_facets.run_facets = {
 }
 ```
 
-### 6. On Complete
+### 6. On complete
 
-Finally, we’ll implement the `get_openlineage_metadata_on_complete()` method. Most our work is already done for us, so we will start by calling `get_openlineage_metadata_on_start()` and then modify the returned object slightly before returning it again. The two main additions here are replacing the original `SchemaDatasetFacet` fields and adding a potential error message to the `run_facets`.
+Finally, we’ll implement the `get_openlineage_metadata_on_complete()` method. Most of our work has already been done for us, so we will start by calling `get_openlineage_metadata_on_start()` and then modifying the returned object slightly before returning it again. The two main additions here are replacing the original `SchemaDatasetFacet` fields and adding a potential error message to the `run_facets`.
 
-For the `SchemaDatasetFacet` update, we replace the old fields facet with updated ones based on the now-filled-out `df_meta` dict, which is populated during the operator’s `execute()` method and is therefore unavailable to `get_openlineage_metadata_on_start()`. Because `df_meta` is already a list of `SchemaField` objects, we can set the property directly. Although we use a for-loop here, the operator ensures only one dataframe will ever be extracted per execute, so the for loop will only ever run once and we therefore do not have to worry about multiple input dataframes updating.
+For the `SchemaDatasetFacet` update, we replace the old fields facet with updated ones based on the now-filled-out `df_meta` dict, which is populated during the operator’s `execute()` method and is therefore unavailable to `get_openlineage_metadata_on_start()`. Because `df_meta` is already a list of `SchemaField` objects, we can set the property directly. Although we use a for loop here, the operator ensures only one dataframe will ever be extracted per execution, so the for loop will only ever run once and we therefore do not have to worry about multiple input dataframes updating.
 
-The `run_facets` update is done only if there is an error, which is a mutually exclusive event to updating the fields facets. We pass the same message to this facet that is printed in the `execute()` method when an empty dataframe is found. This error message does not halt operator execution, as it gets added *****after***** execution, but it does create an alert in the OpenLineage UI.
+The `run_facets` update is performed only if there is an error, which is a mutually exclusive event to updating the fields facets. We pass the same message to this facet that is printed in the `execute()` method when an empty dataframe is found. This error message does not halt operator execution, as it gets added *****after***** execution, but it does create an alert in the Marquez UI.
 
 ```python
 def get_openlineage_facets_on_complete(self, task_instance):
@@ -351,12 +350,12 @@ def get_openlineage_facets_on_complete(self, task_instance):
 	return starting_facets
 ```
 
-And with that final piece of the puzzle, we have a working extractor for our custom operator!
+And with that final piece of the puzzle, we have a working implementation of lineage extraction from our custom operator!
 
 ### Custom Facets
 
-The OpenLineage spec may not contain all the facets you need to write your extractor, in which case you will have to make your own [custom facets](https://openlineage.io/docs/spec/facets/custom-facets). More on creating custom facets can be found [here](https://openlineage.io/blog/extending-with-facets/).
+The OpenLineage spec might not contain all the facets you need to write your extractor, in which case you will have to make your own [custom facets](https://openlineage.io/docs/spec/facets/custom-facets). More on creating custom facets can be found [here](https://openlineage.io/blog/extending-with-facets/).
 
 ### Testing
 
-See the doc on [testing custom extractors](https://openlineage.io/docs/integrations/airflow/extractors/extractor-testing).
+For information about testing your implementation, see the doc on [testing custom extractors](https://openlineage.io/docs/integrations/airflow/extractors/extractor-testing).
