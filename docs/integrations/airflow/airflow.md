@@ -27,7 +27,7 @@ To instrument your Airflow instance with OpenLineage, follow [these instructions
 
 OpenLineage provides a set of `extractors` that extract lineage from operators. 
 
-If you want to add lineage coverage for your own custom operators, follow these [instructions to add lineage to operators](emitter.md).
+If you want to add lineage coverage for your own custom operators, follow these [instructions to add lineage to operators](default-extractors.md).
 
 If you want to add coverage for operators you can not modify, follow [instructions to add custom extractors](extractors/custom-extractors.md).
 
