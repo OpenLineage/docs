@@ -140,6 +140,13 @@ const config = {
         disableSwitch: true,
         respectPrefersColorScheme: false,
       },  
+      announcementBar: {
+        id: 'survey_alert',
+        content: 'Help chart the course of OpenLineage! The 2023 Ecosystem Survey is live and accepting responses. <a href="https://forms.gle/cPk3skNgnB4iab9H6">Submit yours today</a>.',
+        backgroundColor: '#f26522',
+        textColor: '#091E42',
+        isCloseable: false,
+      }
     }),
 
   scripts:
