@@ -9,7 +9,7 @@ Example:
 ```json
 {
     ...
-    "inputs": {
+    "outputs": {
         "outputFacets": {
             "outputStatistics": {
                 "_producer": "https://some.producer.com/version/1.0",
