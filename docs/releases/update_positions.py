@@ -1,30 +1,27 @@
-import os
+import re
+from pathlib import Path
+
+pattern = r'sidebar_position:\s*(\d+)'
+
+def replace_func(match):
+    num = int(match.group(1))
+    return f'sidebar_position: {num + 1}'
 
 def update_positions():
     """
     Bumps sidebar position numbers in all release files in preparation for 
-    addition of latest release.
+    addition of the latest release.
     """
-    paths: list = []
-    for root, dirs, files in os.walk('.'):
-        for file in files:
-            if '.md' in file:
-                path = os.path.join(root, file)
-                paths.append(path)
+    paths = list(Path('.').rglob('*.md'))
     print('updating position numbers . . .')
     for path in paths:
         print(path)
-        with open(path, 'r') as t:
-            str_contents = t.read()
-            start = str_contents.find('sidebar') + 17
-            stop = start + 2
-            current = str_contents[start:stop]
-            current_int = int(str_contents[start:stop])
-            new_num = ' ' + str(current_int + 1)
-            new_contents = str_contents.replace(current, new_num)
-        with open(path, 'w') as t:
-            new_contents = ''.join(new_contents)
-            t.write(new_contents)
+        with open(path, 'r') as file:
+            content = file.read()
+            updated_content = re.sub(pattern, replace_func, content)
+        with open(path, 'w') as file:
+            file.write(updated_content)
     print('done!')
 
-update_positions()
+if __name__ == '__main__':
+    update_positions()
