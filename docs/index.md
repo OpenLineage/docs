@@ -52,10 +52,12 @@ The [specification](https://github.com/OpenLineage/OpenLineage/blob/main/spec/Op
 
 The OpenLineage repository contains integrations with several systems.
 
-- [Apache Spark](https://github.com/OpenLineage/OpenLineage/tree/main/integration/spark)
 - [Apache Airflow](https://github.com/OpenLineage/OpenLineage/tree/main/integration/airflow)
+- [Apache Flink](https://github.com/OpenLineage/OpenLineage/tree/main/integration/flink)
+- [Apache Spark](https://github.com/OpenLineage/OpenLineage/tree/main/integration/spark)
 - [Dagster](https://github.com/OpenLineage/OpenLineage/tree/main/integration/dagster)
 - [dbt](https://github.com/OpenLineage/OpenLineage/tree/main/integration/dbt)
+- [SQL](https://github.com/OpenLineage/OpenLineage/tree/main/integration/sql)
 
 ## Related projects
 - [Marquez](https://marquezproject.ai/): Marquez is an [LF AI & DATA](https://lfaidata.foundation/) project to collect, aggregate, and visualize a data ecosystem's metadata. It is the reference implementation of the OpenLineage API.
