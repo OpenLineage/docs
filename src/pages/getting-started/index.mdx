@@ -35,7 +35,7 @@ $ ./docker/up.sh
 ```
 
 :::info
-Pass the `--build` flag to the script to build images from source, or `--tag X.Y.Z` to use a tagged image.
+Pass the `--build` flag to the script to build images from source, or `--tag X.Y.Z` to use a tagged image. Pass `--seed` to seed Marquez with dummy metadata. Be advised that the lineage graph produced by this quickstart will differ as a result. 
 :::
 
 To view the Marquez UI and verify it's running, open [http://localhost:3000](http://localhost:3000). The UI enables you to discover dependencies between jobs and the datasets they produce and consume via the lineage graph, view run-level metadata of current and previous job runs, and much more.
@@ -132,19 +132,21 @@ $ curl -X POST http://localhost:5000/api/v1/lineage \
 
 To view lineage metadata collected by Marquez, browse to the UI by visiting [http://localhost:3000](http://localhost:3000). Then, use the search bar in the upper right-side of the page and search for the job `my-job`. To view lineage metadata for `my-job`, click on the job from the drop-down list:
 
-![image](./marquez-search-view-job.png)
+<p align="center">
+  <img src={require("./marquez-current-search-view-job.png").default} />
+</p>
 
 ### View Job Metadata
 
 You should see the job `namespace`, `name`, `my-input` as an input dataset and `my-output` as an output dataset in the lineage graph and the job run marked as `COMPLETED `: 
 
-![image](./marquez-tab-view-job-completed.png)
+![image](./marquez-current-tab-view-job-completed.png)
 
 ### View Input Dataset Metadata
 
 Finally, click on the output dataset `my-output` for `my-job`. You should see the dataset `name`, `schema`, and `description`:
 
-![image](./marquez-tab-view-dataset-output.png)
+![image](./marquez-current-tab-view-dataset-output.png)
 
 ## Summary
 
@@ -153,6 +155,10 @@ In this simple example, we showed you how to use Marquez to collect dataset and 
 ## Next Steps
 
 * Take a look at Marquez's Airflow [example](https://github.com/MarquezProject/marquez/tree/main/examples/airflow) to learn how to enable OpenLineage metadata collection for Airflow DAGs and troubleshoot failing DAGs using Marquez.
+* Watch [Cross-platform Data Lineage with OpenLineage](https://www.youtube.com/watch?v=pLBVGIPuwEo).
+* Watch [Observability for Data Pipelines with OpenLineage](https://2021.berlinbuzzwords.de/member/julien-le-dem).
+* Watch [Data Observability and Pipelines: OpenLineage and Marquez](https://mattturck.com/datakin/).
+* Watch [Data Lineage and Observability with Marquez and OpenLineage](https://bigdatatechwarsaw.eu/edition-2021/).
 * Listen to [Solving Data Lineage Tracking And Data Discovery At WeWork](https://www.dataengineeringpodcast.com/marquez-data-lineage-episode-111).
 * Listen to [Unlocking The Power of Data Lineage In Your Platform with OpenLineage](https://www.dataengineeringpodcast.com/openlineage-data-lineage-specification-episode-187).
 
