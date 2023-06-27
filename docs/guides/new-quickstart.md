@@ -29,19 +29,19 @@ First, if you haven't already, clone the Marquez repository and change into the 
 git clone https://github.com/MarquezProject/marquez && cd marquez
 ```
 
-Run the following command to start Marquez with its API configured to use ports 9000 and 9001:
+Confirm that Docker is running, then execute the following command to start Marquez:
 
 ```
-./docker/up.sh -a 9000 -m 9001
+./docker/up.sh
 ```
 
-For more details about configuring and starting Marquez, see the quickstart in the [Marquez README](https://github.com/MarquezProject/marquez#quickstart).
+For more details about configuring and starting Marquez, see the [Marquez README](https://github.com/MarquezProject/marquez#quickstart). Note: the default API port, 5000, is reserved by MacOS. It is easy to change this configuration by exploiting the `up.sh` script's customization parameters -- e.g., by running `./docker/up.sh --api-port 9000 --api-admin-port 9001` (just be sure to define the `OPENLINEAGE_URL` env variable accordingly).
 
 ## Step 2: Configure Your Astro Project
 
 Use the Astro CLI to create and run an Airflow project locally that will integrate with Marquez.
 
-1. Create a new Astro project alongside `marquez`:
+1. In your project directory, create a new Astro project alongside `marquez`:
 
     ```sh
     $ ..
@@ -49,35 +49,86 @@ Use the Astro CLI to create and run an Airflow project locally that will integra
     $ astro dev init
     ```
 
-2. Add the following environment variables below to your Astro project's `.env` file:
+    After executing the above, your project directory should look like this:
+
+    ```sh
+    $ ls -a
+    .                     .dockerignore         Dockerfile            dags                  plugins
+    ..                    .env                  README.md             include               requirements.txt
+    .astro                .gitignore            airflow_settings.yaml packages.txt          tests
+    ```
+
+2. To configure Astro to send lineage metadata to Marquez, add the following environment variables below to your Astro project's `.env` file:
 
     ```bash
-    OPENLINEAGE_URL=http://host.docker.internal:9000
+    OPENLINEAGE_URL=http://host.docker.internal:5000
     OPENLINEAGE_NAMESPACE=example
     AIRFLOW__LINEAGE__BACKEND=openlineage.lineage_backend.OpenLineageBackend
     ```
 
-    These variables allow Airflow to connect with the OpenLineage API and send your lineage metadata to Marquez.
+    These variables allow Airflow to connect with the OpenLineage API and send events to Marquez.
 
-3. Marquez also uses Postgres, so you will need to have Airflow use a different port than the default 5432, which is already allocated to Airflow. Run the following command to use port 5435 for Postgres:
+3. Marquez also uses Postgres, so you will need to have Airflow use a different port than the default 5432, which is allocated to Airflow by default. Run the following command to use port 5435 for Postgres:
 
     ```sh
     astro config set postgres.port 5435
     ```
 
-## Step 3: Write Airflow DAGs using OpenLineage
+## Step 3: Configure Your Database
+
+To show the lineage metadata that can result from Airflow DAG runs, your DAGs will process data in Postgres. To run this example in your local environment, complete the following steps:
+
+1. Start a Postgres server on port 5435. Back in the terminal, create a local Postgres database:
+
+    ```bash
+    psql -h localhost -p 5435 -U postgres
+    # enter password `postgres` when prompted
+    create database lineagetutorial;
+    \c lineagetutorial;
+    exit
+    ```
+
+    If you already have a Postgres database or are using a different type of database, you can skip this step. Note that this database should be separate from the Airflow and Marquez metastores.
+
+## Step 4: Start Airflow with Marquez
+
+Now that you have your DAGs defined and you can run the example! To start Astro, run:
+
+```bash
+$ astro dev start
+```
+
+**The above command will:**
+
+* start Airflow
+* start Postgres
+
+To view the Airflow UI and verify it's running, open [http://localhost:8080](http://localhost:8080). Then, log in using the username and password `admin` / `admin`. You can also browse to [http://localhost:3000](http://localhost:3000) to view the Marquez UI.
+
+## Step 5: Configure Your Airflow Connection
+
+The connection you configure will connect to the Postgres database you created in [Step 3](#step-3-configure-your-database).
+
+1. In the Airflow UI, go to **Admin** -> **Connections**.
+
+2. Create a new connection named `example_db` and choose the `postgres` connection type. Enter the following information:
+
+    - **Host:** `host.docker.internal`
+    - **Login:** `postgres`
+    - **Password:** `postgres`
+    - **Port:** `5435`
+
+    If you are working with a database other than local Postgres, you may need to provide different information to the connection.
+
+    The other fields can be left blank. Click on "save" when finished. 
+
+## Step 6: Write Airflow DAGs using OpenLineage
 
 In this step, you will create two new Airflow DAGs that perform simple tasks. The `counter` DAG adds 1 to a column every minute, while the `sum` DAG calculates a sum every five minutes. This will result in a simple pipeline containing two jobs and two datasets.
 
-First, change into the `dags` directory where your DAGs will be located:
+### Step 6.1: Create a `counter` DAG
 
-```bash
-$ cd dags
-```
-
-### Step 3.1: Create a `counter` DAG
-
-Under `dags/`, create a file named `counter.py` and add the following code:
+In `dags/`, create a file named `counter.py` and add the following code:
 
 ```python
 from airflow import DAG
@@ -125,7 +176,7 @@ with DAG(
 query1 >> query2
 ```
 
-### Step 3.2: Create a `sum` DAG
+### Step 6.2: Create a `sum` DAG
 
 In `dags/`, create a file named `sum.py` and add the following code:
 
@@ -174,51 +225,6 @@ with DAG(
 query1 >> query2
 ```
 
-## Step 4: Configure Your Database
-
-To show the lineage metadata that can result from Airflow DAG runs, your DAGs will process data in Postgres. To run this example in your local environment, complete the following steps:
-
-1. Using `psql`, create a local Postgres database in the same container as the Airflow metastore:
-
-    ```bash
-    psql -h localhost -p 5435 -U postgres
-    # enter password `postgres` when prompted
-    create database lineagetutorial;
-    \c lineagetutorial;
-    ```
-
-    If you already have a Postgres database or are using a different type of database you can skip this step. Note that this database should be separate from the Airflow and Marquez metastores.
-
-## Step 5: Configure Your Airflow Connection
-
-The connection you configure will connect to the Postgres database you created in [Step 3](#step-3-configure-your-database).
-
-1. In the Airflow UI, go to **Admin** -> **Connections**.
-
-2. Create a new connection named `example_db` and choose the `postgres` connection type. Enter the following information:
-
-    - **Host:** `host.docker.internal`
-    - **Login:** `postgres`
-    - **Password:** `postgres`
-    - **Port:** `5435`
-
-    If you are working with a database other than local Postgres, you may need to provide different information to the connection.
-
-## Step 6: Start Airflow with Marquez
-
-Now that you have your DAGs defined and you can run the example! To start Astro, run:
-
-```bash
-$ astro dev start
-```
-
-**The above command will:**
-
-* start Airflow
-* start Postgres
-
-To view the Airflow UI and verify it's running, open [http://localhost:8080](http://localhost:8080). Then, log in using the username and password `admin` / `admin`. You can also browse to [http://localhost:3000](http://localhost:3000) to view the Marquez UI.
-
 ## Step 7: View Collected Metadata
 
 To ensure that Airflow is executing `counter` and `sum`, navigate to the DAGs tab in Airflow and verify that they are both enabled and are in a _running_ state:
@@ -241,7 +247,7 @@ If you take a quick look at the lineage graph for `counter.inc`, you should see 
 
 In this step, let's quickly walk through a simple troubleshooting scenario where the DAG `sum` begins to fail as the result of an upstream schema change for table `counts`.
 
-> **Tip:** It's helpful to apply the same code changes outlined below to your Airflow DAGs defined in **Step 3**.
+> **Tip:** It's helpful to apply the same code changes outlined below to your Airflow DAGs defined in **Step 6**.
 
 Let's say team `A` owns the DAG `counter`. Team `A` decides to update the `query1` task in `counter` to rename the `values` column in the `counts` table to `value_1_to_10` (without properly communicating the schema change!):
 
