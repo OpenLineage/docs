@@ -243,7 +243,7 @@ If you take a quick look at the lineage graph for `counter.inc`, you should see 
 
 ![](./docs/astro-current-lineage-view-job.png)
 
-## Step 5: Troubleshoot a Failing DAG with Marquez
+## Step 8: Troubleshoot a Failing DAG with Marquez
 
 In this step, let's quickly walk through a simple troubleshooting scenario where the DAG `sum` begins to fail as the result of an upstream schema change for table `counts`.
 
