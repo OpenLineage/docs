@@ -188,7 +188,7 @@ const Participate = () => {
 
               <Button
                   title="Slack"
-                  to='https://bit.ly/OLslack'
+                  to='https://bit.ly/OpenLineageSlack'
                   type="extbutton"
                   iconRight={<Slack />}
                   className="mx-5"
