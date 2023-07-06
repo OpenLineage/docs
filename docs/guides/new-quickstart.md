@@ -120,7 +120,7 @@ services:
     entrypoint: ["/bin/bash", "./wait-for-it.sh", "db:6543", "--", "./entrypoint.sh"]
 ```
 
-The above adds the Marquez API, database and Web UI to your existing Docker container and configures them to use the scripts in the `docker` directory you previously downloaded from Marquez.
+The above adds the Marquez API, database and Web UI to Astro's Docker container and configures them to use the scripts in the `docker` directory you previously downloaded from Marquez.
 
 ## Step 4: Start Airflow with Marquez
 
@@ -137,7 +137,7 @@ $ astro dev start
 
 To view the Airflow UI and verify it's running, open [http://localhost:8080](http://localhost:8080). Then, log in using the username and password `admin` / `admin`. You can also browse to [http://localhost:3000](http://localhost:3000) to view the Marquez UI.
 
-## Step 5: Write Airflow DAGs using OpenLineage
+## Step 5: Write Airflow DAGs
 
 In this step, you will create two new Airflow DAGs that perform simple tasks. The `counter` DAG adds 1 to a column every minute, while the `sum` DAG calculates a sum every five minutes. This will result in a simple pipeline containing two jobs and two datasets.
 
