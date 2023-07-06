@@ -124,7 +124,7 @@ The above adds the Marquez API, database and Web UI to Astro's Docker container 
 
 ## Step 4: Start Airflow with Marquez
 
-Now you can start all services. To do so, run:
+Now you can start all services. To do so, verify that Docker is running and execute the following:
 
 ```bash
 $ astro dev start
