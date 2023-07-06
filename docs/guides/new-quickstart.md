@@ -246,7 +246,7 @@ In this step, let's quickly walk through a simple troubleshooting scenario where
 
 > **Tip:** It's helpful to apply the same code changes outlined below to your Airflow DAGs defined in **Step 6**.
 
-Let's say team `A` owns the DAG `counter`. Team `A` decides to update the `query1` task in `counter` to rename the `values` column in the `counts` table to `value_1_to_10` (without properly communicating the schema change!):
+Let's say team `A` owns the DAG `counter`. Team `A` decides to update the tasks in `counter` to rename the `values` column in the `counts` table to `value_1_to_10` (without properly communicating the schema change!):
 
 ```diff
 query1 = PostgresOperator(
