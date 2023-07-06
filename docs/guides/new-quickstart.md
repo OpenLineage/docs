@@ -61,7 +61,7 @@ Use the Astro CLI to create and run an Airflow project locally that will integra
 
     These variables allow Airflow to connect with the OpenLineage API and send events to Marquez.
 
-3. Marquez also uses Postgres, so you will need to have Airflow use a different port than the default 5432, which is allocated to Airflow by default. Run the following command to use port 5678 for Postgres:
+3. It is a good idea to have Airflow use a different port for Postgres than the default 5432, so run the following command to use port 5678 instead:
 
     ```sh
     astro config set postgres.port 5678
