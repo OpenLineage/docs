@@ -6,6 +6,13 @@ sidebar_position: 6
 
 This tutorial introduces you to using the [OpenLineage Proxy](https://github.com/OpenLineage/OpenLineage/tree/main/proxy) with Airflow. OpenLineage has various integrations that will enable Airflow to emit OpenLineage events when using [Airflow Integrations](https://openlineage.io/docs/integrations/airflow/). In this tutorial, you will be running a local instance of Airflow using Docker Compose and learning how to enable and setup OpenLineage to emit data lineage events. The tutorial will use two backends to check the data lineage, 1) the Proxy, and 2) [Marquez](https://marquezproject.ai/).
 
+## Table of Contents
+- Setting up a Local Airflow Environment using Docker Compose
+- Setting up Marquez
+- Running Everything
+- Accessing the Airflow UI
+- Running an Example DAG
+
 ## Setting up a Local Airflow Environment using Docker Compose
 
 Airflow has a convenient way to set up and run a fully functional environment using [Docker Compose](https://docs.docker.com/compose/). The following are therefore required to be installed before we begin this tutorial.
@@ -15,7 +22,6 @@ Airflow has a convenient way to set up and run a fully functional environment us
 - Docker 20.10.0+
 - Docker Desktop
 - Docker Compose
-- Java 11
 
 :::info
 If you are using MacOS Monterey (MacOS 12), port 5000 will have to be released by [disabling the AirPlay Receiver](https://developer.apple.com/forums/thread/682332). Also, port 3000 will need to be free if access to the Marquez Web UI is desired.
@@ -64,7 +70,7 @@ The reason why we are setting the backend to `host.docker.internal` is that we a
 
 The OpenLineage Proxy is a simple tool that you can easily set up and run to receive OpenLineage data. The proxy does not do anything other than display what it receives. Optionally, it can also forward data to any OpenLineage-compatible backend via HTTP.
 
-Let's download the proxy code from git and build it with Java 11:
+Let's download the proxy code from git and build it:
 
 ```
 cd ~ &&
@@ -73,7 +79,7 @@ cd OpenLineage/proxy/backend &&
 ./gradlew build
 ```
 
-Now, copy the proxy.dev.yml and edit its content as the following, and save it as `proxy.yml`.
+Now, copy `proxy.dev.yml` and edit its content as the following, and save it as `proxy.yml`.
 
 ```yaml
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -156,7 +162,7 @@ cd ~/OpenLineage/proxy/backend &&
 ./gradlew runShadow
 ```
 
-## Running Airflow
+### Running Airflow
 
 ```
 cd ~/airflow-ol
@@ -173,7 +179,7 @@ With everything up and running, we can now login to Airflow's UI by opening up a
 
 Initial ID and password to login would be `airflow/airflow`.
 
-## Running an example DAG
+## Running an Example DAG
 
 When you log into Airflow UI, you will notice that there are several example DAGs already populated when it started up. We can start running some of them to see the OpenLineage events they generate.
 
