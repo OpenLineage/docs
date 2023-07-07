@@ -22,6 +22,7 @@ Airflow has a convenient way to set up and run a fully functional environment us
 - Docker 20.10.0+
 - Docker Desktop
 - Docker Compose
+- Java 11
 
 :::info
 If you are using MacOS Monterey (MacOS 12), port 5000 will have to be released by [disabling the AirPlay Receiver](https://developer.apple.com/forums/thread/682332). Also, port 3000 will need to be free if access to the Marquez Web UI is desired.
