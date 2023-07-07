@@ -1,107 +1,86 @@
 ---
-sidebar_position: 2
+sidebar_position: 6
 ---
 
-# Using OpenLineage with Airflow
+# Using the OpenLineage Proxy with Airflow
 
-This tutorial introduces you to using OpenLineage with Airflow. OpenLineage has various integrations that will enable airflow to emit OpenLineage events when using [Airflow Integrations](https://openlineage.io/docs/integrations/airflow/). In this tutorial, you will be running a local instance of Airflow using docker compose, and learn how to enable and setup OpenLineage to emit data lineage events. The tutorial will use two backends to check the data lineage, 1) using [OpenLineage Proxy](https://github.com/OpenLineage/OpenLineage/tree/main/proxy), and 2) using [Marquez](https://marquezproject.ai/).
+This tutorial introduces you to using the [OpenLineage Proxy](https://github.com/OpenLineage/OpenLineage/tree/main/proxy) with Airflow. OpenLineage has various integrations that will enable Airflow to emit OpenLineage events when using [Airflow Integrations](https://openlineage.io/docs/integrations/airflow/). In this tutorial, you will be running a local instance of Airflow using Docker Compose and learning how to enable and setup OpenLineage to emit data lineage events. The tutorial will use two backends to check the data lineage, 1) the Proxy, and 2) [Marquez](https://marquezproject.ai/).
 
-## Setting up Local Airflow Environment using Docker Compose
+## Table of Contents
+- Setting up a Local Airflow Environment using Docker Compose
+- Setting up Marquez
+- Running Everything
+- Accessing the Airflow UI
+- Running an Example DAG
 
-Airflow has a convenient way to setup and run a fully functional environment using [docker compose](https://docs.docker.com/compose/). The followings are therefore required to be installed before we start this tutorial.
+## Setting up a Local Airflow Environment using Docker Compose
+
+Airflow has a convenient way to set up and run a fully functional environment using [Docker Compose](https://docs.docker.com/compose/). The following are therefore required to be installed before we begin this tutorial.
 
 ### Prerequisites
 
 - Docker 20.10.0+
 - Docker Desktop
 - Docker Compose
+- Java 11
 
 :::info
-If you are using macOS Monterey (macOS 12), port 5000 will have to be released by [disabling the AirPlay Receiver](https://developer.apple.com/forums/thread/682332). Also, port 3000 will need to be free if access to the Marquez web UI is desired.
+If you are using MacOS Monterey (MacOS 12), port 5000 will have to be released by [disabling the AirPlay Receiver](https://developer.apple.com/forums/thread/682332). Also, port 3000 will need to be free if access to the Marquez Web UI is desired.
 :::
 
-Use the following [instructions](https://airflow.apache.org/docs/apache-airflow/stable/start/docker.html) to setup and run Airflow using docker-compose. 
+Use the following [instructions](https://airflow.apache.org/docs/apache-airflow/stable/start/docker.html) to set up and run Airflow using Docker Compose. 
 
-First, let's start out by create a new directory which will contain all of our works.
+First, let's start out by creating a new directory that will contain all of our work.
 
 ```
-mkdir ~/airflow-ol
+mkdir ~/airflow-ol &&
 cd ~/airflow-ol
 ```
 
-And then, let's download the docker compose file that we'll be running in it.
+Then, let's download the Docker Compose file that we'll be running in it.
 
 ```
 curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.3.3/docker-compose.yaml'
 ```
 
-Open the file `docker-compose.yaml` which got downloaded, and edit the file to add an entry `OPENLINEAGE_URL` environment variable in line 61:
+This will allow a new environment variable `OPENLINEAGE_URL` to be passed to the Docker containers, which is needed for OpenLineage to work.
 
-```yaml
-...
----
-version: '3'
-x-airflow-common:
-  &airflow-common
-  # In order to add custom dependencies or upgrade provider packages you can use your extended image.
-  # Comment the image line, place your Dockerfile in the directory where you placed the docker-compose.yaml
-  # and uncomment the "build" line below, Then run `docker-compose build` to build the images.
-  image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:2.3.3}
-  # build: .
-  environment:
-    &airflow-common-env
-    AIRFLOW__CORE__EXECUTOR: CeleryExecutor
-    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
-    # For backward compatibility, with Airflow <2.3
-    AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
-    AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://airflow:airflow@postgres/airflow
-    AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
-    AIRFLOW__CORE__FERNET_KEY: ''
-    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
-    AIRFLOW__CORE__LOAD_EXAMPLES: 'true'
-    AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth'
-    _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-}
-    OPENLINEAGE_URL: ${OPENLINEAGE_URL:-}
-...
-```
-This will allow a new environment variable `OPENLINEAGE_URL` to be passed to the docker containers, which is needed for the OpenLineage to work.
-
-Then, let's create the following directories which will be mounted and used by the docker compose that will start the Airflow.
+Then, let's create the following directories that will be mounted and used by the Docker Compose that will start Airflow.
 
 ```
-mkdir dags
-mkdir logs
+mkdir dags &&
+mkdir logs &&
 mkdir plugins
 ```
 
-Also, create a file `.env` that will contain environment variable that is going to be used by Airflow to install additional python packages that is needed. In our tutorial, we are going to have `openlineage-airflow` be installed.
+Also, create a file `.env` that will contain an environment variable that is going to be used by Airflow to install additional Python packages that are needed. In this tutorial, the `openlineage-airflow` package will be installed.
 
 ```
 echo "_PIP_ADDITIONAL_REQUIREMENTS=openlineage-airflow" > .env
 ```
 
-You also need to let OpenLineage know which `backend` to emit those lineage data into. 
+You also need to let OpenLineage know where to send lineage data. 
 
 ```
 echo "OPENLINEAGE_URL=http://host.docker.internal:4433" >> .env
 ```
 
-The reason why we are setting the backend to `host.docker.internal` is because we are going to be running OpenLineage Proxy outside of airflow's docker environment, and on the host machine itself. The port 4433 is the port which the proxy will be listening for lineage data.
+The reason why we are setting the backend to `host.docker.internal` is that we are going to be running the OpenLineage Proxy outside Airflow's Docker environment on the host machine itself. Port 4433 is where the proxy will be listening for lineage data.
 
-## Setting up OpenLineage Proxy as receiving end
+## Setting up OpenLineage Proxy as Receiving End
 
-OpenLineage Proxy is a simple tool that you can easily setup and run to receive for OpenLineage data. The proxy does not do anything other than display what it received into the standard output. Optionally, it can also forward the data into any OpenLineage backend via HTTP.
+The OpenLineage Proxy is a simple tool that you can easily set up and run to receive OpenLineage data. The proxy does not do anything other than display what it receives. Optionally, it can also forward data to any OpenLineage-compatible backend via HTTP.
 
-Let's download the proxy code from git, and build it.
+Let's download the proxy code from git and build it:
 
 ```
-cd ~
-git clone https://github.com/OpenLineage/OpenLineage.git
-cd OpenLineage/proxy
+cd ~ &&
+git clone https://github.com/OpenLineage/OpenLineage.git &&
+cd OpenLineage/proxy/backend &&
 ./gradlew build
 ```
 
-Now, copy the proxy.dev.yml and edit its content as the following, and save it as `proxy.yml`.
+Now, copy `proxy.dev.yml` and edit its content as the following, and save it as `proxy.yml`.
 
 ```yaml
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -139,26 +118,53 @@ proxy:
 
 ## Setting up Marquez
 
-The last piece of the setup is the Marquez backend. Using Marquez's [quickstart document](https://github.com/MarquezProject/marquez/blob/main/docs/quickstart.md), setup the Marquez environment.
+The last piece of the setup is the Marquez backend. Using Marquez's [quickstart document](https://github.com/MarquezProject/marquez/blob/main/docs/quickstart.md), set up the Marquez environment.
 
 ```
-cd ~
+cd ~ &&
 git clone https://github.com/MarquezProject/marquez.git
+```
+
+In marquez/docker-compose.dev.yml, change the ports for pghero to free up port 8080 for Airflow:
+
+```
+version: "3.7"
+services:
+  api:
+    build: .
+
+  seed_marquez:
+    build: .
+
+  pghero:
+    image: ankane/pghero
+    container_name: pghero
+    ports:
+      - "8888:8888"
+    environment:
+      DATABASE_URL: postgres://postgres:password@db:5432
 ```
 
 ## Running Everything
 
 ### Running Marquez
+
+Start Docker Desktop, then:
+
 ```
-cd ~/marquez
+cd ~/marquez &&
 ./docker/up.sh
 ```
+
 ### Running OpenLineage proxy
+
 ```
-cd ~/OpenLineage
+cd ~/OpenLineage/proxy/backend &&
 ./gradlew runShadow
 ```
-## Running Airflow
+
+### Running Airflow
+
 ```
 cd ~/airflow-ol
 docker-compose up
@@ -166,18 +172,20 @@ docker-compose up
 
 ![airflow_dev_setup](./airflow_dev_setup.png)
 
-Running everything would be the Apache Airflow setup and emitting lineage data into OpenLineage Proxy, and OpenLineage Proxy forwarding those into Marquez, so we can both inspect the data payload entering, as well as see the lineage data in graph form.
+At this point, Apache Airflow should be running and able to send lineage data to the OpenLineage Proxy, with the OpenLineage Proxy forwarding the data to Marquez. Consequently, we can both inspect data payloads and see lineage data in graph form.
 
-## Accessing Airflow UI
-After everything is up and running, we can now login to Airflow's UI by opening up the browser, and accessing `http://localhost:8080`.
+## Accessing the Airflow UI
+
+With everything up and running, we can now login to Airflow's UI by opening up a browser and accessing `http://localhost:8080`.
 
 Initial ID and password to login would be `airflow/airflow`.
 
-## Running an example DAG
+## Running an Example DAG
 
-When you log into Airflow UI, you will notice that there are several example DAGs already populated when it started up. We can start running some of them to see what kind of OpenLineage event they generate.
+When you log into Airflow UI, you will notice that there are several example DAGs already populated when it started up. We can start running some of them to see the OpenLineage events they generate.
 
 ### Running Bash Operator
+
 In the DAGs page, locate the `example_bash_operator`.
 
 ![airflow_trigger_dag](./airflow_trigger_dag.png)
