@@ -11,6 +11,17 @@ In this example, we'll walk you through how to enable Airflow DAGs to send linea
 * write OpenLineage-enabled DAGs
 * troubleshoot a failing DAG using Marquez
 
+### Table of Contents
+
+1. [Step 1: Configure Your Astro Project](#configure-your-astro-project)
+2. [Step 2: Add Marquez Services Using Docker Compose](#add-marquez-services-using-docker-compose)
+3. [Step 3: Add a Database Connection](#add-a-database-connection)
+4. [Step 4: Add a Script for Initializing the Database in the Docker Container](#add-a-script-for-initializing-the-database-in-the-docker-container)
+5. [Step 5: Start Airflow with Marquez](#start-airflow-with-marquez)
+6. [Step 6: Write Airflow DAGs](#write-airflow-dags)
+7. [Step 7: View Collected Metadata](#view-collected-metadata)
+8. [Step 8: Troubleshoot a Failing DAG with Marquez](#troubleshoot-a-failing-dag-with-marquez)
+
 ## Prerequisites
 
 Before you begin, make sure you have installed:
@@ -21,7 +32,7 @@ Before you begin, make sure you have installed:
 
 > **Note:** We recommend that you have allocated at least **2 CPUs** and **8 GB** of memory to Docker.
 
-## Step 1: Configure Your Astro Project
+## Configure Your Astro Project
 
 Use the Astro CLI to create and run an Airflow project locally that will integrate with Marquez.
 
@@ -57,6 +68,7 @@ Use the Astro CLI to create and run an Airflow project locally that will integra
     OPENLINEAGE_URL=http://host.docker.internal:5000
     OPENLINEAGE_NAMESPACE=example
     AIRFLOW__LINEAGE__BACKEND=openlineage.lineage_backend.OpenLineageBackend
+    AIRFLOW_CONN_EXAMPLE_DB=postgres://example:example@host.docker.internal:7654/example
     ```
 
     These variables allow Airflow to connect with the OpenLineage API and send events to Marquez.
@@ -67,7 +79,7 @@ Use the Astro CLI to create and run an Airflow project locally that will integra
     astro config set postgres.port 5678
     ```
 
-## Step 3: Add Marquez Services using Docker Compose
+## Add Marquez and Database Services Using Docker Compose
 
 Astro supports manual configuration of services via Docker Compose using YAML.
 
@@ -94,13 +106,32 @@ services:
       - "6543:6543"
     environment:
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=password
+      - POSTGRES_PASSWORD=postgres
       - MARQUEZ_DB=marquez
       - MARQUEZ_USER=marquez
       - MARQUEZ_PASSWORD=marquez
+      - ALLOW_EMPTY_PASSWORD=yes
     volumes:
       - ./docker/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
     command: ["postgres", "-c", "log_statement=all"]
+
+  example-db:
+    image: postgres:12.1
+    container_name: example-db
+    ports:
+      - "7654:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - EXAMPLE_USER=example
+      - EXAMPLE_PASSWORD=example
+      - EXAMPLE_DB=example
+      - ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - ./docker/init-example-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+    command: ["postgres", "-c", "log_statement=all"]
+    sysctls:
+      - net.ipv4.tcp_keepalive_time=200
   
   api:
     image: marquezproject/marquez:latest
@@ -118,13 +149,72 @@ services:
     depends_on:
       - db
     entrypoint: ["/bin/bash", "./wait-for-it.sh", "db:6543", "--", "./entrypoint.sh"]
+
+  redis:
+    image: bitnami/redis:6.0.6
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
 ```
 
-The above adds the Marquez API, database and Web UI to Astro's Docker container and configures them to use the scripts in the `docker` directory you previously downloaded from Marquez.
+The above adds the Marquez API, database and Web UI, along with an additional Postgres database for the DAGs used in this example, to Astro's Docker container and configures them to use the scripts in the `docker` directory you previously downloaded from Marquez.
 
-## Step 4: Start Airflow with Marquez
+## Add a Database Connection
 
-Now you can start all services. To do so, verify that Docker is running and execute the following:
+In `airflow_settings.yaml`, configure a database connection for Airflow:
+
+```yml
+airflow:
+  connections:
+    - conn_id: 'example_db'
+      conn_type: 'postgres'
+      conn_host: 'postgres.host.docker.internal'
+      conn_schema: 
+      conn_login: 'postgres.example'
+      conn_password: 'postgres.example'
+      conn_port: 7654
+      conn_extra:
+        example_extra_field: 
+  pools:
+    - pool_name:
+      pool_slot:
+      pool_description:
+  variables:
+    - variable_name:
+      variable_value:
+
+```
+
+## Add a Script for Initializing the Database in the Docker Container
+
+In the `docker` directory, create a script `init-example-db.sh`:
+
+```sh
+#!/bin/bash
+#
+# Copyright 2018-2023 contributors to the Marquez project
+# SPDX-License-Identifier: Apache-2.0
+#
+# Usage: $ ./init-db.sh
+
+set -eu
+
+psql -v ON_ERROR_STOP=1 --username "${POSTGRES_USER}" > /dev/null <<-EOSQL
+  CREATE USER ${EXAMPLE_USER};
+  ALTER USER ${EXAMPLE_USER} WITH PASSWORD '${EXAMPLE_PASSWORD}';
+  CREATE DATABASE ${EXAMPLE_DB};
+  GRANT ALL PRIVILEGES ON DATABASE ${EXAMPLE_DB} TO ${EXAMPLE_USER};
+EOSQL
+```
+
+Make it executable on the command line with:
+
+```sh
+$ chmod +x init-example-db.sh
+```
+
+## Start Airflow with Marquez
+
+Now you can start all services. To do so, execute the following:
 
 ```bash
 $ astro dev start
@@ -137,11 +227,11 @@ $ astro dev start
 
 To view the Airflow UI and verify it's running, open [http://localhost:8080](http://localhost:8080). Then, log in using the username and password `admin` / `admin`. You can also browse to [http://localhost:3000](http://localhost:3000) to view the Marquez UI.
 
-## Step 5: Write Airflow DAGs
+## Write Airflow DAGs
 
 In this step, you will create two new Airflow DAGs that perform simple tasks. The `counter` DAG adds 1 to a column every minute, while the `sum` DAG calculates a sum every five minutes. This will result in a simple pipeline containing two jobs and two datasets.
 
-### Step 5.1: Create a `counter` DAG
+### Create a `counter` DAG
 
 In `dags/`, create a file named `counter.py` and add the following code:
 
@@ -182,7 +272,7 @@ with DAG(
 query1 >> query2
 ```
 
-### Step 5.2: Create a `sum` DAG
+### Create a `sum` DAG
 
 In `dags/`, create a file named `sum.py` and add the following code:
 
@@ -222,7 +312,7 @@ with DAG(
 query1 >> query2
 ```
 
-## Step 6: View Collected Metadata
+## View Collected Metadata
 
 To ensure that Airflow is executing `counter` and `sum`, navigate to the DAGs tab in Airflow and verify that they are both enabled and are in a _running_ state:
 
@@ -240,7 +330,7 @@ If you take a quick look at the lineage graph for `counter.inc`, you should see 
 
 ![](./docs/astro-current-lineage-view-job.png)
 
-## Step 7: Troubleshoot a Failing DAG with Marquez
+## Troubleshoot a Failing DAG with Marquez
 
 In this step, let's quickly walk through a simple troubleshooting scenario where the DAG `sum` begins to fail as the result of an upstream schema change for table `counts`.
 
