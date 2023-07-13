@@ -15,12 +15,11 @@ In this example, we'll walk you through how to enable Airflow DAGs to send linea
 
 1. [Step 1: Configure Your Astro Project](#configure-your-astro-project)
 2. [Step 2: Add Marquez Services Using Docker Compose](#add-marquez-services-using-docker-compose)
-3. [Step 3: Add a Database Connection](#add-a-database-connection)
-4. [Step 4: Add a Script for Initializing the Database in the Docker Container](#add-a-script-for-initializing-the-database-in-the-docker-container)
-5. [Step 5: Start Airflow with Marquez](#start-airflow-with-marquez)
-6. [Step 6: Write Airflow DAGs](#write-airflow-dags)
-7. [Step 7: View Collected Metadata](#view-collected-metadata)
-8. [Step 8: Troubleshoot a Failing DAG with Marquez](#troubleshoot-a-failing-dag-with-marquez)
+3. [Step 3: Add a Script for Initializing the Database in the Docker Container](#add-a-script-for-initializing-the-database-in-the-docker-container)
+4. [Step 4: Start Airflow with Marquez](#start-airflow-with-marquez)
+5. [Step 5: Write Airflow DAGs](#write-airflow-dags)
+6. [Step 6: View Collected Metadata](#view-collected-metadata)
+7. [Step 7: Troubleshoot a Failing DAG with Marquez](#troubleshoot-a-failing-dag-with-marquez)
 
 ## Prerequisites
 
@@ -157,32 +156,6 @@ services:
 ```
 
 The above adds the Marquez API, database and Web UI, along with an additional Postgres database for the DAGs used in this example, to Astro's Docker container and configures them to use the scripts in the `docker` directory you previously downloaded from Marquez.
-
-## Add a Database Connection
-
-In `airflow_settings.yaml`, configure a database connection for Airflow:
-
-```yml
-airflow:
-  connections:
-    - conn_id: 'example_db'
-      conn_type: 'postgres'
-      conn_host: 'postgres.host.docker.internal'
-      conn_schema: 
-      conn_login: 'postgres.example'
-      conn_password: 'postgres.example'
-      conn_port: 7654
-      conn_extra:
-        example_extra_field: 
-  pools:
-    - pool_name:
-      pool_slot:
-      pool_description:
-  variables:
-    - variable_name:
-      variable_value:
-
-```
 
 ## Add a Script for Initializing the Database in the Docker Container
 
