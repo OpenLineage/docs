@@ -15,11 +15,10 @@ In this example, we'll walk you through how to enable Airflow DAGs to send linea
 
 1. [Step 1: Configure Your Astro Project](#configure-your-astro-project)
 2. [Step 2: Add Marquez Services Using Docker Compose](#add-marquez-services-using-docker-compose)
-3. [Step 3: Add a Script for Initializing the Database in the Docker Container](#add-a-script-for-initializing-the-database-in-the-docker-container)
-4. [Step 4: Start Airflow with Marquez](#start-airflow-with-marquez)
-5. [Step 5: Write Airflow DAGs](#write-airflow-dags)
-6. [Step 6: View Collected Metadata](#view-collected-metadata)
-7. [Step 7: Troubleshoot a Failing DAG with Marquez](#troubleshoot-a-failing-dag-with-marquez)
+3. [Step 3: Start Airflow with Marquez](#start-airflow-with-marquez)
+4. [Step 4: Write Airflow DAGs](#write-airflow-dags)
+5. [Step 5: View Collected Metadata](#view-collected-metadata)
+6. [Step 6: Troubleshoot a Failing DAG with Marquez](#troubleshoot-a-failing-dag-with-marquez)
 
 ## Prerequisites
 
@@ -104,15 +103,9 @@ services:
     ports:
       - "6543:6543"
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - MARQUEZ_DB=marquez
-      - MARQUEZ_USER=marquez
-      - MARQUEZ_PASSWORD=marquez
-      - ALLOW_EMPTY_PASSWORD=yes
-    volumes:
-      - ./docker/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
-    command: ["postgres", "-c", "log_statement=all"]
+      - POSTGRES_USER=marquez
+      - POSTGRES_PASSWORD=marquez
+      - POSTGRES_DB=marquez
 
   example-db:
     image: postgres:12.1
@@ -120,15 +113,9 @@ services:
     ports:
       - "7654:5432"
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - EXAMPLE_USER=example
-      - EXAMPLE_PASSWORD=example
-      - EXAMPLE_DB=example
-      - ALLOW_EMPTY_PASSWORD=yes
-    volumes:
-      - ./docker/init-example-db.sh:/docker-entrypoint-initdb.d/init-db.sh
-    command: ["postgres", "-c", "log_statement=all"]
+      - POSTGRES_USER=example
+      - POSTGRES_PASSWORD=example
+      - POSTGRES_DB=example
     sysctls:
       - net.ipv4.tcp_keepalive_time=200
   
@@ -157,34 +144,6 @@ services:
 
 The above adds the Marquez API, database and Web UI, along with an additional Postgres database for the DAGs used in this example, to Astro's Docker container and configures them to use the scripts in the `docker` directory you previously downloaded from Marquez.
 
-## Add a Script for Initializing the Database in the Docker Container
-
-In the `docker` directory, create a script `init-example-db.sh`:
-
-```sh
-#!/bin/bash
-#
-# Copyright 2018-2023 contributors to the Marquez project
-# SPDX-License-Identifier: Apache-2.0
-#
-# Usage: $ ./init-db.sh
-
-set -eu
-
-psql -v ON_ERROR_STOP=1 --username "${POSTGRES_USER}" > /dev/null <<-EOSQL
-  CREATE USER ${EXAMPLE_USER};
-  ALTER USER ${EXAMPLE_USER} WITH PASSWORD '${EXAMPLE_PASSWORD}';
-  CREATE DATABASE ${EXAMPLE_DB};
-  GRANT ALL PRIVILEGES ON DATABASE ${EXAMPLE_DB} TO ${EXAMPLE_USER};
-EOSQL
-```
-
-Make it executable on the command line with:
-
-```sh
-$ chmod +x init-example-db.sh
-```
-
 ## Start Airflow with Marquez
 
 Now you can start all services. To do so, execute the following:
@@ -196,7 +155,8 @@ $ astro dev start
 **The above command will:**
 
 * start Airflow
-* start the Marquez API, database and UI
+* start Marquez, including its API, database and UI
+* create and start a Postgres server for DAG tasks
 
 To view the Airflow UI and verify it's running, open [http://localhost:8080](http://localhost:8080). Then, log in using the username and password `admin` / `admin`. You can also browse to [http://localhost:3000](http://localhost:3000) to view the Marquez UI.
 
