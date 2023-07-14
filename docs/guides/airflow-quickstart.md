@@ -26,7 +26,7 @@ Before you begin, make sure you have installed:
 
 * [Docker 17.05](https://docs.docker.com/install)+
 * [Astro CLI](https://docs.astronomer.io/astro/cli/overview)
-* [Subversion](https://subversion.apache.org/)
+* [curl](https://curl.se/)
 
 > **Note:** We recommend that you have allocated at least **2 CPUs** and **8 GB** of memory to Docker.
 
@@ -42,10 +42,12 @@ Use the Astro CLI to create and run an Airflow project locally that will integra
     $ astro dev init
     ```
 
-2. Using Subversion, download some scripts required by Marquez services:
+2. Using curl, change into new directory `docker` and download some scripts required by Marquez services:
 
     ```sh
-    svn checkout https://github.com/MarquezProject/marquez/trunk/docker
+    $ mkdir docker && cd docker
+    $ curl -O "https://raw.githubusercontent.com/vishnubob/wait-for-it/main/{entrypoint.sh,wait-for-it.sh}"
+    $ ..
     ```
 
     After executing the above, your project directory should look like this:
@@ -116,8 +118,6 @@ services:
       - POSTGRES_USER=example
       - POSTGRES_PASSWORD=example
       - POSTGRES_DB=example
-    sysctls:
-      - net.ipv4.tcp_keepalive_time=200
   
   api:
     image: marquezproject/marquez:latest
@@ -324,8 +324,8 @@ query2 = PostgresOperator(
     postgres_conn_id='example_db',
     sql='''
     INSERT INTO sums (value)
--       SELECT SUM(c.value) FROM counts AS c;
-+       SELECT SUM(c.value_1_to_10) FROM counts AS c;
+-       SELECT SUM(value) FROM counts;
++       SELECT SUM(value_1_to_10) FROM counts;
     '''
 )
 ```
