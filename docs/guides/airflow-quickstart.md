@@ -46,7 +46,7 @@ Use the Astro CLI to create and run an Airflow project locally that will integra
 
     ```sh
     $ mkdir docker && cd docker
-    $ curl -O "https://raw.githubusercontent.com/vishnubob/wait-for-it/main/{entrypoint.sh,wait-for-it.sh}"
+    $ curl -O "https://raw.githubusercontent.com/MarquezProject/marquez/main/docker/{entrypoint.sh,wait-for-it.sh}"
     $ ..
     ```
 
