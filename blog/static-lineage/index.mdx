@@ -18,7 +18,7 @@ OpenLineage 1.0.0, which is expected early next month, will add support for stat
 
 An initiative to add the provision of static lineage, sometimes also called "design" or "design-time" lineage, to OpenLineage came out of conversations with community members at Collibra and Manta.
 
-Data catalogs like those offered by Collibra and Manta will benefit from static lineage support, but so will other users. In one way, this addition represents an exciting new chapter in the growth of the project. In another, it represents a return to our roots.
+Data catalogs like those offered by Collibra and Manta will benefit from static lineage support, but so will other users. In one way, this addition represents an exciting new chapter in the history of the project. In another, it represents a return to our roots. Before OpenLineage focused on operational lineage, it supported a form of static lineage.
 
 #### What is Static Lineage?
 
@@ -43,12 +43,19 @@ In order to add static lineage to the spec, two new event types were proposed: `
 
 These new events will add facets at a point in time that will apply to an entity until a new version of the same facet is produced. 
 
+The first step in implementing static lineage was completed with the release of [OpenLineage 0.29.2](https://github.com/OpenLineage/OpenLineage/releases/tag/0.29.2), which included two types in the spec for "runless" metadata: a `DatasetEvent` and `JobEvent` (along with support for the new types in the Python client).
+
+The next steps will include changing the event lifecycle (from running to complete, failed, or aborted) to handle events of the new types, and adding facet deletion to handle the case in which a user adds and deletes a dataset in the same request.
+
+Adding support for static lineage in Marquez is also ongoing, and we are excited about the progress there. [Marquez 0.37.0](https://github.com/MarquezProject/marquez/releases/tag/0.37.0) includes support in the API for decoding static events via a new [`EventTypeResolver`](https://github.com/MarquezProject/marquez/pull/2495).
+
+
 #### More Information 
 
 For more details including the code changes, see:
 
 - the [static lineage proposal](https://github.com/OpenLineage/OpenLineage/blob/main/proposals/1837/static_lineage.md) by Julien Le Dem, Maciej Obuchowski, Benji Lampel and Ross Turk 
-- the [pull request](https://github.com/OpenLineage/OpenLineage/pull/1880) by Paweł Leszczyński
+- the initial [pull request](https://github.com/OpenLineage/OpenLineage/pull/1880) by Paweł Leszczyński
 
 
 
