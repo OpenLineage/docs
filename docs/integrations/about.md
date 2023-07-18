@@ -26,9 +26,9 @@ An empty column means it is not yet documented if the mechanism implements this 
 | Spark              | SparkListener     | Schema<br />Row count<br /> Column lineage    | ✔️                 |                    |             |                    |                        |                                     |                                   |                    |                       |                           |                            |                       |                |
 | Snowflake***       | Access History    | Lineage                                       |                   |                    |             |                    |                        |                                     |                                   |                    |                       |                           |                            |                       |                |
 
-* Uses the Rest SQL parser
-** Uses the BigQuery API
-*** Uses Snowflake query logs
+\* Uses the Rest SQL parser  
+\*\* Uses the BigQuery API  
+\*\*\* Uses Snowflake query logs
 
 ## Compatibility matrix
 
