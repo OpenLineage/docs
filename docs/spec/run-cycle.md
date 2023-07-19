@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # The Run Cycle
 
-The OpenLineage [object model](object-model.md) is event-based, and each event is called a Run State Update. These updates provide an OpenLineage backend with details about the activities of a Job.
+The OpenLineage [object model](object-model.md) is event-based and updates provide an OpenLineage backend with details about the activities of a Job.
 
 The OpenLineage Run Cycle has several defined states that correspond to changes in the state of a pipeline task. When a task transitions between these - e.g. it is initiated, finishes, or fails - a Run State Update is sent that describes what happened.
 
@@ -24,8 +24,16 @@ There are five run states currently defined in the OpenLineage [spec](https://op
 
 * `FAIL` to signify that the Job has failed
 
-* `OTHER` to provide additional metadata outside of the standard run cycle - e.g., on a run that has already completed
+We assume events describing a single run are accumulative and 
+`COMPLETE`, `ABORT` and `FAIL` are terminal events. Sending any of terminal events
+means no other events related to this run will be emitted. 
 
+Additionally, we allow `OTHER` to be sent anytime before the terminal states, 
+also before `START`. The purpose of this is the agility to send additional
+metadata outside standard run cycle - e.g., on a run that hasn't yet started 
+but is already awaiting the resources. 
+
+![image](./run-life-cycle.svg)
 
 ## Typical Scenarios
 
