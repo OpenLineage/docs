@@ -73,7 +73,7 @@ interface CustomColumnLineageVisitor {
   void collectExpressionDependencies(LogicalPlan node, ColumnLevelLineageBuilder builder);
 }
 ```
-and making it available for Service Loader (implementation class name has to be put in a resource file `META-INF/services/io.openlineage.spark3.agent.lifecycle.plan.column.CustomColumnLineageVisitor`).
+and making it available for Service Loader (implementation class name has to be put in a resource file `META-INF/services/io.openlineage.spark.agent.lifecycle.plan.column.CustomColumnLineageVisitor`).
 
 
 ## Future work
