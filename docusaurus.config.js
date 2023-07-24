@@ -23,9 +23,9 @@ const linksSocial = [
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'OpenLineage Docs',
-  tagline: 'OpenLineage Docs',
-  url: 'https://docs.openlineage.io',
+  title: 'OpenLineage',
+  tagline: 'OpenLineage',
+  url: 'https://openlineage.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
@@ -119,7 +119,7 @@ const config = {
     ({
       navbar: {
         logo: {
-          alt: 'OpenLineage Docs',
+          alt: 'OpenLineage',
           src: 'img/ol-logo.svg',
         },
         items: [
