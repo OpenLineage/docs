@@ -72,11 +72,11 @@ The listener can be enabled by adding the following configuration to a `spark-su
 ```bash
 spark-submit --conf "spark.extraListeners=io.openlineage.spark.agent.OpenLineageSparkListener" \
     --packages "io.openlineage:openlineage-spark:<spark-openlineage-version>" \
-    --conf "spark.openlineage.url=http://{openlineage.client.host}/api/v1/namespaces/spark_integration/" \
+    --conf "spark.openlineage.transport.url=http://{openlineage.client.host}/api/v1/namespaces/spark_integration/" \
     --class com.mycompany.MySparkApp my_application.jar
 ```
 
-The SparkListener reads its configuration from SparkConf parameters. These can be specified on the command line (e.g., `--conf "spark.openlineage.url=http://{openlineage.client.host}/api/v1/namespaces/my_namespace/job/the_job"`) or from the `conf/spark-defaults.conf` file.
+The SparkListener reads its configuration from SparkConf parameters. These can be specified on the command line (e.g., `--conf "spark.openlineage.transport.url=http://{openlineage.client.host}/api/v1/namespaces/my_namespace/job/the_job"`) or from the `conf/spark-defaults.conf` file.
 
 #### Spark Config Parameters
 
