@@ -34,7 +34,7 @@ You can make this file available to the client three ways:
 2. Put the file in the working directory.
 3. Put the file in `$HOME/.openlineage`.
 
-In `openlineage.yml`, use a standard transport interface to specify the transport type (`http`, `console`, `kafka`, or custom) and authorization parameters:
+In `openlineage.yml`, use a standard transport interface to specify the transport type (`http`, `console`, `kafka`, `file`, or custom) and authorization parameters:
 
 ```
 transport:
@@ -71,6 +71,11 @@ It can be installed also by specifying kafka client extension: `pip install open
 - config - string containing a Kafka producer config (required)
 - topic - string specifying the topic (required)
 - flush - boolean specifying whether or not Kafka should flush after each event. Default: true. (optional)
+
+#### File
+
+- log_file_path - string specifying the path of the file (if append is true, a file path is expected, otherwise a file prefix is expected).  (required)
+- append - boolean . If set to True, each event will be appended to a single file (log_file_path); otherwise, all events will be written separately in distinct files suffixed by a timestring. Default: false. (optional)
 
 ### Custom Transport Type
 
