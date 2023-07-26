@@ -74,8 +74,8 @@ It can be installed also by specifying kafka client extension: `pip install open
 
 #### File
 
-- log_file_path - string (required) specifying the path of the file (if append is true a file path is expected, otherwise a file prefix is expected).
-- append - boolean . If set to True, each event will be appended to a single file (log_file_path), otherwise, all event would be written separatly in distinct files suffixed by a timestring. Default: false. (optional)
+- log_file_path - string specifying the path of the file (if append is true, a file path is expected, otherwise a file prefix is expected).  (required)
+- append - boolean . If set to True, each event will be appended to a single file (log_file_path); otherwise, all events will be written separately in distinct files suffixed by a timestring. Default: false. (optional)
 
 ### Custom Transport Type
 
