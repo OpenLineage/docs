@@ -76,7 +76,7 @@ spark-submit --conf "spark.extraListeners=io.openlineage.spark.agent.OpenLineage
     --class com.mycompany.MySparkApp my_application.jar
 ```
 
-The SparkListener reads its configuration from SparkConf parameters. These can be specified on the command line (e.g., `--conf "spark.openlineage.url=http://{openlineage.client.host}/api/v1/namespaces/my_namespace/job/the_job"`) or from the `conf/spark-defaults.conf` file.
+The SparkListener reads its configuration from SparkConf parameters. These can be specified on the command line (e.g., `--conf "spark.openlineage.transporturl=http://{openlineage.client.host}/api/v1/namespaces/my_namespace/job/the_job"`) or from the `conf/spark-defaults.conf` file.
 
 #### Spark Config Parameters
 
@@ -140,8 +140,8 @@ If `spark.openlineage.transport.type` is set to `kafka`, then the below paramete
 ### Scheduling from Airflow
 
 The same parameters passed to `spark-submit` can be supplied from Airflow and other schedulers. If
-using the [marquez-airflow](../airflow/airflow.md) integration, each task in the DAG has its own Run id
-which can be connected to the Spark job run via the `openlineage.parentRunId` parameter. For example,
+using the [openlineage-airflow](../airflow/airflow.md) integration, each task in the DAG has its own Run id
+which can be connected to the Spark job run via the `spark.openlineage.parentRunId` parameter. For example,
 here is an example of a `DataProcPySparkOperator` that submits a Pyspark application on Dataproc:
 
 ```python
@@ -154,9 +154,12 @@ t1 = DataProcPySparkOperator(
     main='gs://bucket/your-prog.py',
     job_name=job_name,
     dataproc_pyspark_properties={
-      "spark.extraListeners": "marquez.spark.agent.SparkListener",
-      "spark.jars.packages": "io.github.marquezproject:marquez-spark:0.15.+",
-      "openlineage.url": f"{marquez_url}/api/v1/namespaces/{marquez_namespace}/jobs/dump_orders_to_gcs/runs/{{{{task_run_id(run_id, task)}}}}?api_key={api_key}"
+      "spark.extraListeners": "io.openlineage.spark.agent.OpenLineageSparkListener",
+      "spark.jars.packages": "io.openlineage:openlineage-spark:1.0.0+",
+      "spark.openlineage.transport.url": f"{openlineage_url}/api/v1/namespaces/{openlineage_namespace}/jobs/dump_orders_to_gcs/runs/{{{{lineage_run_id(run_id, task)}}}}?api_key={api_key}",
+      "spark.openlineage.namespace": openlineage_namespace,
+      "spark.openlineage.parentJobName": job_name,
+      "spark.openlineage.parentRunId": f"{{{{lineage_run_id(run_id, task)}}}}
     },
     dag=dag)
 ```
