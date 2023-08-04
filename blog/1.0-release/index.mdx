@@ -18,17 +18,20 @@ Announcing OpenLineage [v1.0](https://github.com/OpenLineage/OpenLineage/release
 
 It has become more and more apparent to us that managing data has become an O(n^2) problem. Every company is a data company, and every department within an organization is then again a mini data ecosystem in and of itself.  When departments interact, there’s a duplication of effort across pipeline tooling, and deployment of new tools can break existing lineage workflows. 
 
-This is why we’re seeing increasing demand for OpenLineage support, and we’re super excited to see more and more data engineers, developers and database managers joining our community. 
+This is why we’re seeing increasing demand for OpenLineage support across various tools, and we’re super excited to see more and more data engineers, developers and database managers joining our community. 
 
-Momentum seems to be growing behind OpenLineage as the dominant standard for runtime lineage collection. At the same time, a consensus appears to be forming that an open spec will get us closest to 100% coverage, one that is highly granular and also general-purpose enough to be consistent across various data workloads.
+Momentum seems to be growing behind OpenLineage as the industry standard for runtime lineage collection. At the same time, a consensus appears to be forming that an open spec will get us closest to 100% coverage of data ecosystem tooling, one that is highly granular and also general-purpose enough to be consistent across various data workloads.
 
 ### An Evolving Spec
 
-Now that we’re at v1.0, static lineage has made its way to OpenLineage! Traditionally, OpenLineage has focused on “runtime” lineage - i.e., metadata generated when jobs are run. Capturing information as transformations of datasets occur enables precise descriptions of those transformations. 
+Now that we’re at v1.0, static lineage has made its way to OpenLineage! Up till now, OpenLineage has focused on “runtime” lineage - i.e., metadata generated when jobs are run. Capturing information as transformations of datasets occur enables precise descriptions of those transformations. 
 
-The 1.0 release reflects the fact that demand has emerged for "design-time" lineage. The concept behind this is that even when datasets are not being touched, lineage metadata about them can still be useful and valuable.
+The 1.0 release reflects the fact that there is demand for "design-time" lineage. The concept behind this is that even when datasets are not being touched yet, lineage metadata about them can still be useful and valuable.
 
-Although operational lineage covers many use cases, some scenarios call for lineage about jobs that have not run - and might never do so.
+Although operational lineage covers many use cases, some scenarios call for lineage about jobs that have not run - and might never do so. 
+
+Also, in many cases, a combination of both static and runtime approaches provides the best operational results. For example, imagine that a dataset exists in a data warehouse and dashboarding tool for which a pipeline has always been broken. Static lineage will show not only that the dataset exists but also that the pipeline for it has never run or always fails.  
+
 
 ### Implementing Static Lineage
 
@@ -51,7 +54,7 @@ With the release of 1.0, we now support use cases like:
 - consuming facets from external systems
 - creating dataset symlinks more easily
 
-Static lineage promises to fill the blind spots that dynamic lineage could not reach, offering a macroscopic view of how data flows and is accessed throughout an entire organization.
+Static lineage promises to fill the blind spots that dynamic lineage alone could not reach, offering a macroscopic view of how data flows and is accessed throughout an entire organization.
 
 ### Additional Resources
 
