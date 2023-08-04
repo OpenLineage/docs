@@ -71,10 +71,10 @@ It can be installed also by specifying kafka client extension: `pip install open
 - config - string containing a Kafka producer config (required)
 - topic - string specifying the topic (required)
 
-There's a caveat for using `KafkaTransport` with Airflow integration. In this integration, Kafka producer needs to be created 
+There's a caveat for using `KafkaTransport` with Airflow integration. In this integration, a Kafka producer needs to be created 
 for each OpenLineage event. 
 It happens due to the Airflow execution and plugin model, which requires us to send messages from worker processes.
-Those are created dynamically for each task execution.
+These are created dynamically for each task execution.
 
 
 - flush - boolean specifying whether or not Kafka should flush after each event. Default: true. (optional)
