@@ -7,7 +7,7 @@ export const ItemBlog = ({ data }) => {
 
     const [focused, changeFocused] = useState(false);
     const authorObjects = data.frontMatter.authors
-    const authorStrings = authorObjects.map(obj => obj.name).join(', ')
+    const author = authorObjects.map(obj => obj.name).join(', ')
     return (
         <div className="blog-item w-full md:w-1/2 lg:w-1/3 p-4">
             <div className={`transition-all duration-300 hover:shadow-2xl shadow ${focused && 'focused'}`}>
@@ -32,7 +32,7 @@ export const ItemBlog = ({ data }) => {
                             <small className="pl-2 font-sans">{getDate(data.metadata.date)}</small>
                         </div>
                         <p className="pt-3 text-color-default">
-                            <strong><small className="font-sans">{authorStrings}</small></strong>
+                            <strong><small className="font-sans">{author}</small></strong>
                         </p>
                         <p className="pt-3 text-color-default">
                             {data.frontMatter.description}
