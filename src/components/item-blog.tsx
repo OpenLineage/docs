@@ -6,7 +6,11 @@ import { getDate } from "./utils"
 export const ItemBlog = ({ data }) => {
 
     const [focused, changeFocused] = useState(false);
-
+    const authors = []
+    const authorObjects = Object.entries(data.frontMatter.authors)
+    for (var author of authorObjects) {
+        authors.push(<small className="pl-2 font-sans">{author[1]['name']}</small>)
+    }
     return (
         <div className="blog-item w-full md:w-1/2 lg:w-1/3 p-4">
             <div className={`transition-all duration-300 hover:shadow-2xl shadow ${focused && 'focused'}`}>
@@ -28,7 +32,8 @@ export const ItemBlog = ({ data }) => {
                         </h4>
                         <div className="flex items-center text-color-default">
                             <Calendar className="stroke-current" />
-                            <small className="pl-2 font-sans">{getDate(data.metadata.date)} by {data.frontMatter.author}</small>
+                            <small className="pl-2 font-sans">{getDate(data.metadata.date)}</small>
+                            {authors}
                         </div>
                         <p className="pt-3 text-color-default">
                             {data.frontMatter.description}
