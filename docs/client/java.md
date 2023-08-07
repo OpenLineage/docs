@@ -164,6 +164,22 @@ transport:
 
 KafkaTransport depends on you to provide artifact `org.apache.kafka:kafka-clients:3.1.0` or compatible on your classpath.
 
+### [`KinesisTransport`](https://github.com/OpenLineage/OpenLineage/blob/main/client/java/src/main/java/io/openlineage/client/transports/KinesisTransport.java)
+
+If `transport.type` is set to `kinesis`, then the below parameters would be read and used when building KinesisProducer.
+Also, KinesisTransport depends on you to provide artifact `com.amazonaws:amazon-kinesis-producer:0.14.0` or compatible on your classpath.
+
+
+```yaml
+transport:
+  type: kinesis
+  streamName: some-stream-name
+  region: us-east-2
+  topicName: openlineage.events
+  properties:
+    # some kinesis properties
+```
+
 ### Error Handling via Transport
 
 ```java
