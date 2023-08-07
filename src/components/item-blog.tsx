@@ -6,10 +6,19 @@ import { getDate } from "./utils"
 export const ItemBlog = ({ data }) => {
 
     const [focused, changeFocused] = useState(false);
-    const authors = []
+    const authorStrings = []
     const authorObjects = Object.entries(data.frontMatter.authors)
-    for (var author of authorObjects) {
-        authors.push(<small className="pl-2 font-sans">{author[1]['name']}</small>)
+    const len = authorObjects.length
+    for (var i = 0; i < len; i++) {
+        if ((i + 1) == (len)) {
+            authorStrings.push(authorObjects[i][1]['name'])
+        } else {
+        authorStrings.push(authorObjects[i][1]['name']+',')
+        }
+    }
+    const authors = []
+    for (var author of authorStrings) {
+        authors.push(<small className="pl-2 font-sans">{author}</small>)
     }
     return (
         <div className="blog-item w-full md:w-1/2 lg:w-1/3 p-4">
@@ -33,8 +42,10 @@ export const ItemBlog = ({ data }) => {
                         <div className="flex items-center text-color-default">
                             <Calendar className="stroke-current" />
                             <small className="pl-2 font-sans">{getDate(data.metadata.date)}</small>
-                            {authors}
                         </div>
+                        <p className="pt-3 text-color-default">
+                            <strong>{authors}</strong>
+                        </p>
                         <p className="pt-3 text-color-default">
                             {data.frontMatter.description}
                         </p>
