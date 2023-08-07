@@ -25,7 +25,8 @@
             "summary": "Our second SF OpenLineage Meetup will take place on August 30th.",
             "date_modified": "2023-08-02T00:00:00.000Z",
             "author": {
-                "name": "Michael Robinson"
+                "name": "Michael Robinson",
+                "url": "https://www.github.com/merobi-hub"
             },
             "tags": []
         },
@@ -37,7 +38,8 @@
             "summary": "The release of OpenLineage 1.0 will add static lineage support.",
             "date_modified": "2023-07-18T00:00:00.000Z",
             "author": {
-                "name": "Michael Robinson"
+                "name": "Michael Robinson",
+                "url": "https://www.github.com/merobi-hub"
             },
             "tags": []
         },
@@ -49,7 +51,8 @@
             "summary": "A meetup is happening on June 22nd in New York. Please join us!",
             "date_modified": "2023-06-08T00:00:00.000Z",
             "author": {
-                "name": "Michael Robinson"
+                "name": "Michael Robinson",
+                "url": "https://www.github.com/merobi-hub"
             },
             "tags": []
         },
@@ -61,7 +64,8 @@
             "summary": "The 2023 Ecosystem Survey will provide us with important information about our users, their opinions and needs.",
             "date_modified": "2023-05-23T00:00:00.000Z",
             "author": {
-                "name": "Michael Robinson"
+                "name": "Michael Robinson",
+                "url": "https://www.github.com/merobi-hub"
             },
             "tags": []
         },
@@ -73,7 +77,8 @@
             "summary": "An open standard offers the best route to a universally adopted, persistent metadata specification.",
             "date_modified": "2023-05-22T00:00:00.000Z",
             "author": {
-                "name": "Michael Robinson"
+                "name": "Michael Robinson",
+                "url": "https://www.github.com/merobi-hub"
             },
             "tags": []
         },
@@ -85,7 +90,8 @@
             "summary": "The first SF OpenLineage Meetup will take place on June 27th.",
             "date_modified": "2023-05-16T00:00:00.000Z",
             "author": {
-                "name": "Michael Robinson"
+                "name": "Michael Robinson",
+                "url": "https://www.github.com/merobi-hub"
             },
             "tags": []
         },
@@ -97,7 +103,8 @@
             "summary": "The next OpenLineage Meetup will take place on April 26th in NYC.",
             "date_modified": "2023-04-04T00:00:00.000Z",
             "author": {
-                "name": "Michael Robinson"
+                "name": "Michael Robinson",
+                "url": "https://www.github.com/merobi-hub"
             },
             "tags": []
         },
@@ -109,7 +116,8 @@
             "summary": "The OpenLineage community will be gathering on March 30th at Data Council Austin -- join us!",
             "date_modified": "2023-02-28T00:00:00.000Z",
             "author": {
-                "name": "Michael Robinson"
+                "name": "Michael Robinson",
+                "url": "https://www.github.com/merobi-hub"
             },
             "tags": []
         },
@@ -121,7 +129,8 @@
             "summary": "The inaugural Data Lineage Meetup will take place on March 9th in Providence, RI.",
             "date_modified": "2023-02-08T00:00:00.000Z",
             "author": {
-                "name": "Michael Robinson"
+                "name": "Michael Robinson",
+                "url": "https://www.github.com/merobi-hub"
             },
             "tags": []
         },
@@ -133,7 +142,8 @@
             "summary": "OpenLineage has achieved Incubation status with the LFAI & Data.",
             "date_modified": "2023-01-17T00:00:00.000Z",
             "author": {
-                "name": "Michael Robinson"
+                "name": "Michael Robinson",
+                "url": "https://www.github.com/merobi-hub"
             },
             "tags": []
         },
@@ -145,7 +155,8 @@
             "summary": "Namespaces enable powerful insights into distributed workflows.",
             "date_modified": "2023-01-13T00:00:00.000Z",
             "author": {
-                "name": "Michael Robinson"
+                "name": "Michael Robinson",
+                "url": "https://www.github.com/merobi-hub"
             },
             "tags": []
         },
@@ -157,7 +168,7 @@
             "summary": "Adopting OpenLineage as part of our portfolio allows MANTA to bring detailed run-time lineage to our customers.",
             "date_modified": "2022-10-31T00:00:00.000Z",
             "author": {
-                "name": "Ernie Ostic, SVP of Product at MANTA"
+                "name": "Ernie Ostic"
             },
             "tags": []
         },
@@ -169,7 +180,8 @@
             "summary": "Built-in support for custom extractors makes OpenLineage a highly adaptable solution for pipelines that use Airflow.",
             "date_modified": "2022-09-08T00:00:00.000Z",
             "author": {
-                "name": "Maciej Obuchowski & Michael Robinson"
+                "name": "Maciej Obuchowski",
+                "url": "https://www.github.com/mobuchowski"
             },
             "tags": []
         },
@@ -181,7 +193,8 @@
             "summary": "A technical deep-dive on how the Airflow OSS and OpenLineage OSS projects interact.",
             "date_modified": "2022-09-07T00:00:00.000Z",
             "author": {
-                "name": "Benji Lampel"
+                "name": "Benji Lampel",
+                "url": "https://www.github.com/denimalpaca"
             },
             "tags": []
         },
@@ -193,7 +206,8 @@
             "summary": "Column-level lineage helps organizations navigate a complex regulatory landscape.",
             "date_modified": "2022-09-02T00:00:00.000Z",
             "author": {
-                "name": "Michael Robinson"
+                "name": "Michael Robinson",
+                "url": "https://www.github.com/merobi-hub"
             },
             "tags": []
         },
@@ -205,7 +219,8 @@
             "summary": "The Python client enables users to create custom integrations.",
             "date_modified": "2022-07-29T00:00:00.000Z",
             "author": {
-                "name": "Michael Robinson"
+                "name": "Michael Robinson",
+                "url": "https://www.github.com/merobi-hub"
             },
             "tags": []
         },
@@ -217,7 +232,7 @@
             "summary": "A new collaboration between Microsoft and OpenLineage is making lineage extraction possible for Azure Databricks and Microsoft Purview users.",
             "date_modified": "2022-06-14T00:00:00.000Z",
             "author": {
-                "name": "Chandru Sugunan, Will Johnson & Michael Robinson"
+                "name": "Chandru Sugunan"
             },
             "tags": []
         },
@@ -229,7 +244,8 @@
             "summary": "The OpenLineage Adapter offers Snowflake's enterprise users a powerful tool for analyzing their pipelines.",
             "date_modified": "2022-04-27T00:00:00.000Z",
             "author": {
-                "name": "Michael Robinson"
+                "name": "Michael Robinson",
+                "url": "https://www.github.com/merobi-hub"
             },
             "tags": []
         },
@@ -253,7 +269,8 @@
             "summary": "At Data Agility Day 2021, Julien Le Dem and Kevin Mellott outlined their approach to data lineage and discussed various approaches to implementing it in the real world.",
             "date_modified": "2021-11-17T00:00:00.000Z",
             "author": {
-                "name": "Ross Turk"
+                "name": "Ross Turk",
+                "url": "https://www.github.com/rossturk"
             },
             "tags": []
         },
@@ -265,7 +282,8 @@
             "summary": "Spark ushered in a brand new age of data democratization... and left us with a mess of hidden dependencies, stale datasets, and failed jobs.",
             "date_modified": "2021-11-05T00:00:00.000Z",
             "author": {
-                "name": "Michael Collado"
+                "name": "Michael Collado",
+                "url": "https://www.github.com/collado-mike"
             },
             "tags": []
         },
@@ -289,7 +307,8 @@
             "summary": "Each time dbt runs, it generates a trove of metadata about datasets and the work it performs with them. In this post, I’d like to show you how to harvest this metadata and put it to good use.",
             "date_modified": "2021-09-21T00:00:00.000Z",
             "author": {
-                "name": "Ross Turk"
+                "name": "Ross Turk",
+                "url": "https://www.github.com/rossturk"
             },
             "tags": []
         },
@@ -301,7 +320,8 @@
             "summary": "We are pleased to announce the initial release of OpenLineage. This release includes the core specification, data model, clients, and integrations with common data tools.",
             "date_modified": "2021-09-03T00:00:00.000Z",
             "author": {
-                "name": "Julien Le Dem"
+                "name": "Julien Le Dem",
+                "url": "https://www.github.com/julienledem/"
             },
             "tags": []
         },
@@ -313,7 +333,8 @@
             "summary": "Good data is paramount to making good decisions- but how can you trust the quality of your data and its dependencies?",
             "date_modified": "2021-08-12T00:00:00.000Z",
             "author": {
-                "name": "Michael Collado"
+                "name": "Michael Collado",
+                "url": "https://www.github.com/collado-mike"
             },
             "tags": []
         },
@@ -325,7 +346,8 @@
             "summary": "Facets are a self-contained definition of one aspect of a job, dataset, or run at the time the event happened. They make the OpenLineage model extensible.",
             "date_modified": "2021-07-27T00:00:00.000Z",
             "author": {
-                "name": "Julien Le Dem"
+                "name": "Julien Le Dem",
+                "url": "https://www.github.com/julienledem/"
             },
             "tags": []
         },
@@ -337,7 +359,8 @@
             "summary": "Becoming a LF AI & Data project ensures that OpenLineage can never belong to a company, or even a group of developers; it belongs to us all.",
             "date_modified": "2021-07-22T00:00:00.000Z",
             "author": {
-                "name": "Julien Le Dem"
+                "name": "Julien Le Dem",
+                "url": "https://www.github.com/julienledem/"
             },
             "tags": []
         },
@@ -349,7 +372,8 @@
             "summary": "Taking advantage of recent changes to the Marquez API, this post shows how to diagnose job failures and explore the impact of code changes on downstream dependents.",
             "date_modified": "2021-07-08T00:00:00.000Z",
             "author": {
-                "name": "Michael Collado"
+                "name": "Michael Collado",
+                "url": "https://www.github.com/collado-mike"
             },
             "tags": []
         },
@@ -361,7 +385,8 @@
             "summary": "In this blog post, we'll discuss how lineage metadata can be used to automatically backfill DAGs with complex upstream and downstream dependencies.",
             "date_modified": "2021-06-30T00:00:00.000Z",
             "author": {
-                "name": "Willy Lulciuc"
+                "name": "Willy Lulciuc",
+                "url": "https://www.github.com/wslulciuc"
             },
             "tags": []
         },
@@ -373,7 +398,8 @@
             "summary": "The data world and the service world have many similarities but also a few crucial differences.",
             "date_modified": "2021-06-20T00:00:00.000Z",
             "author": {
-                "name": "Julien Le Dem"
+                "name": "Julien Le Dem",
+                "url": "https://www.github.com/julienledem/"
             },
             "tags": []
         }
