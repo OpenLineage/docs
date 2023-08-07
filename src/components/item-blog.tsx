@@ -6,19 +6,12 @@ import { getDate } from "./utils"
 export const ItemBlog = ({ data }) => {
 
     const [focused, changeFocused] = useState(false);
-    const authorStrings = []
-    const authorObjects = Object.entries(data.frontMatter.authors)
+    const authorObjects = data.frontMatter.authors
     const len = authorObjects.length
-    for (var i = 0; i < len; i++) {
-        if ((i + 1) == (len)) {
-            authorStrings.push(authorObjects[i][1]['name'])
-        } else {
-        authorStrings.push(authorObjects[i][1]['name']+',')
-        }
-    }
+    const authorStrings = authorObjects.map(obj => obj.name).join(', ')
     const authors = []
     for (var author of authorStrings) {
-        authors.push(<small className="pl-2 font-sans">{author}</small>)
+        authors.push(<small className="font-sans">{author}</small>)
     }
     return (
         <div className="blog-item w-full md:w-1/2 lg:w-1/3 p-4">
