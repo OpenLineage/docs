@@ -72,7 +72,7 @@ The listener can be enabled by adding the following configuration to a `spark-su
 ```bash
 spark-submit --conf "spark.extraListeners=io.openlineage.spark.agent.OpenLineageSparkListener" \
     --packages "io.openlineage:openlineage-spark:<spark-openlineage-version>" \
-    --conf "spark.openlineage.url=http://{openlineage.client.host}/api/v1/namespaces/spark_integration/" \
+    --conf "spark.openlineage.transport.url=http://{openlineage.client.host}/api/v1/namespaces/spark_integration/" \
     --class com.mycompany.MySparkApp my_application.jar
 ```
 
@@ -99,7 +99,8 @@ The following parameters can be specified:
 | Parameter                                    | Definition                                                                                                                                  | Example               |
 ----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|-----------------------
 | spark.openlineage.transport.endpoint          | Path to resource                                                                                                                            | /api/v1/lineage       |
-| spark.openlineage.transport.apiKey            | An API key to be used when sending events to the OpenLineage server                                                                         | abcdefghijk           |
+| spark.openlineage.transport.auth.type         | The type of authentication method to use                                                                                                    | api_key               |
+| spark.openlineage.transport.auth.apiKey       | An API key to be used when sending events to the OpenLineage server                                                                         | abcdefghijk           |
 | spark.openlineage.transport.timeout           | Timeout for sending OpenLineage info in milliseconds                                                                                        | 5000                  |
 | spark.openlineage.transport.urlParams.xyz     | A URL parameter (replace xyz) and value to be included in requests to the OpenLineage API server                                            | abcdefghijk           |
 | spark.openlineage.transport.url               | The hostname of the OpenLineage API server where events should be reported, it can have other properties embeded                            | http://localhost:5000 |
