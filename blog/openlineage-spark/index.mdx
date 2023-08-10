@@ -63,8 +63,9 @@ spark.extraListeners	io.openlineage.spark.agent.OpenLineageSparkListener
 ```
 This can be added to your cluster’s `spark-defaults.conf` file, in which case it will record lineage for every job executed on the cluster, or added to specific jobs on submission via the `spark-submit` command. Once the listener is activated, it needs to know where to report lineage events, as well as the namespace of your jobs. Add the following additional configuration lines to your `spark-defaults.conf` file or your Spark submission script:
 ```
-spark.openlineage.host		{your.openlineage.host}
-spark.openlineage.namespace	{your.openlineage.namespace}
+spark.openlineage.transport.url     {your.openlineage.url}
+spark.openlineage.transport.type    'http'
+spark.openlineage.namespace	        {your.openlineage.namespace}
 ```
 ## The Demo
 
@@ -130,7 +131,8 @@ spark = (SparkSession.builder.master('local').appName('openlineage_spark_test')
              # Install and set up the OpenLineage listener
              .config('spark.jars.packages', 'io.openlineage:openlineage-spark:0.3.+')
              .config('spark.extraListeners', 'io.openlineage.spark.agent.OpenLineageSparkListener')
-             .config('spark.openlineage.host', 'http://marquez-api:5000')
+             .config('spark.openlineage.transport.url', 'http://marquez-api:5000')
+             .config('spark.openlineage.transport.type', 'http')
              .config('spark.openlineage.namespace', 'spark_integration')
              
              # Configure the Google credentials and project id
