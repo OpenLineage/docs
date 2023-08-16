@@ -29,7 +29,8 @@ Follow the steps below to enable OpenLineage on Databricks.
     spark.extraListeners io.openlineage.spark.agent.OpenLineageSparkListener
     spark.openlineage.version v1
     ```
-* Set the cluster `init` script to be: `dbfs:/databricks/openlineage/open-lineage-init-script.sh`.
+* Create manually `open-lineage-init-script.sh` through **Workspace** section in Databricks UI. Paste the script content from [this file](https://github.com/OpenLineage/OpenLineage/blob/main/integration/spark/databricks/open-lineage-init-script.sh).
+* Make the cluster init script to point to previously created file. For example, if you create `open-lineage-init-script.sh` within **Shared**, then init scripts should point to `/Shared/open-lineage-init-script.sh`. User's workspace may be used as well. Alternatively, init script can be located in S3. Please mind that **DBFS** located init script are no longer supported (starting September 2023).
 
 :::info
 Please note that the `init` script approach is currently obligatory to install OpenLineage on Databricks. The Openlineage integration relies on providing a custom extra listener class `io.openlineage.spark.agent.OpenLineageSparkListener` that has to be available on the classpath at the driver startup. Providing it with `spark.jars.packages` does not work on the Databricks platform as of August 2022.  
