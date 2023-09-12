@@ -140,10 +140,17 @@ const config = {
         disableSwitch: true,
         respectPrefersColorScheme: false,
       },  
+      // announcementBar: {
+      //   id: 'survey_alert',
+      //   content: 'Help chart the course of OpenLineage! The 2023 Ecosystem Survey is live and accepting responses. <a href="https://forms.gle/cPk3skNgnB4iab9H6">Submit yours today</a>.',
+      //   backgroundColor: '#f26522',
+      //   textColor: '#091E42',
+      //   isCloseable: false,
+      // },
       announcementBar: {
         id: 'survey_alert',
-        content: 'Help chart the course of OpenLineage! The 2023 Ecosystem Survey is live and accepting responses. <a href="https://forms.gle/cPk3skNgnB4iab9H6">Submit yours today</a>.',
-        backgroundColor: '#f26522',
+        content: 'Meetup alert: join us at <a href="https://airflowsummit.org/">Airflow Summit</a> on September 18. Learn more and sign up <a href="https://www.meetup.com/openlineage/events/295488014/?utm_medium=referral&utm_campaign=share-btn_savedevents_share_modal&utm_source=link">here</a>.',
+        backgroundColor: '#03fc5e',
         textColor: '#091E42',
         isCloseable: false,
       }
