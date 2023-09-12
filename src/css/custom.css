@@ -472,8 +472,12 @@ img[src*="#full-width"] {
   width: 100%;
 }
 
+.EcosystemPage .py-5 {
+  width: 150pt;
+}
+
 .EcosystemPage img {
-  width: initial;
+  width: 100%;
 }
 
 .EcosystemPage table thead,
