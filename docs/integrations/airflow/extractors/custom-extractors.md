@@ -74,6 +74,8 @@ OPENLINEAGE_EXTRACTORS: >-
   full.path.to.SecondExtractor
 ``` 
 
+Remember to make sure that the path is importable for scheduler and worker.
+
 ## Adding extractor to OpenLineage Airflow integration package
 
 All Openlineage extractors are defined in [this path](https://github.com/OpenLineage/OpenLineage/blob/main/integration/airflow/openlineage/airflow/extractors).
@@ -100,8 +102,8 @@ _extractors = list(
 
 There are two common problems associated with custom extractors. 
 First, is wrong path provided to `OPENLINEAGE_EXTRACTORS`. 
-The path needs to be exactly the same as one you'd use from your code. If the path is wrong, the extractor won't get imported
-and OpenLineage events won't be emitted.
+The path needs to be exactly the same as one you'd use from your code. If the path is wrong or non-importable from worker, 
+plugin will fail to load the extractors and proper OpenLineage events for that operator won't be emitted.
 
 Second one, and maybe more insidious, are imports from Airflow. Due to the fact that OpenLineage code gets instantiated when
 Airflow worker itself starts, any import from Airflow can be unnoticeably cyclical. This causes OpenLineage extraction to fail.
