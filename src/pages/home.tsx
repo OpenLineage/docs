@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react"
-import Layout from '@theme/Layout';
+import Layout from '@theme/Layout'
 import { Button } from "../components/ui"
 import ItemBlog from "../components/item-blog"
 import Footer from "../components/footer"
@@ -220,8 +220,8 @@ const Newsletter = () => {
 
               <Button
                   title="Newsletter"
-                  to='bit.ly/OL_news'
-                  type="extbutton"
+                  to='https://bit.ly/OL_news'
+                  type="link"
                   iconRight={<Inbox />}
                   className="mx-5"
               />
