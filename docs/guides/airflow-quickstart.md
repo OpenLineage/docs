@@ -13,12 +13,13 @@ In this example, we'll walk you through how to enable Airflow DAGs to send linea
 
 ### Table of Contents
 
-1. [Step 1: Configure Your Astro Project](#configure-your-astro-project)
-2. [Step 2: Add Marquez Services Using Docker Compose](#add-marquez-services-using-docker-compose)
-3. [Step 3: Start Airflow with Marquez](#start-airflow-with-marquez)
-4. [Step 4: Write Airflow DAGs](#write-airflow-dags)
-5. [Step 5: View Collected Metadata](#view-collected-metadata)
-6. [Step 6: Troubleshoot a Failing DAG with Marquez](#troubleshoot-a-failing-dag-with-marquez)
+1. [Step 1: Install the OpenLineage Airflow Provider](#install-the-openlineage-airflow-provider)
+2. [Step 2: Configure Your Astro Project](#configure-your-astro-project)
+3. [Step 3: Add Marquez Services Using Docker Compose](#add-marquez-services-using-docker-compose)
+4. [Step 4: Start Airflow with Marquez](#start-airflow-with-marquez)
+5. [Step 5: Write Airflow DAGs](#write-airflow-dags)
+6. [Step 6: View Collected Metadata](#view-collected-metadata)
+7. [Step 7: Troubleshoot a Failing DAG with Marquez](#troubleshoot-a-failing-dag-with-marquez)
 
 ## Prerequisites
 
@@ -29,6 +30,20 @@ Before you begin, make sure you have installed:
 * [curl](https://curl.se/)
 
 > **Note:** We recommend that you have allocated at least **2 CPUs** and **8 GB** of memory to Docker.
+
+## Install the OpenLineage Airflow Provider
+
+Use the following commands to install the official OpenLineage Provider and its requirements:
+
+```bash
+pip install apache-airflow-providers-openlineage && 
+pip install apache-airflow-providers-common-sql && 
+pip install attrs && 
+pip install openlineage-integration-common && 
+pip install openlineage-python
+```
+
+For more details about the Provider and its minimum requirements, see the Airflow [docs](https://airflow.apache.org/docs/apache-airflow-providers-openlineage/stable/index.html). 
 
 ## Configure Your Astro Project
 
@@ -67,7 +82,6 @@ Use the Astro CLI to create and run an Airflow project locally that will integra
     ```bash
     OPENLINEAGE_URL=http://host.docker.internal:5000
     OPENLINEAGE_NAMESPACE=example
-    AIRFLOW__LINEAGE__BACKEND=openlineage.lineage_backend.OpenLineageBackend
     AIRFLOW_CONN_EXAMPLE_DB=postgres://example:example@host.docker.internal:7654/example
     ```
 
@@ -343,4 +357,4 @@ _Congrats_! You successfully step through a troubleshooting scenario of a failin
 
 ## Feedback
 
-What did you think of this example? You can reach out to us on [Slack](http://bit.ly/MqzSlack) and leave us feedback, or [open a pull request](https://github.com/MarquezProject/marquez/blob/main/CONTRIBUTING.md#submitting-a-pull-request) with your suggestions!
+What did you think of this example? You can reach out to us on [Slack](http://bit.ly/MqzSlack) and leave us feedback, or [open a pull request](https://github.com/MarquezProject/marquez/blob/main/CONTRIBUTING.md#submitting-a-pull-request) with your suggested changes!
