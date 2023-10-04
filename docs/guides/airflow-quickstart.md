@@ -13,13 +13,12 @@ In this example, we'll walk you through how to enable Airflow DAGs to send linea
 
 ### Table of Contents
 
-1. [Step 1: Install the OpenLineage Airflow Provider](#install-the-openlineage-airflow-provider)
-2. [Step 2: Configure Your Astro Project](#configure-your-astro-project)
-3. [Step 3: Add Marquez Services Using Docker Compose](#add-marquez-services-using-docker-compose)
-4. [Step 4: Start Airflow with Marquez](#start-airflow-with-marquez)
-5. [Step 5: Write Airflow DAGs](#write-airflow-dags)
-6. [Step 6: View Collected Metadata](#view-collected-metadata)
-7. [Step 7: Troubleshoot a Failing DAG with Marquez](#troubleshoot-a-failing-dag-with-marquez)
+1. [Step 1: Configure Your Astro Project](#configure-your-astro-project)
+2. [Step 2: Add Marquez Services Using Docker Compose](#add-marquez-services-using-docker-compose)
+3. [Step 3: Start Airflow with Marquez](#start-airflow-with-marquez)
+4. [Step 4: Write Airflow DAGs](#write-airflow-dags)
+5. [Step 5: View Collected Metadata](#view-collected-metadata)
+6. [Step 6: Troubleshoot a Failing DAG with Marquez](#troubleshoot-a-failing-dag-with-marquez)
 
 ## Prerequisites
 
@@ -30,20 +29,6 @@ Before you begin, make sure you have installed:
 * [curl](https://curl.se/)
 
 > **Note:** We recommend that you have allocated at least **2 CPUs** and **8 GB** of memory to Docker.
-
-## Install the OpenLineage Airflow Provider
-
-Use the following commands to install the official OpenLineage Provider and its requirements:
-
-```bash
-pip install apache-airflow-providers-openlineage && 
-pip install apache-airflow-providers-common-sql && 
-pip install attrs && 
-pip install openlineage-integration-common && 
-pip install openlineage-python
-```
-
-For more details about the Provider and its minimum requirements, see the Airflow [docs](https://airflow.apache.org/docs/apache-airflow-providers-openlineage/stable/index.html). 
 
 ## Configure Your Astro Project
 
@@ -77,9 +62,18 @@ Use the Astro CLI to create and run an Airflow project locally that will integra
     .gitignore            include
     ```
 
-3. To configure Astro to send lineage metadata to Marquez, add the following environment variables below to your Astro project's `.env` file:
+3. Add the OpenLineage Airflow Provider and the Common SQL Provider to the requirements.txt file:
 
-    ```bash
+    ```txt
+    apache-airflow-providers-common-sql==1.7.2
+    apache-airflow-providers-openlineage==1.1.0
+    ```
+
+    For details about the Provider and its minimum requirements, see the Airflow [docs](https://airflow.apache.org/docs/apache-airflow-providers-openlineage/stable/index.html).
+
+4. To configure Astro to send lineage metadata to Marquez, add the following environment variables below to your Astro project's `.env` file:
+
+    ```env
     OPENLINEAGE_URL=http://host.docker.internal:5000
     OPENLINEAGE_NAMESPACE=example
     AIRFLOW_CONN_EXAMPLE_DB=postgres://example:example@host.docker.internal:7654/example
@@ -87,10 +81,18 @@ Use the Astro CLI to create and run an Airflow project locally that will integra
 
     These variables allow Airflow to connect with the OpenLineage API and send events to Marquez.
 
-3. It is a good idea to have Airflow use a different port for Postgres than the default 5432, so run the following command to use port 5678 instead:
+5. It is a good idea to have Airflow use a different port for Postgres than the default 5432, so run the following command to use port 5678 instead:
 
     ```sh
     astro config set postgres.port 5678
+    ```
+
+6. Check the Dockerfile to verify that your installed version of the Astro Runtime is 9.0.0+ (to ensure that you will be using Airflow 2.7.0+).
+
+    For example:
+
+    ```txt
+    FROM quay.io/astronomer/astro-runtime:9.1.0
     ```
 
 ## Add Marquez and Database Services Using Docker Compose
@@ -114,7 +116,7 @@ services:
       - api
 
   db:
-    image: postgres:12.1
+    image: postgres:14.9
     container_name: marquez-db
     ports:
       - "6543:6543"
@@ -124,7 +126,7 @@ services:
       - POSTGRES_DB=marquez
 
   example-db:
-    image: postgres:12.1
+    image: postgres:14.9
     container_name: example-db
     ports:
       - "7654:5432"
@@ -243,7 +245,7 @@ with DAG(
         postgres_conn_id='example_db',
         sql='''
         CREATE TABLE IF NOT EXISTS sums (
-        value INTEGER
+            value INTEGER
         );'''
     )
 
@@ -273,7 +275,7 @@ To view DAG metadata collected by Marquez from Airflow, browse to the Marquez UI
   <img src={require("./docs/current-search-count.png").default} />
 </p>
 
-If you take a quick look at the lineage graph for `counter.inc`, you should see `.public.counts` as an output dataset and `sum.total` as a downstream job!
+If you take a quick look at the lineage graph for `counter.inc`, you should see `example.public.counts` as an output dataset and `sum.total` as a downstream job!
 
 ![](./docs/astro-current-lineage-view-job.png)
 
@@ -294,15 +296,7 @@ query1 = PostgresOperator(
 -   CREATE TABLE IF NOT EXISTS counts (
 -     value INTEGER
 -   );''',
-+    DO $$
-+    BEGIN
-+      IF EXISTS(SELECT *
-+        FROM information_schema.columns
-+        WHERE table_name='counts' and column_name='value')
-+      THEN
-+        ALTER TABLE "counts" RENAME COLUMN "value" TO "value_1_to_10";
-+      END IF;
-+    END $$;
++   ALTER TABLE "counts" RENAME COLUMN "value" TO "value_1_to_10";
 +   '''
 )
 ```
@@ -314,11 +308,8 @@ query2 = PostgresOperator(
     sql='''
 -    INSERT INTO counts (value)
 +    INSERT INTO counts (value_1_to_10)
-         VALUES (%(value)s)
+         VALUES (1)
     ''',
-    parameters={
-      'value': random.randint(1, 10)
-    }
 )
 ```
 
