@@ -219,8 +219,16 @@ const Newsletter = () => {
               </p>
 
               <Button
-                  title="Newsletter"
+                  title="Sign up"
                   to='https://bit.ly/OL_news'
+                  type="link"
+                  iconRight={<Inbox />}
+                  className="mx-5"
+              />
+
+              <Button
+                  title="Archive"
+                  to="https://bit.ly/OL_news_archive"
                   type="link"
                   iconRight={<Inbox />}
                   className="mx-5"
