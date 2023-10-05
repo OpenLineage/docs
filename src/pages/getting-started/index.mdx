@@ -36,15 +36,21 @@ $ ./docker/up.sh
 
 :::info
 Pass the `--build` flag to the script to build images from source, or `--tag X.Y.Z` to use a tagged image.
+
+Users on Apple silicon architecture encountering platform-related errors from Docker might need to enable emulation and customize the Docker services. Tips can be found in [this guide](https://medium.com/@email.bajaj/docker-image-platform-compatibility-issue-with-mac-silicon-processors-m1-m2-ee2d5ea3ff0e).
+
+The Marquez backend uses port `5432`.
 :::
 
-To view the Marquez UI and verify it's running, open [http://localhost:3000](http://localhost:3000). The UI enables you to discover dependencies between jobs and the datasets they produce and consume via the lineage graph, view run-level metadata of current and previous job runs, and much more.
+To view the Marquez UI and verify it's running, open [http://localhost:3000](http://localhost:3000). 
+
+**The UI enables you to discover dependencies between jobs and the datasets they produce and consume via the lineage graph, view run-level metadata of current and previous job runs, and much more.**
 
 ## Collect Run-Level Metadata
 
-Marquez is an [LF AI & DATA](https://lfaidata.foundation) incubation project to collect, aggregate, and visualize a data ecosystem’s metadata. Marquez is the reference implementation of the OpenLineage standard.
+Marquez, the reference implementation of the OpenLineage standard, is an [LF AI & DATA](https://lfaidata.foundation) incubation project to collect, aggregate, and visualize a data ecosystem’s metadata.
 
-In this example, we show how you can collect dataset and job metadata using the [Marquez](https://marquezproject.github.io/marquez/) [LineageAPI](https://marquezproject.github.io/marquez/openapi.html#tag/Lineage) and [UI](https://github.com/MarquezProject/marquez/tree/main/web).
+In this example, you will learn how to collect dataset and job metadata using the [Marquez](https://marquezproject.github.io/marquez/) [LineageAPI](https://marquezproject.github.io/marquez/openapi.html#tag/Lineage) and [UI](https://github.com/MarquezProject/marquez/tree/main/web).
 
 When you submit a lineage event, you first need to define a unique `run ID` similar to `d46e465b-d358-4d32-83d4-df660ff614dd`. UUID format is recommended, and it should be unique. This run ID will enable the tracking of run-level metadata over time for a _job_ that may have a name, like `my-job`. So, let's get started!
 
@@ -60,7 +66,7 @@ Use the run ID `d46e465b-d358-4d32-83d4-df660ff614dd` to **start** the run for `
 
 ```bash
 $ curl -X POST http://localhost:5000/api/v1/lineage \
-  -H 'Content-Type: application/json' \
+  -i -H 'Content-Type: application/json' \
   -d '{
         "eventType": "START",
         "eventTime": "2020-12-28T19:52:00.001+10:00",
@@ -92,7 +98,7 @@ Use `d46e465b-d358-4d32-83d4-df660ff614dd` to **complete** the run for `my-job` 
 
 ```bash
 $ curl -X POST http://localhost:5000/api/v1/lineage \
-  -H 'Content-Type: application/json' \
+  -i -H 'Content-Type: application/json' \
   -d '{
         "eventType": "COMPLETE",
         "eventTime": "2020-12-28T20:52:00.001+10:00",
@@ -138,13 +144,13 @@ To view lineage metadata collected by Marquez, browse to the UI by visiting [htt
 
 ### View Job Metadata
 
-You should see the job `namespace`, `name`, `my-input` as an input dataset and `my-output` as an output dataset in the lineage graph and the job run marked as `COMPLETED `: 
+In the search result, you should see the job `namespace` and `name`, and in the lineage graph you should see `my-input` as an input dataset and `my-output` as an output dataset. In the `RUN HISTORY` tab on the Job Detail page below the graph, the job run state should be `COMPLETED`. 
 
 ![image](./marquez-current-tab-view-job-completed.png)
 
 ### View Input Dataset Metadata
 
-Finally, click on the output dataset `my-output` for `my-job`. You should see the dataset `name`, `schema`, and `description`:
+Finally, click on the output dataset `my-output` for `my-job`. Metadata displayed includes the name, column names, data types, and more:
 
 ![image](./marquez-current-tab-view-dataset-output.png)
 
@@ -155,16 +161,16 @@ In this simple example, we showed you how to use Marquez to collect dataset and 
 ## Next Steps
 
 * Take a look at Marquez's Airflow [example](https://github.com/MarquezProject/marquez/tree/main/examples/airflow) to learn how to enable OpenLineage metadata collection for Airflow DAGs and troubleshoot failing DAGs using Marquez.
-* Watch [Cross-platform Data Lineage with OpenLineage](https://www.youtube.com/watch?v=pLBVGIPuwEo).
-* Watch [Observability for Data Pipelines with OpenLineage](https://2021.berlinbuzzwords.de/member/julien-le-dem).
+* Watch [Cross-platform Data Lineage with OpenLineage](https://www.databricks.com/dataaisummit/session/cross-platform-data-lineage-openlineage/).
+* Watch [Column-level Lineage is Coming to the Rescue](https://youtu.be/xFVSZCCbZlY).
+* Watch [Observability for Data Pipelines with OpenLineage](https://youtu.be/HEJFCQLwdtk?si=ILsLdCfJqCP8SifQ).
 * Watch [Data Observability and Pipelines: OpenLineage and Marquez](https://mattturck.com/datakin/).
-* Watch [Data Lineage and Observability with Marquez and OpenLineage](https://bigdatatechwarsaw.eu/edition-2021/).
 * Listen to [Solving Data Lineage Tracking And Data Discovery At WeWork](https://www.dataengineeringpodcast.com/marquez-data-lineage-episode-111).
 * Listen to [Unlocking The Power of Data Lineage In Your Platform with OpenLineage](https://www.dataengineeringpodcast.com/openlineage-data-lineage-specification-episode-187).
 
 ## Feedback
 
-What did you think of this guide? We would love to hear feedback, and we can be found on the [OpenLineage Slack](http://bit.ly/OpenLineageSlack).
+What did you think of this guide? We would love to hear feedback, and we can be found on the [OpenLineage Slack](https://bit.ly/OLslack).
 
 <br></br><br></br>
 </div>
