@@ -7,9 +7,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const links = [
   { to: '/getting-started', label: 'Getting Started', position: 'left' },
   { to: '/resources', label: 'Resources', position: 'left' },
-  { to: '/blog', label: 'Blog', position: 'left' },
-  { to: '/ecosystem', label: 'Ecosystem', position: 'left' },
+    { to: '/ecosystem', label: 'Ecosystem', position: 'left' },
   { to: '/community', label: 'Community', position: 'left' },
+  { to: '/blog', label: 'Blog', position: 'left' },
   { to: '/docs', label: 'Docs', position: 'left' },
 ]
 
@@ -35,14 +35,8 @@ const config = {
     linksSocial: linksSocial
   },
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'openlineage', // Usually your GitHub org/user name.
-  projectName: 'docs', // Usually your repo name.
-
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
+  organizationName: 'openlineage',
+  projectName: 'docs',
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -55,8 +49,6 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/OpenLineage/docs/tree/main/',
         },
@@ -66,8 +58,9 @@ const config = {
         blog: {
           blogTitle: 'Blog',
           blogDescription: 'Data lineage is the foundation for a new generation of powerful, context-aware data tools and best practices. OpenLineage enables consistent collection of lineage metadata, creating a deeper understanding of how data is produced and used.',
-          blogSidebarCount: 0,
-          blogSidebarTitle: 'All our posts',
+          showReadingTime: true,
+          blogSidebarCount: 5,
+          blogSidebarTitle: 'Recent posts',
           feedOptions: {
             type: ['json'],
             copyright: `Copyright © ${new Date().getFullYear()} The Linux Foundation®. All rights reserved.`,
@@ -103,7 +96,6 @@ const config = {
       };
     },
     [
-      // Use custom home page with blog plugin
       "./plugins/home-blog-plugin",
       {
         id: "blogs",
