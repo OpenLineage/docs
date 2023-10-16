@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 395 288" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs/>
+<clipPath id="ArtboardFrame">
+<rect height="288" width="395" x="0" y="0"/>
+</clipPath>
+<g clip-path="url(#ArtboardFrame)" id="Untitled" vectornator:layerName="Untitled">
+<path d="M0 0L395 0L395 0L395 288L395 288L0 288L0 288L0 0L0 0Z" fill="#917964" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M74 124L-76 358L113 478L263 244L74 124Z" fill="#ff7d0b" fill-opacity="0.5" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M281 220L487 192L477 119L271 147L281 220Z" fill="#0e4f86" fill-opacity="0.5" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M26 56L154 100L202-43L74-87L26 56Z" fill="#066a94" fill-opacity="0.5" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M232 191L186 415L503 480L549 256L232 191Z" fill="#cda59b" fill-opacity="0.5" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M40 115L-171 230L-32 485L178 370L40 115Z" fill="#fea641" fill-opacity="0.5" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M262 76L309 143L532-11L485-78L262 76Z" fill="#523d4d" fill-opacity="0.5" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M48 127L194 327L252 284L106 84L48 127Z" fill="#bc4906" fill-opacity="0.5" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M12 7L-20 49L64 112L96 70L12 7Z" fill="#006291" fill-opacity="0.5" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M90 221L19 306L101 372L172 287L90 221Z" fill="#e2d2bb" fill-opacity="0.5" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M161 48L114 79L199 204L246 173L161 48Z" fill="#2d6085" fill-opacity="0.5" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M120 152L107 226L131 229L144 155L120 152Z" fill="#511e02" fill-opacity="0.5" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M4 45L-154 197L-95 257L62 105L4 45Z" fill="#447484" fill-opacity="0.5" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M84 143L-144 178L-130 263L97 228L84 143Z" fill="#de7308" fill-opacity="0.5" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M118 196L103 212L210 306L225 290L118 196Z" fill="#6e2700" fill-opacity="0.5" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M188 51L368 24L334-202L154-175L188 51Z" fill="#cb7540" fill-opacity="0.5" fill-rule="nonzero" opacity="1" stroke="none"/>
+</g>
+</svg>
