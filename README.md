@@ -15,19 +15,10 @@ If you are familiar with the GitHub pull request process, it is easy to propose 
 
 1. Fork this project.
 2. Make a new directory in `/blog`. The name of the directory will become part of the posts's URL, so choose something descriptive and unique.
-2. Create an `index.mdx` file in the new directory containing your blog content. Use one of the other posts as a template. The `title`, `date`, `author`, `image`, `banner`, and `description` front matter fields are all required.
-3. Create artwork! The `banner.svg` image will be shown at the top of the blog post, and should have dimensions of 670x160. The `image.svg` will be shown in the blog index, and should have dimensions of 670x480. These should both be SVG files.
-4. Build the site locally if you want to see it in a browser and build confidence in your formatting choices.
-5. Commit your changes and submit a pull request. 
-
-To match the artwork on the rest of the site, you can use sketchbeast.com to create your images:
-
-1. First, choose a source image to use as inspiration - perhaps something thematically related to your post, or an inside joke. It'll be our little secret.
-2. Then, upload the image to sketchbeast.com, change "mixed shapes" to "rectangles", and click the button. Feel free to play with the other settings as you like, but stick with rectangles.
-3. Download the resulting SVG using the button on the image in the film strip at the bottom of the screen, and crop to the proper size.
-4. Delight in being the only person who knows what the source image was; resolve to choose something more subversive/clever next time.
-
-(If you'd rather not go through all of this, feel free to submit your PR without artwork and we'll make something for you - we like doing it, it's fun!) 
+3. Create an `index.mdx` file in the new directory containing your blog content. Use one of the other posts as a template. The `title`, `date`, `authors`, and `description` front matter fields are all required.
+4. Add your author information -- name, title, url (optional), and image_url (optional) -- to `blog/authors.yml`. 
+5. Build the site locally if you want to see it in a browser and build confidence in your formatting choices.
+6. Commit your changes and submit a pull request. 
 
 ### Changes to basepages
 
