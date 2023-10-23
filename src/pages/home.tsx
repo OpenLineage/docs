@@ -24,7 +24,6 @@ export default function Main({ recentPosts }): JSX.Element {
         <Deploy />
         <Participate />
         <Newsletter />
-        <Blog>{blogList}</Blog>
         <Footer />
       </div>
     </Layout>
@@ -274,18 +273,5 @@ const Deploy = () => {
             />
         </div>
       </div>
-  )
-}
-
-const Blog = ({ children }) => {
-  return (
-    <div className="container mx-auto px-0 pb-40">
-      <div className="px-4 py-12 text-center lg:py-14 lg:px-0">
-        <h2 className="text-color-1 text-5xl lg:text-6xl">
-          Blog
-        </h2>
-      </div>
-      <div className="flex flex-wrap">{children}</div>
-    </div>
   )
 }
