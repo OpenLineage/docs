@@ -208,33 +208,36 @@ const Participate = () => {
 
 const Newsletter = () => {
   return (
-      <div className="boxed bg-bgalt">
-          <div className="px-4 py-12 text-center lg:py-14">
-              <h2 className="text-color-1 text-3xl lg:text-4xl">
-                  How to Get the Newsletter
-              </h2>
-              <p className="mt-5 text-lg py-3">
-                  Stay abreast of the latest developments in the community by subscribing to the monthly newsletter.
-              </p>
-
-              <Button
-                  title="Sign up"
-                  to='https://bit.ly/OL_news'
-                  type="link"
-                  iconRight={<Inbox />}
-                  className="mx-5"
-              />
-
-              <Button
-                  title="Archive"
-                  to="https://bit.ly/OL_news_archive"
-                  type="link"
-                  iconRight={<Inbox />}
-                  className="mx-5"
-              />
-
+    <div className="boxed bg-bgalt">
+        <div className="px-4 py-12 text-center lg:py-14">
+            <h2 className="text-color-1 text-3xl lg:text-4xl">
+                How to Get the Newsletter
+            </h2>
+            <p className="mt-5 text-lg py-3">
+                Stay abreast of the latest developments in the community by subscribing to the monthly newsletter.
+            </p>
+            <Button
+                title="Sign up"
+                to='https://bit.ly/OL_news'
+                type="link"
+                iconRight={<Inbox />}
+                className="mx-5"
+            />
+            <Button
+                title="Archive"
+                to="https://bit.ly/OL_news_archive"
+                type="link"
+                iconRight={<Inbox />}
+                className="mx-5"
+            />
+        </div>
+    <div className="text-center pt-8">&nbsp;</div>
+      <div className="container text-center">
+          <div className="row">
+              <p>&nbsp;</p>
           </div>
-      </div>
+      </div>      
+    </div>
   )
 }
 
