@@ -1,8 +1,7 @@
 ---
 sidebar_position: 4
+title: Apache Flink
 ---
-
-# Apache Flink
 
 :::caution
 This integration is considered experimental: only specific workflows and use cases are supported.

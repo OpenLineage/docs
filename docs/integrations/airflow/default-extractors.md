@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Exposing lineage in Airflow operators
+title: Exposing Lineage in Airflow Operators
 ---
 
 OpenLineage 0.17.0+ makes adding lineage to your data pipelines easy through support of direct modification of Airflow operators. This means that custom operators—built in-house or forked from another project—can provide you and your team with lineage data without requiring modification of the OpenLineage project. The data will still go to your lineage backend of choice, most commonly using the `OPENLINEAGE_URL` environment variable.

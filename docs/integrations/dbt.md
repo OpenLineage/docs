@@ -1,8 +1,7 @@
 ---
 sidebar_position: 5
+title: dbt
 ---
-
-# dbt
 
 dbt (data build tool) is a powerful transformation engine. It operates on data already within a warehouse, making it easy for data engineers to build complex pipelines from the comfort of their laptops. While it doesn’t perform extraction and loading of data, it’s extremely powerful at transformations.
 

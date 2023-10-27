@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Using the Airflow integration
+title: Using the Airflow Integration
 ---
 
 #### PREREQUISITES
