@@ -1,8 +1,7 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
+title: Testing Custom Extractors
 ---
-
-# Testing custom extractors
 
 OpenLineage comes with a variety of extractors for Airflow operators out of the box, but not every operator is covered. And if you are using a custom operator you or your team wrote, you'll certainly need to write a custom extractor. This guide will walk you through how to set up testing in a local dev environment, the most important data structures to write tests for, unit testing private functions, and some notes on troubleshooting.
 

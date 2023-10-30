@@ -1,8 +1,7 @@
 ---
 sidebar_position: 2
+title: Quickstart with Databricks
 ---
-
-# Quickstart with Databricks
 
 OpenLineage's [Spark Integration](https://github.com/OpenLineage/OpenLineage/blob/a2d39a7a6f02474b2dfd1484f3a6d2810a5ffe30/integration/spark/README.md) can be installed on Databricks leveraging `init` scripts. Please note, Databricks on Google Cloud does not currently support the DBFS CLI, so the proposed solution will not work on Google Cloud until that feature is enabled. 
 
@@ -10,7 +9,7 @@ OpenLineage's [Spark Integration](https://github.com/OpenLineage/OpenLineage/blo
 * [GCP Databricks Init Scripts](https://docs.gcp.databricks.com/clusters/init-scripts.html)
 * [AWS Databricks Init Scripts](https://docs.databricks.com/clusters/init-scripts.html)
 
-### Enable OpenLineage
+## Enable OpenLineage
 
 Follow the steps below to enable OpenLineage on Databricks.
 
@@ -36,7 +35,7 @@ Follow the steps below to enable OpenLineage on Databricks.
 Please note that the `init` script approach is currently obligatory to install OpenLineage on Databricks. The Openlineage integration relies on providing a custom extra listener class `io.openlineage.spark.agent.OpenLineageSparkListener` that has to be available on the classpath at the driver startup. Providing it with `spark.jars.packages` does not work on the Databricks platform as of August 2022.  
 :::
 
-### Verify Initialization
+## Verify Initialization
 
 A successful initialization will emit logs in the `Log4j output` that look similar to the following:
 
@@ -48,7 +47,7 @@ YY/MM/DD HH:mm:ss INFO OpenLineageContext: Init OpenLineageContext: Args: Argume
 YY/MM/DD HH:mm:ss INFO AsyncEventQueue: Process of event SparkListenerApplicationStart(Databricks Shell,Some(app-XXX-0000),YYYY,root,None,None,None) by listener OpenLineageSparkListener took Xs.
 ```
 
-### Create a Dataset
+## Create a Dataset
 
 Open a notebook and create an example dataset with:
 ```python
@@ -58,7 +57,7 @@ spark.createDataFrame([
 ]).write.mode("overwrite").saveAsTable("default.temp")
 ```
 
-### Observe OpenLineage Events
+## Observe OpenLineage Events
 
 To troubleshoot or observe OpenLineage information in Databricks, see the `Log4j output` in the Cluster definition's `Driver Logs`.
 

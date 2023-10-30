@@ -1,8 +1,7 @@
 ---
-sidebar_position: 1
+sidebar_position: 4
+title: Quickstart with Jupyter
 ---
-
-# Quickstart with Jupyter
 
 Trying out the Spark integration is super easy if you already have Docker Desktop and git installed. 
 

@@ -1,13 +1,11 @@
 ---
 sidebar_position: 1
+title: Apache Spark
 ---
-
 
 :::info
 This integation is known to work with Apache Spark 2.4 and later.
 :::
-
-# Apache Spark
 
 Spark jobs typically run on clusters of machines. A single machine hosts the "driver" application,
 which constructs a graph of jobs - e.g., reading data from a source, filtering, transforming, and

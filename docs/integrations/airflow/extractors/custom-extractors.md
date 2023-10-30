@@ -1,8 +1,7 @@
 ---
 sidebar_position: 1
+title: Custom Extractors
 ---
-
-# Custom extractors
 
 This integration works by detecting which Airflow operators your DAG is using, and extracting lineage data from them using corresponding extractors.
 

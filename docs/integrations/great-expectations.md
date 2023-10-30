@@ -1,8 +1,7 @@
 ---
 sidebar_position: 6
+title: Great Expectations
 ---
-
-# Great Expectations
 
 Great Expectations is a robust data quality tool. It runs suites of checks, called expectations, over a defined dataset. This dataset can be a table in a database, or a Spark or Pandas dataframe. Expectations are run by checkpoints, which are configuration files that describe not just the expectations to use, but also any batching, runtime configurations, and, importantly, the action list of actions run after the expectation suite completes.
 
