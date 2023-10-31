@@ -14,7 +14,7 @@ A dataset, or `table`, is organized according to a producer, namespace, database
 
 | Producer | Namespace | Name | Example Namespace | Example Name |
 | -------- | --------- | ---- | ----------------- | ------------ |
-| Postgres | postgres + host + port | database + table | postgres://db.foo.com:6543 | metrics.sales.orders |
+| Postgres | postgres + host + port | database + schema + table | postgres://db.foo.com:6543 | metrics.sales.orders |
 | MySQL | mysql + host + port | database + table | mysql://db.foo.com:6543 | metrics.orders | 
 | S3 | s3 + bucket | path | s3://sales-metrics | orders.csv |
 | GCS | gcs + bucket | path | gcs://sales-metrics | orders.csv |
