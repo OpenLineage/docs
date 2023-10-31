@@ -33,7 +33,7 @@ Example:
                     },
                     "column_two": {
                         "nullCount": 132,
-                        "distincCount": 11,
+                        "distinctCount": 11,
                         "sum": 500,
                         "count": 234,
                         "min": 111,
