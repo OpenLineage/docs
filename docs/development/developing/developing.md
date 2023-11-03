@@ -35,5 +35,5 @@ The following environment variables are available commonly for both Java and Pyt
 
 ### SQL parser
 
-We've created SQL parser that allows you to extract lineage from SQL statements. The parser is implemented in Rust, however, it's also available as a [Python library](https://pypi.org/project/openlineage-sql/).
-You can take a look at it's documentation [here](../sql) or code on [GitHub](https://github.com/OpenLineage/OpenLineage/tree/main/integration/sql).
+We've created SQL parser that allows you to extract lineage from SQL statements. The parser is implemented in Rust; however, it's also available as a [Python library](https://pypi.org/project/openlineage-sql/).
+You can take a look at its code on [GitHub](https://github.com/OpenLineage/OpenLineage/tree/main/integration/sql).
