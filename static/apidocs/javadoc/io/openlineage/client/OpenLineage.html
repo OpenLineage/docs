@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10,"i30":10,"i31":10,"i32":10,"i33":10,"i34":10,"i35":10,"i36":10,"i37":10,"i38":10,"i39":10,"i40":10,"i41":10,"i42":10,"i43":10,"i44":10,"i45":10,"i46":10,"i47":10,"i48":10,"i49":10,"i50":10,"i51":10,"i52":10,"i53":10,"i54":10,"i55":10,"i56":10,"i57":10,"i58":10,"i59":10,"i60":10,"i61":10,"i62":10,"i63":10,"i64":10,"i65":10,"i66":10,"i67":10,"i68":10,"i69":10,"i70":10,"i71":10,"i72":10,"i73":10,"i74":10,"i75":10,"i76":10,"i77":10,"i78":10,"i79":10,"i80":10,"i81":10,"i82":10,"i83":10,"i84":10,"i85":10,"i86":10,"i87":10,"i88":10,"i89":10,"i90":10,"i91":10,"i92":10,"i93":10,"i94":10,"i95":10,"i96":10,"i97":10,"i98":10,"i99":10,"i100":10,"i101":10,"i102":10,"i103":10,"i104":10,"i105":10,"i106":10,"i107":10,"i108":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10,"i30":10,"i31":10,"i32":10,"i33":10,"i34":10,"i35":10,"i36":10,"i37":10,"i38":10,"i39":10,"i40":10,"i41":10,"i42":10,"i43":10,"i44":10,"i45":10,"i46":10,"i47":10,"i48":10,"i49":10,"i50":10,"i51":10,"i52":10,"i53":10,"i54":10,"i55":10,"i56":10,"i57":10,"i58":10,"i59":10,"i60":10,"i61":10,"i62":10,"i63":10,"i64":10,"i65":10,"i66":10,"i67":10,"i68":10,"i69":10,"i70":10,"i71":10,"i72":10,"i73":10,"i74":10,"i75":10,"i76":10,"i77":10,"i78":10,"i79":10,"i80":10,"i81":10,"i82":10,"i83":10,"i84":10,"i85":10,"i86":10,"i87":10,"i88":10,"i89":10,"i90":10,"i91":10,"i92":10,"i93":10,"i94":10,"i95":10,"i96":10,"i97":10,"i98":10,"i99":10,"i100":10,"i101":10,"i102":10,"i103":10,"i104":10,"i105":10,"i106":10,"i107":10,"i108":10,"i109":10,"i110":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -590,6 +590,20 @@ extends java.lang.Object</pre>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="OpenLineage.JobFacetsBuilder.html" title="class in io.openlineage.client">OpenLineage.JobFacetsBuilder</a></span></code></th>
 <td class="colLast">
 <div class="block">builder class for JobFacets</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="OpenLineage.JobTypeJobFacet.html" title="class in io.openlineage.client">OpenLineage.JobTypeJobFacet</a></span></code></th>
+<td class="colLast">
+<div class="block">model class for JobTypeJobFacet</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="OpenLineage.JobTypeJobFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.JobTypeJobFacetBuilder</a></span></code></th>
+<td class="colLast">
+<div class="block">builder class for JobTypeJobFacet</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -1415,13 +1429,14 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i53" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.JobFacets.html" title="class in io.openlineage.client">OpenLineage.JobFacets</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newJobFacets(io.openlineage.client.OpenLineage.SourceCodeJobFacet,io.openlineage.client.OpenLineage.OwnershipJobFacet,io.openlineage.client.OpenLineage.SQLJobFacet,io.openlineage.client.OpenLineage.SourceCodeLocationJobFacet,io.openlineage.client.OpenLineage.DocumentationJobFacet)">newJobFacets</a></span>&#8203;(<a href="OpenLineage.SourceCodeJobFacet.html" title="class in io.openlineage.client">OpenLineage.SourceCodeJobFacet</a>&nbsp;sourceCode,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newJobFacets(io.openlineage.client.OpenLineage.JobTypeJobFacet,io.openlineage.client.OpenLineage.SourceCodeJobFacet,io.openlineage.client.OpenLineage.OwnershipJobFacet,io.openlineage.client.OpenLineage.SQLJobFacet,io.openlineage.client.OpenLineage.SourceCodeLocationJobFacet,io.openlineage.client.OpenLineage.DocumentationJobFacet)">newJobFacets</a></span>&#8203;(<a href="OpenLineage.JobTypeJobFacet.html" title="class in io.openlineage.client">OpenLineage.JobTypeJobFacet</a>&nbsp;jobType,
+            <a href="OpenLineage.SourceCodeJobFacet.html" title="class in io.openlineage.client">OpenLineage.SourceCodeJobFacet</a>&nbsp;sourceCode,
             <a href="OpenLineage.OwnershipJobFacet.html" title="class in io.openlineage.client">OpenLineage.OwnershipJobFacet</a>&nbsp;ownership,
             <a href="OpenLineage.SQLJobFacet.html" title="class in io.openlineage.client">OpenLineage.SQLJobFacet</a>&nbsp;sql,
             <a href="OpenLineage.SourceCodeLocationJobFacet.html" title="class in io.openlineage.client">OpenLineage.SourceCodeLocationJobFacet</a>&nbsp;sourceCodeLocation,
             <a href="OpenLineage.DocumentationJobFacet.html" title="class in io.openlineage.client">OpenLineage.DocumentationJobFacet</a>&nbsp;documentation)</code></th>
 <td class="colLast">
-<div class="block">Factory method for JobFacets@param sourceCode the sourceCode</div>
+<div class="block">Factory method for JobFacets@param jobType the jobType</div>
 </td>
 </tr>
 <tr id="i54" class="altColor">
@@ -1432,6 +1447,22 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i55" class="rowColor">
+<td class="colFirst"><code><a href="OpenLineage.JobTypeJobFacet.html" title="class in io.openlineage.client">OpenLineage.JobTypeJobFacet</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newJobTypeJobFacet(java.lang.String,java.lang.String,java.lang.String)">newJobTypeJobFacet</a></span>&#8203;(java.lang.String&nbsp;processingType,
+                  java.lang.String&nbsp;integration,
+                  java.lang.String&nbsp;jobType)</code></th>
+<td class="colLast">
+<div class="block">Factory method for JobTypeJobFacet@param processingType Job processing type like: BATCH or STREAMING</div>
+</td>
+</tr>
+<tr id="i56" class="altColor">
+<td class="colFirst"><code><a href="OpenLineage.JobTypeJobFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.JobTypeJobFacetBuilder</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newJobTypeJobFacetBuilder()">newJobTypeJobFacetBuilder</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Creates a builder for JobTypeJobFacet</div>
+</td>
+</tr>
+<tr id="i57" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.LifecycleStateChangeDatasetFacet.html" title="class in io.openlineage.client">OpenLineage.LifecycleStateChangeDatasetFacet</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newLifecycleStateChangeDatasetFacet(io.openlineage.client.OpenLineage.LifecycleStateChangeDatasetFacet.LifecycleStateChange,io.openlineage.client.OpenLineage.LifecycleStateChangeDatasetFacetPreviousIdentifier)">newLifecycleStateChangeDatasetFacet</a></span>&#8203;(<a href="OpenLineage.LifecycleStateChangeDatasetFacet.LifecycleStateChange.html" title="enum in io.openlineage.client">OpenLineage.LifecycleStateChangeDatasetFacet.LifecycleStateChange</a>&nbsp;lifecycleStateChange,
                                    <a href="OpenLineage.LifecycleStateChangeDatasetFacetPreviousIdentifier.html" title="class in io.openlineage.client">OpenLineage.LifecycleStateChangeDatasetFacetPreviousIdentifier</a>&nbsp;previousIdentifier)</code></th>
@@ -1439,14 +1470,14 @@ extends java.lang.Object</pre>
 <div class="block">Factory method for LifecycleStateChangeDatasetFacet@param lifecycleStateChange The lifecycle state change.</div>
 </td>
 </tr>
-<tr id="i56" class="altColor">
+<tr id="i58" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.LifecycleStateChangeDatasetFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.LifecycleStateChangeDatasetFacetBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newLifecycleStateChangeDatasetFacetBuilder()">newLifecycleStateChangeDatasetFacetBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for LifecycleStateChangeDatasetFacet</div>
 </td>
 </tr>
-<tr id="i57" class="rowColor">
+<tr id="i59" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.LifecycleStateChangeDatasetFacetPreviousIdentifier.html" title="class in io.openlineage.client">OpenLineage.LifecycleStateChangeDatasetFacetPreviousIdentifier</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newLifecycleStateChangeDatasetFacetPreviousIdentifier(java.lang.String,java.lang.String)">newLifecycleStateChangeDatasetFacetPreviousIdentifier</a></span>&#8203;(java.lang.String&nbsp;name,
                                                      java.lang.String&nbsp;namespace)</code></th>
@@ -1454,14 +1485,14 @@ extends java.lang.Object</pre>
 <div class="block">Factory method for LifecycleStateChangeDatasetFacetPreviousIdentifier@param name the name</div>
 </td>
 </tr>
-<tr id="i58" class="altColor">
+<tr id="i60" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.LifecycleStateChangeDatasetFacetPreviousIdentifierBuilder.html" title="class in io.openlineage.client">OpenLineage.LifecycleStateChangeDatasetFacetPreviousIdentifierBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newLifecycleStateChangeDatasetFacetPreviousIdentifierBuilder()">newLifecycleStateChangeDatasetFacetPreviousIdentifierBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for LifecycleStateChangeDatasetFacetPreviousIdentifier</div>
 </td>
 </tr>
-<tr id="i59" class="rowColor">
+<tr id="i61" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.NominalTimeRunFacet.html" title="class in io.openlineage.client">OpenLineage.NominalTimeRunFacet</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newNominalTimeRunFacet(java.time.ZonedDateTime,java.time.ZonedDateTime)">newNominalTimeRunFacet</a></span>&#8203;(java.time.ZonedDateTime&nbsp;nominalStartTime,
                       java.time.ZonedDateTime&nbsp;nominalEndTime)</code></th>
@@ -1469,14 +1500,14 @@ extends java.lang.Object</pre>
 <div class="block">Factory method for NominalTimeRunFacet@param nominalStartTime An [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp representing the nominal start time (included) of the run.</div>
 </td>
 </tr>
-<tr id="i60" class="altColor">
+<tr id="i62" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.NominalTimeRunFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.NominalTimeRunFacetBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newNominalTimeRunFacetBuilder()">newNominalTimeRunFacetBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for NominalTimeRunFacet</div>
 </td>
 </tr>
-<tr id="i61" class="rowColor">
+<tr id="i63" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.OutputDataset.html" title="class in io.openlineage.client">OpenLineage.OutputDataset</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newOutputDataset(java.lang.String,java.lang.String,io.openlineage.client.OpenLineage.DatasetFacets,io.openlineage.client.OpenLineage.OutputDatasetOutputFacets)">newOutputDataset</a></span>&#8203;(java.lang.String&nbsp;namespace,
                 java.lang.String&nbsp;name,
@@ -1486,33 +1517,33 @@ extends java.lang.Object</pre>
 <div class="block">Factory method for OutputDataset@param namespace The namespace containing that dataset</div>
 </td>
 </tr>
-<tr id="i62" class="altColor">
+<tr id="i64" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.OutputDatasetBuilder.html" title="class in io.openlineage.client">OpenLineage.OutputDatasetBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newOutputDatasetBuilder()">newOutputDatasetBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for OutputDataset</div>
 </td>
 </tr>
-<tr id="i63" class="rowColor">
+<tr id="i65" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.OutputDatasetFacet.html" title="interface in io.openlineage.client">OpenLineage.OutputDatasetFacet</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newOutputDatasetFacet()">newOutputDatasetFacet</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i64" class="altColor">
+<tr id="i66" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.OutputDatasetOutputFacets.html" title="class in io.openlineage.client">OpenLineage.OutputDatasetOutputFacets</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newOutputDatasetOutputFacets(io.openlineage.client.OpenLineage.OutputStatisticsOutputDatasetFacet)">newOutputDatasetOutputFacets</a></span>&#8203;(<a href="OpenLineage.OutputStatisticsOutputDatasetFacet.html" title="class in io.openlineage.client">OpenLineage.OutputStatisticsOutputDatasetFacet</a>&nbsp;outputStatistics)</code></th>
 <td class="colLast">
 <div class="block">Factory method for OutputDatasetOutputFacets@param outputStatistics the outputStatistics</div>
 </td>
 </tr>
-<tr id="i65" class="rowColor">
+<tr id="i67" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.OutputDatasetOutputFacetsBuilder.html" title="class in io.openlineage.client">OpenLineage.OutputDatasetOutputFacetsBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newOutputDatasetOutputFacetsBuilder()">newOutputDatasetOutputFacetsBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for OutputDatasetOutputFacets</div>
 </td>
 </tr>
-<tr id="i66" class="altColor">
+<tr id="i68" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.OutputStatisticsOutputDatasetFacet.html" title="class in io.openlineage.client">OpenLineage.OutputStatisticsOutputDatasetFacet</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newOutputStatisticsOutputDatasetFacet(java.lang.Long,java.lang.Long)">newOutputStatisticsOutputDatasetFacet</a></span>&#8203;(java.lang.Long&nbsp;rowCount,
                                      java.lang.Long&nbsp;size)</code></th>
@@ -1520,28 +1551,28 @@ extends java.lang.Object</pre>
 <div class="block">Factory method for OutputStatisticsOutputDatasetFacet@param rowCount The number of rows written to the dataset</div>
 </td>
 </tr>
-<tr id="i67" class="rowColor">
+<tr id="i69" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.OutputStatisticsOutputDatasetFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.OutputStatisticsOutputDatasetFacetBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newOutputStatisticsOutputDatasetFacetBuilder()">newOutputStatisticsOutputDatasetFacetBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for OutputStatisticsOutputDatasetFacet</div>
 </td>
 </tr>
-<tr id="i68" class="altColor">
+<tr id="i70" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.OwnershipDatasetFacet.html" title="class in io.openlineage.client">OpenLineage.OwnershipDatasetFacet</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newOwnershipDatasetFacet(java.util.List)">newOwnershipDatasetFacet</a></span>&#8203;(java.util.List&lt;<a href="OpenLineage.OwnershipDatasetFacetOwners.html" title="class in io.openlineage.client">OpenLineage.OwnershipDatasetFacetOwners</a>&gt;&nbsp;owners)</code></th>
 <td class="colLast">
 <div class="block">Factory method for OwnershipDatasetFacet@param owners The owners of the dataset.</div>
 </td>
 </tr>
-<tr id="i69" class="rowColor">
+<tr id="i71" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.OwnershipDatasetFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.OwnershipDatasetFacetBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newOwnershipDatasetFacetBuilder()">newOwnershipDatasetFacetBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for OwnershipDatasetFacet</div>
 </td>
 </tr>
-<tr id="i70" class="altColor">
+<tr id="i72" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.OwnershipDatasetFacetOwners.html" title="class in io.openlineage.client">OpenLineage.OwnershipDatasetFacetOwners</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newOwnershipDatasetFacetOwners(java.lang.String,java.lang.String)">newOwnershipDatasetFacetOwners</a></span>&#8203;(java.lang.String&nbsp;name,
                               java.lang.String&nbsp;type)</code></th>
@@ -1549,28 +1580,28 @@ extends java.lang.Object</pre>
 <div class="block">Factory method for OwnershipDatasetFacetOwners@param name the identifier of the owner of the Dataset.</div>
 </td>
 </tr>
-<tr id="i71" class="rowColor">
+<tr id="i73" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.OwnershipDatasetFacetOwnersBuilder.html" title="class in io.openlineage.client">OpenLineage.OwnershipDatasetFacetOwnersBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newOwnershipDatasetFacetOwnersBuilder()">newOwnershipDatasetFacetOwnersBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for OwnershipDatasetFacetOwners</div>
 </td>
 </tr>
-<tr id="i72" class="altColor">
+<tr id="i74" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.OwnershipJobFacet.html" title="class in io.openlineage.client">OpenLineage.OwnershipJobFacet</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newOwnershipJobFacet(java.util.List)">newOwnershipJobFacet</a></span>&#8203;(java.util.List&lt;<a href="OpenLineage.OwnershipJobFacetOwners.html" title="class in io.openlineage.client">OpenLineage.OwnershipJobFacetOwners</a>&gt;&nbsp;owners)</code></th>
 <td class="colLast">
 <div class="block">Factory method for OwnershipJobFacet@param owners The owners of the job.</div>
 </td>
 </tr>
-<tr id="i73" class="rowColor">
+<tr id="i75" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.OwnershipJobFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.OwnershipJobFacetBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newOwnershipJobFacetBuilder()">newOwnershipJobFacetBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for OwnershipJobFacet</div>
 </td>
 </tr>
-<tr id="i74" class="altColor">
+<tr id="i76" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.OwnershipJobFacetOwners.html" title="class in io.openlineage.client">OpenLineage.OwnershipJobFacetOwners</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newOwnershipJobFacetOwners(java.lang.String,java.lang.String)">newOwnershipJobFacetOwners</a></span>&#8203;(java.lang.String&nbsp;name,
                           java.lang.String&nbsp;type)</code></th>
@@ -1578,14 +1609,14 @@ extends java.lang.Object</pre>
 <div class="block">Factory method for OwnershipJobFacetOwners@param name the identifier of the owner of the Job.</div>
 </td>
 </tr>
-<tr id="i75" class="rowColor">
+<tr id="i77" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.OwnershipJobFacetOwnersBuilder.html" title="class in io.openlineage.client">OpenLineage.OwnershipJobFacetOwnersBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newOwnershipJobFacetOwnersBuilder()">newOwnershipJobFacetOwnersBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for OwnershipJobFacetOwners</div>
 </td>
 </tr>
-<tr id="i76" class="altColor">
+<tr id="i78" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.ParentRunFacet.html" title="class in io.openlineage.client">OpenLineage.ParentRunFacet</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newParentRunFacet(io.openlineage.client.OpenLineage.ParentRunFacetRun,io.openlineage.client.OpenLineage.ParentRunFacetJob)">newParentRunFacet</a></span>&#8203;(<a href="OpenLineage.ParentRunFacetRun.html" title="class in io.openlineage.client">OpenLineage.ParentRunFacetRun</a>&nbsp;run,
                  <a href="OpenLineage.ParentRunFacetJob.html" title="class in io.openlineage.client">OpenLineage.ParentRunFacetJob</a>&nbsp;job)</code></th>
@@ -1593,14 +1624,14 @@ extends java.lang.Object</pre>
 <div class="block">Factory method for ParentRunFacet@param run the run</div>
 </td>
 </tr>
-<tr id="i77" class="rowColor">
+<tr id="i79" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.ParentRunFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.ParentRunFacetBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newParentRunFacetBuilder()">newParentRunFacetBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for ParentRunFacet</div>
 </td>
 </tr>
-<tr id="i78" class="altColor">
+<tr id="i80" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.ParentRunFacetJob.html" title="class in io.openlineage.client">OpenLineage.ParentRunFacetJob</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newParentRunFacetJob(java.lang.String,java.lang.String)">newParentRunFacetJob</a></span>&#8203;(java.lang.String&nbsp;namespace,
                     java.lang.String&nbsp;name)</code></th>
@@ -1608,28 +1639,28 @@ extends java.lang.Object</pre>
 <div class="block">Factory method for ParentRunFacetJob@param namespace The namespace containing that job</div>
 </td>
 </tr>
-<tr id="i79" class="rowColor">
+<tr id="i81" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.ParentRunFacetJobBuilder.html" title="class in io.openlineage.client">OpenLineage.ParentRunFacetJobBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newParentRunFacetJobBuilder()">newParentRunFacetJobBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for ParentRunFacetJob</div>
 </td>
 </tr>
-<tr id="i80" class="altColor">
+<tr id="i82" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.ParentRunFacetRun.html" title="class in io.openlineage.client">OpenLineage.ParentRunFacetRun</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newParentRunFacetRun(java.util.UUID)">newParentRunFacetRun</a></span>&#8203;(java.util.UUID&nbsp;runId)</code></th>
 <td class="colLast">
 <div class="block">Factory method for ParentRunFacetRun@param runId The globally unique ID of the run associated with the job.</div>
 </td>
 </tr>
-<tr id="i81" class="rowColor">
+<tr id="i83" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.ParentRunFacetRunBuilder.html" title="class in io.openlineage.client">OpenLineage.ParentRunFacetRunBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newParentRunFacetRunBuilder()">newParentRunFacetRunBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for ParentRunFacetRun</div>
 </td>
 </tr>
-<tr id="i82" class="altColor">
+<tr id="i84" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.ProcessingEngineRunFacet.html" title="class in io.openlineage.client">OpenLineage.ProcessingEngineRunFacet</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newProcessingEngineRunFacet(java.lang.String,java.lang.String,java.lang.String)">newProcessingEngineRunFacet</a></span>&#8203;(java.lang.String&nbsp;version,
                            java.lang.String&nbsp;name,
@@ -1638,14 +1669,14 @@ extends java.lang.Object</pre>
 <div class="block">Factory method for ProcessingEngineRunFacet@param version Processing engine version.</div>
 </td>
 </tr>
-<tr id="i83" class="rowColor">
+<tr id="i85" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.ProcessingEngineRunFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.ProcessingEngineRunFacetBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newProcessingEngineRunFacetBuilder()">newProcessingEngineRunFacetBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for ProcessingEngineRunFacet</div>
 </td>
 </tr>
-<tr id="i84" class="altColor">
+<tr id="i86" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.Run.html" title="class in io.openlineage.client">OpenLineage.Run</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newRun(java.util.UUID,io.openlineage.client.OpenLineage.RunFacets)">newRun</a></span>&#8203;(java.util.UUID&nbsp;runId,
       <a href="OpenLineage.RunFacets.html" title="class in io.openlineage.client">OpenLineage.RunFacets</a>&nbsp;facets)</code></th>
@@ -1653,14 +1684,14 @@ extends java.lang.Object</pre>
 <div class="block">Factory method for Run@param runId The globally unique ID of the run associated with the job.</div>
 </td>
 </tr>
-<tr id="i85" class="rowColor">
+<tr id="i87" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.RunBuilder.html" title="class in io.openlineage.client">OpenLineage.RunBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newRunBuilder()">newRunBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for Run</div>
 </td>
 </tr>
-<tr id="i86" class="altColor">
+<tr id="i88" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.RunEvent.html" title="class in io.openlineage.client">OpenLineage.RunEvent</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newRunEvent(java.time.ZonedDateTime,io.openlineage.client.OpenLineage.RunEvent.EventType,io.openlineage.client.OpenLineage.Run,io.openlineage.client.OpenLineage.Job,java.util.List,java.util.List)">newRunEvent</a></span>&#8203;(java.time.ZonedDateTime&nbsp;eventTime,
            <a href="OpenLineage.RunEvent.EventType.html" title="enum in io.openlineage.client">OpenLineage.RunEvent.EventType</a>&nbsp;eventType,
@@ -1672,19 +1703,19 @@ extends java.lang.Object</pre>
 <div class="block">Factory method for RunEvent@param eventTime the time the event occurred at</div>
 </td>
 </tr>
-<tr id="i87" class="rowColor">
+<tr id="i89" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.RunEventBuilder.html" title="class in io.openlineage.client">OpenLineage.RunEventBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newRunEventBuilder()">newRunEventBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for RunEvent</div>
 </td>
 </tr>
-<tr id="i88" class="altColor">
+<tr id="i90" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.RunFacet.html" title="interface in io.openlineage.client">OpenLineage.RunFacet</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newRunFacet()">newRunFacet</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i89" class="rowColor">
+<tr id="i91" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.RunFacets.html" title="class in io.openlineage.client">OpenLineage.RunFacets</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newRunFacets(io.openlineage.client.OpenLineage.ErrorMessageRunFacet,io.openlineage.client.OpenLineage.ExternalQueryRunFacet,io.openlineage.client.OpenLineage.ExtractionErrorRunFacet,io.openlineage.client.OpenLineage.ParentRunFacet,io.openlineage.client.OpenLineage.NominalTimeRunFacet,io.openlineage.client.OpenLineage.ProcessingEngineRunFacet)">newRunFacets</a></span>&#8203;(<a href="OpenLineage.ErrorMessageRunFacet.html" title="class in io.openlineage.client">OpenLineage.ErrorMessageRunFacet</a>&nbsp;errorMessage,
             <a href="OpenLineage.ExternalQueryRunFacet.html" title="class in io.openlineage.client">OpenLineage.ExternalQueryRunFacet</a>&nbsp;externalQuery,
@@ -1696,28 +1727,28 @@ extends java.lang.Object</pre>
 <div class="block">Factory method for RunFacets@param errorMessage the errorMessage</div>
 </td>
 </tr>
-<tr id="i90" class="altColor">
+<tr id="i92" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.RunFacetsBuilder.html" title="class in io.openlineage.client">OpenLineage.RunFacetsBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newRunFacetsBuilder()">newRunFacetsBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for RunFacets</div>
 </td>
 </tr>
-<tr id="i91" class="rowColor">
+<tr id="i93" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.SchemaDatasetFacet.html" title="class in io.openlineage.client">OpenLineage.SchemaDatasetFacet</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newSchemaDatasetFacet(java.util.List)">newSchemaDatasetFacet</a></span>&#8203;(java.util.List&lt;<a href="OpenLineage.SchemaDatasetFacetFields.html" title="class in io.openlineage.client">OpenLineage.SchemaDatasetFacetFields</a>&gt;&nbsp;fields)</code></th>
 <td class="colLast">
 <div class="block">Factory method for SchemaDatasetFacet@param fields The fields of the table.</div>
 </td>
 </tr>
-<tr id="i92" class="altColor">
+<tr id="i94" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.SchemaDatasetFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.SchemaDatasetFacetBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newSchemaDatasetFacetBuilder()">newSchemaDatasetFacetBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for SchemaDatasetFacet</div>
 </td>
 </tr>
-<tr id="i93" class="rowColor">
+<tr id="i95" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.SchemaDatasetFacetFields.html" title="class in io.openlineage.client">OpenLineage.SchemaDatasetFacetFields</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newSchemaDatasetFacetFields(java.lang.String,java.lang.String,java.lang.String)">newSchemaDatasetFacetFields</a></span>&#8203;(java.lang.String&nbsp;name,
                            java.lang.String&nbsp;type,
@@ -1726,14 +1757,14 @@ extends java.lang.Object</pre>
 <div class="block">Factory method for SchemaDatasetFacetFields@param name The name of the field.</div>
 </td>
 </tr>
-<tr id="i94" class="altColor">
+<tr id="i96" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.SchemaDatasetFacetFieldsBuilder.html" title="class in io.openlineage.client">OpenLineage.SchemaDatasetFacetFieldsBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newSchemaDatasetFacetFieldsBuilder()">newSchemaDatasetFacetFieldsBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for SchemaDatasetFacetFields</div>
 </td>
 </tr>
-<tr id="i95" class="rowColor">
+<tr id="i97" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.SourceCodeJobFacet.html" title="class in io.openlineage.client">OpenLineage.SourceCodeJobFacet</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newSourceCodeJobFacet(java.lang.String,java.lang.String)">newSourceCodeJobFacet</a></span>&#8203;(java.lang.String&nbsp;language,
                      java.lang.String&nbsp;sourceCode)</code></th>
@@ -1741,14 +1772,14 @@ extends java.lang.Object</pre>
 <div class="block">Factory method for SourceCodeJobFacet@param language Language in which source code of this job was written.</div>
 </td>
 </tr>
-<tr id="i96" class="altColor">
+<tr id="i98" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.SourceCodeJobFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.SourceCodeJobFacetBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newSourceCodeJobFacetBuilder()">newSourceCodeJobFacetBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for SourceCodeJobFacet</div>
 </td>
 </tr>
-<tr id="i97" class="rowColor">
+<tr id="i99" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.SourceCodeLocationJobFacet.html" title="class in io.openlineage.client">OpenLineage.SourceCodeLocationJobFacet</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newSourceCodeLocationJobFacet(java.lang.String,java.net.URI,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)">newSourceCodeLocationJobFacet</a></span>&#8203;(java.lang.String&nbsp;type,
                              java.net.URI&nbsp;url,
@@ -1761,28 +1792,28 @@ extends java.lang.Object</pre>
 <div class="block">Factory method for SourceCodeLocationJobFacet@param type the source control system</div>
 </td>
 </tr>
-<tr id="i98" class="altColor">
+<tr id="i100" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.SourceCodeLocationJobFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.SourceCodeLocationJobFacetBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newSourceCodeLocationJobFacetBuilder()">newSourceCodeLocationJobFacetBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for SourceCodeLocationJobFacet</div>
 </td>
 </tr>
-<tr id="i99" class="rowColor">
+<tr id="i101" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.SQLJobFacet.html" title="class in io.openlineage.client">OpenLineage.SQLJobFacet</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newSQLJobFacet(java.lang.String)">newSQLJobFacet</a></span>&#8203;(java.lang.String&nbsp;query)</code></th>
 <td class="colLast">
 <div class="block">Factory method for SQLJobFacet@param query the query</div>
 </td>
 </tr>
-<tr id="i100" class="altColor">
+<tr id="i102" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.SQLJobFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.SQLJobFacetBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newSQLJobFacetBuilder()">newSQLJobFacetBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for SQLJobFacet</div>
 </td>
 </tr>
-<tr id="i101" class="rowColor">
+<tr id="i103" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.StaticDataset.html" title="class in io.openlineage.client">OpenLineage.StaticDataset</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newStaticDataset(java.lang.String,java.lang.String,io.openlineage.client.OpenLineage.DatasetFacets)">newStaticDataset</a></span>&#8203;(java.lang.String&nbsp;namespace,
                 java.lang.String&nbsp;name,
@@ -1791,14 +1822,14 @@ extends java.lang.Object</pre>
 <div class="block">Factory method for StaticDataset@param namespace The namespace containing that dataset</div>
 </td>
 </tr>
-<tr id="i102" class="altColor">
+<tr id="i104" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.StaticDatasetBuilder.html" title="class in io.openlineage.client">OpenLineage.StaticDatasetBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newStaticDatasetBuilder()">newStaticDatasetBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for StaticDataset</div>
 </td>
 </tr>
-<tr id="i103" class="rowColor">
+<tr id="i105" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.StorageDatasetFacet.html" title="class in io.openlineage.client">OpenLineage.StorageDatasetFacet</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newStorageDatasetFacet(java.lang.String,java.lang.String)">newStorageDatasetFacet</a></span>&#8203;(java.lang.String&nbsp;storageLayer,
                       java.lang.String&nbsp;fileFormat)</code></th>
@@ -1806,28 +1837,28 @@ extends java.lang.Object</pre>
 <div class="block">Factory method for StorageDatasetFacet@param storageLayer Storage layer provider with allowed values: iceberg, delta.</div>
 </td>
 </tr>
-<tr id="i104" class="altColor">
+<tr id="i106" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.StorageDatasetFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.StorageDatasetFacetBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newStorageDatasetFacetBuilder()">newStorageDatasetFacetBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for StorageDatasetFacet</div>
 </td>
 </tr>
-<tr id="i105" class="rowColor">
+<tr id="i107" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.SymlinksDatasetFacet.html" title="class in io.openlineage.client">OpenLineage.SymlinksDatasetFacet</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newSymlinksDatasetFacet(java.util.List)">newSymlinksDatasetFacet</a></span>&#8203;(java.util.List&lt;<a href="OpenLineage.SymlinksDatasetFacetIdentifiers.html" title="class in io.openlineage.client">OpenLineage.SymlinksDatasetFacetIdentifiers</a>&gt;&nbsp;identifiers)</code></th>
 <td class="colLast">
 <div class="block">Factory method for SymlinksDatasetFacet@param identifiers the identifiers</div>
 </td>
 </tr>
-<tr id="i106" class="altColor">
+<tr id="i108" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.SymlinksDatasetFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.SymlinksDatasetFacetBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newSymlinksDatasetFacetBuilder()">newSymlinksDatasetFacetBuilder</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Creates a builder for SymlinksDatasetFacet</div>
 </td>
 </tr>
-<tr id="i107" class="rowColor">
+<tr id="i109" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.SymlinksDatasetFacetIdentifiers.html" title="class in io.openlineage.client">OpenLineage.SymlinksDatasetFacetIdentifiers</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newSymlinksDatasetFacetIdentifiers(java.lang.String,java.lang.String,java.lang.String)">newSymlinksDatasetFacetIdentifiers</a></span>&#8203;(java.lang.String&nbsp;namespace,
                                   java.lang.String&nbsp;name,
@@ -1836,7 +1867,7 @@ extends java.lang.Object</pre>
 <div class="block">Factory method for SymlinksDatasetFacetIdentifiers@param namespace The dataset namespace</div>
 </td>
 </tr>
-<tr id="i108" class="altColor">
+<tr id="i110" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.SymlinksDatasetFacetIdentifiersBuilder.html" title="class in io.openlineage.client">OpenLineage.SymlinksDatasetFacetIdentifiersBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newSymlinksDatasetFacetIdentifiersBuilder()">newSymlinksDatasetFacetIdentifiersBuilder</a></span>()</code></th>
 <td class="colLast">
@@ -2057,6 +2088,39 @@ extends java.lang.Object</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a new builder for ExtractionErrorRunFacetErrors</dd>
+</dl>
+</li>
+</ul>
+<a id="newJobTypeJobFacet(java.lang.String,java.lang.String,java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>newJobTypeJobFacet</h4>
+<pre class="methodSignature">public&nbsp;<a href="OpenLineage.JobTypeJobFacet.html" title="class in io.openlineage.client">OpenLineage.JobTypeJobFacet</a>&nbsp;newJobTypeJobFacet&#8203;(java.lang.String&nbsp;processingType,
+                                                      java.lang.String&nbsp;integration,
+                                                      java.lang.String&nbsp;jobType)</pre>
+<div class="block">Factory method for JobTypeJobFacet@param processingType Job processing type like: BATCH or STREAMING</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>integration</code> - OpenLineage integration type of this job: SPARK|DBT|AIRFLOW|FLINK</dd>
+<dd><code>jobType</code> - Run type like: QUERY|COMMAND|DAG|TASK|JOB|MODEL</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>JobTypeJobFacet</dd>
+</dl>
+</li>
+</ul>
+<a id="newJobTypeJobFacetBuilder()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>newJobTypeJobFacetBuilder</h4>
+<pre class="methodSignature">public&nbsp;<a href="OpenLineage.JobTypeJobFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.JobTypeJobFacetBuilder</a>&nbsp;newJobTypeJobFacetBuilder()</pre>
+<div class="block">Creates a builder for JobTypeJobFacet</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a new builder for JobTypeJobFacet</dd>
 </dl>
 </li>
 </ul>
@@ -2520,20 +2584,22 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="newJobFacets(io.openlineage.client.OpenLineage.SourceCodeJobFacet,io.openlineage.client.OpenLineage.OwnershipJobFacet,io.openlineage.client.OpenLineage.SQLJobFacet,io.openlineage.client.OpenLineage.SourceCodeLocationJobFacet,io.openlineage.client.OpenLineage.DocumentationJobFacet)">
+<a id="newJobFacets(io.openlineage.client.OpenLineage.JobTypeJobFacet,io.openlineage.client.OpenLineage.SourceCodeJobFacet,io.openlineage.client.OpenLineage.OwnershipJobFacet,io.openlineage.client.OpenLineage.SQLJobFacet,io.openlineage.client.OpenLineage.SourceCodeLocationJobFacet,io.openlineage.client.OpenLineage.DocumentationJobFacet)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>newJobFacets</h4>
-<pre class="methodSignature">public&nbsp;<a href="OpenLineage.JobFacets.html" title="class in io.openlineage.client">OpenLineage.JobFacets</a>&nbsp;newJobFacets&#8203;(<a href="OpenLineage.SourceCodeJobFacet.html" title="class in io.openlineage.client">OpenLineage.SourceCodeJobFacet</a>&nbsp;sourceCode,
+<pre class="methodSignature">public&nbsp;<a href="OpenLineage.JobFacets.html" title="class in io.openlineage.client">OpenLineage.JobFacets</a>&nbsp;newJobFacets&#8203;(<a href="OpenLineage.JobTypeJobFacet.html" title="class in io.openlineage.client">OpenLineage.JobTypeJobFacet</a>&nbsp;jobType,
+                                          <a href="OpenLineage.SourceCodeJobFacet.html" title="class in io.openlineage.client">OpenLineage.SourceCodeJobFacet</a>&nbsp;sourceCode,
                                           <a href="OpenLineage.OwnershipJobFacet.html" title="class in io.openlineage.client">OpenLineage.OwnershipJobFacet</a>&nbsp;ownership,
                                           <a href="OpenLineage.SQLJobFacet.html" title="class in io.openlineage.client">OpenLineage.SQLJobFacet</a>&nbsp;sql,
                                           <a href="OpenLineage.SourceCodeLocationJobFacet.html" title="class in io.openlineage.client">OpenLineage.SourceCodeLocationJobFacet</a>&nbsp;sourceCodeLocation,
                                           <a href="OpenLineage.DocumentationJobFacet.html" title="class in io.openlineage.client">OpenLineage.DocumentationJobFacet</a>&nbsp;documentation)</pre>
-<div class="block">Factory method for JobFacets@param sourceCode the sourceCode</div>
+<div class="block">Factory method for JobFacets@param jobType the jobType</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>sourceCode</code> - the sourceCode</dd>
 <dd><code>ownership</code> - the ownership</dd>
 <dd><code>sql</code> - the sql</dd>
 <dd><code>sourceCodeLocation</code> - the sourceCodeLocation</dd>
