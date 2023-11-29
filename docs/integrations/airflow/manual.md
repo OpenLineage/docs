@@ -54,14 +54,14 @@ with DAG(
     params={"example_key": "example_value"},
 ) as dag:
     task1 = BashOperator(
-        task_id='task_with_inlet_outlet',
+        task_id='task_1_with_inlet_outlet',
         bash_command='echo "{{ task_instance_key_str }}" && sleep 1',
         inlets=[t1, t2],
         outlets=[t3],
     )
 
     task2 = BashOperator(
-        task_id='task_with_inlet_outlet',
+        task_id='task_2_with_inlet_outlet',
         bash_command='echo "{{ task_instance_key_str }}" && sleep 1',
         inlets=[t3, f1],
         outlets=[t4],
