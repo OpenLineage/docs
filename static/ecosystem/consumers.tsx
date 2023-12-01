@@ -1,70 +1,84 @@
-let Partner: Array<string> = [];
+export type Partner = Record<
+  "image" | "org" | "description" | "docs_url" | "org_url", 
+  string
+>
 
-export const Consumers: Array<typeof Partner> = [
-    [  
-      "amundsen_logo.svg",
-      "Amundsen",
-      "The OpenLineageTableLineageExtractor extracts table lineage information from OpenLineage events.",
-      "https://www.amundsen.io/amundsen/databuilder/#openlineagetablelineageextractor"
-    ],
-    [
-      "astronomer_logo.svg",
-      "Astronomer",
-      "Astronomer's Astro uses the openlineage-airflow library to extract lineage from Airflow tasks and stores that data in the Astro control plane. The Astronomer UI then renders a graph and list of all tasks and datasets that include OpenLineage data.",
-      "https://www.astronomer.io/product/"
-    ],
-    [
-      "atlan_logo.svg",
-      "Atlan",
-      "Atlan's OpenLineage integration uses job facets to catalog operational metadata from pipelines, enrich existing assets, and provide persona-based lineage information using OpenLineage SDKs.",
-      "https://atlan.com/?utm_source=partner&utm_medium=referral&utm_campaign=OpenLineage"
-    ],
-    [
-      "egeria_logo_lg.svg",
-      "Egeria",
-      "Egeria's OpenLineage integration can capture OpenLineage events directly via HTTP or the proxy backend.",
-      "https://egeria-project.org/features/lineage-management/overview/#the-openlineage-standard"
-    ],
-    [
-      "google_logo.svg",
-      "Google Cloud",
-      "The Google Cloud Data Catalog supports importing OpenLineage events through the Data Lineage API to display in the Dataplex UI alongside lineage information from Google Cloud services including Dataproc.",
-      "https://cloud.google.com/data-catalog/docs/how-to/open-lineage"
-    ],
-    [
-      "grai_logo.svg",
-      "Grai",
-      "The Grai integration makes OpenLineage metadata from various systems available via an OpenLineage-compatible endpoint and a standalone Python library.",
-      "https://docs.grai.io/integrations/openlineage"
-    ],
-    [
-        "manta_logo_bkgd.svg",
-        "Manta",
-        "Manta's OpenLineage Scanner uses job facets to ingest OpenLineage metadata and enrich overall enterprise data pipeline analysis.",
-        "https://getmanta.com/?utm_source=partner&utm_medium=referral&utm_campaign=OpenLineage"
-    ],
-    [
-        "mqz_logo.svg",
-        "Marquez",
-        ">Marquezis a metadata server offering an OpenLineage-compatible endpoint for real-time collection of information about running jobs and applications.",
-        "https://marquezproject.ai"
-    ],
-    [
-        "metaphor_logo.svg",
-        "Metaphor",
-        "Metaphor's HTTP endpoint processes OpenLineage events and extracts lineage, data quality metadata, and job facets to enable data governance and data enablement across an organization.",
-        "https://metaphor.io/"
-    ],
-    [
-        "ms_logo.svg",
-        "Microsoft",
-        "As Airflow DAGs run, Azure Event Hubs collect OpenLineage events for parsing and ingestion by Microsoft Purview, which also ingests events from Spark operations in Azure Databricks via the Azure Databricks to Purview Lineage Connector.",
-        "https://learn.microsoft.com/en-us/purview/how-to-lineage-airflow"
-    ],
-    [
-        "snowflake_logo.svg",
-        "Snowflake",
-        "Snowflake's OpenLineage Adapter creates an account-scoped view from ACCESS_HISTORY and QUERY_HISTORY to output each query that accesses tables in OpenLineage JsonSchema specification.",
-        "https://github.com/Snowflake-Labs/OpenLineage-AccessHistory-Setup"
-    ]
-]
+export const Consumers: Array<Partner> = [
+  {  
+    image: "amundsen_logo.svg",
+    org: "Amundsen",
+    description: "The OpenLineageTableLineageExtractor extracts table lineage information from OpenLineage events.",
+    docs_url: "https://www.amundsen.io/amundsen/databuilder/#openlineagetablelineageextractor",
+    org_url: "https://www.amundsen.io"
+  },
+  {
+    image: "astronomer_logo.svg",
+    org: "Astronomer",
+    description: "Astronomer's Astro uses the openlineage-airflow library to extract lineage from Airflow tasks and stores that data in the Astro control plane. The Astronomer UI then renders a graph and list of all tasks and datasets that include OpenLineage data.",
+    docs_url: "https://www.astronomer.io/product/",
+    org_url: "https://www.astronomer.io"
+  },
+  {
+    image: "atlan_logo.svg",
+    org: "Atlan",
+    description: "Atlan's OpenLineage integration uses job facets to catalog operational metadata from pipelines, enrich existing assets, and provide persona-based lineage information using OpenLineage SDKs.",
+    docs_url: "https://atlan.com/?utm_source=partner&utm_medium=referral&utm_campaign=OpenLineage",
+    org_url: "https://atlan.com"
+  },
+  {
+    image: "egeria_logo_lg.svg",
+    org: "Egeria",
+    description: "Egeria's OpenLineage integration can capture OpenLineage events directly via HTTP or the proxy backend.",
+    docs_url: "https://egeria-project.org/features/lineage-management/overview/#the-openlineage-standard",
+    org_url: "https://egeria-project.org"
+  },
+  {
+    image: "google_logo.svg",
+    org: "Google Cloud",
+    description: "The Google Cloud Data Catalog supports importing OpenLineage events through the Data Lineage API to display in the Dataplex UI alongside lineage information from Google Cloud services including Dataproc.",
+    docs_url: "https://cloud.google.com/data-catalog/docs/how-to/open-lineage",
+    org_url: "https://cloud.google.com"
+  },
+  {
+    image: "grai_logo.svg",
+    org: "Grai",
+    description: "The Grai integration makes OpenLineage metadata from various systems available via an OpenLineage-compatible endpoint and a standalone Python library.",
+    docs_url: "https://docs.grai.io/integrations/openlineage",
+    org_url: "https://www.grai.io/"
+  },
+  {
+    image: "manta_logo_bkgd.svg",
+    org: "Manta",
+    description: "Manta's OpenLineage Scanner uses job facets to ingest OpenLineage metadata and enrich overall enterprise data pipeline analysis.",
+    docs_url: "https://getmanta.com/?utm_source=partner&utm_medium=referral&utm_campaign=OpenLineage",
+    org_url: "https://getmanta.com/?utm_source=partner&utm_medium=referral&utm_campaign=OpenLineage"
+  },
+  {
+    image: "mqz_logo.svg",
+    org: "Marquez",
+    description: "Marquez is a metadata server offering an OpenLineage-compatible endpoint for real-time collection of information about running jobs and applications.",
+    docs_url: "https://marquezproject.ai",
+    org_url: "https://marquezproject.ai"
+  },
+  {
+    image: "metaphor_logo.svg",
+    org: "Metaphor",
+    description: "Metaphor's HTTP endpoint processes OpenLineage events and extracts lineage, data quality metadata, and job facets to enable data governance and data enablement across an organization.",
+    docs_url: "https://metaphor.io",
+    org_url: "https://metaphor.io"
+  },
+  {
+    image: "ms_logo.svg",
+    org: "Microsoft",
+    description: "As Airflow DAGs run, Azure Event Hubs collect OpenLineage events for parsing and ingestion by Microsoft Purview, which also ingests events from Spark operations in Azure Databricks via the Azure Databricks to Purview Lineage Connector.",
+    docs_url: "https://learn.microsoft.com/en-us/purview/how-to-lineage-airflow",
+    org_url: "https://www.microsoft.com"
+  },
+  {
+    image: "snowflake_logo.svg",
+    org: "Snowflake",
+    description: "Snowflake's OpenLineage Adapter creates an account-scoped view from ACCESS_HISTORY and QUERY_HISTORY to output each query that accesses tables in OpenLineage JsonSchema specification.",
+    docs_url: "https://github.com/Snowflake-Labs/OpenLineage-AccessHistory-Setup",
+    org_url: "https://www.snowflake.com"
+  }
+  ]

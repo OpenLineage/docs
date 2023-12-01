@@ -8,38 +8,41 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
-import { Consumers } from "@site/static/ecosystem/consumers";
+import { Consumers, Partner } from "@site/static/ecosystem/consumers";
 import { Producers } from "@site/static/ecosystem/producers";
 
-let Partner: Array<string> = [];
-
-const LogoCard = ( partner: typeof Partner ) => {
+const LogoCard = ( partner: Partner ) => {
   return (
-    <Card sx={{ maxWidth: 345, minHeight: 375 }}>
+    <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         sx={{ maxHeight: 140 }}
         component="img"
-        src={require(`@site/static/img/${partner[0]}`).default}
-        title={partner[1]}
+        src={require(`@site/static/img/${partner.image}`).default}
+        title={partner.org}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {partner[1]}
+          <a href={partner.org_url}>{partner.org}</a>
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {partner[2]}
+        <Typography variant="body1" color="text.secondary">
+          {partner.description}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <Button size="small" href={partner[3]}>Learn More</Button>
-      </CardActions>
+        <Button size="small" href={partner.docs_url}>Learn More</Button>
+      </CardActions>      
     </Card>
   )
 }
 
-const FillGrid = ( partners: Array<typeof Partner> ) => {
+const FillGrid = ( partners: Array<Partner> ) => {
   return (
-    <Grid container rowSpacing={4} columnSpacing={4} justifyContent="center">
+    <Grid container 
+      rowSpacing={4} 
+      columnSpacing={4} 
+      justifyContent="center" 
+      className={"lg:marginX-20 md:marginX-10"}
+    >
       {partners.map(partner => 
         <Grid>
           {LogoCard(partner)}
