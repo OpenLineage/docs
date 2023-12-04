@@ -23,7 +23,7 @@ export const Producers: Array<Partner> = [
         org_url: "https://www.getdbt.com"
     },
     {
-        image: "egeria_logo_lg.svg",
+        image: "egeria_logo_new.svg",
         org: "Egeria",
         description: "Egeria's OpenLineage integration publishes events to lineage integration connectors with OpenLineage listeners registered in the same instance of the Lineage Integrator OMIS.",
         docs_url: "https://egeria-project.org/features/lineage-management/overview/#the-openlineage-standard",

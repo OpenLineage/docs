@@ -1,36 +1,70 @@
-import React, {} from "react";
+import * as React from 'react';
+import { styled } from '@mui/material/styles';
 import Footer from "../components/footer";
 import Layout from '@theme/Layout';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
+import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
+import Collapse from '@mui/material/Collapse';
+import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import { Consumers, Partner } from "@site/static/ecosystem/consumers";
 import { Producers } from "@site/static/ecosystem/producers";
 
+interface ExpandMoreProps extends IconButtonProps {
+  expand: boolean;
+}
+
+const ExpandMore = styled((props: ExpandMoreProps) => {
+  const { expand, ...other } = props;
+  return <IconButton {...other} />;
+})(({ theme }) => ({
+  marginX: 'auto',
+  transition: theme.transitions.create('transform', {
+    duration: theme.transitions.duration.shortest,
+  }),
+}));
+
 const LogoCard = ( partner: Partner ) => {
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        sx={{ maxHeight: 140 }}
-        component="img"
-        src={require(`@site/static/img/${partner.image}`).default}
-        title={partner.org}
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          <a href={partner.org_url}>{partner.org}</a>
-        </Typography>
-        <Typography variant="body1" color="text.secondary">
-          {partner.description}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <Button size="small" href={partner.docs_url}>Learn More</Button>
-      </CardActions>      
+    <Card raised={true} sx={{ maxWidth: 345 }}>
+      <CardActions disableSpacing sx={{ padding: 0 }}>
+        <ExpandMore
+          expand={expanded}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="show more"
+          sx={{ padding: 0 }}
+        >
+          <CardActionArea sx={{ padding: 0 }}>
+            <CardMedia
+              sx={{ maxWidth: 345, maxHeight: 140, padding: 0 }}
+              component="img"
+              src={require(`@site/static/img/${partner.image}`).default}
+              title={partner.org}
+            />
+          </CardActionArea>
+        </ExpandMore>  
+      </CardActions>
+      <Collapse in={expanded} timeout="auto" unmountOnExit> 
+        <CardContent sx={{ maxWidth: 275 }}>
+          <Typography variant="body1" color="text.secondary">
+            {partner.description}
+          </Typography>
+        </CardContent>
+        <CardActions disableSpacing>
+          <Button size="small" href={partner.docs_url}>Learn More</Button>
+        </CardActions>
+      </Collapse>     
     </Card>
   )
 }
@@ -42,6 +76,7 @@ const FillGrid = ( partners: Array<Partner> ) => {
       columnSpacing={4} 
       justifyContent="center" 
       className={"lg:marginX-20 md:marginX-10"}
+      paddingBottom={4}
     >
       {partners.map(partner => 
         <Grid>

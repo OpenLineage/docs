@@ -5,9 +5,9 @@ export type Partner = Record<
 
 export const Consumers: Array<Partner> = [
   {  
-    image: "amundsen_logo.svg",
+    image: "amundsen_logo_1.svg",
     org: "Amundsen",
-    description: "The OpenLineageTableLineageExtractor extracts table lineage information from OpenLineage events.",
+    description: "The integration's OpenLineageTableLineageExtractor extracts table lineage information from OpenLineage events.",
     docs_url: "https://www.amundsen.io/amundsen/databuilder/#openlineagetablelineageextractor",
     org_url: "https://www.amundsen.io"
   },
@@ -26,7 +26,7 @@ export const Consumers: Array<Partner> = [
     org_url: "https://atlan.com"
   },
   {
-    image: "egeria_logo_lg.svg",
+    image: "egeria_logo_new.svg",
     org: "Egeria",
     description: "Egeria's OpenLineage integration can capture OpenLineage events directly via HTTP or the proxy backend.",
     docs_url: "https://egeria-project.org/features/lineage-management/overview/#the-openlineage-standard",
@@ -54,7 +54,7 @@ export const Consumers: Array<Partner> = [
     org_url: "https://getmanta.com/?utm_source=partner&utm_medium=referral&utm_campaign=OpenLineage"
   },
   {
-    image: "mqz_logo.svg",
+    image: "mqz_logo_new.svg",
     org: "Marquez",
     description: "Marquez is a metadata server offering an OpenLineage-compatible endpoint for real-time collection of information about running jobs and applications.",
     docs_url: "https://marquezproject.ai",

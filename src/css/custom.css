@@ -473,29 +473,6 @@ img[src*="#full-width"] {
   width: 100%;
 }
 
-.EcosystemPage .py-5 {
-  width: 150pt;
-}
-
-.EcosystemPage img {
-  width: 100%;
-}
-
-.EcosystemPage table thead,
-.EcosystemPage table tr {
-  background-color: transparent !important;
-}
-
-.EcosystemPage table thead tr,
-.EcosystemPage table thead th {
-  border: none !important;
-  background-color: transparent !important;
-}
-
-.EcosystemPage table tr td {
-  border: none !important;
-}
-
 html.docs-doc-page body {
   background-color: white;
 }
