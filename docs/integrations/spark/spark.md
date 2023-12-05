@@ -70,6 +70,7 @@ The listener can be enabled by adding the following configuration to a `spark-su
 ```bash
 spark-submit --conf "spark.extraListeners=io.openlineage.spark.agent.OpenLineageSparkListener" \
     --packages "io.openlineage:openlineage-spark:<spark-openlineage-version>" \
+    --conf "spark.openlineage.transport.type=http" \
     --conf "spark.openlineage.transport.url=http://{openlineage.client.host}/api/v1/namespaces/spark_integration/" \
     --class com.mycompany.MySparkApp my_application.jar
 ```
