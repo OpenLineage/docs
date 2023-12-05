@@ -3,6 +3,11 @@ sidebar_position: 1
 title: Using the Airflow Integration
 ---
 
+:::caution
+This page is about Airflow's external integration that works mainly for Airflow versions <2.7.
+[If you're using Airflow 2.7+, look at native Airflow OpenLineage provider documentation.](https://airflow.apache.org/docs/apache-airflow-providers-openlineage/stable/index.html)
+:::
+
 #### PREREQUISITES
 
 To use the OpenLineage Airflow integration, you'll need a running [Airflow instance](https://airflow.apache.org/docs/apache-airflow/stable/start.html). You'll also need an OpenLineage-compatible [backend](https://github.com/OpenLineage/OpenLineage#scope).

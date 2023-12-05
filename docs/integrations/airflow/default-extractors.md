@@ -3,6 +3,11 @@ sidebar_position: 2
 title: Exposing Lineage in Airflow Operators
 ---
 
+:::caution
+This page is about Airflow's external integration that works mainly for Airflow versions <2.7.
+[If you're using Airflow 2.7+, look at native Airflow OpenLineage provider documentation.](https://airflow.apache.org/docs/apache-airflow-providers-openlineage/stable/index.html)
+:::
+
 OpenLineage 0.17.0+ makes adding lineage to your data pipelines easy through support of direct modification of Airflow operators. This means that custom operators—built in-house or forked from another project—can provide you and your team with lineage data without requiring modification of the OpenLineage project. The data will still go to your lineage backend of choice, most commonly using the `OPENLINEAGE_URL` environment variable.
 
 Lineage extraction works a bit differently under the hood starting with OpenLineage 0.17.0. While extractors in the OpenLineage project have a getter method for operator names that they’re associated with, the default extractor looks for two specific methods in the operator itself and calls them directly if found. This means that implementation now consists of just two methods in your operator.

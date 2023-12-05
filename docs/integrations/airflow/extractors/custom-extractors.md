@@ -3,6 +3,11 @@ sidebar_position: 1
 title: Custom Extractors
 ---
 
+:::caution
+This page is about Airflow's external integration that works mainly for Airflow versions <2.7.
+[If you're using Airflow 2.7+, look at native Airflow OpenLineage provider documentation.](https://airflow.apache.org/docs/apache-airflow-providers-openlineage/stable/index.html)
+:::
+
 This integration works by detecting which Airflow operators your DAG is using, and extracting lineage data from them using corresponding extractors.
 
 However, not all operators are covered. In particular, third party providers may not be. To handle this situation, OpenLineage allows you to provide custom extractors for any operators where there is not one built-in.
