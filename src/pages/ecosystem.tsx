@@ -63,7 +63,9 @@ const LogoCard = ( partner: Partner ) => {
         </CardContent>
         <CardActions disableSpacing>
           <Button size="small" href={partner.docs_url}>Learn More</Button>
+          <Button size="small" href={partner.org_url} sx={{ paddingLeft: 2 }}>Website</Button>
         </CardActions>
+
       </Collapse>     
     </Card>
   )
