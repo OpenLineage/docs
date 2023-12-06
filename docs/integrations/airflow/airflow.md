@@ -3,6 +3,12 @@ sidebar_position: 1
 title: Apache Airflow
 ---
 
+:::caution
+This page is about Airflow's external integration that works mainly for Airflow versions <2.7.
+[If you're using Airflow 2.7+, look at native Airflow OpenLineage provider documentation.](https://airflow.apache.org/docs/apache-airflow-providers-openlineage/stable/index.html)
+:::
+
+
 **Airflow** is a widely-used workflow automation and scheduling platform that can be used to author and manage data pipelines. Airflow uses workflows made of directed acyclic graphs (DAGs) of tasks. To learn more about Airflow, check out the Airflow [documentation](https://airflow.apache.org/docs/apache-airflow/stable/index.html).
 
 ## How does Airflow work with OpenLineage?

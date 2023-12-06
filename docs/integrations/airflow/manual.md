@@ -4,6 +4,11 @@ title: Manually Annotated Lineage
 ---
 
 :::caution
+This page is about Airflow's external integration that works mainly for Airflow versions <2.7.
+[If you're using Airflow 2.7+, look at native Airflow OpenLineage provider documentation.](https://airflow.apache.org/docs/apache-airflow-providers-openlineage/stable/index.html)
+:::
+
+:::caution
 This feature is only supported with Airflow versions greater than 2.1.0)
 :::
 
