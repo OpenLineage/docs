@@ -16,7 +16,7 @@ export const Consumers: Array<Partner> = [
     org: "Astronomer",
     description: "Astronomer's Astro uses the openlineage-airflow library to extract lineage from Airflow tasks and stores that data in the Astro control plane. The Astronomer UI then renders a graph and list of all tasks and datasets that include OpenLineage data.",
     docs_url: "https://www.astronomer.io/product/",
-    org_url: "https://www.astronomer.io"
+    org_url: "https://docs.astronomer.io/astro/data-lineage-concepts"
   },
   {
     image: "atlan_logo.svg",
@@ -30,7 +30,7 @@ export const Consumers: Array<Partner> = [
     org: "Egeria",
     description: "Egeria's OpenLineage integration can capture OpenLineage events directly via HTTP or the proxy backend.",
     docs_url: "https://egeria-project.org/features/lineage-management/overview/#the-openlineage-standard",
-    org_url: "https://egeria-project.org"
+    org_url: "https://github.com/odpi/egeria"
   },
   {
     image: "google_logo.svg",
@@ -72,13 +72,13 @@ export const Consumers: Array<Partner> = [
     org: "Microsoft",
     description: "As Airflow DAGs run, Azure Event Hubs collect OpenLineage events for parsing and ingestion by Microsoft Purview, which also ingests events from Spark operations in Azure Databricks via the Azure Databricks to Purview Lineage Connector.",
     docs_url: "https://learn.microsoft.com/en-us/purview/how-to-lineage-airflow",
-    org_url: "https://www.microsoft.com"
+    org_url: "https://github.com/microsoft/Purview-ADB-Lineage-Solution-Accelerator/"
   },
   {
     image: "snowflake_logo.svg",
     org: "Snowflake",
     description: "Snowflake's OpenLineage Adapter creates an account-scoped view from ACCESS_HISTORY and QUERY_HISTORY to output each query that accesses tables in OpenLineage JsonSchema specification.",
     docs_url: "https://github.com/Snowflake-Labs/OpenLineage-AccessHistory-Setup",
-    org_url: "https://www.snowflake.com"
+    org_url: "https://developers.snowflake.com/"
   }
   ]

@@ -27,7 +27,7 @@ export const Producers: Array<Partner> = [
         org: "Egeria",
         description: "Egeria's OpenLineage integration publishes events to lineage integration connectors with OpenLineage listeners registered in the same instance of the Lineage Integrator OMIS.",
         docs_url: "https://egeria-project.org/features/lineage-management/overview/#the-openlineage-standard",
-        org_url: "https://egeria-project.org"
+        org_url: "https://github.com/odpi/egeria"
     },
     {
         image: "flink_logo.svg",
@@ -41,7 +41,7 @@ export const Producers: Array<Partner> = [
         org: "Google",
         description: "Dataproc captures lineage events from Spark jobs and publishes them to the Dataplex Data Lineage API, which also accepts OpenLineage events using the `ProcessOpenLineageRunEvent` REST API method.",
         docs_url: "https://cloud.google.com/data-catalog/docs/reference/data-lineage/rest",
-        org_url: "https://cloud.google.com"
+        org_url: "https://cloud.google.com/dataproc/docs/guides/lineage"
     },
     {
         image: "GE_logo.svg",
@@ -54,8 +54,8 @@ export const Producers: Array<Partner> = [
         image: "keboola_logo_lg.svg",
         org: "Keboola",
         description: "Keboola's OpenLineage integration automatically pushes all job information to an OpenLineage-compatible API endpoint.",
-        docs_url: "https://docs.google.com/presentation/d/e/2PACX-1vTCfQcWUM_9e-lNlBqtaWLPjQ7ihvwHPjq0sJ47eJjjc0zNoLXlWOdcznE90t6IVNGBWFwGZBoU-d-o/pub?start=true&loop=true&delayms=3000&slide=id.g136261d2e68_0_1",
-        org_url: "https://www.keboola.com"
+        docs_url: "https://app.swaggerhub.com/apis-docs/keboola/job-queue-api/1.3.1#/Jobs/getJobOpenApiLineage",
+        org_url: "https://docs.google.com/presentation/d/e/2PACX-1vTCfQcWUM_9e-lNlBqtaWLPjQ7ihvwHPjq0sJ47eJjjc0zNoLXlWOdcznE90t6IVNGBWFwGZBoU-d-o/pub?start=true&loop=true&delayms=3000&slide=id.g136261d2e68_0_1"
     },
     {
         image: "spark_logo.svg",
