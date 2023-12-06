@@ -37,7 +37,7 @@ const LogoCard = ( partner: Partner ) => {
   };
 
   const DisplayLinks = () => {
-    if (partner.org_url) {
+    if (partner.docs_url) {
       return (
         <CardActions disableSpacing>
           <Button size="small" href={partner.docs_url}>Learn More</Button>
@@ -47,7 +47,7 @@ const LogoCard = ( partner: Partner ) => {
     } else {
       return (
         <CardActions disableSpacing>
-          <Button size="small" href={partner.docs_url}>Learn More</Button>
+          <Button size="small" href={partner.org_url}>Website</Button>
         </CardActions>
       )
     }

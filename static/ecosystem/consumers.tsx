@@ -50,22 +50,22 @@ export const Consumers: Array<Partner> = [
     image: "manta_logo_bkgd.svg",
     org: "Manta",
     description: "Manta's OpenLineage Scanner uses job facets to ingest OpenLineage metadata and enrich overall enterprise data pipeline analysis.",
-    docs_url: "https://getmanta.com/?utm_source=partner&utm_medium=referral&utm_campaign=OpenLineage",
-    org_url: ""
+    docs_url: "",
+    org_url: "https://getmanta.com/?utm_source=partner&utm_medium=referral&utm_campaign=OpenLineage"
   },
   {
     image: "mqz_logo_new.svg",
     org: "Marquez",
     description: "Marquez is a metadata server offering an OpenLineage-compatible endpoint for real-time collection of information about running jobs and applications.",
-    docs_url: "https://marquezproject.ai",
-    org_url: ""
+    docs_url: "",
+    org_url: "https://marquezproject.ai"
   },
   {
     image: "metaphor_logo.svg",
     org: "Metaphor",
     description: "Metaphor's HTTP endpoint processes OpenLineage events and extracts lineage, data quality metadata, and job facets to enable data governance and data enablement across an organization.",
-    docs_url: "https://metaphor.io",
-    org_url: ""
+    docs_url: "",
+    org_url: "https://metaphor.io"
   },
   {
     image: "ms_logo.svg",
