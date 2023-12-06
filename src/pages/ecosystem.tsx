@@ -35,6 +35,24 @@ const LogoCard = ( partner: Partner ) => {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const DisplayLinks = () => {
+    if (partner.org_url) {
+      return (
+        <CardActions disableSpacing>
+          <Button size="small" href={partner.docs_url}>Learn More</Button>
+          <Button size="small" href={partner.org_url} sx={{ paddingLeft: 2 }}>Website</Button>
+        </CardActions>
+      )
+    } else {
+      return (
+        <CardActions disableSpacing>
+          <Button size="small" href={partner.docs_url}>Learn More</Button>
+        </CardActions>
+      )
+    }
+  };
+
   return (
     <Card raised={true} sx={{ maxWidth: 345 }}>
       <CardActions disableSpacing sx={{ padding: 0 }}>
@@ -61,11 +79,7 @@ const LogoCard = ( partner: Partner ) => {
             {partner.description}
           </Typography>
         </CardContent>
-        <CardActions disableSpacing>
-          <Button size="small" href={partner.docs_url}>Learn More</Button>
-          <Button size="small" href={partner.org_url} sx={{ paddingLeft: 2 }}>Website</Button>
-        </CardActions>
-
+        {DisplayLinks()}
       </Collapse>     
     </Card>
   )

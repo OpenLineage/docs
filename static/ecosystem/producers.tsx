@@ -13,14 +13,14 @@ export const Producers: Array<Partner> = [
         org: "Dagster",
         description: "A library converts Dagster events to OpenLineage events and emits them to an OpenLineage backend.",
         docs_url: "https://dagster.io",
-        org_url: "https://dagster.io"
+        org_url: ""
     },
     {
         image: "dbt_logo_bkgd_2.svg",
         org: "dbt",
         description: "A wrapper script uses the OpenLineage client for automatic collection of metadata from dbt.",
         docs_url: "https://www.getdbt.com",
-        org_url: "https://www.getdbt.com"
+        org_url: ""
     },
     {
         image: "egeria_logo_new.svg",
@@ -34,7 +34,7 @@ export const Producers: Array<Partner> = [
         org: "Flink",
         description: "The OpenLineage Flink Agent uses jvm instrumentation to emit OpenLineage metadata.",
         docs_url: "https://flink.apache.org",
-        org_url: "https://flink.apache.org"
+        org_url: ""
     },
     {
         image: "google_logo.svg",
@@ -48,7 +48,7 @@ export const Producers: Array<Partner> = [
         org: "Great Expectations",
         description: "The `OpenLineageValidationAction` collects dataset metadata from the Great Expectations `ValidationAction`.",
         docs_url: "https://greatexpectations.io",
-        org_url: "https://greatexpectations.io"
+        org_url: ""
     },
     {
         image: "keboola_logo_lg.svg",
@@ -62,6 +62,6 @@ export const Producers: Array<Partner> = [
         org: "Spark",
         description: "The OpenLineage Spark Agent uses jvm instrumentation to emit OpenLineage metadata.",
         docs_url: "https://spark.apache.org",
-        org_url: "https://spark.apache.org"
+        org_url: ""
     }
 ]
