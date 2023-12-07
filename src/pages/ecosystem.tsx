@@ -54,7 +54,7 @@ const LogoCard = ( partner: Partner ) => {
   };
 
   return (
-    <Card raised={true} sx={{ maxWidth: 345 }}>
+    <Card raised={true} sx={{ minWidth: 340 }}>
       <CardActions disableSpacing sx={{ padding: 0 }}>
         <ExpandMore
           expand={expanded}
@@ -65,7 +65,7 @@ const LogoCard = ( partner: Partner ) => {
         >
           <CardActionArea sx={{ padding: 0 }}>
             <CardMedia
-              sx={{ maxWidth: 345, maxHeight: 140, padding: 0 }}
+              sx={{ minWidth: 340, minHeight: 170, padding: 0 }}
               component="img"
               src={require(`@site/static/img/${partner.image}`).default}
               title={partner.org}
@@ -74,7 +74,7 @@ const LogoCard = ( partner: Partner ) => {
         </ExpandMore>  
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit> 
-        <CardContent sx={{ maxWidth: 275 }}>
+        <CardContent sx={{ maxWidth: 340 }}>
           <Typography variant="body1" color="text.secondary">
             {partner.description}
           </Typography>
@@ -88,16 +88,19 @@ const LogoCard = ( partner: Partner ) => {
 const FillGrid = ( partners: Array<Partner> ) => {
   return (
     <Grid container 
-      rowSpacing={4} 
-      columnSpacing={4} 
-      justifyContent="center" 
-      className={"lg:marginX-20 md:marginX-10"}
+      margin="auto"
+      rowSpacing={8}
+      columnSpacing={4}
       paddingBottom={4}
+      width="85%"
     >
       {partners.map(partner => 
-        <Grid>
+        <Grid
+          marginX="auto"
+          justifyItems="top"
+        > 
           {LogoCard(partner)}
-        </Grid>
+        </Grid >
       )}
     </Grid>
   )
@@ -119,7 +122,7 @@ export default function Ecosystem(): JSX.Element {
           Consumers
         </h3>
       </div>
-      <div>
+      <div className="eco-grid-div">
         {FillGrid(Consumers)}
       </div>
       <div className="title pt-12 pb-8 text-center">
@@ -127,7 +130,7 @@ export default function Ecosystem(): JSX.Element {
           Producers
         </h3>
       </div>
-      <div>
+      <div className="eco-grid-div">
         {FillGrid(Producers)}
       </div>
       <div className="bg-bg">

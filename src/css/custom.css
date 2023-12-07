@@ -500,3 +500,7 @@ img[src*="#banner"] {
   object-fit: cover;
   object-position: 25% 25%;
 }
+
+.eco-grid-div {
+  width: 100%;
+}
