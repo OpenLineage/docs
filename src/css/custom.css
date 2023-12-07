@@ -46,6 +46,7 @@ body {
   font-family: "Didact Gothic", sans-serif;
   font-size: 18px;
   background-color: white;
+  width: 100%;
 }
 
 p {
@@ -472,29 +473,6 @@ img[src*="#full-width"] {
   width: 100%;
 }
 
-.EcosystemPage .py-5 {
-  width: 150pt;
-}
-
-.EcosystemPage img {
-  width: 100%;
-}
-
-.EcosystemPage table thead,
-.EcosystemPage table tr {
-  background-color: transparent !important;
-}
-
-.EcosystemPage table thead tr,
-.EcosystemPage table thead th {
-  border: none !important;
-  background-color: transparent !important;
-}
-
-.EcosystemPage table tr td {
-  border: none !important;
-}
-
 html.docs-doc-page body {
   background-color: white;
 }
@@ -521,4 +499,8 @@ img[src*="#banner"] {
   overflow: hidden;
   object-fit: cover;
   object-position: 25% 25%;
+}
+
+.eco-grid-div {
+  width: 100%;
 }

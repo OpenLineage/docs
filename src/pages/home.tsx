@@ -1,20 +1,15 @@
 import React, { useEffect, useRef, useState } from "react"
 import Layout from '@theme/Layout'
 import { Button } from "../components/ui"
-import ItemBlog from "../components/item-blog"
 import Footer from "../components/footer"
 import { ArrowRight } from "react-feather"
 import { Calendar } from "react-feather"
 import { Slack } from "react-feather"
 import { Inbox } from "react-feather"
 
-export default function Main({ recentPosts }): JSX.Element {
+export default function Main(): JSX.Element {
   const seoTitle = 'Home';
   const seoDescription = 'Data lineage is the foundation for a new generation of powerful, context-aware data tools and best practices. OpenLineage enables consistent collection of lineage metadata, creating a deeper understanding of how data is produced and used.';
-
-  const blogList = recentPosts.map((item, i) => (
-    <ItemBlog data={item.content} key={`b-item-index-${i}`} />
-  ))
 
   return (
     <Layout title={seoTitle} description={seoDescription}>
