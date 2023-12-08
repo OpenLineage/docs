@@ -41,7 +41,13 @@ const LogoCard = ( partner: Partner ) => {
       return (
         <CardActions disableSpacing>
           <Button size="small" href={partner.docs_url}>Learn More</Button>
-          <Button size="small" href={partner.org_url} sx={{ paddingLeft: 2 }}>Website</Button>
+          <Button 
+            size="small" 
+            href={partner.org_url} 
+            sx={{ marginLeft: 2 }}
+          >
+            Website
+          </Button>
         </CardActions>
       )
     } else {
