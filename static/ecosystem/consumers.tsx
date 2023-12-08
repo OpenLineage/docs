@@ -7,7 +7,7 @@ export const Consumers: Array<Partner> = [
   {  
     image: "amundsen_logo_1.svg",
     org: "Amundsen",
-    description: "The integration's OpenLineageTableLineageExtractor extracts table lineage information from OpenLineage events.",
+    description: "The Amundsen integration's OpenLineageTableLineageExtractor extracts table lineage information from OpenLineage events.",
     docs_url: "https://www.amundsen.io/amundsen/databuilder/#openlineagetablelineageextractor",
     org_url: "https://www.amundsen.io"
   },

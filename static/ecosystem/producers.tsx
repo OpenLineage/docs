@@ -39,14 +39,14 @@ export const Producers: Array<Partner> = [
     {
         image: "google_logo.svg",
         org: "Google",
-        description: "Dataproc captures lineage events from Spark jobs and publishes them to the Dataplex Data Lineage API, which also accepts OpenLineage events using the `ProcessOpenLineageRunEvent` REST API method.",
+        description: "Dataproc captures lineage events from Spark jobs and publishes them to the Dataplex Data Lineage API, which also accepts OpenLineage events using the ProcessOpenLineageRunEvent REST API method.",
         docs_url: "https://cloud.google.com/data-catalog/docs/reference/data-lineage/rest",
         org_url: "https://cloud.google.com/dataproc/docs/guides/lineage"
     },
     {
         image: "GE_logo.svg",
         org: "Great Expectations",
-        description: "The `OpenLineageValidationAction` collects dataset metadata from the Great Expectations `ValidationAction`.",
+        description: "The OpenLineageValidationAction collects dataset metadata from the Great Expectations ValidationAction.",
         docs_url: "",
         org_url: "https://greatexpectations.io"
     },
