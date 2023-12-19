@@ -73,7 +73,9 @@ In your job, you need to set up `OpenLineageFlinkJobListener`.
 
 For example:
 ```java
-    JobListener listener = new OpenLineageFlinkJobListener(streamExecutionEnvironment);
+    JobListener listener = JobListener listener = OpenLineageFlinkJobListener.builder()
+        .executionEnvironment(streamExecutionEnvironment)
+        .build();
     streamExecutionEnvironment.registerJobListener(listener);
 ```
 
