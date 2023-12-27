@@ -85,8 +85,8 @@ The following parameters can be specified:
 ----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------
 | spark.openlineage.transport.type                   | The transport type used for event emit, default type is `console`                                                                                   | http                                |
 | spark.openlineage.namespace                        | The default namespace to be applied for any jobs submitted                                                                                          | MyNamespace                         |
-| spark.openlineage.parentJobName                    | The job name to be used for the parent job facet                                                                                                    | ParentJobName                       |
-| spark.openlineage.parentRunId                      | The RunId of the parent job that initiated this Spark job                                                                                           | xxxx-xxxx-xxxx-xxxx                 |
+| spark.openlineage.parentJobName                    | The job name to be used for the parent job facet. If defined, `spark.openlineage.parentRunId` is also required.                                     | ParentJobName                       |
+| spark.openlineage.parentRunId                      | The RunId of the parent job that initiated this Spark job. Needs to be valid 128-bit UUID.                                                          | xxxx-xxxx-xxxx-xxxx                 |
 | spark.openlineage.appName                          | Custom value overwriting Spark app name in events                                                                                                   | AppName                             |
 | spark.openlineage.facets.disabled                  | List of facets to disable, enclosed in `[]` (required from 0.21.x) and separated by `;`, default is `[spark_unknown;]` (currently must contain `;`) | \[spark_unknown;spark.logicalPlan\] |
 | spark.openlineage.capturedProperties               | comma separated list of properties to be captured in spark properties facet (default `spark.master`, `spark.app.name`)                              | "spark.example1,spark.example2"     |
@@ -161,7 +161,7 @@ t1 = DataProcPySparkOperator(
       "spark.jars.packages": "io.openlineage:openlineage-spark:1.0.0+",
       "spark.openlineage.transport.url": f"{openlineage_url}/api/v1/namespaces/{openlineage_namespace}/jobs/dump_orders_to_gcs/runs/{{{{lineage_run_id(run_id, task)}}}}?api_key={api_key}",
       "spark.openlineage.namespace": openlineage_namespace,
-      "spark.openlineage.parentJobName": job_name,
+      "spark.openlineage.parentJobName": dag.dag_id,
       "spark.openlineage.parentRunId": f"{{{{lineage_run_id(run_id, task)}}}}
     },
     dag=dag)
