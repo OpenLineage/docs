@@ -42,7 +42,7 @@ from pyspark.sql import SparkSession
 spark = (SparkSession.builder.master('local')
          .appName('sample_spark')
          .config('spark.extraListeners', 'io.openlineage.spark.agent.OpenLineageSparkListener')
-         .config('spark.jars.packages', 'io.openlineage:openlineage-spark:0.12.0')
+         .config('spark.jars.packages', 'io.openlineage:openlineage-spark:1.7.0')
          .config('spark.openlineage.transport.type', 'console')
          .getOrCreate())
 ```
