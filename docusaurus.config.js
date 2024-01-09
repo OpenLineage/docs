@@ -142,7 +142,7 @@ const config = {
     },
     'js/google_analytics.js',
     {
-      src: 'https://www.googletagmanager.com/gtag/js?id=G-JWM05WR5QM',
+      src: 'https://www.googletagmanager.com/gtag/js?id=G-QMTWMLMX4M',
       async: true,
     },
   ],
