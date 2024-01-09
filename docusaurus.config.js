@@ -134,12 +134,18 @@ const config = {
       },
     }),
 
-  scripts:
-    [{
+  scripts: [
+    {
       src: 'https://plausible.io/js/script.js',
       defer: true,
       'data-domain': 'openlineage.io',
-    }],
+    },
+    'js/google_analytics.js',
+    {
+      src: 'https://www.googletagmanager.com/gtag/js?id=G-QMTWMLMX4M',
+      async: true,
+    },
+  ],
 };
 
 module.exports = config;
