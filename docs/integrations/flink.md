@@ -52,7 +52,7 @@ OpenLineage integration extracts lineage only from following `Sources` and `Sink
     </tr>
     <tr>
       <td>KafkaSource</td>
-      <td>KafkaSink</td>
+      <td>KafkaSink (1)</td>
     </tr>
     <tr>
       <td>FlinkKafkaConsumer</td>
@@ -66,6 +66,12 @@ OpenLineage integration extracts lineage only from following `Sources` and `Sink
 </table>
 
 We expect this list to grow as we add support for more connectors.
+
+(1) KafkaSink supports sinks that write to a single topic as well as multi topic sinks. The 
+limitation for multi topic sink is that: topics need to have the same schema and implementation
+of `KafkaRecordSerializationSchema` must extend `KafkaTopicsDescriptor`. 
+Methods `isFixedTopics` and `getFixedTopics` from `KafkaTopicsDescriptor` are used to extract multiple topics 
+from a sink. 
 
 ## Usage
 
