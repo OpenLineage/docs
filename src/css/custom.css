@@ -504,3 +504,20 @@ img[src*="#banner"] {
 .eco-grid-div {
   width: 100%;
 }
+
+.survey-btn-container {
+  display: flex;
+  align-items: center;
+}
+
+.survey-btn-div {
+  margin: auto;
+}
+
+.survey-btn {
+  color: white;
+  padding: 15px 32px;
+  font-size: 24px;
+  background-color: #3e3e3e;
+  border-radius: 12px;
+}
