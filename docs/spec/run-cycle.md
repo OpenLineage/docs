@@ -12,7 +12,7 @@ Each Run State Update contains the run state (i.e., `START`) along with metadata
 
 ## Run States
 
-There are five run states currently defined in the OpenLineage [spec](https://openlineage.io/apidocs/openapi/):
+There are six run states currently defined in the OpenLineage [spec](https://openlineage.io/apidocs/openapi/):
 
 * `START` to indicate the beginning of a Job
 
@@ -24,7 +24,9 @@ There are five run states currently defined in the OpenLineage [spec](https://op
 
 * `FAIL` to signify that the Job has failed
 
-We assume events describing a single run are accumulative and 
+* `OTHER` to send additional metadata outside standard run cycle
+
+We assume events describing a single run are **accumulative** and 
 `COMPLETE`, `ABORT` and `FAIL` are terminal events. Sending any of terminal events
 means no other events related to this run will be emitted. 
 
@@ -41,6 +43,6 @@ A batch Job - e.g., an Airflow task or a dbt model - will typically be represent
 
 ![image](./run-cycle-batch.svg)
 
-A long-running Job - e.g., a microservice or a stream - will typically be represented by a `START` event followed by a series of `RUNNING` events that report changes in the run or emit performace metrics. Occasionally, a `COMPLETE`, `ABORT`, or `FAIL` event will occur, often followed by a `START` event as the job is reinitiated. 
+A long-running Job - e.g., a microservice or a stream - will typically be represented by a `START` event followed by a series of `RUNNING` events that report changes in the run or emit performance metrics. Occasionally, a `COMPLETE`, `ABORT`, or `FAIL` event will occur, often followed by a `START` event as the job is reinitiated. 
 
 ![image](./run-cycle-stream.svg)
