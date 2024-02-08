@@ -5,6 +5,19 @@
     "description": "OpenLineage Blog",
     "items": [
         {
+            "id": "https://openlineage.io/blog/kafka-summit-talk",
+            "content_html": "<p>At this year's <a href=\"https://www.kafka-summit.org/events/kafka-summit-london-2024/about\" target=\"_blank\" rel=\"noopener noreferrer\">Kafka Summit in London</a>,\ntwo project committers, Paweł Leszczyński and Maciej Obuchowski, will give a talk entitled\n<strong>OpenLineage for Stream Processing</strong> on March 19th at 2:00 PM GMT.</p><p>As the <a href=\"https://events.bizzabo.com/559905/agenda/session/1284918\" target=\"_blank\" rel=\"noopener noreferrer\">abstract available on the summit website</a>\nsays, the talk will cover some of the 'many useful features completed or begun'\nrecently related to stream processing, including:</p><ul><li>a seamless OpenLineage &amp; Apache Flink integration, </li><li>support for streaming jobs in Marquez, </li><li>progress on a built-in lineage API within the Flink codebase. </li></ul><p>As the abstract goes on to say,</p><p><em>Cross-platform lineage allows for a holistic overview of data flow and its dependencies\nwithin organizations, including stream processing. This talk will provide an overview of\nthe most recent developments in the OpenLineage Flink integration and share what’s in store\nfor this important collaboration. This talk is a must-attend for those wishing to stay\nup-to-date on lineage developments in the stream processing world.</em></p><p>Register and attend this interesting talk if you can. And keep an eye out for an\nannouncement about a recording if and when one becomes available.</p><p>Thanks, Maciej and Paweł, for spreading the word about these exciting developments in\nthe project.</p>",
+            "url": "https://openlineage.io/blog/kafka-summit-talk",
+            "title": "OpenLineage Support for Streaming to Feature at Kafka Summit",
+            "summary": "Project committers will speak about recent progress on stream processing support.",
+            "date_modified": "2024-02-08T00:00:00.000Z",
+            "author": {
+                "name": "Michael Robinson",
+                "url": "https://github.com/merobi-hub"
+            },
+            "tags": []
+        },
+        {
             "id": "https://openlineage.io/blog/london-confluent-meetup",
             "content_html": "<p>Join us on Wednesday, January 31st, 2024, from 6:00-8:00 pm at the Confluent offices\nin London to learn more about the current state of lineage in general and streaming\nsupport in particular. Bring your ideas and vision for OpenLineage!</p><p>Food will be provided, and the meetup is open to all. Don't miss this opportunity\nto learn about OpenLineage and Kafka! We hope to see you there. </p><p><strong>Please <a href=\"https://www.meetup.com/london-openlineage-meetup-group/events/298420417/\" target=\"_blank\" rel=\"noopener noreferrer\">sign up</a>\nto let us know you're coming.</strong></p><h3 class=\"anchor anchorWithStickyNavbar_LWe7\" id=\"time-place--format\">Time, Place &amp; Format<a href=\"#time-place--format\" class=\"hash-link\" aria-label=\"Direct link to Time, Place &amp; Format\" title=\"Direct link to Time, Place &amp; Format\">​</a></h3><p>Date: January 31, 2024<br>\n<!-- -->Format: In-person<br>\n<!-- -->Time: 6:00-8:00 pm GMT<br>\n<!-- -->Address: Confluent, <a href=\"https://maps.app.goo.gl/QJduVG2F6Ts5e99S9\" target=\"_blank\" rel=\"noopener noreferrer\">1 Bedford Street, London WC2E 9HD, United Kingdom</a></p>",
             "url": "https://openlineage.io/blog/london-confluent-meetup",
