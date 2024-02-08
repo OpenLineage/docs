@@ -521,3 +521,8 @@ img[src*="#banner"] {
   background-color: #3e3e3e;
   border-radius: 12px;
 }
+
+.commtable-col {
+  margin-left: auto;
+  margin-right: auto;
+}
