@@ -8,7 +8,8 @@ OpenLineage provides an integration with Apache Airflow. As Airflow is actively 
 * 2.2.4
 * 2.3.4 (TaskListener API introduced)
 * 2.4.3
-* 2.5.0
+* 2.5.2
+* 2.6.1
 
 ### Unit tests
 In order to make running unit tests against multiple Airflow versions easier there is possibility to use [tox](https://tox.wiki/).

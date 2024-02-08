@@ -10,9 +10,9 @@ sidebar_position: 1
 This matrix is not yet complete.
 :::
 
-The matrix below shows the relationship between an input facet and various mechanisms OpenLineage uses to gather metadata. Not all mechanisms collect data to fill in all facets, and some facets are specific to one integration.
-✔️: The mechanism does implement this facet.
-✖️: The mechanism does not implement this facet.
+The matrix below shows the relationship between an input facet and various mechanisms OpenLineage uses to gather metadata. Not all mechanisms collect data to fill in all facets, and some facets are specific to one integration.  
+✔️: The mechanism does implement this facet.  
+✖️: The mechanism does not implement this facet.  
 An empty column means it is not yet documented if the mechanism implements this facet.
 
 | Mechanism          | Integration       | Metadata Gathered                             | InputDatasetFacet | OutputDatasetFacet | SqlJobFacet | SchemaDatasetFacet | DataSourceDatasetFacet | DataQualityMetricsInputDatasetFacet | DataQualityAssertionsDatasetFacet | SourceCodeJobFacet | ExternalQueryRunFacet | DocumentationDatasetFacet | SourceCodeLocationJobFacet | DocumentationJobFacet | ParentRunFacet |

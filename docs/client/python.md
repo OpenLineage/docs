@@ -56,11 +56,32 @@ The list of available environment varaibles can be found [here](../development/d
 ##### HTTP
 - type - string (required)
 - url - string (required)
+- endpoint - string specifying the endpoint to which events are sent. Default: api/v1/lineage (optional)
 - timeout - float specifying a timeout value when sending an event. Default: 5 seconds. (optional)
-- verify - boolean specifying whether or not the client should verify TLS certificates from the backend. Default: true. (optional)
+- verify - boolean specifying whether the client should verify TLS certificates from the backend. Default: true. (optional)
 - auth - dictionary specifying authentication options. Requires the type property. (optional)
-- type - string specifying the "api_key" or the fully qualified class name of your TokenProvider. (required if `auth` is provided)
-- api_key - string setting the Authentication HTTP header as the Bearer. (required if `api_key` is set)
+  - type - string specifying the "api_key" or the fully qualified class name of your TokenProvider. (required if `auth` is provided)
+  - api_key - string setting the Authentication HTTP header as the Bearer. (required if `api_key` is set)
+
+Example:
+```
+transport:
+  type: http
+  url: https://backend:5000
+  endpoint: events/receive
+  auth:
+    type: api_key
+    api_key: f048521b-dfe8-47cd-9c65-0cb07d57591e
+```
+
+##### Console 
+- type - string (required)
+
+Example:
+```
+transport:
+  type: console
+```
 
 ##### Kafka
 
@@ -70,19 +91,37 @@ It can be installed also by specifying kafka client extension: `pip install open
 - type - string (required)
 - config - string containing a Kafka producer config (required)
 - topic - string specifying the topic (required)
+- flush - boolean specifying whether Kafka should flush after each event. Default: true. (optional)
 
 There's a caveat for using `KafkaTransport` with Airflow integration. In this integration, a Kafka producer needs to be created 
 for each OpenLineage event. 
 It happens due to the Airflow execution and plugin model, which requires us to send messages from worker processes.
 These are created dynamically for each task execution.
 
-
-- flush - boolean specifying whether or not Kafka should flush after each event. Default: true. (optional)
+Example:
+```
+transport:
+  type: kafka
+  config:
+    bootstrap.servers: mybroker
+    acks: all
+    retries: 3
+  topic: my_topic
+  flush: true
+```
 
 #### File
 
 - log_file_path - string specifying the path of the file (if append is true, a file path is expected, otherwise a file prefix is expected).  (required)
 - append - boolean . If set to True, each event will be appended to a single file (log_file_path); otherwise, all events will be written separately in distinct files suffixed by a timestring. Default: false. (optional)
+
+Example:
+```
+transport:
+  type: file
+  log_file_path: ol_events_
+  append: false
+```
 
 ### Custom Transport Type
 
@@ -135,9 +174,9 @@ In the python_scripts directory, create a Python script (we used the name `gener
 In `openlineage.yml`, define a transport type and URL to tell OpenLineage where and how to send metadata:
 
 ```
-Transport:
-	Type: “http”
-	Url: “http://localhost:5000”
+transport:
+  type: http
+  url: http://localhost:5000
 ```
 
 In `generate_events.py`, import the Python client and the methods needed to create a job and datasets. Also required (to create a run): the `datetime` and `uuid` packages:
