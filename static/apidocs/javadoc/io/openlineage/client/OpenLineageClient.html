@@ -189,8 +189,14 @@ extends java.lang.Object</pre>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(io.openlineage.client.transports.Transport,java.lang.String%5B%5D)">OpenLineageClient</a></span>&#8203;(@NonNull <a href="transports/Transport.html" title="class in io.openlineage.client.transports">Transport</a>&nbsp;transport,
-                 java.lang.String[]&nbsp;disabledFacets)</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(io.openlineage.client.transports.Transport,io.openlineage.client.circuitBreaker.CircuitBreaker,java.lang.String...)">OpenLineageClient</a></span>&#8203;(@NonNull <a href="transports/Transport.html" title="class in io.openlineage.client.transports">Transport</a>&nbsp;transport,
+                 <a href="circuitBreaker/CircuitBreaker.html" title="interface in io.openlineage.client.circuitBreaker">CircuitBreaker</a>&nbsp;circuitBreaker,
+                 java.lang.String...&nbsp;disabledFacets)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(io.openlineage.client.transports.Transport,java.lang.String...)">OpenLineageClient</a></span>&#8203;(@NonNull <a href="transports/Transport.html" title="class in io.openlineage.client.transports">Transport</a>&nbsp;transport,
+                 java.lang.String...&nbsp;disabledFacets)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -283,7 +289,18 @@ extends java.lang.Object</pre>
                          @NonNull <a href="transports/Transport.html" title="class in io.openlineage.client.transports">Transport</a>&nbsp;transport)</pre>
 </li>
 </ul>
-<a id="&lt;init&gt;(io.openlineage.client.transports.Transport,java.lang.String[])">
+<a id="&lt;init&gt;(io.openlineage.client.transports.Transport,java.lang.String...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>OpenLineageClient</h4>
+<pre>public&nbsp;OpenLineageClient&#8203;(@NonNull
+                         @NonNull <a href="transports/Transport.html" title="class in io.openlineage.client.transports">Transport</a>&nbsp;transport,
+                         java.lang.String...&nbsp;disabledFacets)</pre>
+</li>
+</ul>
+<a id="&lt;init&gt;(io.openlineage.client.transports.Transport,io.openlineage.client.circuitBreaker.CircuitBreaker,java.lang.String...)">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -291,7 +308,8 @@ extends java.lang.Object</pre>
 <h4>OpenLineageClient</h4>
 <pre>public&nbsp;OpenLineageClient&#8203;(@NonNull
                          @NonNull <a href="transports/Transport.html" title="class in io.openlineage.client.transports">Transport</a>&nbsp;transport,
-                         java.lang.String[]&nbsp;disabledFacets)</pre>
+                         <a href="circuitBreaker/CircuitBreaker.html" title="interface in io.openlineage.client.circuitBreaker">CircuitBreaker</a>&nbsp;circuitBreaker,
+                         java.lang.String...&nbsp;disabledFacets)</pre>
 </li>
 </ul>
 </li>

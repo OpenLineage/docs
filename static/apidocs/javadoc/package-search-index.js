@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"io.openlineage.client"},{"l":"io.openlineage.client.transports"},{"l":"io.openlineage.client.utils"},{"l":"io.openlineage.server"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"io.openlineage.client"},{"l":"io.openlineage.client.circuitBreaker"},{"l":"io.openlineage.client.transports"},{"l":"io.openlineage.client.utils"},{"l":"io.openlineage.server"}]
