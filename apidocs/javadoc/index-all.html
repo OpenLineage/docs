@@ -123,6 +123,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dl>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.SourceCodeLocationJobFacetBuilder.html#branch(java.lang.String)">branch(String)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.SourceCodeLocationJobFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.SourceCodeLocationJobFacetBuilder</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/CircuitBreakerFactory.html#build()">build()</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/CircuitBreakerFactory.html" title="class in io.openlineage.client.circuitBreaker">CircuitBreakerFactory</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.Builder.html#build()">build()</a></span> - Method in interface io.openlineage.client.<a href="io/openlineage/client/OpenLineage.Builder.html" title="interface in io.openlineage.client">OpenLineage.Builder</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.ColumnLineageDatasetFacetBuilder.html#build()">build()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.ColumnLineageDatasetFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.ColumnLineageDatasetFacetBuilder</a></dt>
@@ -346,6 +348,16 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/server/OpenLineage.Builder.html#build()">build()</a></span> - Method in interface io.openlineage.server.<a href="io/openlineage/server/OpenLineage.Builder.html" title="interface in io.openlineage.server">OpenLineage.Builder</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/CircuitBreakerBuilder.html#build(io.openlineage.client.circuitBreaker.CircuitBreakerConfig)">build(CircuitBreakerConfig)</a></span> - Method in interface io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/CircuitBreakerBuilder.html" title="interface in io.openlineage.client.circuitBreaker">CircuitBreakerBuilder</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/JavaRuntimeCircuitBreakerBuilder.html#build(io.openlineage.client.circuitBreaker.CircuitBreakerConfig)">build(CircuitBreakerConfig)</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/JavaRuntimeCircuitBreakerBuilder.html" title="class in io.openlineage.client.circuitBreaker">JavaRuntimeCircuitBreakerBuilder</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/NoOpCircuitBreakerBuilder.html#build(io.openlineage.client.circuitBreaker.CircuitBreakerConfig)">build(CircuitBreakerConfig)</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/NoOpCircuitBreakerBuilder.html" title="class in io.openlineage.client.circuitBreaker">NoOpCircuitBreakerBuilder</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/SimpleMemoryCircuitBreakerBuilder.html#build(io.openlineage.client.circuitBreaker.CircuitBreakerConfig)">build(CircuitBreakerConfig)</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/SimpleMemoryCircuitBreakerBuilder.html" title="class in io.openlineage.client.circuitBreaker">SimpleMemoryCircuitBreakerBuilder</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/StaticCircuitBreakerBuilder.html#build(io.openlineage.client.circuitBreaker.CircuitBreakerConfig)">build(CircuitBreakerConfig)</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/StaticCircuitBreakerBuilder.html" title="class in io.openlineage.client.circuitBreaker">StaticCircuitBreakerBuilder</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/transports/ConsoleTransportBuilder.html#build(io.openlineage.client.transports.TransportConfig)">build(TransportConfig)</a></span> - Method in class io.openlineage.client.transports.<a href="io/openlineage/client/transports/ConsoleTransportBuilder.html" title="class in io.openlineage.client.transports">ConsoleTransportBuilder</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/transports/FileTransportBuilder.html#build(io.openlineage.client.transports.TransportConfig)">build(TransportConfig)</a></span> - Method in class io.openlineage.client.transports.<a href="io/openlineage/client/transports/FileTransportBuilder.html" title="class in io.openlineage.client.transports">FileTransportBuilder</a></dt>
@@ -374,6 +386,34 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </a>
 <h2 class="title">C</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/CircuitBreaker.html#CIRCUIT_CHECK_INTERVAL_IN_MILLIS">CIRCUIT_CHECK_INTERVAL_IN_MILLIS</a></span> - Static variable in interface io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/CircuitBreaker.html" title="interface in io.openlineage.client.circuitBreaker">CircuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineageClient.Builder.html#circuitBreaker(io.openlineage.client.circuitBreaker.CircuitBreaker)">circuitBreaker(CircuitBreaker)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineageClient.Builder.html" title="class in io.openlineage.client">OpenLineageClient.Builder</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/openlineage/client/circuitBreaker/CircuitBreaker.html" title="interface in io.openlineage.client.circuitBreaker"><span class="typeNameLink">CircuitBreaker</span></a> - Interface in <a href="io/openlineage/client/circuitBreaker/package-summary.html">io.openlineage.client.circuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/openlineage/client/circuitBreaker/CircuitBreakerBuilder.html" title="interface in io.openlineage.client.circuitBreaker"><span class="typeNameLink">CircuitBreakerBuilder</span></a> - Interface in <a href="io/openlineage/client/circuitBreaker/package-summary.html">io.openlineage.client.circuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/openlineage/client/circuitBreaker/CircuitBreakerConfig.html" title="interface in io.openlineage.client.circuitBreaker"><span class="typeNameLink">CircuitBreakerConfig</span></a> - Interface in <a href="io/openlineage/client/circuitBreaker/package-summary.html">io.openlineage.client.circuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/openlineage/client/circuitBreaker/CircuitBreakerConfigTypeIdResolver.html" title="class in io.openlineage.client.circuitBreaker"><span class="typeNameLink">CircuitBreakerConfigTypeIdResolver</span></a> - Class in <a href="io/openlineage/client/circuitBreaker/package-summary.html">io.openlineage.client.circuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/CircuitBreakerConfigTypeIdResolver.html#%3Cinit%3E()">CircuitBreakerConfigTypeIdResolver()</a></span> - Constructor for class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/CircuitBreakerConfigTypeIdResolver.html" title="class in io.openlineage.client.circuitBreaker">CircuitBreakerConfigTypeIdResolver</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/openlineage/client/circuitBreaker/CircuitBreakerFactory.html" title="class in io.openlineage.client.circuitBreaker"><span class="typeNameLink">CircuitBreakerFactory</span></a> - Class in <a href="io/openlineage/client/circuitBreaker/package-summary.html">io.openlineage.client.circuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/CircuitBreakerFactory.html#%3Cinit%3E(io.openlineage.client.circuitBreaker.CircuitBreakerConfig)">CircuitBreakerFactory(CircuitBreakerConfig)</a></span> - Constructor for class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/CircuitBreakerFactory.html" title="class in io.openlineage.client.circuitBreaker">CircuitBreakerFactory</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/openlineage/client/circuitBreaker/CircuitBreakerResolver.html" title="class in io.openlineage.client.circuitBreaker"><span class="typeNameLink">CircuitBreakerResolver</span></a> - Class in <a href="io/openlineage/client/circuitBreaker/package-summary.html">io.openlineage.client.circuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/CircuitBreakerResolver.html#%3Cinit%3E()">CircuitBreakerResolver()</a></span> - Constructor for class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/CircuitBreakerResolver.html" title="class in io.openlineage.client.circuitBreaker">CircuitBreakerResolver</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/openlineage/client/circuitBreaker/CircuitBreakerState.html" title="class in io.openlineage.client.circuitBreaker"><span class="typeNameLink">CircuitBreakerState</span></a> - Class in <a href="io/openlineage/client/circuitBreaker/package-summary.html">io.openlineage.client.circuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/CircuitBreakerState.html#%3Cinit%3E(boolean)">CircuitBreakerState(boolean)</a></span> - Constructor for class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/CircuitBreakerState.html" title="class in io.openlineage.client.circuitBreaker">CircuitBreakerState</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/CircuitBreakerState.html#%3Cinit%3E(boolean,java.lang.String)">CircuitBreakerState(boolean, String)</a></span> - Constructor for class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/CircuitBreakerState.html" title="class in io.openlineage.client.circuitBreaker">CircuitBreakerState</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="io/openlineage/client/Clients.html" title="class in io.openlineage.client"><span class="typeNameLink">Clients</span></a> - Class in <a href="io/openlineage/client/package-summary.html">io.openlineage.client</a></dt>
 <dd>
 <div class="block">Factory class for creating new <a href="io/openlineage/client/OpenLineageClient.html" title="class in io.openlineage.client"><code>OpenLineageClient</code></a> objects.</div>
@@ -400,7 +440,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><a href="io/openlineage/client/ConfigPathProvider.html" title="interface in io.openlineage.client"><span class="typeNameLink">ConfigPathProvider</span></a> - Interface in <a href="io/openlineage/client/package-summary.html">io.openlineage.client</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineageClientUtils.html#configureObjectMapper(java.lang.String%5B%5D)">configureObjectMapper(String[])</a></span> - Static method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineageClientUtils.html" title="class in io.openlineage.client">OpenLineageClientUtils</a></dt>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineageClientUtils.html#configureObjectMapper(java.lang.String...)">configureObjectMapper(String...)</a></span> - Static method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineageClientUtils.html" title="class in io.openlineage.client">OpenLineageClientUtils</a></dt>
 <dd>
 <div class="block">Configure object mapper to exclude specified facets from being serialized</div>
 </dd>
@@ -421,6 +461,16 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetricsAdditionalBuilder.html#count(java.lang.Double)">count(Double)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetricsAdditionalBuilder.html" title="class in io.openlineage.client">OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetricsAdditionalBuilder</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.LifecycleStateChangeDatasetFacet.LifecycleStateChange.html#CREATE">CREATE</a></span> - io.openlineage.client.<a href="io/openlineage/client/OpenLineage.LifecycleStateChangeDatasetFacet.LifecycleStateChange.html" title="enum in io.openlineage.client">OpenLineage.LifecycleStateChangeDatasetFacet.LifecycleStateChange</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/CircuitBreaker.html#currentState()">currentState()</a></span> - Method in interface io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/CircuitBreaker.html" title="interface in io.openlineage.client.circuitBreaker">CircuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/JavaRuntimeCircuitBreaker.html#currentState()">currentState()</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/JavaRuntimeCircuitBreaker.html" title="class in io.openlineage.client.circuitBreaker">JavaRuntimeCircuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/NoOpCircuitBreaker.html#currentState()">currentState()</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/NoOpCircuitBreaker.html" title="class in io.openlineage.client.circuitBreaker">NoOpCircuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/SimpleMemoryCircuitBreaker.html#currentState()">currentState()</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/SimpleMemoryCircuitBreaker.html" title="class in io.openlineage.client.circuitBreaker">SimpleMemoryCircuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/StaticCircuitBreaker.html#currentState()">currentState()</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/StaticCircuitBreaker.html" title="class in io.openlineage.client.circuitBreaker">StaticCircuitBreaker</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <a id="I:D">
@@ -498,7 +548,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineageClientUtils.DisabledFacetsMixin.html#%3Cinit%3E()">DisabledFacetsMixin()</a></span> - Constructor for class io.openlineage.client.<a href="io/openlineage/client/OpenLineageClientUtils.DisabledFacetsMixin.html" title="class in io.openlineage.client">OpenLineageClientUtils.DisabledFacetsMixin</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineageClient.Builder.html#disableFacets(java.lang.String%5B%5D)">disableFacets(String[])</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineageClient.Builder.html" title="class in io.openlineage.client">OpenLineageClient.Builder</a></dt>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineageClient.Builder.html#disableFacets(java.lang.String...)">disableFacets(String...)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineageClient.Builder.html" title="class in io.openlineage.client">OpenLineageClient.Builder</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetricsAdditionalBuilder.html#distinctCount(java.lang.Long)">distinctCount(Long)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetricsAdditionalBuilder.html" title="class in io.openlineage.client">OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetricsAdditionalBuilder</a></dt>
 <dd>&nbsp;</dd>
@@ -571,6 +621,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.RunEventBuilder.html#eventTime(java.time.ZonedDateTime)">eventTime(ZonedDateTime)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.RunEventBuilder.html" title="class in io.openlineage.client">OpenLineage.RunEventBuilder</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.RunEventBuilder.html#eventType(io.openlineage.client.OpenLineage.RunEvent.EventType)">eventType(OpenLineage.RunEvent.EventType)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.RunEventBuilder.html" title="class in io.openlineage.client">OpenLineage.RunEventBuilder</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/openlineage/client/circuitBreaker/ExecutorCircuitBreaker.html" title="class in io.openlineage.client.circuitBreaker"><span class="typeNameLink">ExecutorCircuitBreaker</span></a> - Class in <a href="io/openlineage/client/circuitBreaker/package-summary.html">io.openlineage.client.circuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/ExecutorCircuitBreaker.html#%3Cinit%3E(java.lang.Integer)">ExecutorCircuitBreaker(Integer)</a></span> - Constructor for class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/ExecutorCircuitBreaker.html" title="class in io.openlineage.client.circuitBreaker">ExecutorCircuitBreaker</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.RunFacetsBuilder.html#externalQuery(io.openlineage.client.OpenLineage.ExternalQueryRunFacet)">externalQuery(OpenLineage.ExternalQueryRunFacet)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.RunFacetsBuilder.html" title="class in io.openlineage.client">OpenLineage.RunFacetsBuilder</a></dt>
 <dd>&nbsp;</dd>
@@ -992,11 +1046,25 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.DataQualityMetricsInputDatasetFacet.html#getBytes()">getBytes()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.DataQualityMetricsInputDatasetFacet.html" title="class in io.openlineage.client">OpenLineage.DataQualityMetricsInputDatasetFacet</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/CircuitBreaker.html#getCheckIntervalMillis()">getCheckIntervalMillis()</a></span> - Method in interface io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/CircuitBreaker.html" title="interface in io.openlineage.client.circuitBreaker">CircuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/ExecutorCircuitBreaker.html#getCheckIntervalMillis()">getCheckIntervalMillis()</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/ExecutorCircuitBreaker.html" title="class in io.openlineage.client.circuitBreaker">ExecutorCircuitBreaker</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.DataQualityAssertionsDatasetFacetAssertions.html#getColumn()">getColumn()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.DataQualityAssertionsDatasetFacetAssertions.html" title="class in io.openlineage.client">OpenLineage.DataQualityAssertionsDatasetFacetAssertions</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.DatasetFacets.html#getColumnLineage()">getColumnLineage()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.DatasetFacets.html" title="class in io.openlineage.client">OpenLineage.DatasetFacets</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.DataQualityMetricsInputDatasetFacet.html#getColumnMetrics()">getColumnMetrics()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.DataQualityMetricsInputDatasetFacet.html" title="class in io.openlineage.client">OpenLineage.DataQualityMetricsInputDatasetFacet</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/CircuitBreakerBuilder.html#getConfig()">getConfig()</a></span> - Method in interface io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/CircuitBreakerBuilder.html" title="interface in io.openlineage.client.circuitBreaker">CircuitBreakerBuilder</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/JavaRuntimeCircuitBreakerBuilder.html#getConfig()">getConfig()</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/JavaRuntimeCircuitBreakerBuilder.html" title="class in io.openlineage.client.circuitBreaker">JavaRuntimeCircuitBreakerBuilder</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/NoOpCircuitBreakerBuilder.html#getConfig()">getConfig()</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/NoOpCircuitBreakerBuilder.html" title="class in io.openlineage.client.circuitBreaker">NoOpCircuitBreakerBuilder</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/SimpleMemoryCircuitBreakerBuilder.html#getConfig()">getConfig()</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/SimpleMemoryCircuitBreakerBuilder.html" title="class in io.openlineage.client.circuitBreaker">SimpleMemoryCircuitBreakerBuilder</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/StaticCircuitBreakerBuilder.html#getConfig()">getConfig()</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/StaticCircuitBreakerBuilder.html" title="class in io.openlineage.client.circuitBreaker">StaticCircuitBreakerBuilder</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/transports/ConsoleTransportBuilder.html#getConfig()">getConfig()</a></span> - Method in class io.openlineage.client.transports.<a href="io/openlineage/client/transports/ConsoleTransportBuilder.html" title="class in io.openlineage.client.transports">ConsoleTransportBuilder</a></dt>
 <dd>&nbsp;</dd>
@@ -1143,6 +1211,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.LifecycleStateChangeDatasetFacet.html#getLifecycleStateChange()">getLifecycleStateChange()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.LifecycleStateChangeDatasetFacet.html" title="class in io.openlineage.client">OpenLineage.LifecycleStateChangeDatasetFacet</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetricsAdditional.html#getMax()">getMax()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetricsAdditional.html" title="class in io.openlineage.client">OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetricsAdditional</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/CircuitBreakerConfigTypeIdResolver.html#getMechanism()">getMechanism()</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/CircuitBreakerConfigTypeIdResolver.html" title="class in io.openlineage.client.circuitBreaker">CircuitBreakerConfigTypeIdResolver</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/transports/TransportConfigTypeIdResolver.html#getMechanism()">getMechanism()</a></span> - Method in class io.openlineage.client.transports.<a href="io/openlineage/client/transports/TransportConfigTypeIdResolver.html" title="class in io.openlineage.client.transports">TransportConfigTypeIdResolver</a></dt>
 <dd>&nbsp;</dd>
@@ -1362,6 +1432,16 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.ColumnLineageDatasetFacetFieldsAdditional.html#getTransformationType()">getTransformationType()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.ColumnLineageDatasetFacetFieldsAdditional.html" title="class in io.openlineage.client">OpenLineage.ColumnLineageDatasetFacetFieldsAdditional</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/CircuitBreakerBuilder.html#getType()">getType()</a></span> - Method in interface io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/CircuitBreakerBuilder.html" title="interface in io.openlineage.client.circuitBreaker">CircuitBreakerBuilder</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/JavaRuntimeCircuitBreakerBuilder.html#getType()">getType()</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/JavaRuntimeCircuitBreakerBuilder.html" title="class in io.openlineage.client.circuitBreaker">JavaRuntimeCircuitBreakerBuilder</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/NoOpCircuitBreakerBuilder.html#getType()">getType()</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/NoOpCircuitBreakerBuilder.html" title="class in io.openlineage.client.circuitBreaker">NoOpCircuitBreakerBuilder</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/SimpleMemoryCircuitBreakerBuilder.html#getType()">getType()</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/SimpleMemoryCircuitBreakerBuilder.html" title="class in io.openlineage.client.circuitBreaker">SimpleMemoryCircuitBreakerBuilder</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/StaticCircuitBreakerBuilder.html#getType()">getType()</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/StaticCircuitBreakerBuilder.html" title="class in io.openlineage.client.circuitBreaker">StaticCircuitBreakerBuilder</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.OwnershipDatasetFacetOwners.html#getType()">getType()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.OwnershipDatasetFacetOwners.html" title="class in io.openlineage.client">OpenLineage.OwnershipDatasetFacetOwners</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.OwnershipJobFacetOwners.html#getType()">getType()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.OwnershipJobFacetOwners.html" title="class in io.openlineage.client">OpenLineage.OwnershipJobFacetOwners</a></dt>
@@ -1434,9 +1514,15 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dl>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.SymlinksDatasetFacetBuilder.html#identifiers(java.util.List)">identifiers(List&lt;OpenLineage.SymlinksDatasetFacetIdentifiers&gt;)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.SymlinksDatasetFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.SymlinksDatasetFacetBuilder</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/CircuitBreakerConfigTypeIdResolver.html#idFromValue(java.lang.Object)">idFromValue(Object)</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/CircuitBreakerConfigTypeIdResolver.html" title="class in io.openlineage.client.circuitBreaker">CircuitBreakerConfigTypeIdResolver</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/transports/TransportConfigTypeIdResolver.html#idFromValue(java.lang.Object)">idFromValue(Object)</a></span> - Method in class io.openlineage.client.transports.<a href="io/openlineage/client/transports/TransportConfigTypeIdResolver.html" title="class in io.openlineage.client.transports">TransportConfigTypeIdResolver</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/CircuitBreakerConfigTypeIdResolver.html#idFromValueAndType(java.lang.Object,java.lang.Class)">idFromValueAndType(Object, Class&lt;?&gt;)</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/CircuitBreakerConfigTypeIdResolver.html" title="class in io.openlineage.client.circuitBreaker">CircuitBreakerConfigTypeIdResolver</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/transports/TransportConfigTypeIdResolver.html#idFromValueAndType(java.lang.Object,java.lang.Class)">idFromValueAndType(Object, Class&lt;?&gt;)</a></span> - Method in class io.openlineage.client.transports.<a href="io/openlineage/client/transports/TransportConfigTypeIdResolver.html" title="class in io.openlineage.client.transports">TransportConfigTypeIdResolver</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/CircuitBreakerConfigTypeIdResolver.html#init(com.fasterxml.jackson.databind.JavaType)">init(JavaType)</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/CircuitBreakerConfigTypeIdResolver.html" title="class in io.openlineage.client.circuitBreaker">CircuitBreakerConfigTypeIdResolver</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/transports/TransportConfigTypeIdResolver.html#init(com.fasterxml.jackson.databind.JavaType)">init(JavaType)</a></span> - Method in class io.openlineage.client.transports.<a href="io/openlineage/client/transports/TransportConfigTypeIdResolver.html" title="class in io.openlineage.client.transports">TransportConfigTypeIdResolver</a></dt>
 <dd>&nbsp;</dd>
@@ -1462,6 +1548,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><a href="io/openlineage/client/package-summary.html">io.openlineage.client</a> - package io.openlineage.client</dt>
 <dd>&nbsp;</dd>
+<dt><a href="io/openlineage/client/circuitBreaker/package-summary.html">io.openlineage.client.circuitBreaker</a> - package io.openlineage.client.circuitBreaker</dt>
+<dd>&nbsp;</dd>
 <dt><a href="io/openlineage/client/transports/package-summary.html">io.openlineage.client.transports</a> - package io.openlineage.client.transports</dt>
 <dd>&nbsp;</dd>
 <dt><a href="io/openlineage/client/utils/package-summary.html">io.openlineage.client.utils</a> - package io.openlineage.client.utils</dt>
@@ -1472,12 +1560,26 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.JobFacet.html#isDeleted()">isDeleted()</a></span> - Method in interface io.openlineage.client.<a href="io/openlineage/client/OpenLineage.JobFacet.html" title="interface in io.openlineage.client">OpenLineage.JobFacet</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/ExecutorCircuitBreaker.html#isPercentageValueValid(java.lang.Integer)">isPercentageValueValid(Integer)</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/ExecutorCircuitBreaker.html" title="class in io.openlineage.client.circuitBreaker">ExecutorCircuitBreaker</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <a id="I:J">
 <!--   -->
 </a>
 <h2 class="title">J</h2>
 <dl>
+<dt><a href="io/openlineage/client/circuitBreaker/JavaRuntimeCircuitBreaker.html" title="class in io.openlineage.client.circuitBreaker"><span class="typeNameLink">JavaRuntimeCircuitBreaker</span></a> - Class in <a href="io/openlineage/client/circuitBreaker/package-summary.html">io.openlineage.client.circuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/JavaRuntimeCircuitBreaker.html#%3Cinit%3E(io.openlineage.client.circuitBreaker.JavaRuntimeCircuitBreakerConfig)">JavaRuntimeCircuitBreaker(JavaRuntimeCircuitBreakerConfig)</a></span> - Constructor for class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/JavaRuntimeCircuitBreaker.html" title="class in io.openlineage.client.circuitBreaker">JavaRuntimeCircuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/openlineage/client/circuitBreaker/JavaRuntimeCircuitBreakerBuilder.html" title="class in io.openlineage.client.circuitBreaker"><span class="typeNameLink">JavaRuntimeCircuitBreakerBuilder</span></a> - Class in <a href="io/openlineage/client/circuitBreaker/package-summary.html">io.openlineage.client.circuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/JavaRuntimeCircuitBreakerBuilder.html#%3Cinit%3E()">JavaRuntimeCircuitBreakerBuilder()</a></span> - Constructor for class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/JavaRuntimeCircuitBreakerBuilder.html" title="class in io.openlineage.client.circuitBreaker">JavaRuntimeCircuitBreakerBuilder</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/openlineage/client/circuitBreaker/JavaRuntimeCircuitBreakerConfig.html" title="class in io.openlineage.client.circuitBreaker"><span class="typeNameLink">JavaRuntimeCircuitBreakerConfig</span></a> - Class in <a href="io/openlineage/client/circuitBreaker/package-summary.html">io.openlineage.client.circuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/JavaRuntimeCircuitBreakerConfig.html#%3Cinit%3E(int,int)">JavaRuntimeCircuitBreakerConfig(int, int)</a></span> - Constructor for class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/JavaRuntimeCircuitBreakerConfig.html" title="class in io.openlineage.client.circuitBreaker">JavaRuntimeCircuitBreakerConfig</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.JobEventBuilder.html#job(io.openlineage.client.OpenLineage.Job)">job(OpenLineage.Job)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.JobEventBuilder.html" title="class in io.openlineage.client">OpenLineage.JobEventBuilder</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.RunEventBuilder.html#job(io.openlineage.client.OpenLineage.Job)">job(OpenLineage.Job)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.RunEventBuilder.html" title="class in io.openlineage.client">OpenLineage.RunEventBuilder</a></dt>
@@ -2069,6 +2171,16 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.NominalTimeRunFacetBuilder.html#%3Cinit%3E()">NominalTimeRunFacetBuilder()</a></span> - Constructor for class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.NominalTimeRunFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.NominalTimeRunFacetBuilder</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="io/openlineage/client/circuitBreaker/NoOpCircuitBreaker.html" title="class in io.openlineage.client.circuitBreaker"><span class="typeNameLink">NoOpCircuitBreaker</span></a> - Class in <a href="io/openlineage/client/circuitBreaker/package-summary.html">io.openlineage.client.circuitBreaker</a></dt>
+<dd>
+<div class="block">Non-closing circuit breaker which always runs callable.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/NoOpCircuitBreaker.html#%3Cinit%3E()">NoOpCircuitBreaker()</a></span> - Constructor for class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/NoOpCircuitBreaker.html" title="class in io.openlineage.client.circuitBreaker">NoOpCircuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/openlineage/client/circuitBreaker/NoOpCircuitBreakerBuilder.html" title="class in io.openlineage.client.circuitBreaker"><span class="typeNameLink">NoOpCircuitBreakerBuilder</span></a> - Class in <a href="io/openlineage/client/circuitBreaker/package-summary.html">io.openlineage.client.circuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/NoOpCircuitBreakerBuilder.html#%3Cinit%3E()">NoOpCircuitBreakerBuilder()</a></span> - Constructor for class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/NoOpCircuitBreakerBuilder.html" title="class in io.openlineage.client.circuitBreaker">NoOpCircuitBreakerBuilder</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="io/openlineage/client/transports/NoopTransport.html" title="class in io.openlineage.client.transports"><span class="typeNameLink">NoopTransport</span></a> - Class in <a href="io/openlineage/client/transports/package-summary.html">io.openlineage.client.transports</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/transports/NoopTransport.html#%3Cinit%3E()">NoopTransport()</a></span> - Constructor for class io.openlineage.client.transports.<a href="io/openlineage/client/transports/NoopTransport.html" title="class in io.openlineage.client.transports">NoopTransport</a></dt>
@@ -2657,7 +2769,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineageClient.html#%3Cinit%3E(io.openlineage.client.transports.Transport)">OpenLineageClient(Transport)</a></span> - Constructor for class io.openlineage.client.<a href="io/openlineage/client/OpenLineageClient.html" title="class in io.openlineage.client">OpenLineageClient</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineageClient.html#%3Cinit%3E(io.openlineage.client.transports.Transport,java.lang.String%5B%5D)">OpenLineageClient(Transport, String[])</a></span> - Constructor for class io.openlineage.client.<a href="io/openlineage/client/OpenLineageClient.html" title="class in io.openlineage.client">OpenLineageClient</a></dt>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineageClient.html#%3Cinit%3E(io.openlineage.client.transports.Transport,io.openlineage.client.circuitBreaker.CircuitBreaker,java.lang.String...)">OpenLineageClient(Transport, CircuitBreaker, String...)</a></span> - Constructor for class io.openlineage.client.<a href="io/openlineage/client/OpenLineageClient.html" title="class in io.openlineage.client">OpenLineageClient</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineageClient.html#%3Cinit%3E(io.openlineage.client.transports.Transport,java.lang.String...)">OpenLineageClient(Transport, String...)</a></span> - Constructor for class io.openlineage.client.<a href="io/openlineage/client/OpenLineageClient.html" title="class in io.openlineage.client">OpenLineageClient</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="io/openlineage/client/OpenLineageClient.Builder.html" title="class in io.openlineage.client"><span class="typeNameLink">OpenLineageClient.Builder</span></a> - Class in <a href="io/openlineage/client/package-summary.html">io.openlineage.client</a></dt>
 <dd>
@@ -2916,6 +3030,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.SourceCodeLocationJobFacetBuilder.html#repoUrl(java.lang.String)">repoUrl(String)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.SourceCodeLocationJobFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.SourceCodeLocationJobFacetBuilder</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/CircuitBreakerResolver.html#resolveCircuitBreakerByConfig(io.openlineage.client.circuitBreaker.CircuitBreakerConfig)">resolveCircuitBreakerByConfig(CircuitBreakerConfig)</a></span> - Static method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/CircuitBreakerResolver.html" title="class in io.openlineage.client.circuitBreaker">CircuitBreakerResolver</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/CircuitBreakerResolver.html#resolveCircuitBreakerConfigByType(java.lang.String)">resolveCircuitBreakerConfigByType(String)</a></span> - Static method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/CircuitBreakerResolver.html" title="class in io.openlineage.client.circuitBreaker">CircuitBreakerResolver</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/CircuitBreakerResolver.html#resolveCircuitBreakerTypeByConfigClass(java.lang.Class)">resolveCircuitBreakerTypeByConfigClass(Class)</a></span> - Static method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/CircuitBreakerResolver.html" title="class in io.openlineage.client.circuitBreaker">CircuitBreakerResolver</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/transports/TransportResolver.html#resolveTransportByConfig(io.openlineage.client.transports.TransportConfig)">resolveTransportByConfig(TransportConfig)</a></span> - Static method in class io.openlineage.client.transports.<a href="io/openlineage/client/transports/TransportResolver.html" title="class in io.openlineage.client.transports">TransportResolver</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/transports/TransportResolver.html#resolveTransportConfigByType(java.lang.String)">resolveTransportConfigByType(String)</a></span> - Static method in class io.openlineage.client.transports.<a href="io/openlineage/client/transports/TransportResolver.html" title="class in io.openlineage.client.transports">TransportResolver</a></dt>
@@ -2929,6 +3049,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.ParentRunFacetBuilder.html#run(io.openlineage.client.OpenLineage.ParentRunFacetRun)">run(OpenLineage.ParentRunFacetRun)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.ParentRunFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.ParentRunFacetBuilder</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.RunEventBuilder.html#run(io.openlineage.client.OpenLineage.Run)">run(OpenLineage.Run)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.RunEventBuilder.html" title="class in io.openlineage.client">OpenLineage.RunEventBuilder</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/CircuitBreaker.html#run(java.util.concurrent.Callable)">run(Callable&lt;T&gt;)</a></span> - Method in interface io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/CircuitBreaker.html" title="interface in io.openlineage.client.circuitBreaker">CircuitBreaker</a></dt>
+<dd>
+<div class="block">Runs callable and breaks it when circuit breaker is closed</div>
+</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/ExecutorCircuitBreaker.html#run(java.util.concurrent.Callable)">run(Callable&lt;T&gt;)</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/ExecutorCircuitBreaker.html" title="class in io.openlineage.client.circuitBreaker">ExecutorCircuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/NoOpCircuitBreaker.html#run(java.util.concurrent.Callable)">run(Callable&lt;T&gt;)</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/NoOpCircuitBreaker.html" title="class in io.openlineage.client.circuitBreaker">NoOpCircuitBreaker</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/server/OpenLineage.Run.html#%3Cinit%3E(java.util.UUID,io.openlineage.server.OpenLineage.RunFacets)">Run(UUID, OpenLineage.RunFacets)</a></span> - Constructor for class io.openlineage.server.<a href="io/openlineage/server/OpenLineage.Run.html" title="class in io.openlineage.server">OpenLineage.Run</a></dt>
 <dd>&nbsp;</dd>
@@ -2976,6 +3104,18 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">The directory separator, a slash, as a character.</div>
 </dd>
+<dt><a href="io/openlineage/client/circuitBreaker/SimpleMemoryCircuitBreaker.html" title="class in io.openlineage.client.circuitBreaker"><span class="typeNameLink">SimpleMemoryCircuitBreaker</span></a> - Class in <a href="io/openlineage/client/circuitBreaker/package-summary.html">io.openlineage.client.circuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/SimpleMemoryCircuitBreaker.html#%3Cinit%3E(io.openlineage.client.circuitBreaker.SimpleMemoryCircuitBreakerConfig)">SimpleMemoryCircuitBreaker(SimpleMemoryCircuitBreakerConfig)</a></span> - Constructor for class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/SimpleMemoryCircuitBreaker.html" title="class in io.openlineage.client.circuitBreaker">SimpleMemoryCircuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/openlineage/client/circuitBreaker/SimpleMemoryCircuitBreakerBuilder.html" title="class in io.openlineage.client.circuitBreaker"><span class="typeNameLink">SimpleMemoryCircuitBreakerBuilder</span></a> - Class in <a href="io/openlineage/client/circuitBreaker/package-summary.html">io.openlineage.client.circuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/SimpleMemoryCircuitBreakerBuilder.html#%3Cinit%3E()">SimpleMemoryCircuitBreakerBuilder()</a></span> - Constructor for class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/SimpleMemoryCircuitBreakerBuilder.html" title="class in io.openlineage.client.circuitBreaker">SimpleMemoryCircuitBreakerBuilder</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/openlineage/client/circuitBreaker/SimpleMemoryCircuitBreakerConfig.html" title="class in io.openlineage.client.circuitBreaker"><span class="typeNameLink">SimpleMemoryCircuitBreakerConfig</span></a> - Class in <a href="io/openlineage/client/circuitBreaker/package-summary.html">io.openlineage.client.circuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/SimpleMemoryCircuitBreakerConfig.html#%3Cinit%3E(int)">SimpleMemoryCircuitBreakerConfig(int)</a></span> - Constructor for class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/SimpleMemoryCircuitBreakerConfig.html" title="class in io.openlineage.client.circuitBreaker">SimpleMemoryCircuitBreakerConfig</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.OutputStatisticsOutputDatasetFacetBuilder.html#size(java.lang.Long)">size(Long)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.OutputStatisticsOutputDatasetFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.OutputStatisticsOutputDatasetFacetBuilder</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.ExternalQueryRunFacetBuilder.html#source(java.lang.String)">source(String)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.ExternalQueryRunFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.ExternalQueryRunFacetBuilder</a></dt>
@@ -3001,6 +3141,20 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.RunEvent.EventType.html#START">START</a></span> - io.openlineage.client.<a href="io/openlineage/client/OpenLineage.RunEvent.EventType.html" title="enum in io.openlineage.client">OpenLineage.RunEvent.EventType</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/server/OpenLineage.RunEvent.EventType.html#START">START</a></span> - io.openlineage.server.<a href="io/openlineage/server/OpenLineage.RunEvent.EventType.html" title="enum in io.openlineage.server">OpenLineage.RunEvent.EventType</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/openlineage/client/circuitBreaker/StaticCircuitBreaker.html" title="class in io.openlineage.client.circuitBreaker"><span class="typeNameLink">StaticCircuitBreaker</span></a> - Class in <a href="io/openlineage/client/circuitBreaker/package-summary.html">io.openlineage.client.circuitBreaker</a></dt>
+<dd>
+<div class="block">Static circuit breaker used mainly for the integration tests.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/StaticCircuitBreaker.html#%3Cinit%3E(io.openlineage.client.circuitBreaker.StaticCircuitBreakerConfig)">StaticCircuitBreaker(StaticCircuitBreakerConfig)</a></span> - Constructor for class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/StaticCircuitBreaker.html" title="class in io.openlineage.client.circuitBreaker">StaticCircuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/openlineage/client/circuitBreaker/StaticCircuitBreakerBuilder.html" title="class in io.openlineage.client.circuitBreaker"><span class="typeNameLink">StaticCircuitBreakerBuilder</span></a> - Class in <a href="io/openlineage/client/circuitBreaker/package-summary.html">io.openlineage.client.circuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/StaticCircuitBreakerBuilder.html#%3Cinit%3E()">StaticCircuitBreakerBuilder()</a></span> - Constructor for class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/StaticCircuitBreakerBuilder.html" title="class in io.openlineage.client.circuitBreaker">StaticCircuitBreakerBuilder</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/openlineage/client/circuitBreaker/StaticCircuitBreakerConfig.html" title="class in io.openlineage.client.circuitBreaker"><span class="typeNameLink">StaticCircuitBreakerConfig</span></a> - Class in <a href="io/openlineage/client/circuitBreaker/package-summary.html">io.openlineage.client.circuitBreaker</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/StaticCircuitBreakerConfig.html#%3Cinit%3E(java.lang.String)">StaticCircuitBreakerConfig(String)</a></span> - Constructor for class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/StaticCircuitBreakerConfig.html" title="class in io.openlineage.client.circuitBreaker">StaticCircuitBreakerConfig</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/server/OpenLineage.StaticDataset.html#%3Cinit%3E(java.lang.String,java.lang.String,io.openlineage.server.OpenLineage.DatasetFacets)">StaticDataset(String, String, OpenLineage.DatasetFacets)</a></span> - Constructor for class io.openlineage.server.<a href="io/openlineage/server/OpenLineage.StaticDataset.html" title="class in io.openlineage.server">OpenLineage.StaticDataset</a></dt>
 <dd>&nbsp;</dd>
@@ -3095,6 +3249,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.SourceCodeLocationJobFacetBuilder.html#type(java.lang.String)">type(String)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.SourceCodeLocationJobFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.SourceCodeLocationJobFacetBuilder</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.SymlinksDatasetFacetIdentifiersBuilder.html#type(java.lang.String)">type(String)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.SymlinksDatasetFacetIdentifiersBuilder.html" title="class in io.openlineage.client">OpenLineage.SymlinksDatasetFacetIdentifiersBuilder</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/CircuitBreakerConfigTypeIdResolver.html#typeFromId(com.fasterxml.jackson.databind.DatabindContext,java.lang.String)">typeFromId(DatabindContext, String)</a></span> - Method in class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/CircuitBreakerConfigTypeIdResolver.html" title="class in io.openlineage.client.circuitBreaker">CircuitBreakerConfigTypeIdResolver</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/transports/TransportConfigTypeIdResolver.html#typeFromId(com.fasterxml.jackson.databind.DatabindContext,java.lang.String)">typeFromId(DatabindContext, String)</a></span> - Method in class io.openlineage.client.transports.<a href="io/openlineage/client/transports/TransportConfigTypeIdResolver.html" title="class in io.openlineage.client.transports">TransportConfigTypeIdResolver</a></dt>
 <dd>&nbsp;</dd>

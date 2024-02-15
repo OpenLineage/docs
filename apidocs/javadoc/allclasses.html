@@ -23,6 +23,13 @@
 <div class="indexContainer">
 <ul>
 <li><a href="io/openlineage/client/transports/ApiKeyTokenProvider.html" title="class in io.openlineage.client.transports">ApiKeyTokenProvider</a></li>
+<li><a href="io/openlineage/client/circuitBreaker/CircuitBreaker.html" title="interface in io.openlineage.client.circuitBreaker"><span class="interfaceName">CircuitBreaker</span></a></li>
+<li><a href="io/openlineage/client/circuitBreaker/CircuitBreakerBuilder.html" title="interface in io.openlineage.client.circuitBreaker"><span class="interfaceName">CircuitBreakerBuilder</span></a></li>
+<li><a href="io/openlineage/client/circuitBreaker/CircuitBreakerConfig.html" title="interface in io.openlineage.client.circuitBreaker"><span class="interfaceName">CircuitBreakerConfig</span></a></li>
+<li><a href="io/openlineage/client/circuitBreaker/CircuitBreakerConfigTypeIdResolver.html" title="class in io.openlineage.client.circuitBreaker">CircuitBreakerConfigTypeIdResolver</a></li>
+<li><a href="io/openlineage/client/circuitBreaker/CircuitBreakerFactory.html" title="class in io.openlineage.client.circuitBreaker">CircuitBreakerFactory</a></li>
+<li><a href="io/openlineage/client/circuitBreaker/CircuitBreakerResolver.html" title="class in io.openlineage.client.circuitBreaker">CircuitBreakerResolver</a></li>
+<li><a href="io/openlineage/client/circuitBreaker/CircuitBreakerState.html" title="class in io.openlineage.client.circuitBreaker">CircuitBreakerState</a></li>
 <li><a href="io/openlineage/client/Clients.html" title="class in io.openlineage.client">Clients</a></li>
 <li><a href="io/openlineage/client/ConfigPathProvider.html" title="interface in io.openlineage.client"><span class="interfaceName">ConfigPathProvider</span></a></li>
 <li><a href="io/openlineage/client/transports/ConsoleConfig.html" title="class in io.openlineage.client.transports">ConsoleConfig</a></li>
@@ -34,6 +41,7 @@
 <li><a href="io/openlineage/client/utils/DatasetIdentifierUtils.html" title="class in io.openlineage.client.utils">DatasetIdentifierUtils</a></li>
 <li><a href="io/openlineage/client/DefaultConfigPathProvider.html" title="class in io.openlineage.client">DefaultConfigPathProvider</a></li>
 <li><a href="io/openlineage/client/Environment.html" title="class in io.openlineage.client">Environment</a></li>
+<li><a href="io/openlineage/client/circuitBreaker/ExecutorCircuitBreaker.html" title="class in io.openlineage.client.circuitBreaker">ExecutorCircuitBreaker</a></li>
 <li><a href="io/openlineage/client/transports/FacetsConfig.html" title="class in io.openlineage.client.transports">FacetsConfig</a></li>
 <li><a href="io/openlineage/client/transports/FileConfig.html" title="class in io.openlineage.client.transports">FileConfig</a></li>
 <li><a href="io/openlineage/client/transports/FileTransport.html" title="class in io.openlineage.client.transports">FileTransport</a></li>
@@ -42,12 +50,17 @@
 <li><a href="io/openlineage/client/transports/HttpTransport.html" title="class in io.openlineage.client.transports">HttpTransport</a></li>
 <li><a href="io/openlineage/client/transports/HttpTransport.Builder.html" title="class in io.openlineage.client.transports">HttpTransport.Builder</a></li>
 <li><a href="io/openlineage/client/transports/HttpTransportBuilder.html" title="class in io.openlineage.client.transports">HttpTransportBuilder</a></li>
+<li><a href="io/openlineage/client/circuitBreaker/JavaRuntimeCircuitBreaker.html" title="class in io.openlineage.client.circuitBreaker">JavaRuntimeCircuitBreaker</a></li>
+<li><a href="io/openlineage/client/circuitBreaker/JavaRuntimeCircuitBreakerBuilder.html" title="class in io.openlineage.client.circuitBreaker">JavaRuntimeCircuitBreakerBuilder</a></li>
+<li><a href="io/openlineage/client/circuitBreaker/JavaRuntimeCircuitBreakerConfig.html" title="class in io.openlineage.client.circuitBreaker">JavaRuntimeCircuitBreakerConfig</a></li>
 <li><a href="io/openlineage/client/transports/KafkaConfig.html" title="class in io.openlineage.client.transports">KafkaConfig</a></li>
 <li><a href="io/openlineage/client/transports/KafkaTransport.html" title="class in io.openlineage.client.transports">KafkaTransport</a></li>
 <li><a href="io/openlineage/client/transports/KafkaTransportBuilder.html" title="class in io.openlineage.client.transports">KafkaTransportBuilder</a></li>
 <li><a href="io/openlineage/client/transports/KinesisConfig.html" title="class in io.openlineage.client.transports">KinesisConfig</a></li>
 <li><a href="io/openlineage/client/transports/KinesisTransport.html" title="class in io.openlineage.client.transports">KinesisTransport</a></li>
 <li><a href="io/openlineage/client/transports/KinesisTransportBuilder.html" title="class in io.openlineage.client.transports">KinesisTransportBuilder</a></li>
+<li><a href="io/openlineage/client/circuitBreaker/NoOpCircuitBreaker.html" title="class in io.openlineage.client.circuitBreaker">NoOpCircuitBreaker</a></li>
+<li><a href="io/openlineage/client/circuitBreaker/NoOpCircuitBreakerBuilder.html" title="class in io.openlineage.client.circuitBreaker">NoOpCircuitBreakerBuilder</a></li>
 <li><a href="io/openlineage/client/transports/NoopTransport.html" title="class in io.openlineage.client.transports">NoopTransport</a></li>
 <li><a href="io/openlineage/client/OpenLineage.html" title="class in io.openlineage.client">OpenLineage</a></li>
 <li><a href="io/openlineage/server/OpenLineage.html" title="class in io.openlineage.server">OpenLineage</a></li>
@@ -172,6 +185,12 @@
 <li><a href="io/openlineage/client/OpenLineageClientException.html" title="class in io.openlineage.client">OpenLineageClientException</a></li>
 <li><a href="io/openlineage/client/OpenLineageClientUtils.html" title="class in io.openlineage.client">OpenLineageClientUtils</a></li>
 <li><a href="io/openlineage/client/OpenLineageYaml.html" title="class in io.openlineage.client">OpenLineageYaml</a></li>
+<li><a href="io/openlineage/client/circuitBreaker/SimpleMemoryCircuitBreaker.html" title="class in io.openlineage.client.circuitBreaker">SimpleMemoryCircuitBreaker</a></li>
+<li><a href="io/openlineage/client/circuitBreaker/SimpleMemoryCircuitBreakerBuilder.html" title="class in io.openlineage.client.circuitBreaker">SimpleMemoryCircuitBreakerBuilder</a></li>
+<li><a href="io/openlineage/client/circuitBreaker/SimpleMemoryCircuitBreakerConfig.html" title="class in io.openlineage.client.circuitBreaker">SimpleMemoryCircuitBreakerConfig</a></li>
+<li><a href="io/openlineage/client/circuitBreaker/StaticCircuitBreaker.html" title="class in io.openlineage.client.circuitBreaker">StaticCircuitBreaker</a></li>
+<li><a href="io/openlineage/client/circuitBreaker/StaticCircuitBreakerBuilder.html" title="class in io.openlineage.client.circuitBreaker">StaticCircuitBreakerBuilder</a></li>
+<li><a href="io/openlineage/client/circuitBreaker/StaticCircuitBreakerConfig.html" title="class in io.openlineage.client.circuitBreaker">StaticCircuitBreakerConfig</a></li>
 <li><a href="io/openlineage/client/transports/TokenProvider.html" title="interface in io.openlineage.client.transports"><span class="interfaceName">TokenProvider</span></a></li>
 <li><a href="io/openlineage/client/transports/Transport.html" title="class in io.openlineage.client.transports">Transport</a></li>
 <li><a href="io/openlineage/client/transports/TransportBuilder.html" title="interface in io.openlineage.client.transports"><span class="interfaceName">TransportBuilder</span></a></li>
