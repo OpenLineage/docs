@@ -24,16 +24,25 @@ that functionality from our Airflow library and [packaged it for separate use](h
 
 ### Environment Variables
 
-The following environment variables are available commonly for both Java and Python languages.
-
-|Name|Description|Since|
-|---|---|---|
-|OPENLINEAGE_API_KEY|The optional API key to be set on each lineage request. This will be set as a Bearer token in case authentication is required.||
-|OPENLINEAGE_CONFIG|The optional path to locate the configuration file. The configuration file is in YAML format. Example: `openlineage.yml`||
-|OPENLINEAGE_DISABLED|When set to `true`, will prevent OpenLineage from emitting events to the receiving backend|0.9.0|
-|OPENLINEAGE_URL|The URL for the HTTP transport of where to emit lineage events to. If not yet, no lineage data will be emitted, and event data (JSON) will be written to standard output. Example: `http://localhost:8080`||
+The list of available environment variables for **Python** can be found [here](../../client/python.md#environment-variables).
+The list of available environment variables for **Java** can be found [here](../../client/java.md#environment-variables).
 
 ### SQL parser
 
 We've created SQL parser that allows you to extract lineage from SQL statements. The parser is implemented in Rust; however, it's also available as a [Python library](https://pypi.org/project/openlineage-sql/).
 You can take a look at its code on [GitHub](https://github.com/OpenLineage/OpenLineage/tree/main/integration/sql).
+
+## Contributing
+
+If contributing changes, additions or fixes, please include the following header in any new files:
+
+```
+/*
+/* Copyright 2018-2024 contributors to the OpenLineage project
+/* SPDX-License-Identifier: Apache-2.0 
+*/
+```
+
+There is a pre-commit step that checks license in headers for new files when pull requests are opened.
+
+Thanks for your contributions to the project!

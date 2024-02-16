@@ -1,11 +1,14 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 title: Exposing Lineage in Airflow Operators
 ---
 
 :::caution
-This page is about Airflow's external integration that works mainly for Airflow versions <2.7.
-[If you're using Airflow 2.7+, look at native Airflow OpenLineage provider documentation.](https://airflow.apache.org/docs/apache-airflow-providers-openlineage/stable/index.html)
+This page is about Airflow's external integration that works mainly for Airflow versions <2.7. 
+[If you're using Airflow 2.7+, look at native Airflow OpenLineage provider documentation.](https://airflow.apache.org/docs/apache-airflow-providers-openlineage/stable/index.html)  <br /><br /> 
+
+The ongoing development and enhancements will be focused on the `apache-airflow-providers-openlineage` package, 
+while the `openlineage-airflow` will primarily be updated for bug fixes. See [all Airflow versions supported by this integration](older.md#supported-airflow-versions)
 :::
 
 OpenLineage 0.17.0+ makes adding lineage to your data pipelines easy through support of direct modification of Airflow operators. This means that custom operators—built in-house or forked from another project—can provide you and your team with lineage data without requiring modification of the OpenLineage project. The data will still go to your lineage backend of choice, most commonly using the `OPENLINEAGE_URL` environment variable.

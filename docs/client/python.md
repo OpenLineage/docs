@@ -21,35 +21,47 @@ pip install openlineage-python
 
 To install the package from source, use 
 ```
-python setup.py install
+python -m pip install .
 ```
 
 ## Configuration
 
-We recommend configuring the client with an `openlineage.yml` file that tells the client how to connect to an OpenLineage backend.
+We recommend configuring the client with an `openlineage.yml` file that contains all the
+details of how to connect to your OpenLineage backend.
 
-You can make this file available to the client three ways:
+You can make this file available to the client in three ways (the list also presents precedence of the configuration):
 
-1. Set an environment variable to a file path: `OPENLINEAGE_CONFIG=path/to/openlineage.yml`.
-2. Put the file in the working directory.
-3. Put the file in `$HOME/.openlineage`.
+1. Set an `OPENLINEAGE_CONFIG` environment variable to a file path: `OPENLINEAGE_CONFIG=path/to/openlineage.yml`.
+2. Place an `openlineage.yml` file in the current working directory (the absolute path of the directory where your script or process is currently running).
+3. Place an `openlineage.yml` file under `.openlineage/` in the user's home directory (`~/.openlineage/openlineage.yml`).
 
-In `openlineage.yml`, use a standard transport interface to specify the transport type (`http`, `console`, `kafka`, `file`, or custom) and authorization parameters:
+In `openlineage.yml`, use a standard `Transport` interface to specify the transport type 
+(`http`, `console`, `kafka`, `file`, or [custom](#custom-transport-type)) and authorization parameters.
+See the [example config file](#built-in-transport-types) for each transport type. 
 
-```
-transport:
-  type: "http"
-  url: "https://backend:5000"
-  auth:
-    type: "api_key"
-    api_key: "f048521b-dfe8-47cd-9c65-0cb07d57591e"
-```
-
-The type property (required) is a fully qualified class name that can be imported.
+If there is no config file found, the OpenLineage client looks at environment variables for [HTTP transport](#http-transport-configuration-with-environment-variables).
 
 ### Environment Variables
 
-The list of available environment varaibles can be found [here](../development/developing#environment-variables).
+The following environment variables are available to use:  
+
+| Name                       | Description                                                       | Example                 | Since  |
+|----------------------------|-------------------------------------------------------------------|-------------------------|--------|
+| OPENLINEAGE_CONFIG         | The path to the YAML configuration file                           | path/to/openlineage.yml |        |
+| OPENLINEAGE_CLIENT_LOGGING | Logging level of OpenLineage client and its child modules         | DEBUG                   |        |
+| OPENLINEAGE_DISABLED       | When `true`, OpenLineage will not emit events (default: false)    | false                   | 0.9.0  |
+| OPENLINEAGE_URL            | The URL to send lineage events to (also see OPENLINEAGE_ENDPOINT) | https://myapp.com       |        |
+| OPENLINEAGE_ENDPOINT       | Endpoint to which events are sent (default: api/v1/lineage)       | api/v2/events           |        |
+| OPENLINEAGE_API_KEY        | Token included in the Authentication HTTP header as the Bearer    | secret_token_123        |        |
+
+If you are using Airflow integration, there are additional [environment variables available](../integrations/airflow/usage.md#environment-variables).
+
+
+#### HTTP transport configuration with environment variables
+For backwards compatibility, the simplest HTTP transport configuration, with only a subset of its config, can be done with environment variables 
+(all other transport types are only configurable with YAML file). This setup can be done with the following 
+environment variables:  
+`OPENLINEAGE_URL` (required), `OPENLINEAGE_ENDPOINT` (optional, default: api/v1/lineage), `OPENLINEAGE_API_KEY` (optional).
 
 ### Built-in Transport Types
 
@@ -61,7 +73,7 @@ The list of available environment varaibles can be found [here](../development/d
 - verify - boolean specifying whether the client should verify TLS certificates from the backend. Default: true. (optional)
 - auth - dictionary specifying authentication options. Requires the type property. (optional)
   - type - string specifying the "api_key" or the fully qualified class name of your TokenProvider. (required if `auth` is provided)
-  - api_key - string setting the Authentication HTTP header as the Bearer. (required if `api_key` is set)
+  - apiKey - string setting the Authentication HTTP header as the Bearer. (required if `type` is `api_key`)
 
 Example:
 ```
@@ -71,7 +83,7 @@ transport:
   endpoint: events/receive
   auth:
     type: api_key
-    api_key: f048521b-dfe8-47cd-9c65-0cb07d57591e
+    apiKey: f048521b-dfe8-47cd-9c65-0cb07d57591e
 ```
 
 ##### Console 
@@ -126,6 +138,8 @@ transport:
 ### Custom Transport Type
 
 To implement a custom transport, follow the instructions in [`transport.py`](https://github.com/OpenLineage/OpenLineage/blob/main/client/python/openlineage/client/transport/transport.py).
+
+The `type` property (required) must be a fully qualified class name that can be imported.
 
 ## Getting Started
 
