@@ -24,62 +24,88 @@ Maven:
 <dependency>
     <groupId>io.openlineage</groupId>
     <artifactId>openlineage-java</artifactId>
-    <version>0.12.0</version>
+    <version>1.8.0</version>
 </dependency>
 ```
 
 or Gradle:
 
 ```groovy
-implementation 'io.openlineage:openlineage-java:0.12.0'
+implementation 'io.openlineage:openlineage-java:1.8.0'
 ```
 
-For more information on the available versions of the `openlineage-java`, please refer to the [maven repository](https://search.maven.org/artifact/io.openlineage/openlineage-java).
+For more information on the available versions of the `openlineage-java`, 
+please refer to the [maven repository](https://search.maven.org/artifact/io.openlineage/openlineage-java).
+
+## Usage
+
+```java
+// Use openlineage.yml
+OpenLineageClient client = Clients.newClient();
+
+// Define a simple OpenLineage START or COMPLETE event
+OpenLineage.RunEvent startOrCompleteRun = ...
+
+// Emit OpenLineage event
+client.emit(startOrCompleteRun);
+```
 
 ## Configuration
 
-Use the following options to configure the client:
+We recommend configuring the client with an `openlineage.yml` file that contains all the
+details of how to connect to your OpenLineage backend.  
 
-* An `openlineage.yml` in the user's current working directory
-* An `openlineage.yml` under `.openlineage/` in the user's home directory (ex: `~/.openlineage/openlineage.yml`)
-* Environment variables
+See [example configurations.](#transports)
 
-> **Note:** By default, the client will give you sane defaults, but you can easily override them.
->
+You can make this file available to the client in three ways (the list also presents precedence of the configuration):
+
+1. Set an `OPENLINEAGE_CONFIG` environment variable to a file path: `OPENLINEAGE_CONFIG=path/to/openlineage.yml`.
+2. Place an `openlineage.yml` in the user's current working directory.
+3. Place an `openlineage.yml` under `.openlineage/` in the user's home directory (`~/.openlineage/openlineage.yml`).
+
 
 ### Environment Variables
+The following environment variables are available:
 
-The list of available environment varaibles can be found [here](../development/developing#environment-variables).
+| Name                 | Description                                                                 | Since |
+|----------------------|-----------------------------------------------------------------------------|-------|
+| OPENLINEAGE_CONFIG   | The path to the YAML configuration file. Example: `path/to/openlineage.yml` |       |
+| OPENLINEAGE_DISABLED | When `true`, OpenLineage will not emit events.                              | 0.9.0 |
 
-`YAML`
 
+### Facets Configuration
+
+In YAML configuration file you can also specify a list of disabled facets that will not be included in OpenLineage event. 
+
+*YAML Configuration*
 ```yaml
 transport:
-  type: <type>
-  # ... transport specific configuration
+  type: console
+facets:
+  disabled: 
+    - spark_unknown
+    - spark_logicalPlan
 ```
-
-Here is an example of using HTTP transport for your client:
-
-```yaml
-transport:
-  type: http
-  url: http://localhost:5000
-```
-
-> **Note:** For a full list of supported transports, see [`transports`](https://github.com/OpenLineage/OpenLineage/tree/main/client/java/src/main/java/io/openlineage/client/transports).
 
 ### Transports
+> **Tip:** See current list of [all supported transports](https://github.com/OpenLineage/OpenLineage/tree/main/client/java/src/main/java/io/openlineage/client/transports).
 
-The `Transport` abstraction defines an `emit()` method for   `OpenLineage.RunEvent`. There are three built-in transports: `ConsoleTransport`, `HttpTransport`, and `KafkaTransport`.
+<br />
 
-#### [`ConsoleTransport`](https://github.com/OpenLineage/OpenLineage/tree/main/client/java/src/main/java/io/openlineage/client/transports/ConsoleTransport.java) 
+The `Transport` abstraction defines an `emit()` method for `OpenLineage.RunEvent`. 
+There are some built-in transports: `ConsoleTransport`, `HttpTransport`, `FileTransport`, `KinesisTransport` and `KafkaTransport`.
 
-in YAML:
+#### [ConsoleTransport](https://github.com/OpenLineage/OpenLineage/tree/main/client/java/src/main/java/io/openlineage/client/transports/ConsoleTransport.java) 
+
+This straightforward transport emits OpenLineage events directly to the console through a logger. 
+Be cautious when using the DEBUG log level, as it might result in double-logging due to the `OpenLineageClient` also logging.
+
+*YAML Configuration*
 ```yaml
 transport:
-  type: CONSOLE
+  type: console
 ```
+*No additional configuration required.*
 
 You can also specify the ConsoleTransport when building a new client instance.
 
@@ -90,13 +116,40 @@ OpenLineageClient client = OpenLineageClient.builder()
   .build();
 ```
 
-#### [`HttpTransport`](https://github.com/OpenLineage/OpenLineage/tree/main/client/java/src/main/java/io/openlineage/client/transports/HttpTransport.java)
+#### [FileTransport](https://github.com/OpenLineage/OpenLineage/tree/main/client/java/src/main/java/io/openlineage/client/transports/FileTransport.java)
 
-in YAML:
+Designed mainly for integration testing, the `FileTransport` appends OpenLineage events to a given file. 
+Events are newline-separated, with all pre-existing newline characters within the event JSON removed.
+
+*YAML Configuration*
 ```yaml
 transport:
-  type: HTTP
+  type: file
+  location: /path/to/your/file.txt
+```
+
+*Notes*:
+- If the target file is absent, it's created.
+- Events are added to the file, separated by newlines.
+- Intrinsic newline characters within the event JSON are eliminated to ensure one-line events.
+
+
+#### [HttpTransport](https://github.com/OpenLineage/OpenLineage/tree/main/client/java/src/main/java/io/openlineage/client/transports/HttpTransport.java)
+Allows sending events to HTTP endpoint (with optional authorization headers).
+
+*YAML Configuration*
+```yaml
+transport:
+  type: http
   url: http://localhost:5000
+```
+
+*YAML Configuration* (with authorization)
+```yaml
+transport:
+  type: http
+  url: http://localhost:5000
+  endpoint: api/v1/lineage
   auth:
     type: api_key
     api_key: f38d2189-c603-4b46-bdea-e573a3b5a7d5
@@ -109,7 +162,7 @@ creating a new client:
 OpenLineageClient client = OpenLineageClient.builder()
   .transport(
     HttpTransport.builder()
-      .uri("http://localhost:5000")
+      .url("http://localhost:5000")
       .apiKey("f38d2189-c603-4b46-bdea-e573a3b5a7d5")
       .build())
   .build();
@@ -127,7 +180,7 @@ Map<String, String> queryParamsToAppend = Map.of(
 OpenLineageClient client = OpenLineageClient.builder()
   .transport(
     HttpTransport.builder()
-      .uri("http://localhost:5000", queryParamsToAppend)
+      .url("http://localhost:5000", queryParamsToAppend)
       .apiKey("f38d2189-c603-4b46-bdea-e573a3b5a7d5")
       .build())
   .build();
@@ -139,19 +192,14 @@ OpenLineage.RunEvent startOrCompleteRun = ...
 client.emit(startOrCompleteRun);
 ```
 
-Alternatively, use the following environment variables to configure the `HttpTransport`:
+#### [KafkaTransport](https://github.com/OpenLineage/OpenLineage/tree/main/client/java/src/main/java/io/openlineage/client/transports/KafkaTransport.java)
 
-* `OPENLINEAGE_URL`: the URL for the HTTP transport (default: `http://localhost:8080`)
-* `OPENLINEAGE_API_KEY`: the API key to be set on each HTTP request
+This transport requires the artifact `org.apache.kafka:kafka-clients:3.1.0` (or compatible) on your classpath.
 
-Not everything will be supported while using this method.
-
-#### [`KafkaTransport`](https://github.com/OpenLineage/OpenLineage/tree/main/client/java/src/main/java/io/openlineage/client/transports/KafkaTransport.java)
-
-in YAML:
+*YAML Configuration*
 ```yaml
 transport:
-  type: Kafka
+  type: kafka
   topicName: openlineage.events
   # Kafka properties (see: http://kafka.apache.org/0100/documentation.html#producerconfigs)
   properties:
@@ -162,23 +210,31 @@ transport:
     value.serializer: org.apache.kafka.common.serialization.StringSerializer
 ```
 
-KafkaTransport depends on you to provide artifact `org.apache.kafka:kafka-clients:3.1.0` or compatible on your classpath.
 
-### [`KinesisTransport`](https://github.com/OpenLineage/OpenLineage/blob/main/client/java/src/main/java/io/openlineage/client/transports/KinesisTransport.java)
+#### [KinesisTransport](https://github.com/OpenLineage/OpenLineage/blob/main/client/java/src/main/java/io/openlineage/client/transports/KinesisTransport.java)
 
+The `KinesisTransport` facilitates sending OpenLineage events to an Amazon Kinesis stream.
 If `transport.type` is set to `kinesis`, then the below parameters would be read and used when building KinesisProducer.
 Also, KinesisTransport depends on you to provide artifact `com.amazonaws:amazon-kinesis-producer:0.14.0` or compatible on your classpath.
 
-
+*YAML Configuration*
 ```yaml
 transport:
   type: kinesis
-  streamName: some-stream-name
-  region: us-east-2
+  streamName: your_kinesis_stream_name
   topicName: openlineage.events
-  properties:
-    # some kinesis properties
+  region: your_aws_region
+  roleArn: arn:aws:iam::account-id:role/role-name   # optional
+  properties:  # Refer to amazon-kinesis-producer's default configuration for the available properties
+    property_name_1: value_1
+    property_name_2: value_2
 ```
+
+*Behavior*:
+- Events are serialized to JSON upon the `emit()` call and dispatched to the Kinesis stream.
+- The partition key is generated by combining the job's namespace and name.
+- Two constructors are available: one accepting both `KinesisProducer` and `KinesisConfig` and another solely accepting `KinesisConfig`.
+
 
 ### Error Handling via Transport
 
