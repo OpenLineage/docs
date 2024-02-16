@@ -121,10 +121,12 @@ and allows all the configuration features present there to be used. The configur
 
 The following parameters can be specified:
 
-| Parameter                                | Definition                                                                                                                                          | Example                           |
-------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------
-| openlineage.transport.type         | The transport type used for event emit, default type is `console`                                                                                   | http                              |
-| openlineage.facets.disabled        | List of facets to disable, enclosed in `[]` (required from 0.21.x) and separated by `;` | \[some_facet1;some_facet1\] |
+| Parameter                                | Definition                                                                                                                                                            | Example                           |
+------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------
+| openlineage.transport.type         | The transport type used for event emit, default type is `console`                                                                                                     | http                              |
+| openlineage.facets.disabled        | List of facets to disable, enclosed in `[]` (required from 0.21.x) and separated by `;`                                                                               | \[some_facet1;some_facet1\] |
+| spark.openlineage.circuitBreaker.*                 | Please refer to [Client Java Circuit Breakers](https://github.com/OpenLineage/OpenLineage/blob/main/client/java/README.md#circuit-breakers) for more details.                      |                              |
+
 
 
 ##### HTTP

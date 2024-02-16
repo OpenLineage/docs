@@ -81,19 +81,20 @@ The SparkListener reads its configuration from SparkConf parameters. These can b
 
 The following parameters can be specified:
 
-| Parameter                                          | Definition                                                                                                                                          | Example                             |
-----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------
-| spark.openlineage.transport.type                   | The transport type used for event emit, default type is `console`                                                                                   | http                                |
-| spark.openlineage.namespace                        | The default namespace to be applied for any jobs submitted                                                                                          | MyNamespace                         |
-| spark.openlineage.parentJobName                    | The job name to be used for the parent job facet                                                                                                    | ParentJobName                       |
-| spark.openlineage.parentRunId                      | The RunId of the parent job that initiated this Spark job                                                                                           | xxxx-xxxx-xxxx-xxxx                 |
-| spark.openlineage.appName                          | Custom value overwriting Spark app name in events                                                                                                   | AppName                             |
-| spark.openlineage.facets.disabled                  | List of facets to disable, enclosed in `[]` (required from 0.21.x) and separated by `;`, default is `[spark_unknown;]` (currently must contain `;`) | \[spark_unknown;spark.logicalPlan\] |
-| spark.openlineage.capturedProperties               | comma separated list of properties to be captured in spark properties facet (default `spark.master`, `spark.app.name`)                              | "spark.example1,spark.example2"     |
+| Parameter                                          | Definition                                                                                                                                                                         | Example                             |
+----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------
+| spark.openlineage.transport.type                   | The transport type used for event emit, default type is `console`                                                                                                                  | http                                |
+| spark.openlineage.namespace                        | The default namespace to be applied for any jobs submitted                                                                                                                         | MyNamespace                         |
+| spark.openlineage.parentJobName                    | The job name to be used for the parent job facet                                                                                                                                   | ParentJobName                       |
+| spark.openlineage.parentRunId                      | The RunId of the parent job that initiated this Spark job                                                                                                                          | xxxx-xxxx-xxxx-xxxx                 |
+| spark.openlineage.appName                          | Custom value overwriting Spark app name in events                                                                                                                                  | AppName                             |
+| spark.openlineage.facets.disabled                  | List of facets to disable, enclosed in `[]` (required from 0.21.x) and separated by `;`, default is `[spark_unknown;]` (currently must contain `;`)                                | \[spark_unknown;spark.logicalPlan\] |
+| spark.openlineage.capturedProperties               | comma separated list of properties to be captured in spark properties facet (default `spark.master`, `spark.app.name`)                                                             | "spark.example1,spark.example2"     |
 | spark.openlineage.dataset.removePath.pattern       | Java regular expression that removes `?<remove>` named group from dataset path. Can be used to last path subdirectories from paths like `s3://my-whatever-path/year=2023/month=04` | `(.*)(?<remove>\/.*\/.*)`     |
 | spark.openlineage.jobName.appendDatasetName        | Decides whether output dataset name should be appended to job name. By default `true`.                                                                                             | false                               |
 | spark.openlineage.jobName.replaceDotWithUnderscore | Replaces dots in job name with underscore. Can be used to mimic legacy behaviour on Databricks platform. By default `false`.                                                       | false                               |
 | spark.openlineage.debugFacet                       | Determines whether debug facet shall be generated and included within the event. Set `enabled` to turn it on. By default, facet is disabled.                                       | enabled                             |
+| spark.openlineage.circuitBreaker.*                 | Please refer to [Client Java Circuit Breakers](https://github.com/OpenLineage/OpenLineage/blob/main/client/java/README.md#circuit-breakers) for more details.                      |                              |
 
 
 ##### HTTP
@@ -137,8 +138,6 @@ If `spark.openlineage.transport.type` is set to `kafka`, then the below paramete
 | spark.openlineage.transport.topicName        | Required, name of the topic                     | topic-name |
 | spark.openlineage.transport.localServerId    | Required, id of local server                    | xxxxxxxx   |
 | spark.openlineage.transport.properties.[xxx] | Optional, the [xxx] is property of Kafka client | 1          |
-
-
 
 ### Scheduling from Airflow
 
