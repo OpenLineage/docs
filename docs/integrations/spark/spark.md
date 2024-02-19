@@ -139,23 +139,47 @@ fi
 
 #### Using the `--jars` Option with `spark-submit`
 
+1. Download the JAR and its checksum from Maven Central.
+2. Verify the JAR's integrity using the checksum.
+3. Upon successful verification, move the JAR to `${SPARK_HOME}/jars`.
+
+This script automates the download and verification process:
+
 ```bash
 #!/usr/bin/env bash
 
 # Set environment variables
-OPENLINEAGE_SPARK_VERSION='1.9.0'  # Example version
 SCALA_BINARY_VERSION='2.13'        # Example Scala version
-OPENLINEAGE_CLIENT_HOST='http://localhost:5000'  # Example OpenLineage client host
-JAR_NAME="openlineage-spark_${SCALA_BINARY_VERSION}-${OPENLINEAGE_SPARK_VERSION}.jar"
+ARTIFACT_ID="openlineage-spark_${SCALA_BINARY_VERSION}"
+JAR_NAME="${ARTIFACT_ID}-${OPENLINEAGE_SPARK_VERSION}.jar"
+CHECKSUM_NAME="${JAR_NAME}.sha512"
+BASE_URL="https://repo1.maven.org/maven2/io/openlineage/${ARTIFACT_ID}/${OPENLINEAGE_SPARK_VERSION}"
 
-# Spark submit command
-spark-submit --jars "path/to/${JAR_NAME}" \
-    --conf "spark.openlineage.transport.type=http" \
-    --conf "spark.openlineage.transport.url=${OPENLINEAGE_CLIENT_HOST}/api/v1/lineage" \
-    --class com.mycompany.MySparkApp my_application.jar
+# Download JAR and checksum
+curl -O "${BASE_URL}/${JAR_NAME}"
+curl -O "${BASE_URL}/${CHECKSUM_NAME}"
+
+# Verify JAR integrity
+echo "$(cat ${CHECKSUM_NAME})  ${JAR_NAME}" | sha512sum -c
+
+# Move JAR to SPARK_HOME/jars if checksum is valid
+if [ $? -eq 0 ]; then
+    # Spark submit command
+    spark-submit --jars "path/to/${JAR_NAME}" \
+        --conf "spark.openlineage.transport.type=http" \
+        --conf "spark.openlineage.transport.url=${OPENLINEAGE_CLIENT_HOST}/api/v1/lineage" \
+        --class com.mycompany.MySparkApp my_application.jar
+else
+    echo "Checksum verification failed."
+    exit 1
+fi
 ```
 
 #### Using the `--packages` Option with `spark-submit`
+
+Spark allows you to add packages at runtime using the `--packages` option with `spark-submit`. This
+option automatically downloads the package from Maven Central (or other configured repositories)
+and adds it to the classpath.
 
 ```bash
 #!/usr/bin/env bash
