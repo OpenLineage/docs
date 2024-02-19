@@ -4,7 +4,7 @@ title: Apache Spark
 ---
 
 :::info
-This integation is known to work with Apache Spark 2.4 and later.
+This integration is known to work with Apache Spark 2.4 and later.
 :::
 
 Spark jobs typically run on clusters of machines. A single machine hosts the "driver" application,
@@ -36,46 +36,150 @@ job, the initial job that reads the sources and creates the intermediate dataset
 that consumes the intermediate dataset and produces the final output. As an image:
 ![image](./spark-job-creation.dot.png)
 
+## About the Integration
+
+This integration employs the `SparkListener` interface through `OpenLineageSparkListener`, offering
+a comprehensive monitoring solution. It examines SparkContext-emitted events to extract metadata
+associated with jobs and datasets, utilizing the RDD and DataFrame dependency graphs. This method
+effectively gathers information from various data sources, including filesystem sources (e.g., S3
+and GCS), JDBC backends, and data warehouses such as Redshift and Bigquery.
+
 ## How to Use the Integration
-Adding OpenLineage metadata collection to existing Spark jobs was designed to be straightforward
-and unobtrusive to the application. 
 
+Incorporating OpenLineage metadata collection into existing Spark jobs is designed to be simple and
+minimally invasive.
 
+### Installation
 
-### SparkListener
+:::warning
+Post version `1.8.0`, the artifact identifier for `io.openlineage:openlineage-spark` has been
+updated. For subsequent versions,
+utilize `io.openlineage:openlineage-spark_${SCALA_BINARY_VERSION}:${OPENLINEAGE_SPARK_VERSION}`,
+ensuring compatibility with your Spark's Scala version to prevent runtime issues.
+:::
 
-The `SparkListener` approach is very simple and covers most cases. The listener simply analyzes
-events, as they are posted by the SparkContext, and extracts job and dataset metadata that are
-exposed by the RDD and Dataframe dependency graphs. Most data sources, such as filesystem sources
-(including S3 and GCS), JDBC backends, and warehouses such as Redshift and Bigquery can be analyzed
-and reported in this way.
+To integrate OpenLineage Spark with your application, you can:
 
-Installation requires adding a following package:
+- Bundle the package with your application build.
+- Place the JAR in the `${SPARK_HOME}/jars` directory.
+- Use the `--jars` option with `spark-submit`.
+- Use the `--packages` option with `spark-submit`.
 
-```
+#### Adding the Package to Your Build
+
+:::info
+This approach requires further configuration for the listener, either by
+modifying `spark-defaults.conf` at `${SPARK_HOME}/conf/spark-defaults.conf` or by setting it
+directly within your application code when creating a `SparkSession` or `SparkConf`. For Spark
+configuration details, consult the official Apache Spark documentation.
+:::
+
+For Maven, add the following to your `pom.xml`:
+
+```xml
 <dependency>
     <groupId>io.openlineage</groupId>
-    <artifactId>openlineage-spark</artifactId>
-    <version>{spark-openlineage-version}</version>
+  <artifactId>openlineage-spark_${SCALA_BINARY_VERSION}</artifactId>
+  <version>${OPENLINEAGE_SPARK_VERSION}</version>
 </dependency>
 ```
-or gradle:
-```
-implementation 'io.openlineage:openlineage-spark:{spark-openlineage-version}'
+
+For Gradle, add this to your `build.gradle`:
+
+```groovy
+implementation "io.openlineage:openlineage-spark_${SCALA_BINARY_VERSION}:${OPENLINEAGE_SPARK_VERSION}"
 ```
 
-#### spark-submit
-The listener can be enabled by adding the following configuration to a `spark-submit` command:
+#### Adding the JAR to Your `${SPARK_HOME}/jars` Directory
+
+:::info
+This method does not include listener configuration steps. It is advised to configure the listener
+via a modified `spark-defaults.conf` file in `${SPARK_HOME}/conf`. For Spark configuration details,
+consult the official Apache Spark documentation.
+:::
+
+1. Download the JAR and its checksum from Maven Central.
+2. Verify the JAR's integrity using the checksum.
+3. Upon successful verification, move the JAR to `${SPARK_HOME}/jars`.
+
+This script automates the download and verification process:
 
 ```bash
-spark-submit --conf "spark.extraListeners=io.openlineage.spark.agent.OpenLineageSparkListener" \
-    --packages "io.openlineage:openlineage-spark:<spark-openlineage-version>" \
+#!/usr/bin/env bash
+
+# Ensure SPARK_HOME is set
+if [ -z "$SPARK_HOME" ]; then
+    echo "SPARK_HOME is not set. Please define it as your Spark installation directory."
+    exit 1
+fi
+
+# Variables
+OPENLINEAGE_SPARK_VERSION='1.9.0'  # Example version
+SCALA_BINARY_VERSION='2.13'        # Example Scala version
+ARTIFACT_ID="openlineage-spark_${SCALA_BINARY_VERSION}"
+JAR_NAME="${ARTIFACT_ID}-${OPENLINEAGE_SPARK_VERSION}.jar"
+CHECKSUM_NAME="${JAR_NAME}.sha512"
+BASE_URL="https://repo1.maven.org/maven2/io/openlineage/${ARTIFACT_ID}/${OPENLINEAGE_SPARK_VERSION}"
+
+# Download JAR and checksum
+curl -O "${BASE_URL}/${JAR_NAME}"
+curl -O "${BASE_URL}/${CHECKSUM_NAME}"
+
+# Verify JAR integrity
+echo "$(cat ${CHECKSUM_NAME})  ${JAR_NAME}" | sha512sum -c
+
+# Move JAR to SPARK_HOME/jars if checksum is valid
+if [ $? -eq 0 ]; then
+    mv "${JAR_NAME}" "${SPARK_HOME}/jars"
+else
+    echo "Checksum verification failed."
+    exit 1
+fi
+```
+
+#### Using the `--jars` Option with `spark-submit`
+
+```bash
+#!/usr/bin/env bash
+
+# Set environment variables
+OPENLINEAGE_SPARK_VERSION='1.9.0'  # Example version
+SCALA_BINARY_VERSION='2.13'        # Example Scala version
+OPENLINEAGE_CLIENT_HOST='http://localhost:5000'  # Example OpenLineage client host
+JAR_NAME="openlineage-spark_${SCALA_BINARY_VERSION}-${OPENLINEAGE_SPARK_VERSION}.jar"
+
+# Spark submit command
+spark-submit --jars "path/to/${JAR_NAME}" \
     --conf "spark.openlineage.transport.type=http" \
-    --conf "spark.openlineage.transport.url=http://{openlineage.client.host}/api/v1/namespaces/spark_integration/" \
+    --conf "spark.openlineage.transport.url=${OPENLINEAGE_CLIENT_HOST}/api/v1/lineage" \
     --class com.mycompany.MySparkApp my_application.jar
 ```
 
-The SparkListener reads its configuration from SparkConf parameters. These can be specified on the command line (e.g., `--conf "spark.openlineage.transport.url=http://{openlineage.client.host}/api/v1/namespaces/my_namespace/job/the_job"`) or from the `conf/spark-defaults.conf` file.
+#### Using the `--packages` Option with `spark-submit`
+
+```bash
+#!/usr/bin/env bash
+
+# Set environment variables
+OPENLINEAGE_SPARK_VERSION='1.9.0'  # Example version
+SCALA_BINARY_VERSION='2.13'        # Example Scala version
+OPENLINEAGE_CLIENT_HOST='http://localhost:5000'  # Example OpenLineage client host
+
+# Spark submit command
+spark-submit --packages "io.openlineage:openlineage-spark_${SCALA_BINARY_VERSION}:${OPENLINEAGE_SPARK_VERSION}" \
+    --conf "spark.openlineage.transport.type=http" \
+    --conf "spark.openlineage.transport.url=${OPENLINEAGE_CLIENT_HOST}/api/v1/lineage" \
+    --class com.mycompany.MySparkApp my_application.jar
+```
+
+### Configuration
+
+Configure the listener via SparkConf parameters, following standard Spark configuration practices.
+This can be done by:
+
+1. Setting them directly in your application when constructing a `SparkSession` or `SparkConf`.
+2. Using the `--conf` option with `spark-submit`.
+3. Adding them to the `spark-defaults.conf` file at `${SPARK_HOME}/conf`.
 
 #### Spark Config Parameters
 
