@@ -149,6 +149,7 @@ This script automates the download and verification process:
 #!/usr/bin/env bash
 
 # Set environment variables
+OPENLINEAGE_SPARK_VERSION='1.9.0'  # Example version
 SCALA_BINARY_VERSION='2.13'        # Example Scala version
 ARTIFACT_ID="openlineage-spark_${SCALA_BINARY_VERSION}"
 JAR_NAME="${ARTIFACT_ID}-${OPENLINEAGE_SPARK_VERSION}.jar"
