@@ -8,7 +8,9 @@ sidebar_position: 5
 
 The Python client is the basis of existing OpenLineage integrations such as Airflow and dbt.
 
-The client enables the creation of lineage metadata events with Python code. The core data structures currently offered by the client are the `RunEvent`, `RunState`, `Run`, `Job`, `Dataset`, and `Transport` classes. These either configure or collect data for the emission of lineage events.
+The client enables the creation of lineage metadata events with Python code. 
+The core data structures currently offered by the client are the `RunEvent`, `RunState`, `Run`, `Job`, `Dataset`, 
+and `Transport` classes. These either configure or collect data for the emission of lineage events.
 
 You can use the client to create your own custom integrations.
 
@@ -101,8 +103,8 @@ Kafka transport requires `confluent-kafka` package to be additionally installed.
 It can be installed also by specifying kafka client extension: `pip install openlineage-python[kafka]` 
 
 - type - string (required)
-- config - string containing a Kafka producer config (required)
-- topic - string specifying the topic (required)
+- config - string containing a Kafka producer config. A dictionary that contains a Kafka producer config as in [Kafka producer config](https://docs.confluent.io/platform/current/clients/confluent-kafka-python/html/index.html#kafka-client-configuration) (required).
+- topic - string specifying the topic on what events will be sent (required)
 - flush - boolean specifying whether Kafka should flush after each event. Default: true. (optional)
 
 There's a caveat for using `KafkaTransport` with Airflow integration. In this integration, a Kafka producer needs to be created 
@@ -131,7 +133,7 @@ Example:
 ```
 transport:
   type: file
-  log_file_path: ol_events_
+  log_file_path: ol_events
   append: false
 ```
 

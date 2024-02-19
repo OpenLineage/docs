@@ -4,13 +4,13 @@ sidebar_position: 5
 
 # Java
 
-The Java client is a SDK for Java programming language that users can use to generate and emit OpenLineage events to OpenLineage backends.
-
 ## Overview
 
-The OpenLineage Java client enables the creation of lineage metadata events with Java code. The core data structures currently offered by the client are the `RunEvent`, `RunState`, `Run`, `Job`, `Dataset`, and `Transport` classes, along with various `Facets` that can come under run, job, and dataset.
+The OpenLineage Java is a SDK for Java programming language that users can use to generate and emit OpenLineage events to OpenLineage backends.
+The core data structures currently offered by the client are the `RunEvent`, `RunState`, `Run`, `Job`, `Dataset`, 
+and `Transport` classes, along with various `Facets` that can come under run, job, and dataset.
 
-There are various transport classes that the library provides that carry the lineage events into various target endpoints (e.g. HTTP).
+There are various [transport classes](#transports) that the library provides that carry the lineage events into various target endpoints (e.g. HTTP).
 
 You can also use the Java client to create your own custom integrations.
 
@@ -36,19 +36,6 @@ implementation 'io.openlineage:openlineage-java:1.8.0'
 
 For more information on the available versions of the `openlineage-java`, 
 please refer to the [maven repository](https://search.maven.org/artifact/io.openlineage/openlineage-java).
-
-## Usage
-
-```java
-// Use openlineage.yml
-OpenLineageClient client = Clients.newClient();
-
-// Define a simple OpenLineage START or COMPLETE event
-OpenLineage.RunEvent startOrCompleteRun = ...
-
-// Emit OpenLineage event
-client.emit(startOrCompleteRun);
-```
 
 ## Configuration
 
@@ -267,7 +254,64 @@ OpenLineageClient client = OpenLineageClient.builder()
     }).build();
 ```
 
+## Circuit Breakers 
+
+To prevent from over-instrumentation OpenLineage integration provides a circuit breaker mechanism
+that stops OpenLineage from creating, serializing and sending OpenLineage events. 
+
+### Simple Memory Circuit Breaker
+
+Simple circuit breaker which is working based only on free memory within JVM. Configuration should
+contain free memory threshold limit (percentage). Default value is `20%`. The circuit breaker 
+will close within first call if free memory is low. `circuitCheckIntervalInMillis` parameter is used
+to configure a frequency circuit breaker is called. Default value is `1000ms`, when no entry in config.
+
+Example usage:
+
+```yaml
+circuitBreaker:
+  type: simpleMemory
+  memoryThreshold: 20
+  circuitCheckIntervalInMillis: 1000
+```
+
+### Java Runtime Circuit Breaker
+
+More complex version of circuit breaker. The amount of free memory can be low as long as 
+amount of time spent on Garbage Collection is acceptable. `JavaRuntimeCircuitBreaker` closes
+when free memory drops below threshold and amount of time spent on garbage collection exceeds
+given threshold (`10%` by default). The circuit breaker is always open when checked for the first time
+as GC threshold is computed since the previous circuit breaker call. 
+`circuitCheckIntervalInMillis` parameter is used
+to configure a frequency circuit breaker is called. 
+Default value is `1000ms`, when no entry in config.
+
+```yaml
+circuitBreaker:
+  type: javaRuntime
+  memoryThreshold: 20
+  gcCpuThreshold: 10
+  circuitCheckIntervalInMillis: 1000
+```
+
+### Custom Circuit Breaker
+
+List of available circuit breakers can be extended with custom one loaded via ServiceLoader
+with own implementation of `io.openlineage.client.circuitBreaker.CircuitBreakerBuilder`. 
+
+
 ## Usage
+
+```java
+// Use openlineage.yml
+OpenLineageClient client = Clients.newClient();
+
+// Define a simple OpenLineage START or COMPLETE event
+OpenLineage.RunEvent startOrCompleteRun = ...
+
+// Emit OpenLineage event
+client.emit(startOrCompleteRun);
+```
 
 ### 1. Simple OpenLineage Client Test for Console Transport
 First, let's explore how we can create OpenLineage client instance, but not using any actual transport to emit the data yet, except only to our `Console.` This would be a good exercise to run tests and check the data payloads.
