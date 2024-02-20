@@ -95,7 +95,6 @@ For Maven, add the following to your `pom.xml`:
 <TabItem value="1.8.0-and-earlier" label="1.8.0 and earlier">
 
 ```xml
-
 <dependency>
   <groupId>io.openlineage</groupId>
   <artifactId>openlineage-spark</artifactId>
