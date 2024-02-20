@@ -254,7 +254,11 @@ OpenLineageClient client = OpenLineageClient.builder()
     }).build();
 ```
 
-## Circuit Breakers 
+## Circuit Breakers
+
+:::info
+This feature is available in OpenLineage versions >= 1.9.0.
+:::
 
 To prevent from over-instrumentation OpenLineage integration provides a circuit breaker mechanism
 that stops OpenLineage from creating, serializing and sending OpenLineage events. 
