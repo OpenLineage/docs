@@ -67,7 +67,7 @@ After version `1.8.0`, the artifact identifier has been updated. For subsequent 
 To integrate OpenLineage Spark with your application, you can:
 
 - [Bundle the package with your Apache Spark application project](#bundle-the-package-with-your-apache-spark-application-project).
-- [Place the JAR in your `${SPARK_HOME}/jars` directory](#place-the-jar-to-your-spark_homejars-directory)
+- [Place the JAR in your `${SPARK_HOME}/jars` directory](#place-the-jar-in-your-spark_homejars-directory)
 - [Use the `--jars` option with `spark-submit / spark-shell / pyspark`](#use-the---jars-option-with-spark-submit--spark-shell--pyspark)
 - [Use the `--packages` option with `spark-submit / spark-shell / pyspark`](#use-the---packages-option-with-spark-submit--spark-shell--pyspark)
 
@@ -124,7 +124,7 @@ implementation("io.openlineage:openlineage-spark:${OPENLINEAGE_SPARK_VERSION}")
 </TabItem>
 </Tabs>
 
-#### Place the JAR to your `${SPARK_HOME}/jars` directory
+#### Place the JAR in your `${SPARK_HOME}/jars` directory
 
 :::info
 This approach does not demonstrate how to configure the `OpenLineageSparkListener`.
