@@ -3,6 +3,9 @@ sidebar_position: 1
 title: Apache Spark
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 :::info
 This integration is known to work with Apache Spark 2.4 and later.
 :::
@@ -52,50 +55,81 @@ minimally invasive.
 ### Installation
 
 :::warning
-Post version `1.8.0`, the artifact identifier for `io.openlineage:openlineage-spark` has been
-updated. For subsequent versions,
-utilize `io.openlineage:openlineage-spark_${SCALA_BINARY_VERSION}:${OPENLINEAGE_SPARK_VERSION}`,
-ensuring compatibility with your Spark's Scala version to prevent runtime issues.
+
+* Version `1.8.0` and earlier only supported Scala 2.12 variants of Apache Spark.
+* Version `1.9.0` and later support both Scala 2.12 and 2.13 variants of Apache Spark.
+
+The above necessitates a change in the artifact identifier for `io.openlineage:openlineage-spark`.
+After version `1.8.0`, the artifact identifier has been updated. For subsequent versions, utilize:
+`io.openlineage:openlineage-spark_${SCALA_BINARY_VERSION}:${OPENLINEAGE_SPARK_VERSION}`.
 :::
 
 To integrate OpenLineage Spark with your application, you can:
 
-- Bundle the package with your application build.
-- Place the JAR in the `${SPARK_HOME}/jars` directory.
-- Use the `--jars` option with `spark-submit`.
-- Use the `--packages` option with `spark-submit`.
+- [Bundle the package with your Apache Spark application project](#bundle-the-package-with-your-apache-spark-application-project).
+- [Place the JAR in your `${SPARK_HOME}/jars` directory](#place-the-jar-to-your-spark_homejars-directory)
+- [Use the `--jars` option with `spark-submit / spark-shell / pyspark`](#use-the---jars-option-with-spark-submit--spark-shell--pyspark)
+- [Use the `--packages` option with `spark-submit / spark-shell / pyspark`](#use-the---packages-option-with-spark-submit--spark-shell--pyspark)
 
-#### Adding the Package to Your Build
+#### Bundle the package with your Apache Spark application project
 
 :::info
-This approach requires further configuration for the listener, either by
-modifying `spark-defaults.conf` at `${SPARK_HOME}/conf/spark-defaults.conf` or by setting it
-directly within your application code when creating a `SparkSession` or `SparkConf`. For Spark
-configuration details, consult the official Apache Spark documentation.
+This approach does not demonstrate how to configure the `OpenLineageSparkListener`.
+Please refer to the [Configuration](#configuration) section.
 :::
 
 For Maven, add the following to your `pom.xml`:
 
+<Tabs groupId="spark">
+<TabItem value="after-1.8.0" label="After 1.8.0">
+
 ```xml
 <dependency>
-    <groupId>io.openlineage</groupId>
+  <groupId>io.openlineage</groupId>
   <artifactId>openlineage-spark_${SCALA_BINARY_VERSION}</artifactId>
   <version>${OPENLINEAGE_SPARK_VERSION}</version>
 </dependency>
 ```
 
-For Gradle, add this to your `build.gradle`:
+</TabItem>
+<TabItem value="1.8.0-and-earlier" label="1.8.0 and earlier">
 
-```groovy
-implementation "io.openlineage:openlineage-spark_${SCALA_BINARY_VERSION}:${OPENLINEAGE_SPARK_VERSION}"
+```xml
+
+<dependency>
+  <groupId>io.openlineage</groupId>
+  <artifactId>openlineage-spark</artifactId>
+  <version>${OPENLINEAGE_SPARK_VERSION}</version>
+</dependency>
 ```
 
-#### Adding the JAR to Your `${SPARK_HOME}/jars` Directory
+</TabItem>
+</Tabs>
+
+For Gradle, add this to your `build.gradle`:
+
+<Tabs groupId="spark">
+<TabItem value="after-1.8.0" label="After 1.8.0">
+
+```groovy
+implementation("io.openlineage:openlineage-spark_${SCALA_BINARY_VERSION}:${OPENLINEAGE_SPARK_VERSION}")
+```
+
+</TabItem>
+<TabItem value="1.8.0-and-earlier" label="1.8.0 and earlier">
+
+```groovy
+implementation("io.openlineage:openlineage-spark:${OPENLINEAGE_SPARK_VERSION}")
+```
+
+</TabItem>
+</Tabs>
+
+#### Place the JAR to your `${SPARK_HOME}/jars` directory
 
 :::info
-This method does not include listener configuration steps. It is advised to configure the listener
-via a modified `spark-defaults.conf` file in `${SPARK_HOME}/conf`. For Spark configuration details,
-consult the official Apache Spark documentation.
+This approach does not demonstrate how to configure the `OpenLineageSparkListener`.
+Please refer to the [Configuration](#configuration) section.
 :::
 
 1. Download the JAR and its checksum from Maven Central.
@@ -104,16 +138,17 @@ consult the official Apache Spark documentation.
 
 This script automates the download and verification process:
 
+<Tabs groupId="spark">
+<TabItem value="after-1.8.0" label="After 1.8.0">
+
 ```bash
 #!/usr/bin/env bash
 
-# Ensure SPARK_HOME is set
 if [ -z "$SPARK_HOME" ]; then
     echo "SPARK_HOME is not set. Please define it as your Spark installation directory."
     exit 1
 fi
 
-# Variables
 OPENLINEAGE_SPARK_VERSION='1.9.0'  # Example version
 SCALA_BINARY_VERSION='2.13'        # Example Scala version
 ARTIFACT_ID="openlineage-spark_${SCALA_BINARY_VERSION}"
@@ -121,14 +156,11 @@ JAR_NAME="${ARTIFACT_ID}-${OPENLINEAGE_SPARK_VERSION}.jar"
 CHECKSUM_NAME="${JAR_NAME}.sha512"
 BASE_URL="https://repo1.maven.org/maven2/io/openlineage/${ARTIFACT_ID}/${OPENLINEAGE_SPARK_VERSION}"
 
-# Download JAR and checksum
 curl -O "${BASE_URL}/${JAR_NAME}"
 curl -O "${BASE_URL}/${CHECKSUM_NAME}"
 
-# Verify JAR integrity
 echo "$(cat ${CHECKSUM_NAME})  ${JAR_NAME}" | sha512sum -c
 
-# Move JAR to SPARK_HOME/jars if checksum is valid
 if [ $? -eq 0 ]; then
     mv "${JAR_NAME}" "${SPARK_HOME}/jars"
 else
@@ -137,18 +169,58 @@ else
 fi
 ```
 
-#### Using the `--jars` Option with `spark-submit`
-
-1. Download the JAR and its checksum from Maven Central.
-2. Verify the JAR's integrity using the checksum.
-3. Upon successful verification, move the JAR to `${SPARK_HOME}/jars`.
-
-This script automates the download and verification process:
+</TabItem>
+<TabItem value="1.8.0-and-earlier" label="1.8.0 and earlier">
 
 ```bash
 #!/usr/bin/env bash
 
-# Set environment variables
+if [ -z "$SPARK_HOME" ]; then
+    echo "SPARK_HOME is not set. Please define it as your Spark installation directory."
+    exit 1
+fi
+
+OPENLINEAGE_SPARK_VERSION='1.8.0'  # Example version
+ARTIFACT_ID="openlineage-spark"
+JAR_NAME="${ARTIFACT_ID}-${OPENLINEAGE_SPARK_VERSION}.jar"
+CHECKSUM_NAME="${JAR_NAME}.sha512"
+BASE_URL="https://repo1.maven.org/maven2/io/openlineage/${ARTIFACT_ID}/${OPENLINEAGE_SPARK_VERSION}"
+
+curl -O "${BASE_URL}/${JAR_NAME}"
+curl -O "${BASE_URL}/${CHECKSUM_NAME}"
+
+echo "$(cat ${CHECKSUM_NAME})  ${JAR_NAME}" | sha512sum -c
+
+if [ $? -eq 0 ]; then
+    mv "${JAR_NAME}" "${SPARK_HOME}/jars"
+else
+    echo "Checksum verification failed."
+    exit 1
+fi
+```
+
+</TabItem>
+</Tabs>
+
+#### Use the `--jars` option with `spark-submit / spark-shell / pyspark`
+
+:::info
+This approach does not demonstrate how to configure the `OpenLineageSparkListener`.
+Please refer to the [Configuration](#configuration) section.
+:::
+
+1. Download the JAR and its checksum from Maven Central.
+2. Verify the JAR's integrity using the checksum.
+3. Upon successful verification, submit a Spark application with the JAR using the `--jars` option.
+
+This script demonstrate this process:
+
+<Tabs groupId="spark">
+<TabItem value="after-1.8.0" label="After 1.8.0">
+
+```bash
+#!/usr/bin/env bash
+
 OPENLINEAGE_SPARK_VERSION='1.9.0'  # Example version
 SCALA_BINARY_VERSION='2.13'        # Example Scala version
 ARTIFACT_ID="openlineage-spark_${SCALA_BINARY_VERSION}"
@@ -156,55 +228,198 @@ JAR_NAME="${ARTIFACT_ID}-${OPENLINEAGE_SPARK_VERSION}.jar"
 CHECKSUM_NAME="${JAR_NAME}.sha512"
 BASE_URL="https://repo1.maven.org/maven2/io/openlineage/${ARTIFACT_ID}/${OPENLINEAGE_SPARK_VERSION}"
 
-# Download JAR and checksum
 curl -O "${BASE_URL}/${JAR_NAME}"
 curl -O "${BASE_URL}/${CHECKSUM_NAME}"
 
-# Verify JAR integrity
 echo "$(cat ${CHECKSUM_NAME})  ${JAR_NAME}" | sha512sum -c
 
-# Move JAR to SPARK_HOME/jars if checksum is valid
 if [ $? -eq 0 ]; then
-    # Spark submit command
     spark-submit --jars "path/to/${JAR_NAME}" \
-        --conf "spark.openlineage.transport.type=http" \
-        --conf "spark.openlineage.transport.url=${OPENLINEAGE_CLIENT_HOST}/api/v1/lineage" \
-        --class com.mycompany.MySparkApp my_application.jar
+      # ... other options
 else
     echo "Checksum verification failed."
     exit 1
 fi
 ```
 
-#### Using the `--packages` Option with `spark-submit`
-
-Spark allows you to add packages at runtime using the `--packages` option with `spark-submit`. This
-option automatically downloads the package from Maven Central (or other configured repositories)
-and adds it to the classpath.
+</TabItem>
+<TabItem value="1.8.0-and-earlier" label="1.8.0 and earlier">
 
 ```bash
 #!/usr/bin/env bash
 
-# Set environment variables
+OPENLINEAGE_SPARK_VERSION='1.8.0'  # Example version
+ARTIFACT_ID="openlineage-spark"
+JAR_NAME="${ARTIFACT_ID}-${OPENLINEAGE_SPARK_VERSION}.jar"
+CHECKSUM_NAME="${JAR_NAME}.sha512"
+BASE_URL="https://repo1.maven.org/maven2/io/openlineage/${ARTIFACT_ID}/${OPENLINEAGE_SPARK_VERSION}"
+
+curl -O "${BASE_URL}/${JAR_NAME}"
+curl -O "${BASE_URL}/${CHECKSUM_NAME}"
+
+echo "$(cat ${CHECKSUM_NAME})  ${JAR_NAME}" | sha512sum -c
+
+if [ $? -eq 0 ]; then
+    spark-submit --jars "path/to/${JAR_NAME}" \
+      # ... other options
+else
+    echo "Checksum verification failed."
+    exit 1
+fi
+```
+
+</TabItem>
+</Tabs>
+
+#### Use the `--packages` option with `spark-submit / spark-shell / pyspark`
+
+:::info
+This approach does not demonstrate how to configure the `OpenLineageSparkListener`.
+Please refer to the [Configuration](#configuration) section.
+:::
+
+Spark allows you to add packages at runtime using the `--packages` option with `spark-submit`. This
+option automatically downloads the package from Maven Central (or other configured repositories)
+during runtime and adds it to the classpath of your Spark application.
+
+<Tabs groupId="spark">
+<TabItem value="after-1.8.0" label="After 1.8.0">
+
+```bash
 OPENLINEAGE_SPARK_VERSION='1.9.0'  # Example version
 SCALA_BINARY_VERSION='2.13'        # Example Scala version
-OPENLINEAGE_CLIENT_HOST='http://localhost:5000'  # Example OpenLineage client host
 
-# Spark submit command
 spark-submit --packages "io.openlineage:openlineage-spark_${SCALA_BINARY_VERSION}:${OPENLINEAGE_SPARK_VERSION}" \
-    --conf "spark.openlineage.transport.type=http" \
-    --conf "spark.openlineage.transport.url=${OPENLINEAGE_CLIENT_HOST}/api/v1/lineage" \
-    --class com.mycompany.MySparkApp my_application.jar
+    # ... other options
 ```
+
+</TabItem>
+<TabItem value="1.8.0-and-earlier" label="1.8.0 and earlier">
+
+```bash
+OPENLINEAGE_SPARK_VERSION='1.8.0'  # Example version
+
+spark-submit --packages "io.openlineage:openlineage-spark::${OPENLINEAGE_SPARK_VERSION}" \
+    # ... other options
+```
+
+</TabItem>
+</Tabs>
 
 ### Configuration
 
-Configure the listener via SparkConf parameters, following standard Spark configuration practices.
-This can be done by:
+Configuring the OpenLineage Spark integration is straightforward. It uses builtin Spark
+configuration
+mechanisms.
 
-1. Setting them directly in your application when constructing a `SparkSession` or `SparkConf`.
-2. Using the `--conf` option with `spark-submit`.
-3. Adding them to the `spark-defaults.conf` file at `${SPARK_HOME}/conf`.
+Your options are:
+
+1. [Setting the properties directly in your application](#setting-the-properties-directly-in-your-application).
+2. [Using `--conf` options with the CLI](#using---conf-options-with-the-cli).
+3. [Adding properties to the `spark-defaults.conf` file in `${SPARK_HOME}/conf`](#adding-properties-to-the-spark-defaultsconf-file-in-spark_homeconf).
+
+#### Setting the properties directly in your application
+
+The below example demonstrates how to set the properties directly in your application when
+constructing
+a `SparkSession`.
+
+<Tabs groupId="spark-app-conf">
+<TabItem value="scala" label="Scala">
+
+```scala
+import org.apache.spark.sql.SparkSession
+
+object OpenLineageExample extends App {
+  val spark = SparkSession.builder()
+    .appName("OpenLineageExample")
+    // This line is EXTREMELY important
+    .config("spark.extraListeners", "io.openlineage.spark.agent.OpenLineageSparkListener")
+    .config("spark.openlineage.transport.type", "http")
+    .config("spark.openlineage.transport.url", "http://localhost:5000/api/v1/lineage")
+    .config("spark.openlineage.namespace", "MyNamespace")
+    .config("spark.openlineage.parentJobName", "ParentJobName")
+    .config("spark.openlineage.parentRunId", "xxxx-xxxx-xxxx-xxxx")
+    .getOrCreate()
+
+  // ... your code
+
+  spark.stop()
+}
+```
+
+</TabItem>
+<TabItem value="python" label="Python">
+
+```python
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder
+    .appName("OpenLineageExample")
+    # This line is EXTREMELY important
+.config("spark.extraListeners", "io.openlineage.spark.agent.OpenLineageSparkListener")
+    .config("spark.openlineage.transport.type", "http")
+    .config("spark.openlineage.transport.url", "http://localhost:5000/api/v1/lineage")
+    .config("spark.openlineage.namespace", "MyNamespace")
+    .config("spark.openlineage.parentJobName", "ParentJobName")
+    .config("spark.openlineage.parentRunId", "xxxx-xxxx-xxxx-xxxx")
+    .getOrCreate()
+
+# ... your code
+
+spark.stop()
+```
+
+</TabItem>
+</Tabs>
+
+#### Using `--conf` options with the CLI
+
+The below example demonstrates how to use the `--conf` option with `spark-submit`.
+
+```bash
+spark-submit \
+  --conf "spark.extraListeners=io.openlineage.spark.agent.OpenLineageSparkListener" \
+  --conf "spark.openlineage.transport.type=http" \
+  --conf "spark.openlineage.transport.url=http://localhost:5000/api/v1/lineage" \
+  --conf "spark.openlineage.namespace=MyNamespace" \
+  --conf "spark.openlineage.parentJobName=ParentJobName" \
+  --conf "spark.openlineage.parentRunId=xxxx-xxxx-xxxx-xxxx" \
+  # ... other options
+```
+
+#### Adding properties to the `spark-defaults.conf` file in `${SPARK_HOME}/conf`
+
+:::warning
+You may need to create this file if it does not exist. If it does exist, **we strongly suggest that
+you back it up before making any changes**, particularly if you are not the only user of the Spark
+installation. A misconfiguration here can have devastating effects on the operation of your Spark
+installation, particularly in a shared environment.
+:::
+
+The below example demonstrates how to add properties to the `spark-defaults.conf` file.
+
+```properties
+spark.extraListeners=io.openlineage.spark.agent.OpenLineageSparkListener
+spark.openlineage.transport.type=http
+spark.openlineage.transport.url=http://localhost:5000/api/v1/lineage
+spark.openlineage.namespace=MyNamespace
+```
+
+:::info
+The `spark.extraListeners` configuration parameter is **non-additive**. This means that if you set
+`spark.extraListeners` via the CLI or via `SparkSession#config`, it will **replace** the value
+in `spark-defaults.conf`. This is important to remember if you are using `spark-defaults.conf` to
+set a default value for `spark.extraListeners` and then want to override it for a specific job.
+:::
+
+:::info
+When it comes to configuration parameters like `spark.openlineage.namespace`, a default value can
+be supplied in the `spark-defaults.conf` file. This default value can be overridden by the
+application at runtime, via the previously detailed methods. However, it is **strongly** recommended
+that more dynamic or quickly changing parameters like `spark.openlineage.parentRunId` or
+`spark.openlineage.parentJobName` be set at runtime via the CLI or `SparkSession#config` methods.
+:::
 
 #### Spark Config Parameters
 
