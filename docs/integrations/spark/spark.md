@@ -315,7 +315,7 @@ Your options are:
 
 1. [Setting the properties directly in your application](#setting-the-properties-directly-in-your-application).
 2. [Using `--conf` options with the CLI](#using---conf-options-with-the-cli).
-3. [Adding properties to the `spark-defaults.conf` file in `${SPARK_HOME}/conf`](#adding-properties-to-the-spark-defaultsconf-file-in-spark_homeconf).
+3. [Adding properties to the `spark-defaults.conf` file in the `${SPARK_HOME}/conf` directory](#adding-properties-to-the-spark-defaultsconf-file-in-the-spark_homeconf-directory).
 
 #### Setting the properties directly in your application
 
@@ -387,7 +387,7 @@ spark-submit \
   # ... other options
 ```
 
-#### Adding properties to the `spark-defaults.conf` file in `${SPARK_HOME}/conf`
+#### Adding properties to the `spark-defaults.conf` file in the `${SPARK_HOME}/conf` directory
 
 :::warning
 You may need to create this file if it does not exist. If it does exist, **we strongly suggest that
