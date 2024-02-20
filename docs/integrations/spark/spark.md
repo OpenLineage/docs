@@ -307,7 +307,7 @@ spark-submit --packages "io.openlineage:openlineage-spark::${OPENLINEAGE_SPARK_V
 
 ### Configuration
 
-Configuring the OpenLineage Spark integration is straightforward. It uses builtin Spark
+Configuring the OpenLineage Spark integration is straightforward. It uses built-in Spark
 configuration
 mechanisms.
 
