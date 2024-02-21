@@ -323,6 +323,12 @@ The below example demonstrates how to set the properties directly in your applic
 constructing
 a `SparkSession`.
 
+:::warning
+The setting `config("spark.extraListeners", "io.openlineage.spark.agent.OpenLineageSparkListener")` is
+**extremely important**. Without it, the OpenLineage Spark integration will not be invoked, rendering
+the integration ineffective.
+:::
+
 <Tabs groupId="spark-app-conf">
 <TabItem value="scala" label="Scala">
 
@@ -355,8 +361,7 @@ from pyspark.sql import SparkSession
 
 spark = SparkSession.builder
     .appName("OpenLineageExample")
-    # This line is EXTREMELY important
-.config("spark.extraListeners", "io.openlineage.spark.agent.OpenLineageSparkListener")
+    .config("spark.extraListeners", "io.openlineage.spark.agent.OpenLineageSparkListener")
     .config("spark.openlineage.transport.type", "http")
     .config("spark.openlineage.transport.url", "http://localhost:5000/api/v1/lineage")
     .config("spark.openlineage.namespace", "MyNamespace")
