@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+title: Build
+---
+
 # Build
 
 ## Java 8
