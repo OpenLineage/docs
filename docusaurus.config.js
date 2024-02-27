@@ -50,6 +50,7 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          exclude: ['**/partials/**'],
           editUrl:
             'https://github.com/OpenLineage/docs/tree/main/',
         },
