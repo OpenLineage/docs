@@ -4,6 +4,10 @@ sidebar_position: 8
 
 # Job Hierarchy
 
+:::info
+This feature is available in OpenLineage versions >= 1.9.0.
+:::
+
 In a complex environment, where there are thousands of processing jobs daily, there can be a lot of chaos. 
 Understanding not only which jobs produced what dataset, but also answering questions like: 
 - why did the job ran?
