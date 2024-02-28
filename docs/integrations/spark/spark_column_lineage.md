@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Column-level Lineage
+title: Column-Level Lineage
 ---
 
 :::info
