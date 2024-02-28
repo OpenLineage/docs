@@ -10,7 +10,7 @@ However, OpenLineage project also provides libraries you could use to write your
 
 ### Clients
 
-For [Python](../../client/python.md) and [Java](../../client/java.md), we've created clients that you can use to properly create and emit OpenLineage events to HTTP, Kafka, and other consumers.
+For [Python](../../client/python.md) and [Java](../../client/java/java.md), we've created clients that you can use to properly create and emit OpenLineage events to HTTP, Kafka, and other consumers.
 
 ### API Documentation
 
@@ -25,7 +25,7 @@ that functionality from our Airflow library and [packaged it for separate use](h
 ### Environment Variables
 
 The list of available environment variables for **Python** can be found [here](../../client/python.md#environment-variables).
-The list of available environment variables for **Java** can be found [here](../../client/java.md#environment-variables).
+The list of available environment variables for **Java** can be found [here](../../client/java/java.md#environment-variables).
 
 ### SQL parser
 
