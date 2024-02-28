@@ -1,7 +1,5 @@
 # OpenLineage Docs
 
-NOTE: These docs are a work in progress. For current documentation, consult the various `README.md` files that can be found in the [OpenLineage Repository](https://github.com/OpenLineage/openlineage).
-
 This is a Docusaurus site, and all content can be found in `docs/`. Contributions are welcome in the form of issues or pull requests. Pages that require attention have been marked with Docusaurus Admonitions.
 
 ### New posts
