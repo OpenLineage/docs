@@ -43,6 +43,8 @@ See the [example config file](#built-in-transport-types) for each transport type
 
 If there is no config file found, the OpenLineage client looks at environment variables for [HTTP transport](#http-transport-configuration-with-environment-variables).
 
+At the end, if no configuration is found, ``ConsoleTransport`` is used, the events are printed in the console.
+
 ### Environment Variables
 
 The following environment variables are available to use:  
