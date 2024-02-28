@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 1
 title: Quickstart with Jupyter
 ---
 
@@ -28,11 +28,11 @@ notebook_1  |      or http://127.0.0.1:8888/?token=XXXXXX
 
 Copy the URL with 127.0.0.1 as the hostname from your own log (the token will be different from mine) and paste it into your browser window. You should have a blank Jupyter notebook environment ready to go.
 
-![image](./jupyter_home.png)
+![image](jupyter_home.png)
 
 Once your notebook environment is ready, click on the notebooks directory, then click on the New button to create a new Python 3 notebook.
 
-![image](./jupyter_new_notebook.png)
+![image](jupyter_new_notebook.png)
 
 In the first cell in the window paste the following text:
 
