@@ -12,18 +12,19 @@ Jobs and Datasets have their own namespaces, job namespaces being derived from s
 
 A dataset, or `table`, is organized according to a producer, namespace, database and (optionally) schema.
 
-| Producer | Namespace | Name | Example Namespace | Example Name |
-| -------- | --------- | ---- | ----------------- | ------------ |
-| Postgres | postgres + host + port | database + schema + table | postgres://db.foo.com:6543 | metrics.sales.orders |
-| MySQL | mysql + host + port | database + table | mysql://db.foo.com:6543 | metrics.orders | 
-| S3 | s3 + bucket | path | s3://sales-metrics | orders.csv |
-| GCS | gcs + bucket | path | gcs://sales-metrics | orders.csv |
-| HDFS | hdfs + host + port | path | hdfs://stg.foo.com:3000 | salesorders.csv |
-| BigQuery | bigquery |  project + dataset + table | bigquery | metrics.sales.orders |
-| Redshift | redshift + host + port | database + schema + table | redshift://examplecluster.XXXXXXXXXXXX.us-west-2.redshift.amazonaws.com:5439 | metrics.sales.orders |
-| Athena | awsathena + host | catalog + database + table | awsathena://athena.us-west-2.amazonaws.com | metrics.sales.orders |
-| Azure Synapse | producer + host + port | database + schema + table | sqlserver://XXXXXXXXXXXX.sql.azuresynapse.net:1433 | SQLPool1/sales.orders |
-| Azure Cosmos DB | producer + host | database + 'colls' + table | azurecosmos://XXXXXXXXXXXX.documents.azure.com/dbs | metrics.colls.orders |
+| Producer        | Namespace               | Name                       | Example Namespace                                                            | Example Name          |
+|-----------------|-------------------------|----------------------------|------------------------------------------------------------------------------|-----------------------|
+| Postgres        | postgres + host + port  | database + schema + table  | postgres://db.foo.com:6543                                                   | metrics.sales.orders  |
+| MySQL           | mysql + host + port     | database + table           | mysql://db.foo.com:6543                                                      | metrics.orders        | 
+| Cassandra       | cassandra + host + port | keyspace + table           | cassandra://db.foo.com:9042                                                  | metrics.orders        | 
+| S3              | s3 + bucket             | path                       | s3://sales-metrics                                                           | orders.csv            |
+| GCS             | gcs + bucket            | path                       | gcs://sales-metrics                                                          | orders.csv            |
+| HDFS            | hdfs + host + port      | path                       | hdfs://stg.foo.com:3000                                                      | salesorders.csv       |
+| BigQuery        | bigquery                | project + dataset + table  | bigquery                                                                     | metrics.sales.orders  |
+| Redshift        | redshift + host + port  | database + schema + table  | redshift://examplecluster.XXXXXXXXXXXX.us-west-2.redshift.amazonaws.com:5439 | metrics.sales.orders  |
+| Athena          | awsathena + host        | catalog + database + table | awsathena://athena.us-west-2.amazonaws.com                                   | metrics.sales.orders  |
+| Azure Synapse   | producer + host + port  | database + schema + table  | sqlserver://XXXXXXXXXXXX.sql.azuresynapse.net:1433                           | SQLPool1/sales.orders |
+| Azure Cosmos DB | producer + host         | database + 'colls' + table | azurecosmos://XXXXXXXXXXXX.documents.azure.com/dbs                           | metrics.colls.orders  |
 
 ## Job Naming
 
