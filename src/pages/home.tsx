@@ -6,6 +6,7 @@ import { ArrowRight } from "react-feather"
 import { Calendar } from "react-feather"
 import { Slack } from "react-feather"
 import { Inbox } from "react-feather"
+import { GitHub } from "react-feather"
 
 export default function Main(): JSX.Element {
   const seoTitle = 'Home';
@@ -28,7 +29,6 @@ export default function Main(): JSX.Element {
 const Wall = ({ twoColumnWall = false, capitalizeTitleOnHome = false }) => {
   const wall = useRef(null)
   const titleImage = '/img/background.svg';
-
   const [state, changeState] = useState({
     loaded: false,
     supportsBlend: false,
@@ -76,11 +76,22 @@ const Wall = ({ twoColumnWall = false, capitalizeTitleOnHome = false }) => {
       </p>
       <span className="py-5">
         <Button
-          title="Get Started"
+          title="Quickstart"
           to='/getting-started'
           type="link"
           iconRight={<ArrowRight />}
-          className="mx-5"
+        />
+        <Button
+          title="Slack"
+          to="http://bit.ly/OpenLineageSlack"
+          type="link"
+          iconRight={<Slack />}
+        />
+        <Button
+          title="GitHub"
+          to="https://github.com/OpenLineage"
+          type="link"
+          iconRight={<GitHub />}
         />
       </span>
     </React.Fragment>
@@ -148,18 +159,14 @@ const About = () => {
         <p className="mt-5 text-lg py-3">
           At the core of OpenLineage is a standard API for capturing lineage events. Pipeline components - like schedulers, warehouses, analysis tools, and SQL engines - can use this API to send data about runs, jobs, and datasets to a compatible OpenLineage backend for further study.
         </p>
-
         <Button
           title="Read the javadoc"
-          className="mx-3"
           to='/apidocs/javadoc'
           type="link"
           iconRight={<ArrowRight />}
         />
-
         <Button
           title="Read the openapi doc"
-          className="mx-3"
           to='/apidocs/openapi'
           type="link"
           iconRight={<ArrowRight />}
@@ -177,25 +184,20 @@ const Participate = () => {
                   How to Participate
               </h2>
               <p className="mt-5 text-lg py-3">
-                  OpenLineage is an open spec, and we welcome feedback from users and vendors alike. We have a Slack community where you can engage directly with members of the project, ask questions, and share your experiences. We also run a monthly open meeting of the Technical Steering Committee where we share project updates and engage in open discussion.
+                  OpenLineage is an open spec, and we welcome contributions and feedback from users and vendors alike. We have a Slack community where you can engage directly with members of the project, ask questions, and share your experiences. We also run a monthly open meeting of the Technical Steering Committee where we share project updates and engage in open discussion.
               </p>
-
               <Button
                   title="Slack"
                   to='https://bit.ly/OpenLineageSlack'
                   type="extbutton"
                   iconRight={<Slack />}
-                  className="mx-5"
               />
-
               <Button
                   title="TSC Meetings"
-                  className="mx-3"
                   to='/meetings'
                   type="link"
                   iconRight={<Calendar />}
               />
-
           </div>
       </div>
   )
