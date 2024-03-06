@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const links = [
   { to: '/getting-started', label: 'Getting Started', position: 'left' },
   { to: '/resources', label: 'Resources', position: 'left' },
-    { to: '/ecosystem', label: 'Ecosystem', position: 'left' },
+  { to: '/ecosystem', label: 'Ecosystem', position: 'left' },
   { to: '/community', label: 'Community', position: 'left' },
   { to: '/blog', label: 'Blog', position: 'left' },
   { to: '/docs', label: 'Docs', position: 'left' },
