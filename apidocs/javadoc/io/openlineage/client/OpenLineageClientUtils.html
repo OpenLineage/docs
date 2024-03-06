@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9};
+var data = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9,"i10":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -133,7 +133,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public final class <span class="typeNameLabel">OpenLineageClientUtils</span>
 extends java.lang.Object</pre>
-<div class="block">Utilities class for <a href="OpenLineageClient.html" title="class in io.openlineage.client"><code>OpenLineageClient</code></a>.</div>
+<div class="block">Utility class for <a href="OpenLineageClient.html" title="class in io.openlineage.client"><code>OpenLineageClient</code></a> that provides common functionalities for object
+ mapping, JSON and YAML parsing, and URI manipulation.</div>
 </li>
 </ul>
 </div>
@@ -181,69 +182,83 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#configureObjectMapper(java.lang.String...)">configureObjectMapper</a></span>&#8203;(java.lang.String...&nbsp;disableFacets)</code></th>
 <td class="colLast">
-<div class="block">Configure object mapper to exclude specified facets from being serialized</div>
+<div class="block">Configures the object mapper to exclude specified facets from being serialized.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>static &lt;T&gt;&nbsp;T</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#convertValue(java.lang.Object,java.lang.Class)">convertValue</a></span>&#8203;(java.lang.Object&nbsp;fromValue,
             java.lang.Class&lt;T&gt;&nbsp;toValueType)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Converts the value of an object from one type to another.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>static &lt;T&gt;&nbsp;T</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#fromJson(java.lang.String,com.fasterxml.jackson.core.type.TypeReference)">fromJson</a></span>&#8203;(@NonNull java.lang.String&nbsp;json,
         @NonNull com.fasterxml.jackson.core.type.TypeReference&lt;T&gt;&nbsp;type)</code></th>
 <td class="colLast">
-<div class="block">Converts the provided Json <code>string</code> to the specified <code>type</code>.</div>
+<div class="block">Converts the provided JSON string to an instance of the specified type.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>static <a href="OpenLineageYaml.html" title="class in io.openlineage.client">OpenLineageYaml</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#loadOpenLineageYaml(io.openlineage.client.ConfigPathProvider)">loadOpenLineageYaml</a></span>&#8203;(<a href="ConfigPathProvider.html" title="interface in io.openlineage.client">ConfigPathProvider</a>&nbsp;configPathProvider)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#loadOpenLineageJson(java.io.InputStream)">loadOpenLineageJson</a></span>&#8203;(java.io.InputStream&nbsp;inputStream)</code></th>
+<td class="colLast">
+<div class="block">Loads and parses OpenLineage JSON configuration from an <code>InputStream</code>.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>static <a href="OpenLineageYaml.html" title="class in io.openlineage.client">OpenLineageYaml</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#loadOpenLineageYaml(java.io.InputStream)">loadOpenLineageYaml</a></span>&#8203;(java.io.InputStream&nbsp;inputStream)</code></th>
-<td class="colLast">&nbsp;</td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#loadOpenLineageYaml(io.openlineage.client.ConfigPathProvider)">loadOpenLineageYaml</a></span>&#8203;(<a href="ConfigPathProvider.html" title="interface in io.openlineage.client">ConfigPathProvider</a>&nbsp;configPathProvider)</code></th>
+<td class="colLast">
+<div class="block">Loads and parses OpenLineage configuration from the provided paths.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
+<td class="colFirst"><code>static <a href="OpenLineageYaml.html" title="class in io.openlineage.client">OpenLineageYaml</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#loadOpenLineageYaml(java.io.InputStream)">loadOpenLineageYaml</a></span>&#8203;(java.io.InputStream&nbsp;inputStream)</code></th>
+<td class="colLast">
+<div class="block">Loads and parses OpenLineage YAML configuration from an <code>InputStream</code>.</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>static &lt;T,&#8203;F&gt;<br>T</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#mergeFacets(java.util.Map,T,java.lang.Class)">mergeFacets</a></span>&#8203;(java.util.Map&lt;java.lang.String,&#8203;F&gt;&nbsp;facetsMap,
            T&nbsp;facetsContainer,
            java.lang.Class&lt;T&gt;&nbsp;klass)</code></th>
 <td class="colLast">
-<div class="block">Create a new instance of the facets container with all values merged from the original
- facetsContainer and the given facets Map, with precedence given to the facets Map.</div>
-</td>
-</tr>
-<tr id="i6" class="altColor">
-<td class="colFirst"><code>static com.fasterxml.jackson.databind.ObjectMapper</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newObjectMapper()">newObjectMapper</a></span>()</code></th>
-<td class="colLast">
-<div class="block">Returns a new <code>ObjectMapper</code> instance.</div>
+<div class="block">Merges the given facets map with an existing facets container, giving precedence to the values
+ in the facets map.</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
-<td class="colFirst"><code>static <a href="OpenLineage.RunEvent.html" title="class in io.openlineage.client">OpenLineage.RunEvent</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#runEventFromJson(java.lang.String)">runEventFromJson</a></span>&#8203;(@NonNull java.lang.String&nbsp;json)</code></th>
+<td class="colFirst"><code>static com.fasterxml.jackson.databind.ObjectMapper</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newObjectMapper()">newObjectMapper</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Converts the provided Json <code>string</code> to <a href="OpenLineage.RunEvent.html" title="class in io.openlineage.client"><code>OpenLineage.RunEvent</code></a>.</div>
+<div class="block">Creates a new <code>ObjectMapper</code> instance configured with modules for JDK8 and JavaTime,
+ including settings to ignore unknown properties and to not write dates as timestamps.</div>
 </td>
 </tr>
 <tr id="i8" class="altColor">
-<td class="colFirst"><code>static java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toJson(java.lang.Object)">toJson</a></span>&#8203;(@NonNull java.lang.Object&nbsp;value)</code></th>
+<td class="colFirst"><code>static <a href="OpenLineage.RunEvent.html" title="class in io.openlineage.client">OpenLineage.RunEvent</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#runEventFromJson(java.lang.String)">runEventFromJson</a></span>&#8203;(@NonNull java.lang.String&nbsp;json)</code></th>
 <td class="colLast">
-<div class="block">Converts the provided <code>value</code> to a Json <code>string</code>.</div>
+<div class="block">Convenience method to convert a JSON string directly into a <a href="OpenLineage.RunEvent.html" title="class in io.openlineage.client"><code>OpenLineage.RunEvent</code></a> instance.</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toJson(java.lang.Object)">toJson</a></span>&#8203;(@NonNull java.lang.Object&nbsp;value)</code></th>
+<td class="colLast">
+<div class="block">Converts the provided value to a JSON string.</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>static java.net.URI</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toUri(java.lang.String)">toUri</a></span>&#8203;(@NonNull java.lang.String&nbsp;urlString)</code></th>
 <td class="colLast">
-<div class="block">Converts the provided <code>urlString</code> to an <code>URI</code> object.</div>
+<div class="block">Converts a string URL into an <code>URI</code> object.</div>
 </td>
 </tr>
 </table>
@@ -277,7 +292,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>newObjectMapper</h4>
 <pre class="methodSignature">public static&nbsp;com.fasterxml.jackson.databind.ObjectMapper&nbsp;newObjectMapper()</pre>
-<div class="block">Returns a new <code>ObjectMapper</code> instance.</div>
+<div class="block">Creates a new <code>ObjectMapper</code> instance configured with modules for JDK8 and JavaTime,
+ including settings to ignore unknown properties and to not write dates as timestamps.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>A configured <code>ObjectMapper</code> instance.</dd>
+</dl>
 </li>
 </ul>
 <a id="configureObjectMapper(java.lang.String...)">
@@ -287,10 +307,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>configureObjectMapper</h4>
 <pre class="methodSignature">public static&nbsp;void&nbsp;configureObjectMapper&#8203;(java.lang.String...&nbsp;disableFacets)</pre>
-<div class="block">Configure object mapper to exclude specified facets from being serialized</div>
+<div class="block">Configures the object mapper to exclude specified facets from being serialized.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>disableFacets</code> - </dd>
+<dd><code>disableFacets</code> - Array of facet names to be excluded from serialization.</dd>
 </dl>
 </li>
 </ul>
@@ -301,8 +321,17 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>toJson</h4>
 <pre class="methodSignature">public static&nbsp;java.lang.String&nbsp;toJson&#8203;(@NonNull
-                                      @NonNull java.lang.Object&nbsp;value)</pre>
-<div class="block">Converts the provided <code>value</code> to a Json <code>string</code>.</div>
+                                      @NonNull java.lang.Object&nbsp;value)
+                               throws java.io.UncheckedIOException</pre>
+<div class="block">Converts the provided value to a JSON string.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>value</code> - The object to be converted to JSON.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>A JSON string representation of the object.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.io.UncheckedIOException</code> - If an I/O error occurs during conversion.</dd>
+</dl>
 </li>
 </ul>
 <a id="fromJson(java.lang.String,com.fasterxml.jackson.core.type.TypeReference)">
@@ -314,8 +343,20 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public static&nbsp;&lt;T&gt;&nbsp;T&nbsp;fromJson&#8203;(@NonNull
                              @NonNull java.lang.String&nbsp;json,
                              @NonNull
-                             @NonNull com.fasterxml.jackson.core.type.TypeReference&lt;T&gt;&nbsp;type)</pre>
-<div class="block">Converts the provided Json <code>string</code> to the specified <code>type</code>.</div>
+                             @NonNull com.fasterxml.jackson.core.type.TypeReference&lt;T&gt;&nbsp;type)
+                      throws java.io.UncheckedIOException</pre>
+<div class="block">Converts the provided JSON string to an instance of the specified type.</div>
+<dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>T</code> - The generic type of the return value.</dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>json</code> - The JSON string to be converted.</dd>
+<dd><code>type</code> - The type to convert the JSON string into.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>An instance of the specified type.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.io.UncheckedIOException</code> - If an I/O error occurs during conversion.</dd>
+</dl>
 </li>
 </ul>
 <a id="runEventFromJson(java.lang.String)">
@@ -325,9 +366,17 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>runEventFromJson</h4>
 <pre class="methodSignature">public static&nbsp;<a href="OpenLineage.RunEvent.html" title="class in io.openlineage.client">OpenLineage.RunEvent</a>&nbsp;runEventFromJson&#8203;(@NonNull
-                                                    @NonNull java.lang.String&nbsp;json)</pre>
-<div class="block">Converts the provided Json <code>string</code> to <a href="OpenLineage.RunEvent.html" title="class in io.openlineage.client"><code>OpenLineage.RunEvent</code></a>. Useful as other `fromJson`
- method gets shaded.</div>
+                                                    @NonNull java.lang.String&nbsp;json)
+                                             throws java.io.UncheckedIOException</pre>
+<div class="block">Convenience method to convert a JSON string directly into a <a href="OpenLineage.RunEvent.html" title="class in io.openlineage.client"><code>OpenLineage.RunEvent</code></a> instance.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>json</code> - The JSON string representing a <a href="OpenLineage.RunEvent.html" title="class in io.openlineage.client"><code>OpenLineage.RunEvent</code></a>.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>An instance of <a href="OpenLineage.RunEvent.html" title="class in io.openlineage.client"><code>OpenLineage.RunEvent</code></a>.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.io.UncheckedIOException</code> - If an I/O error occurs during conversion.</dd>
+</dl>
 </li>
 </ul>
 <a id="convertValue(java.lang.Object,java.lang.Class)">
@@ -338,6 +387,16 @@ extends java.lang.Object</pre>
 <h4>convertValue</h4>
 <pre class="methodSignature">public static&nbsp;&lt;T&gt;&nbsp;T&nbsp;convertValue&#8203;(java.lang.Object&nbsp;fromValue,
                                  java.lang.Class&lt;T&gt;&nbsp;toValueType)</pre>
+<div class="block">Converts the value of an object from one type to another.</div>
+<dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>T</code> - The generic type of the target type.</dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>fromValue</code> - The object whose value is to be converted.</dd>
+<dd><code>toValueType</code> - The target type for the conversion.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>An object of the target type with the value converted from the original object.</dd>
+</dl>
 </li>
 </ul>
 <a id="mergeFacets(java.util.Map,java.lang.Object,java.lang.Class)">
@@ -351,8 +410,19 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public static&nbsp;&lt;T,&#8203;F&gt;&nbsp;T&nbsp;mergeFacets&#8203;(java.util.Map&lt;java.lang.String,&#8203;F&gt;&nbsp;facetsMap,
                                         T&nbsp;facetsContainer,
                                         java.lang.Class&lt;T&gt;&nbsp;klass)</pre>
-<div class="block">Create a new instance of the facets container with all values merged from the original
- facetsContainer and the given facets Map, with precedence given to the facets Map.</div>
+<div class="block">Merges the given facets map with an existing facets container, giving precedence to the values
+ in the facets map.</div>
+<dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>T</code> - The type of the facets container.</dd>
+<dd><code>F</code> - The type of facets in the map.</dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>facetsMap</code> - A map containing facets to be merged.</dd>
+<dd><code>facetsContainer</code> - The existing container of facets.</dd>
+<dd><code>klass</code> - The class of the facets container.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>A new instance of the facets container with merged values.</dd>
+</dl>
 </li>
 </ul>
 <a id="toUri(java.lang.String)">
@@ -362,8 +432,18 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>toUri</h4>
 <pre class="methodSignature">public static&nbsp;java.net.URI&nbsp;toUri&#8203;(@NonNull
-                                 @NonNull java.lang.String&nbsp;urlString)</pre>
-<div class="block">Converts the provided <code>urlString</code> to an <code>URI</code> object.</div>
+                                 @NonNull java.lang.String&nbsp;urlString)
+                          throws <a href="OpenLineageClientException.html" title="class in io.openlineage.client">OpenLineageClientException</a></pre>
+<div class="block">Converts a string URL into an <code>URI</code> object.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>urlString</code> - The string URL to be converted.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>An <code>URI</code> object.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="OpenLineageClientException.html" title="class in io.openlineage.client">OpenLineageClientException</a></code> - If the given string does not conform to the URI
+     specification.</dd>
+</dl>
 </li>
 </ul>
 <a id="loadOpenLineageYaml(io.openlineage.client.ConfigPathProvider)">
@@ -372,16 +452,63 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>loadOpenLineageYaml</h4>
-<pre class="methodSignature">public static&nbsp;<a href="OpenLineageYaml.html" title="class in io.openlineage.client">OpenLineageYaml</a>&nbsp;loadOpenLineageYaml&#8203;(<a href="ConfigPathProvider.html" title="interface in io.openlineage.client">ConfigPathProvider</a>&nbsp;configPathProvider)</pre>
+<pre class="methodSignature">public static&nbsp;<a href="OpenLineageYaml.html" title="class in io.openlineage.client">OpenLineageYaml</a>&nbsp;loadOpenLineageYaml&#8203;(<a href="ConfigPathProvider.html" title="interface in io.openlineage.client">ConfigPathProvider</a>&nbsp;configPathProvider)
+                                           throws <a href="OpenLineageClientException.html" title="class in io.openlineage.client">OpenLineageClientException</a></pre>
+<div class="block">Loads and parses OpenLineage configuration from the provided paths. Throws an <a href="OpenLineageClientException.html" title="class in io.openlineage.client"><code>OpenLineageClientException</code></a> if one of the following conditions are met:
+
+ <ol>
+   <li>The provided configPathProvider is null
+   <li>No configuration file could be found at any of the provided paths
+   <li>Load the default configuration from the classpath if no file is found
+ </ol></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>configPathProvider</code> - Provides the paths where the configuration files can be found.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>An instance of <a href="OpenLineageYaml.html" title="class in io.openlineage.client"><code>OpenLineageYaml</code></a> containing the parsed configuration.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="OpenLineageClientException.html" title="class in io.openlineage.client">OpenLineageClientException</a></code> - According to the rules defined above.</dd>
+</dl>
 </li>
 </ul>
 <a id="loadOpenLineageYaml(java.io.InputStream)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>loadOpenLineageYaml</h4>
-<pre class="methodSignature">public static&nbsp;<a href="OpenLineageYaml.html" title="class in io.openlineage.client">OpenLineageYaml</a>&nbsp;loadOpenLineageYaml&#8203;(java.io.InputStream&nbsp;inputStream)</pre>
+<pre class="methodSignature">public static&nbsp;<a href="OpenLineageYaml.html" title="class in io.openlineage.client">OpenLineageYaml</a>&nbsp;loadOpenLineageYaml&#8203;(java.io.InputStream&nbsp;inputStream)
+                                           throws <a href="OpenLineageClientException.html" title="class in io.openlineage.client">OpenLineageClientException</a></pre>
+<div class="block">Loads and parses OpenLineage YAML configuration from an <code>InputStream</code>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>inputStream</code> - The <code>InputStream</code> from which to load the configuration.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>An instance of <a href="OpenLineageYaml.html" title="class in io.openlineage.client"><code>OpenLineageYaml</code></a> containing the parsed YAML configuration.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="OpenLineageClientException.html" title="class in io.openlineage.client">OpenLineageClientException</a></code> - If an error occurs while reading or parsing the
+     configuration.</dd>
+</dl>
+</li>
+</ul>
+<a id="loadOpenLineageJson(java.io.InputStream)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>loadOpenLineageJson</h4>
+<pre class="methodSignature">public static&nbsp;<a href="OpenLineageYaml.html" title="class in io.openlineage.client">OpenLineageYaml</a>&nbsp;loadOpenLineageJson&#8203;(java.io.InputStream&nbsp;inputStream)
+                                           throws <a href="OpenLineageClientException.html" title="class in io.openlineage.client">OpenLineageClientException</a></pre>
+<div class="block">Loads and parses OpenLineage JSON configuration from an <code>InputStream</code>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>inputStream</code> - The <code>InputStream</code> from which to load the configuration.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>An instance of <a href="OpenLineageYaml.html" title="class in io.openlineage.client"><code>OpenLineageYaml</code></a> containing the parsed JSON configuration.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="OpenLineageClientException.html" title="class in io.openlineage.client">OpenLineageClientException</a></code> - If an error occurs while reading or parsing the
+     configuration.</dd>
+</dl>
 </li>
 </ul>
 </li>
