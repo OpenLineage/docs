@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 title: Installation
 ---
 
@@ -27,7 +27,7 @@ To integrate OpenLineage Spark with your application, you can:
 
 :::info
 This approach does not demonstrate how to configure the `OpenLineageSparkListener`.
-Please refer to the [Configuration](./configuration.md) section.
+Please refer to the [Configuration](configuration/usage.md) section.
 :::
 
 For Maven, add the following to your `pom.xml`:

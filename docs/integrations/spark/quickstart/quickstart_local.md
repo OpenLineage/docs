@@ -5,7 +5,9 @@ title: Quickstart with Jupyter
 
 Trying out the Spark integration is super easy if you already have Docker Desktop and git installed. 
 
-Note: If you're on macOS Monterey (macOS 12) you'll have to release port 5000 before beginning by disabling the [AirPlay Receiver](https://developer.apple.com/forums/thread/682332).
+:::info
+If you're on macOS Monterey (macOS 12) you'll have to release port 5000 before beginning by disabling the [AirPlay Receiver](https://developer.apple.com/forums/thread/682332).
+:::
 
 Check out the OpenLineage project into your workspace with:
 ```
