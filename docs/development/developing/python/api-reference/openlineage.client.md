@@ -1,5 +1,5 @@
 ---
-title: Python Client test
+title: Python Client
 ---
 
 
