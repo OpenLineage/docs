@@ -75,6 +75,13 @@ export const Consumers: Array<Partner> = [
     org_url: "https://github.com/microsoft/Purview-ADB-Lineage-Solution-Accelerator/"
   },
   {
+    image: "omd-logo.svg",
+    org: "OpenMetadata",
+    description: "An OpenLineage connector collects raw lineage events via a KafkaConsumer for processing with an OpenLineageEvent class and emission to a Kafka topic or metastore.",
+    docs_url: "https://github.com/open-metadata/OpenMetadata/pull/15317",
+    org_url: "https://open-metadata.org/"
+  },
+  {
     image: "snowflake_logo.svg",
     org: "Snowflake",
     description: "Snowflake's OpenLineage Adapter creates an account-scoped view from ACCESS_HISTORY and QUERY_HISTORY to output each query that accesses tables in OpenLineage JsonSchema specification.",
