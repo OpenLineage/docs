@@ -77,7 +77,7 @@ export const Consumers: Array<Partner> = [
   {
     image: "omd-logo.svg",
     org: "OpenMetadata",
-    description: "An OpenLineage connector collects raw lineage events via a KafkaConsumer for processing with an OpenLineageEvent class and emission to a Kafka topic or metastore.",
+    description: "An OpenLineage connector collects OpenLineage events via a KafkaConsumer and transforms them into OpenMetadata Lineage edges.",
     docs_url: "https://github.com/open-metadata/OpenMetadata/pull/15317",
     org_url: "https://open-metadata.org/"
   },
