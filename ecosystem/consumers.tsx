@@ -26,6 +26,13 @@ export const Consumers: Array<Partner> = [
     org_url: "https://atlan.com"
   },
   {
+    image: "datahub_logo.svg",
+    org: "DataHub",
+    description: "DataHub's OpenLineage Converter uses an OpenLineageToDataHub class to translate OpenLineage events into DataHub aspects.",
+    docs_url: "https://github.com/datahub-project/datahub/tree/master/metadata-integration/java/openlineage-converter",
+    org_url: "https://datahubproject.io/"
+  },
+  {
     image: "egeria_logo_new.svg",
     org: "Egeria",
     description: "Egeria's OpenLineage integration can capture OpenLineage events directly via HTTP or the proxy backend.",
