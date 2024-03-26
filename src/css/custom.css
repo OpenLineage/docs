@@ -526,3 +526,132 @@ img[src*="#banner"] {
   margin-left: auto;
   margin-right: auto;
 }
+
+.bd-sidebar-secondary {
+  height: 100%;
+  width: 20%;
+  position: fixed;
+  z-index: 1;
+  top: var(--ifm-navbar-height);
+  right: 0;
+  overflow-x: hidden;
+}
+.bd-sidebar-secondary a {
+  padding: 6px 4px 6px 8px;
+  text-decoration: none;
+  color: theme("colors.color-2");
+  display: block;
+}
+.bd-sidebar-secondary a:hover {
+  color: var(--ifm-color-primary-lightest);
+}
+.bd-sidebar-secondary code {
+  background: none;
+  border: none;
+  color: theme("colors.color-2");
+}
+.bd-sidebar-secondary code:hover {
+  color: var(--ifm-color-primary-lightest);
+}
+.bd-sidebar-secondary ul {
+  margin: 0;
+  padding-left: 0.5rem;
+}
+.bd-sidebar-secondary .nav.visible, .bd-sidebar-secondary .bd-toc .nav > .active > ul, .bd-sidebar-secondary .list-caption .nav.visible, .bd-sidebar-secondary .list-caption > .active > ul, .bd-sidebar-secondary .toc-entry {
+  display: block;
+}
+.bd-sidebar-secondary li .toc-h4 {
+  display: none;
+}
+dl.py {
+  margin-bottom: calc(var(--ifm-spacing-vertical) * 2);
+  font-size: 18px;
+  border: 0.5px solid theme("colors.color-2");
+  border-radius: 5px;
+}
+dl.py code {
+  border: none;
+  background: none;
+}
+dl.py p {
+  margin-bottom: 0;
+}
+dl.py dl {
+  margin-bottom: var(--ifm-spacing-vertical);
+}
+dl.py em.sig-param > span:first-child {
+  font-weight: bold;
+}
+dl.py > dd:not(:empty) {
+  padding-bottom: var(--ifm-spacing-vertical);
+}
+dl.py dt.sig {
+  box-sizing: border-box;
+  font-size: 1.2rem;
+  padding: var(--ifm-spacing-vertical);
+  border-radius: 5px;
+  font-family: var(--ifm-font-family-monospace);
+  background-color: theme("colors.color-2");
+}
+dl.py > dd:not(:empty) {
+  padding-top: calc(var(--ifm-spacing-vertical) / 2);
+  margin-top: 0;
+  margin-left: var(--ifm-spacing-horizontal);
+  margin-right: var(--ifm-spacing-horizontal);
+}
+dl.py em.property {
+  color: var(--ifm-color-primary-lighter);
+  font-weight: bold;
+}
+dl.py span.sig-name {
+  color: rgb(31, 111, 138);
+  font-weight: bold;
+}
+dl.py dt a {
+  color: rgb(59, 139, 165);
+}
+dl.py em.property {
+  color: theme("colors.secondary");
+}
+dl.py em.sig-param span.default_value {
+  color: theme("colors.color-default");
+}
+dl.py span.sig-return span.sig-return-typehint {
+  color: theme("colors.color-1");
+}
+dl.py span.sig-return span.sig-return-typehint pre {
+  color: theme("colors.color-2");
+}
+dl.py dl.field-list {
+  padding-top: calc(var(--ifm-spacing-vertical) / 2);
+  display: grid;
+  grid-template-columns: fit-content(50%) auto;
+}
+dl.py dl.field-list:not(:first-child) {
+  border-top: 1px solid theme("colors.color-2");
+}
+dl.py dl.field-list dt {
+  margin-right: 0.5em;
+}
+dl.py dl.field-list dd {
+  font-family: var(--ifm-font-family-base);
+}
+dl.py dl.field-list dt, dl.py dl.field-list dd {
+  margin-left: 0;
+  padding-left: 0;
+}
+dl.py dl.field-list dt:not(:first-of-type), dl.py dl.field-list dd:not(:first-of-type) {
+  border-top: 1px solid theme("colors.color-2");
+  padding-top: var(--ifm-spacing-vertical);
+}
+dl.py dl.field-list dt:not(:last-of-type), dl.py dl.field-list dd:not(:last-of-type) {
+  padding-bottom: var(--ifm-spacing-vertical);
+}
+dl.py dl.field-list dt ul, dl.py dl.field-list dd ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+dl.py dl.field-list dt ul li p, dl.py dl.field-list dd ul li p {
+  margin: 0;
+  padding: 0;
+}
