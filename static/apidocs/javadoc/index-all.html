@@ -101,6 +101,15 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/server/OpenLineage.RunEvent.EventType.html#ABORT">ABORT</a></span> - io.openlineage.server.<a href="io/openlineage/server/OpenLineage.RunEvent.EventType.html" title="enum in io.openlineage.server">OpenLineage.RunEvent.EventType</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/metrics/MicrometerProvider.html#addMeterRegistry(io.micrometer.core.instrument.MeterRegistry)">addMeterRegistry(MeterRegistry)</a></span> - Static method in class io.openlineage.client.metrics.<a href="io/openlineage/client/metrics/MicrometerProvider.html" title="class in io.openlineage.client.metrics">MicrometerProvider</a></dt>
+<dd>
+<div class="block">Adds a MeterRegistry to the common OpenLineage meter registry.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/metrics/MicrometerProvider.html#addMeterRegistryFromConfig(java.util.Map)">addMeterRegistryFromConfig(Map&lt;String, Object&gt;)</a></span> - Static method in class io.openlineage.client.metrics.<a href="io/openlineage/client/metrics/MicrometerProvider.html" title="class in io.openlineage.client.metrics">MicrometerProvider</a></dt>
+<dd>
+<div class="block">Adds a MeterRegistry to the common OpenLineage meter registry based on the provided
+ configuration.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/utils/JdbcUtils.html#ALPHANUMERIC">ALPHANUMERIC</a></span> - Static variable in class io.openlineage.client.utils.<a href="io/openlineage/client/utils/JdbcUtils.html" title="class in io.openlineage.client.utils">JdbcUtils</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.LifecycleStateChangeDatasetFacet.LifecycleStateChange.html#ALTER">ALTER</a></span> - io.openlineage.client.<a href="io/openlineage/client/OpenLineage.LifecycleStateChangeDatasetFacet.LifecycleStateChange.html" title="enum in io.openlineage.client">OpenLineage.LifecycleStateChangeDatasetFacet.LifecycleStateChange</a></dt>
@@ -416,6 +425,11 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/CircuitBreakerState.html#%3Cinit%3E(boolean,java.lang.String)">CircuitBreakerState(boolean, String)</a></span> - Constructor for class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/CircuitBreakerState.html" title="class in io.openlineage.client.circuitBreaker">CircuitBreakerState</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/metrics/MicrometerProvider.html#clear()">clear()</a></span> - Static method in class io.openlineage.client.metrics.<a href="io/openlineage/client/metrics/MicrometerProvider.html" title="class in io.openlineage.client.metrics">MicrometerProvider</a></dt>
+<dd>
+<div class="block">Clears the global OpenLineage meter registry and creates a new instance of a
+ CompositeMeterRegistry.</div>
+</dd>
 <dt><a href="io/openlineage/client/Clients.html" title="class in io.openlineage.client"><span class="typeNameLink">Clients</span></a> - Class in <a href="io/openlineage/client/package-summary.html">io.openlineage.client</a></dt>
 <dd>
 <div class="block">Factory class for creating new <a href="io/openlineage/client/OpenLineageClient.html" title="class in io.openlineage.client"><code>OpenLineageClient</code></a> objects.</div>
@@ -441,6 +455,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.RunEvent.EventType.html#COMPLETE">COMPLETE</a></span> - io.openlineage.client.<a href="io/openlineage/client/OpenLineage.RunEvent.EventType.html" title="enum in io.openlineage.client">OpenLineage.RunEvent.EventType</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/server/OpenLineage.RunEvent.EventType.html#COMPLETE">COMPLETE</a></span> - io.openlineage.server.<a href="io/openlineage/server/OpenLineage.RunEvent.EventType.html" title="enum in io.openlineage.server">OpenLineage.RunEvent.EventType</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/openlineage/client/metrics/CompositeMeterRegistryFactory.html" title="class in io.openlineage.client.metrics"><span class="typeNameLink">CompositeMeterRegistryFactory</span></a> - Class in <a href="io/openlineage/client/metrics/package-summary.html">io.openlineage.client.metrics</a></dt>
+<dd>
+<div class="block">A builder class that provides implementations to build composite meter registries.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/metrics/CompositeMeterRegistryFactory.html#%3Cinit%3E()">CompositeMeterRegistryFactory()</a></span> - Constructor for class io.openlineage.client.metrics.<a href="io/openlineage/client/metrics/CompositeMeterRegistryFactory.html" title="class in io.openlineage.client.metrics">CompositeMeterRegistryFactory</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="io/openlineage/client/ConfigPathProvider.html" title="interface in io.openlineage.client"><span class="typeNameLink">ConfigPathProvider</span></a> - Interface in <a href="io/openlineage/client/package-summary.html">io.openlineage.client</a></dt>
 <dd>&nbsp;</dd>
@@ -691,6 +711,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><a href="io/openlineage/client/transports/FileTransportBuilder.html" title="class in io.openlineage.client.transports"><span class="typeNameLink">FileTransportBuilder</span></a> - Class in <a href="io/openlineage/client/transports/package-summary.html">io.openlineage.client.transports</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/transports/FileTransportBuilder.html#%3Cinit%3E()">FileTransportBuilder()</a></span> - Constructor for class io.openlineage.client.transports.<a href="io/openlineage/client/transports/FileTransportBuilder.html" title="class in io.openlineage.client.transports">FileTransportBuilder</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/utils/RuntimeUtils.html#freeMemory()">freeMemory()</a></span> - Static method in class io.openlineage.client.utils.<a href="io/openlineage/client/utils/RuntimeUtils.html" title="class in io.openlineage.client.utils">RuntimeUtils</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineageClientUtils.html#fromJson(java.lang.String,com.fasterxml.jackson.core.type.TypeReference)">fromJson(String, TypeReference&lt;T&gt;)</a></span> - Static method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineageClientUtils.html" title="class in io.openlineage.client">OpenLineageClientUtils</a></dt>
 <dd>
@@ -1184,6 +1206,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.StorageDatasetFacet.html#getFileFormat()">getFileFormat()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.StorageDatasetFacet.html" title="class in io.openlineage.client">OpenLineage.StorageDatasetFacet</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/utils/RuntimeUtils.html#getGarbageCollectorMXBeans()">getGarbageCollectorMXBeans()</a></span> - Static method in class io.openlineage.client.utils.<a href="io/openlineage/client/utils/RuntimeUtils.html" title="class in io.openlineage.client.utils">RuntimeUtils</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.SymlinksDatasetFacet.html#getIdentifiers()">getIdentifiers()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.SymlinksDatasetFacet.html" title="class in io.openlineage.client">OpenLineage.SymlinksDatasetFacet</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.InputDataset.html#getInputFacets()">getInputFacets()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.InputDataset.html" title="class in io.openlineage.client">OpenLineage.InputDataset</a></dt>
@@ -1230,6 +1254,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.ErrorMessageRunFacet.html#getMessage()">getMessage()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.ErrorMessageRunFacet.html" title="class in io.openlineage.client">OpenLineage.ErrorMessageRunFacet</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/metrics/MicrometerProvider.html#getMeterRegistry()">getMeterRegistry()</a></span> - Static method in class io.openlineage.client.metrics.<a href="io/openlineage/client/metrics/MicrometerProvider.html" title="class in io.openlineage.client.metrics">MicrometerProvider</a></dt>
+<dd>
+<div class="block">Returns the global OpenLineage meter registry.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetricsAdditional.html#getMin()">getMin()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetricsAdditional.html" title="class in io.openlineage.client">OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetricsAdditional</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.ColumnLineageDatasetFacetFieldsAdditionalInputFields.html#getName()">getName()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.ColumnLineageDatasetFacetFieldsAdditionalInputFields.html" title="class in io.openlineage.client">OpenLineage.ColumnLineageDatasetFacetFieldsAdditionalInputFields</a></dt>
@@ -1492,6 +1520,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </a>
 <h2 class="title">H</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/utils/ReflectionUtils.html#hasClass(java.lang.String)">hasClass(String)</a></span> - Static method in class io.openlineage.client.utils.<a href="io/openlineage/client/utils/ReflectionUtils.html" title="class in io.openlineage.client.utils">ReflectionUtils</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/utils/ReflectionUtils.html#hasClasses(java.lang.String...)">hasClasses(String...)</a></span> - Static method in class io.openlineage.client.utils.<a href="io/openlineage/client/utils/ReflectionUtils.html" title="class in io.openlineage.client.utils">ReflectionUtils</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/transports/KafkaConfig.html#hasLocalServerId()">hasLocalServerId()</a></span> - Method in class io.openlineage.client.transports.<a href="io/openlineage/client/transports/KafkaConfig.html" title="class in io.openlineage.client.transports">KafkaConfig</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/transports/HttpTransport.Builder.html#http(org.apache.http.impl.client.CloseableHttpClient)">http(CloseableHttpClient)</a></span> - Method in class io.openlineage.client.transports.<a href="io/openlineage/client/transports/HttpTransport.Builder.html" title="class in io.openlineage.client.transports">HttpTransport.Builder</a></dt>
@@ -1544,6 +1576,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/transports/TransportConfigTypeIdResolver.html#init(com.fasterxml.jackson.databind.JavaType)">init(JavaType)</a></span> - Method in class io.openlineage.client.transports.<a href="io/openlineage/client/transports/TransportConfigTypeIdResolver.html" title="class in io.openlineage.client.transports">TransportConfigTypeIdResolver</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineageClient.html#initializeMetrics()">initializeMetrics()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineageClient.html" title="class in io.openlineage.client">OpenLineageClient</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/server/OpenLineage.InputDataset.html#%3Cinit%3E(java.lang.String,java.lang.String,io.openlineage.server.OpenLineage.DatasetFacets,io.openlineage.server.OpenLineage.InputDatasetInputFacets)">InputDataset(String, String, OpenLineage.DatasetFacets, OpenLineage.InputDatasetInputFacets)</a></span> - Constructor for class io.openlineage.server.<a href="io/openlineage/server/OpenLineage.InputDataset.html" title="class in io.openlineage.server">OpenLineage.InputDataset</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.InputDatasetBuilder.html#%3Cinit%3E()">InputDatasetBuilder()</a></span> - Constructor for class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.InputDatasetBuilder.html" title="class in io.openlineage.client">OpenLineage.InputDatasetBuilder</a></dt>
@@ -1567,6 +1601,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><a href="io/openlineage/client/package-summary.html">io.openlineage.client</a> - package io.openlineage.client</dt>
 <dd>&nbsp;</dd>
 <dt><a href="io/openlineage/client/circuitBreaker/package-summary.html">io.openlineage.client.circuitBreaker</a> - package io.openlineage.client.circuitBreaker</dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/openlineage/client/metrics/package-summary.html">io.openlineage.client.metrics</a> - package io.openlineage.client.metrics</dt>
 <dd>&nbsp;</dd>
 <dt><a href="io/openlineage/client/transports/package-summary.html">io.openlineage.client.transports</a> - package io.openlineage.client.transports</dt>
 <dd>&nbsp;</dd>
@@ -1696,12 +1732,29 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dl>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetricsAdditionalBuilder.html#max(java.lang.Double)">max(Double)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetricsAdditionalBuilder.html" title="class in io.openlineage.client">OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetricsAdditionalBuilder</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/utils/RuntimeUtils.html#maxMemory()">maxMemory()</a></span> - Static method in class io.openlineage.client.utils.<a href="io/openlineage/client/utils/RuntimeUtils.html" title="class in io.openlineage.client.utils">RuntimeUtils</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineageClientUtils.html#mergeFacets(java.util.Map,T,java.lang.Class)">mergeFacets(Map&lt;String, F&gt;, T, Class&lt;T&gt;)</a></span> - Static method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineageClientUtils.html" title="class in io.openlineage.client">OpenLineageClientUtils</a></dt>
 <dd>
 <div class="block">Merges the given facets map with an existing facets container, giving precedence to the values
  in the facets map.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.ErrorMessageRunFacetBuilder.html#message(java.lang.String)">message(String)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.ErrorMessageRunFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.ErrorMessageRunFacetBuilder</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineageClient.Builder.html#meterRegistry(io.micrometer.core.instrument.MeterRegistry)">meterRegistry(MeterRegistry)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineageClient.Builder.html" title="class in io.openlineage.client">OpenLineageClient.Builder</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/openlineage/client/metrics/MeterRegistryFactory.html" title="interface in io.openlineage.client.metrics"><span class="typeNameLink">MeterRegistryFactory</span></a>&lt;<a href="io/openlineage/client/metrics/MeterRegistryFactory.html" title="type parameter in MeterRegistryFactory">T</a> extends io.micrometer.core.instrument.MeterRegistry&gt; - Interface in <a href="io/openlineage/client/metrics/package-summary.html">io.openlineage.client.metrics</a></dt>
+<dd>
+<div class="block">MeterRegistryFactory is an interface that defines methods to build different types of meter
+ registries from OpenLineage config.</div>
+</dd>
+<dt><a href="io/openlineage/client/metrics/MicrometerProvider.html" title="class in io.openlineage.client.metrics"><span class="typeNameLink">MicrometerProvider</span></a> - Class in <a href="io/openlineage/client/metrics/package-summary.html">io.openlineage.client.metrics</a></dt>
+<dd>
+<div class="block">MicrometerProvider is a class that manages global OpenLineage meter registry implementation that
+ allows integrations to both add metrics backend from common OpenLineage config, or grab an
+ instance of an initialized MeterRegistry.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/metrics/MicrometerProvider.html#%3Cinit%3E()">MicrometerProvider()</a></span> - Constructor for class io.openlineage.client.metrics.<a href="io/openlineage/client/metrics/MicrometerProvider.html" title="class in io.openlineage.client.metrics">MicrometerProvider</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetricsAdditionalBuilder.html#min(java.lang.Double)">min(Double)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetricsAdditionalBuilder.html" title="class in io.openlineage.client">OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetricsAdditionalBuilder</a></dt>
 <dd>&nbsp;</dd>
@@ -1758,6 +1811,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="block">Returns a new <code>OpenLineageClient</code> object.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/Clients.html#newClient(io.openlineage.client.ConfigPathProvider)">newClient(ConfigPathProvider)</a></span> - Static method in class io.openlineage.client.<a href="io/openlineage/client/Clients.html" title="class in io.openlineage.client">Clients</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/Clients.html#newClient(io.openlineage.client.OpenLineageYaml)">newClient(OpenLineageYaml)</a></span> - Static method in class io.openlineage.client.<a href="io/openlineage/client/Clients.html" title="class in io.openlineage.client">Clients</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.html#newColumnLineageDatasetFacet(io.openlineage.client.OpenLineage.ColumnLineageDatasetFacetFields)">newColumnLineageDatasetFacet(OpenLineage.ColumnLineageDatasetFacetFields)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.html" title="class in io.openlineage.client">OpenLineage</a></dt>
 <dd>
@@ -2002,6 +2057,11 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="block">Creates a builder for NominalTimeRunFacet</div>
 </dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineageClientUtils.html#newObjectMapper()">newObjectMapper()</a></span> - Static method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineageClientUtils.html" title="class in io.openlineage.client">OpenLineageClientUtils</a></dt>
+<dd>
+<div class="block">Creates a new <code>ObjectMapper</code> instance configured with modules for JDK8 and JavaTime,
+ including settings to ignore unknown properties and to not write dates as timestamps.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineageClientUtils.html#newObjectMapper(com.fasterxml.jackson.core.JsonFactory)">newObjectMapper(JsonFactory)</a></span> - Static method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineageClientUtils.html" title="class in io.openlineage.client">OpenLineageClientUtils</a></dt>
 <dd>
 <div class="block">Creates a new <code>ObjectMapper</code> instance configured with modules for JDK8 and JavaTime,
  including settings to ignore unknown properties and to not write dates as timestamps.</div>
@@ -2800,7 +2860,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineageClient.html#%3Cinit%3E(io.openlineage.client.transports.Transport)">OpenLineageClient(Transport)</a></span> - Constructor for class io.openlineage.client.<a href="io/openlineage/client/OpenLineageClient.html" title="class in io.openlineage.client">OpenLineageClient</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineageClient.html#%3Cinit%3E(io.openlineage.client.transports.Transport,io.openlineage.client.circuitBreaker.CircuitBreaker,java.lang.String...)">OpenLineageClient(Transport, CircuitBreaker, String...)</a></span> - Constructor for class io.openlineage.client.<a href="io/openlineage/client/OpenLineageClient.html" title="class in io.openlineage.client">OpenLineageClient</a></dt>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineageClient.html#%3Cinit%3E(io.openlineage.client.transports.Transport,io.openlineage.client.circuitBreaker.CircuitBreaker,io.micrometer.core.instrument.MeterRegistry,java.lang.String...)">OpenLineageClient(Transport, CircuitBreaker, MeterRegistry, String...)</a></span> - Constructor for class io.openlineage.client.<a href="io/openlineage/client/OpenLineageClient.html" title="class in io.openlineage.client">OpenLineageClient</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineageClient.html#%3Cinit%3E(io.openlineage.client.transports.Transport,java.lang.String...)">OpenLineageClient(Transport, String...)</a></span> - Constructor for class io.openlineage.client.<a href="io/openlineage/client/OpenLineageClient.html" title="class in io.openlineage.client">OpenLineageClient</a></dt>
 <dd>&nbsp;</dd>
@@ -2894,6 +2954,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.ParentRunFacetRunBuilder.html#%3Cinit%3E()">ParentRunFacetRunBuilder()</a></span> - Constructor for class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.ParentRunFacetRunBuilder.html" title="class in io.openlineage.client">OpenLineage.ParentRunFacetRunBuilder</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/metrics/MicrometerProvider.html#parseMeterRegistryConfig(java.util.Map)">parseMeterRegistryConfig(Map&lt;String, Object&gt;)</a></span> - Static method in class io.openlineage.client.metrics.<a href="io/openlineage/client/metrics/MicrometerProvider.html" title="class in io.openlineage.client.metrics">MicrometerProvider</a></dt>
+<dd>
+<div class="block">Parses the configuration map to create an optional MeterRegistry.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.SourceCodeLocationJobFacetBuilder.html#path(java.lang.String)">path(String)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.SourceCodeLocationJobFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.SourceCodeLocationJobFacetBuilder</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.LifecycleStateChangeDatasetFacetBuilder.html#previousIdentifier(io.openlineage.client.OpenLineage.LifecycleStateChangeDatasetFacetPreviousIdentifier)">previousIdentifier(OpenLineage.LifecycleStateChangeDatasetFacetPreviousIdentifier)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.LifecycleStateChangeDatasetFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.LifecycleStateChangeDatasetFacetBuilder</a></dt>
@@ -3058,6 +3122,22 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </a>
 <h2 class="title">R</h2>
 <dl>
+<dt><a href="io/openlineage/client/utils/ReflectionUtils.html" title="class in io.openlineage.client.utils"><span class="typeNameLink">ReflectionUtils</span></a> - Class in <a href="io/openlineage/client/utils/package-summary.html">io.openlineage.client.utils</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/utils/ReflectionUtils.html#%3Cinit%3E()">ReflectionUtils()</a></span> - Constructor for class io.openlineage.client.utils.<a href="io/openlineage/client/utils/ReflectionUtils.html" title="class in io.openlineage.client.utils">ReflectionUtils</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/metrics/CompositeMeterRegistryFactory.html#registry(java.util.Map)">registry(Map&lt;String, Object&gt;)</a></span> - Method in class io.openlineage.client.metrics.<a href="io/openlineage/client/metrics/CompositeMeterRegistryFactory.html" title="class in io.openlineage.client.metrics">CompositeMeterRegistryFactory</a></dt>
+<dd>
+<div class="block">Constructs a CompositeMeterRegistry from a given map of configuration options.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/metrics/MeterRegistryFactory.html#registry(java.util.Map)">registry(Map&lt;String, Object&gt;)</a></span> - Method in interface io.openlineage.client.metrics.<a href="io/openlineage/client/metrics/MeterRegistryFactory.html" title="interface in io.openlineage.client.metrics">MeterRegistryFactory</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/metrics/SimpleMeterRegistryFactory.html#registry(java.util.Map)">registry(Map&lt;String, Object&gt;)</a></span> - Method in class io.openlineage.client.metrics.<a href="io/openlineage/client/metrics/SimpleMeterRegistryFactory.html" title="class in io.openlineage.client.metrics">SimpleMeterRegistryFactory</a></dt>
+<dd>
+<div class="block">Constructs a SimpleMeterRegistry.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/metrics/StatsDMeterRegistryFactory.html#registry(java.util.Map)">registry(Map&lt;String, Object&gt;)</a></span> - Method in class io.openlineage.client.metrics.<a href="io/openlineage/client/metrics/StatsDMeterRegistryFactory.html" title="class in io.openlineage.client.metrics">StatsDMeterRegistryFactory</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.LifecycleStateChangeDatasetFacet.LifecycleStateChange.html#RENAME">RENAME</a></span> - io.openlineage.client.<a href="io/openlineage/client/OpenLineage.LifecycleStateChangeDatasetFacet.LifecycleStateChange.html" title="enum in io.openlineage.client">OpenLineage.LifecycleStateChangeDatasetFacet.LifecycleStateChange</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.SourceCodeLocationJobFacetBuilder.html#repoUrl(java.lang.String)">repoUrl(String)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.SourceCodeLocationJobFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.SourceCodeLocationJobFacetBuilder</a></dt>
@@ -3116,6 +3196,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/server/OpenLineage.RunEvent.EventType.html#RUNNING">RUNNING</a></span> - io.openlineage.server.<a href="io/openlineage/server/OpenLineage.RunEvent.EventType.html" title="enum in io.openlineage.server">OpenLineage.RunEvent.EventType</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="io/openlineage/client/utils/RuntimeUtils.html" title="class in io.openlineage.client.utils"><span class="typeNameLink">RuntimeUtils</span></a> - Class in <a href="io/openlineage/client/utils/package-summary.html">io.openlineage.client.utils</a></dt>
+<dd>
+<div class="block">Class used to access static Runtime properties.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/utils/RuntimeUtils.html#%3Cinit%3E()">RuntimeUtils()</a></span> - Constructor for class io.openlineage.client.utils.<a href="io/openlineage/client/utils/RuntimeUtils.html" title="class in io.openlineage.client.utils">RuntimeUtils</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <a id="I:S">
 <!--   -->
@@ -3152,6 +3238,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><a href="io/openlineage/client/circuitBreaker/SimpleMemoryCircuitBreakerConfig.html" title="class in io.openlineage.client.circuitBreaker"><span class="typeNameLink">SimpleMemoryCircuitBreakerConfig</span></a> - Class in <a href="io/openlineage/client/circuitBreaker/package-summary.html">io.openlineage.client.circuitBreaker</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/circuitBreaker/SimpleMemoryCircuitBreakerConfig.html#%3Cinit%3E(int)">SimpleMemoryCircuitBreakerConfig(int)</a></span> - Constructor for class io.openlineage.client.circuitBreaker.<a href="io/openlineage/client/circuitBreaker/SimpleMemoryCircuitBreakerConfig.html" title="class in io.openlineage.client.circuitBreaker">SimpleMemoryCircuitBreakerConfig</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/openlineage/client/metrics/SimpleMeterRegistryFactory.html" title="class in io.openlineage.client.metrics"><span class="typeNameLink">SimpleMeterRegistryFactory</span></a> - Class in <a href="io/openlineage/client/metrics/package-summary.html">io.openlineage.client.metrics</a></dt>
+<dd>
+<div class="block">This class implements the MetricsBuilder interface with SimpleMeterRegistry as its type.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/metrics/SimpleMeterRegistryFactory.html#%3Cinit%3E()">SimpleMeterRegistryFactory()</a></span> - Constructor for class io.openlineage.client.metrics.<a href="io/openlineage/client/metrics/SimpleMeterRegistryFactory.html" title="class in io.openlineage.client.metrics">SimpleMeterRegistryFactory</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.OutputStatisticsOutputDatasetFacetBuilder.html#size(java.lang.Long)">size(Long)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.OutputStatisticsOutputDatasetFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.OutputStatisticsOutputDatasetFacetBuilder</a></dt>
 <dd>&nbsp;</dd>
@@ -3199,6 +3291,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.StaticDatasetBuilder.html#%3Cinit%3E()">StaticDatasetBuilder()</a></span> - Constructor for class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.StaticDatasetBuilder.html" title="class in io.openlineage.client">OpenLineage.StaticDatasetBuilder</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="io/openlineage/client/metrics/StatsDMeterRegistryFactory.html" title="class in io.openlineage.client.metrics"><span class="typeNameLink">StatsDMeterRegistryFactory</span></a> - Class in <a href="io/openlineage/client/metrics/package-summary.html">io.openlineage.client.metrics</a></dt>
+<dd>
+<div class="block">StatsDMetricsBuilder is a class that implements the <a href="io/openlineage/client/metrics/MeterRegistryFactory.html" title="interface in io.openlineage.client.metrics"><code>MeterRegistryFactory</code></a> interface
+ specifically for <code>StatsdMeterRegistry</code>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/metrics/StatsDMeterRegistryFactory.html#%3Cinit%3E()">StatsDMeterRegistryFactory()</a></span> - Constructor for class io.openlineage.client.metrics.<a href="io/openlineage/client/metrics/StatsDMeterRegistryFactory.html" title="class in io.openlineage.client.metrics">StatsDMeterRegistryFactory</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.DatasetFacetsBuilder.html#storage(io.openlineage.client.OpenLineage.StorageDatasetFacet)">storage(OpenLineage.StorageDatasetFacet)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.DatasetFacetsBuilder.html" title="class in io.openlineage.client">OpenLineage.DatasetFacetsBuilder</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.StorageDatasetFacetBuilder.html#%3Cinit%3E()">StorageDatasetFacetBuilder()</a></span> - Constructor for class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.StorageDatasetFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.StorageDatasetFacetBuilder</a></dt>
@@ -3245,6 +3344,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 &nbsp;</dd>
 <dt><a href="io/openlineage/client/transports/TokenProvider.html" title="interface in io.openlineage.client.transports"><span class="typeNameLink">TokenProvider</span></a> - Interface in <a href="io/openlineage/client/transports/package-summary.html">io.openlineage.client.transports</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/utils/RuntimeUtils.html#totalMemory()">totalMemory()</a></span> - Static method in class io.openlineage.client.utils.<a href="io/openlineage/client/utils/RuntimeUtils.html" title="class in io.openlineage.client.utils">RuntimeUtils</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.ExtractionErrorRunFacetBuilder.html#totalTasks(java.lang.Long)">totalTasks(Long)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.ExtractionErrorRunFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.ExtractionErrorRunFacetBuilder</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineageClientUtils.html#toUri(java.lang.String)">toUri(String)</a></span> - Static method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineageClientUtils.html" title="class in io.openlineage.client">OpenLineageClientUtils</a></dt>
@@ -3278,6 +3379,18 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="io/openlineage/client/transports/TransportResolver.html#%3Cinit%3E()">TransportResolver()</a></span> - Constructor for class io.openlineage.client.transports.<a href="io/openlineage/client/transports/TransportResolver.html" title="class in io.openlineage.client.transports">TransportResolver</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.LifecycleStateChangeDatasetFacet.LifecycleStateChange.html#TRUNCATE">TRUNCATE</a></span> - io.openlineage.client.<a href="io/openlineage/client/OpenLineage.LifecycleStateChangeDatasetFacet.LifecycleStateChange.html" title="enum in io.openlineage.client">OpenLineage.LifecycleStateChangeDatasetFacet.LifecycleStateChange</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/utils/ReflectionUtils.html#tryExecuteMethod(java.lang.Object,java.lang.String,java.lang.Object...)">tryExecuteMethod(Object, String, Object...)</a></span> - Static method in class io.openlineage.client.utils.<a href="io/openlineage/client/utils/ReflectionUtils.html" title="class in io.openlineage.client.utils">ReflectionUtils</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/utils/ReflectionUtils.html#tryExecuteStaticMethodForClassName(java.lang.String,java.lang.String,java.lang.Object...)">tryExecuteStaticMethodForClassName(String, String, Object...)</a></span> - Static method in class io.openlineage.client.utils.<a href="io/openlineage/client/utils/ReflectionUtils.html" title="class in io.openlineage.client.utils">ReflectionUtils</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/metrics/CompositeMeterRegistryFactory.html#type()">type()</a></span> - Method in class io.openlineage.client.metrics.<a href="io/openlineage/client/metrics/CompositeMeterRegistryFactory.html" title="class in io.openlineage.client.metrics">CompositeMeterRegistryFactory</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/metrics/MeterRegistryFactory.html#type()">type()</a></span> - Method in interface io.openlineage.client.metrics.<a href="io/openlineage/client/metrics/MeterRegistryFactory.html" title="interface in io.openlineage.client.metrics">MeterRegistryFactory</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/metrics/SimpleMeterRegistryFactory.html#type()">type()</a></span> - Method in class io.openlineage.client.metrics.<a href="io/openlineage/client/metrics/SimpleMeterRegistryFactory.html" title="class in io.openlineage.client.metrics">SimpleMeterRegistryFactory</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/metrics/StatsDMeterRegistryFactory.html#type()">type()</a></span> - Method in class io.openlineage.client.metrics.<a href="io/openlineage/client/metrics/StatsDMeterRegistryFactory.html" title="class in io.openlineage.client.metrics">StatsDMeterRegistryFactory</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.OwnershipDatasetFacetOwnersBuilder.html#type(java.lang.String)">type(String)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.OwnershipDatasetFacetOwnersBuilder.html" title="class in io.openlineage.client">OpenLineage.OwnershipDatasetFacetOwnersBuilder</a></dt>
 <dd>&nbsp;</dd>

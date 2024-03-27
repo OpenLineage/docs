@@ -1,5 +1,6 @@
 io.openlineage.client
 io.openlineage.client.circuitBreaker
+io.openlineage.client.metrics
 io.openlineage.client.transports
 io.openlineage.client.utils
 io.openlineage.server
