@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -185,6 +185,11 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineageClient.Builder.html" title="class in io.openlineage.client">OpenLineageClient.Builder</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#meterRegistry(io.micrometer.core.instrument.MeterRegistry)">meterRegistry</a></span>&#8203;(@NonNull io.micrometer.core.instrument.MeterRegistry&nbsp;meterRegistry)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code><a href="OpenLineageClient.Builder.html" title="class in io.openlineage.client">OpenLineageClient.Builder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#transport(io.openlineage.client.transports.Transport)">transport</a></span>&#8203;(@NonNull <a href="transports/Transport.html" title="class in io.openlineage.client.transports">Transport</a>&nbsp;transport)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
@@ -230,6 +235,16 @@ extends java.lang.Object</pre>
 <h4>circuitBreaker</h4>
 <pre class="methodSignature">public&nbsp;<a href="OpenLineageClient.Builder.html" title="class in io.openlineage.client">OpenLineageClient.Builder</a>&nbsp;circuitBreaker&#8203;(@NonNull
                                                 @NonNull <a href="circuitBreaker/CircuitBreaker.html" title="interface in io.openlineage.client.circuitBreaker">CircuitBreaker</a>&nbsp;circuitBreaker)</pre>
+</li>
+</ul>
+<a id="meterRegistry(io.micrometer.core.instrument.MeterRegistry)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>meterRegistry</h4>
+<pre class="methodSignature">public&nbsp;<a href="OpenLineageClient.Builder.html" title="class in io.openlineage.client">OpenLineageClient.Builder</a>&nbsp;meterRegistry&#8203;(@NonNull
+                                               @NonNull io.micrometer.core.instrument.MeterRegistry&nbsp;meterRegistry)</pre>
 </li>
 </ul>
 <a id="disableFacets(java.lang.String...)">

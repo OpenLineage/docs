@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9,"i10":9};
+var data = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9,"i10":9,"i11":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -241,20 +241,28 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i8" class="altColor">
+<td class="colFirst"><code>static com.fasterxml.jackson.databind.ObjectMapper</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newObjectMapper(com.fasterxml.jackson.core.JsonFactory)">newObjectMapper</a></span>&#8203;(com.fasterxml.jackson.core.JsonFactory&nbsp;jsonFactory)</code></th>
+<td class="colLast">
+<div class="block">Creates a new <code>ObjectMapper</code> instance configured with modules for JDK8 and JavaTime,
+ including settings to ignore unknown properties and to not write dates as timestamps.</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>static <a href="OpenLineage.RunEvent.html" title="class in io.openlineage.client">OpenLineage.RunEvent</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#runEventFromJson(java.lang.String)">runEventFromJson</a></span>&#8203;(@NonNull java.lang.String&nbsp;json)</code></th>
 <td class="colLast">
 <div class="block">Convenience method to convert a JSON string directly into a <a href="OpenLineage.RunEvent.html" title="class in io.openlineage.client"><code>OpenLineage.RunEvent</code></a> instance.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toJson(java.lang.Object)">toJson</a></span>&#8203;(@NonNull java.lang.Object&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Converts the provided value to a JSON string.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>static java.net.URI</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toUri(java.lang.String)">toUri</a></span>&#8203;(@NonNull java.lang.String&nbsp;urlString)</code></th>
 <td class="colLast">
@@ -292,6 +300,21 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>newObjectMapper</h4>
 <pre class="methodSignature">public static&nbsp;com.fasterxml.jackson.databind.ObjectMapper&nbsp;newObjectMapper()</pre>
+<div class="block">Creates a new <code>ObjectMapper</code> instance configured with modules for JDK8 and JavaTime,
+ including settings to ignore unknown properties and to not write dates as timestamps.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>A configured <code>ObjectMapper</code> instance.</dd>
+</dl>
+</li>
+</ul>
+<a id="newObjectMapper(com.fasterxml.jackson.core.JsonFactory)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>newObjectMapper</h4>
+<pre class="methodSignature">public static&nbsp;com.fasterxml.jackson.databind.ObjectMapper&nbsp;newObjectMapper&#8203;(com.fasterxml.jackson.core.JsonFactory&nbsp;jsonFactory)</pre>
 <div class="block">Creates a new <code>ObjectMapper</code> instance configured with modules for JDK8 and JavaTime,
  including settings to ignore unknown properties and to not write dates as timestamps.</div>
 <dl>
