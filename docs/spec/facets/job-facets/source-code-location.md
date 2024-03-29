@@ -22,7 +22,7 @@ Example:
                 "path": "path/to/my/dags",
                 "version": "git: the git sha | Svn: the revision number",
                 "tag": "example",
-                "branch" "main"
+                "branch": "main"
             }
         }
     }
