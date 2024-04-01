@@ -21,10 +21,13 @@ t1 = DataProcPySparkOperator(
     dataproc_pyspark_properties={
       "spark.extraListeners": "io.openlineage.spark.agent.OpenLineageSparkListener",
       "spark.jars.packages": "io.openlineage:openlineage-spark:1.0.0+",
-      "spark.openlineage.transport.url": f"{openlineage_url}/api/v1/namespaces/{openlineage_namespace}/jobs/dump_orders_to_gcs/runs/{{{{lineage_run_id(run_id, task)}}}}?api_key={api_key}",
-      "spark.openlineage.namespace": openlineage_namespace,
+      "spark.openlineage.transport.url": openlineage_url,
+      "spark.openlineage.transport.auth.apiKey": api_key,
+      "spark.openlineage.transport.auth.type": api_key,
+      "spark.openlineage.namespace": openlineage_spark_namespace,
+      "spark.openlineage.parentJobNamespace": openlineage_airflow_namespace,
       "spark.openlineage.parentJobName": job_name,
-      "spark.openlineage.parentRunId": f"{{{{lineage_run_id(run_id, task)}}}}
+      "spark.openlineage.parentRunId": "{{ lineage_parent_id(run_id, task, task_instance) }}
     },
     dag=dag)
 ```

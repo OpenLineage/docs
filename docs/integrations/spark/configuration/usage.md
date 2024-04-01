@@ -39,9 +39,10 @@ object OpenLineageExample extends App {
     // This line is EXTREMELY important
     .config("spark.extraListeners", "io.openlineage.spark.agent.OpenLineageSparkListener")
     .config("spark.openlineage.transport.type", "http")
-    .config("spark.openlineage.transport.url", "http://localhost:5000/api/v1/lineage")
-    .config("spark.openlineage.namespace", "MyNamespace")
-    .config("spark.openlineage.parentJobName", "ParentJobName")
+    .config("spark.openlineage.transport.url", "http://localhost:5000")
+    .config("spark.openlineage.namespace", "spark_namespace")
+    .config("spark.openlineage.parentJobNamespace", "airflow_namespace")
+    .config("spark.openlineage.parentJobName", "airflow_dag.airflow_task")
     .config("spark.openlineage.parentRunId", "xxxx-xxxx-xxxx-xxxx")
     .getOrCreate()
 
@@ -61,9 +62,10 @@ spark = SparkSession.builder
     .appName("OpenLineageExample")
     .config("spark.extraListeners", "io.openlineage.spark.agent.OpenLineageSparkListener")
     .config("spark.openlineage.transport.type", "http")
-    .config("spark.openlineage.transport.url", "http://localhost:5000/api/v1/lineage")
-    .config("spark.openlineage.namespace", "MyNamespace")
-    .config("spark.openlineage.parentJobName", "ParentJobName")
+    .config("spark.openlineage.transport.url", "http://localhost:5000")
+    .config("spark.openlineage.namespace", "spark_namespace")
+    .config("spark.openlineage.parentJobNamespace", "airflow_namespace")
+    .config("spark.openlineage.parentJobName", "airflow_dag.airflow_task")
     .config("spark.openlineage.parentRunId", "xxxx-xxxx-xxxx-xxxx")
     .getOrCreate()
 
@@ -83,9 +85,10 @@ The below example demonstrates how to use the `--conf` option with `spark-submit
 spark-submit \
   --conf "spark.extraListeners=io.openlineage.spark.agent.OpenLineageSparkListener" \
   --conf "spark.openlineage.transport.type=http" \
-  --conf "spark.openlineage.transport.url=http://localhost:5000/api/v1/lineage" \
-  --conf "spark.openlineage.namespace=MyNamespace" \
-  --conf "spark.openlineage.parentJobName=ParentJobName" \
+  --conf "spark.openlineage.transport.url=http://localhost:5000" \
+  --conf "spark.openlineage.namespace=spark_namespace" \
+  --conf "spark.openlineage.parentJobNamespace=airflow_namespace" \
+  --conf "spark.openlineage.parentJobName=airflow_dag.airflow_task" \
   --conf "spark.openlineage.parentRunId=xxxx-xxxx-xxxx-xxxx" \
   # ... other options
 ```
@@ -104,7 +107,7 @@ The below example demonstrates how to add properties to the `spark-defaults.conf
 ```properties
 spark.extraListeners=io.openlineage.spark.agent.OpenLineageSparkListener
 spark.openlineage.transport.type=http
-spark.openlineage.transport.url=http://localhost:5000/api/v1/lineage
+spark.openlineage.transport.url=http://localhost:5000
 spark.openlineage.namespace=MyNamespace
 ```
 
