@@ -11,7 +11,7 @@ When you are unable to collect logs on the client side, but want to make sure th
 OpenLineage proxy can be obtained via github:
 ```
 git clone https://github.com/OpenLineage/OpenLineage.git
-cd OpenLineage/proxy
+cd OpenLineage/proxy/backend
 ```
 
 ## Building the proxy
@@ -24,7 +24,7 @@ The packaged jar file can be found under `./build/libs/`
 
 ## Running the proxy
 
-OpenLineage Proxy requires configuration file named `proxy.yml`. There is an [example](https://github.com/OpenLineage/OpenLineage/blob/main/proxy/proxy.example.yml) that you can copy and name it as `proxy.yml`.
+OpenLineage Proxy requires configuration file named `proxy.yml`. There is an [example](https://github.com/OpenLineage/OpenLineage/blob/main/proxy/backend/proxy.example.yml) that you can copy and name it as `proxy.yml`.
 
 ```
 cp proxy.example.yml proxy.yml
@@ -52,6 +52,6 @@ Once the message is sent to the proxy, you will see the OpenLineage message cont
 Not only the OpenLineage proxy is useful in receiving the monitoring the OpenLineage events, it can also be used to relay the events to other endpoints. Please see the [example](https://github.com/OpenLineage/OpenLineage/blob/main/proxy/proxy.example.yml) of how to set the proxy to relay the events via Kafka topic or HTTP endpoint.
 
 ## Other ways to run OpenLineage Proxy
-- You do not have to clone the git repo and build all the time. OpenLineage proxy is published and available in [Maven Repository](https://mvnrepository.com/artifact/io.openlineage/openlineage-proxy/0.14.1).
-- You can also run OpenLineage Proxy as a [docker container](https://github.com/OpenLineage/OpenLineage/blob/main/proxy/Dockerfile).
-- There is also a [helm chart for Kubernetes](https://github.com/OpenLineage/OpenLineage/tree/main/proxy/chart) available.
+- You do not have to clone the git repo and build all the time. OpenLineage proxy is published and available in [Maven Repository](https://mvnrepository.com/artifact/io.openlineage/openlineage-proxy/).
+- You can also run OpenLineage Proxy as a [docker container](https://github.com/OpenLineage/OpenLineage/blob/main/proxy/backend/Dockerfile).
+- There is also a [helm chart for Kubernetes](https://github.com/OpenLineage/OpenLineage/tree/main/proxy/backend/chart) available.
