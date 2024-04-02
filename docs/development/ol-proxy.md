@@ -49,7 +49,7 @@ Once the message is sent to the proxy, you will see the OpenLineage message cont
 > You might have noticed that OpenLineage client (python, java) simply requires `http://localhost:8080` as the URL endpoint. This is possible because the client code adds the `/api/v1/lineage` internally before it makes the request. If you are not using OpenLineage client library to emit OpenLineage events, you must use the full URL in order for the proxy to receive the data correctly.
 
 ## Forwarding the data
-Not only the OpenLineage proxy is useful in receiving the monitoring the OpenLineage events, it can also be used to relay the events to other endpoints. Please see the [example](https://github.com/OpenLineage/OpenLineage/blob/main/proxy/proxy.example.yml) of how to set the proxy to relay the events via Kafka topic or HTTP endpoint.
+Not only the OpenLineage proxy is useful in receiving the monitoring the OpenLineage events, it can also be used to relay the events to other endpoints. Please see the [example](https://github.com/OpenLineage/OpenLineage/blob/main/proxy/backend/proxy.example.yml) of how to set the proxy to relay the events via Kafka topic or HTTP endpoint.
 
 ## Other ways to run OpenLineage Proxy
 - You do not have to clone the git repo and build all the time. OpenLineage proxy is published and available in [Maven Repository](https://mvnrepository.com/artifact/io.openlineage/openlineage-proxy/).
