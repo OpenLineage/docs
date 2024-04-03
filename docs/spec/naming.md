@@ -14,7 +14,7 @@ A dataset, or `table`, is organized according to a producer, namespace, database
 
 | Data Store | Type | Namespace | Name | Format | 
 |:-----------|:-----------|:---------------------|:-----------------|:-----------|
-| Athena | Warehouse | Host | Catalog, Database, Table | awsathena://athena.{region_name}.amazonaws.com, {catalog}.{database}.{table} |
+| Athena | Warehouse | Host | Catalog, Database, Table | awsathena://athena.{region_name}.amazonaws.com/{catalog}.{database}.{table} |
 | Azure Cosmos DB | Warehouse | Host, Database | Schema, Table | azurecosmos://{host}/dbs/{database}/colls/{table} |
 | Azure Data Explorer | Warehouse | Host | Database, Table | azurekusto://{host}.kusto.windows.net/{database}/{table} | 
 | Azure Synapse | Warehouse | Host, Port, Database | Schema, Table | sqlserver://{host}:{port};database={database}/{schema}.{table} |
