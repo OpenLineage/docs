@@ -29,7 +29,7 @@ A dataset, or `table`, is organized according to a producer, namespace, database
 | DBFS (Databricks File System) | Distributed file system | workspace | path | hdfs://{workspace name}/{path} |
 | GCS | Blob storage | bucket | path | gs://{bucket name}/{path} |
 | HDFS | Distributed file system | Namenode host and port | path | hdfs://{namenode host}:{namenode port}/{path} |
-| Kafka | distributed event streaming platform | bootstrap server host and port | ropic | kafka://{bootstrap server host}:{port}/{topic name} |
+| Kafka | distributed event streaming platform | bootstrap server host and port | topic | kafka://{bootstrap server host}:{port}/{topic name} |
 | Local file system | File system | IP, Port | Path | file://{IP}:{port}/{path} |
 | S3 | Blob Storage | bucket name | path | s3://{bucket name}/{path} |
 | WASBS (Azure Blob Storage) | Blob Storage | container, service | path | wasbs://{container name}@{service name}/{path} |
