@@ -700,6 +700,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/transports/FileConfig.html#%3Cinit%3E()">FileConfig()</a></span> - Constructor for class io.openlineage.client.transports.<a href="io/openlineage/client/transports/FileConfig.html" title="class in io.openlineage.client.transports">FileConfig</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.DataQualityMetricsInputDatasetFacetBuilder.html#fileCount(java.lang.Long)">fileCount(Long)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.DataQualityMetricsInputDatasetFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.DataQualityMetricsInputDatasetFacetBuilder</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.OutputStatisticsOutputDatasetFacetBuilder.html#fileCount(java.lang.Long)">fileCount(Long)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.OutputStatisticsOutputDatasetFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.OutputStatisticsOutputDatasetFacetBuilder</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.StorageDatasetFacetBuilder.html#fileFormat(java.lang.String)">fileFormat(String)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.StorageDatasetFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.StorageDatasetFacetBuilder</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="io/openlineage/client/transports/FileTransport.html" title="class in io.openlineage.client.transports"><span class="typeNameLink">FileTransport</span></a> - Class in <a href="io/openlineage/client/transports/package-summary.html">io.openlineage.client.transports</a></dt>
@@ -1203,6 +1207,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.ColumnLineageDatasetFacet.html#getFields()">getFields()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.ColumnLineageDatasetFacet.html" title="class in io.openlineage.client">OpenLineage.ColumnLineageDatasetFacet</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.SchemaDatasetFacet.html#getFields()">getFields()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.SchemaDatasetFacet.html" title="class in io.openlineage.client">OpenLineage.SchemaDatasetFacet</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.DataQualityMetricsInputDatasetFacet.html#getFileCount()">getFileCount()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.DataQualityMetricsInputDatasetFacet.html" title="class in io.openlineage.client">OpenLineage.DataQualityMetricsInputDatasetFacet</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.OutputStatisticsOutputDatasetFacet.html#getFileCount()">getFileCount()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.OutputStatisticsOutputDatasetFacet.html" title="class in io.openlineage.client">OpenLineage.OutputStatisticsOutputDatasetFacet</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.StorageDatasetFacet.html#getFileFormat()">getFileFormat()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.StorageDatasetFacet.html" title="class in io.openlineage.client">OpenLineage.StorageDatasetFacet</a></dt>
 <dd>&nbsp;</dd>
@@ -1864,7 +1872,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Creates a builder for DataQualityAssertionsDatasetFacet</div>
 </dd>
-<dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.html#newDataQualityMetricsInputDatasetFacet(java.lang.Long,java.lang.Long,io.openlineage.client.OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetrics)">newDataQualityMetricsInputDatasetFacet(Long, Long, OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetrics)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.html" title="class in io.openlineage.client">OpenLineage</a></dt>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.html#newDataQualityMetricsInputDatasetFacet(java.lang.Long,java.lang.Long,java.lang.Long,io.openlineage.client.OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetrics)">newDataQualityMetricsInputDatasetFacet(Long, Long, Long, OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetrics)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.html" title="class in io.openlineage.client">OpenLineage</a></dt>
 <dd>
 <div class="block">Factory method for DataQualityMetricsInputDatasetFacet@param rowCount The number of rows evaluated</div>
 </dd>
@@ -2086,7 +2094,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Creates a builder for OutputDatasetOutputFacets</div>
 </dd>
-<dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.html#newOutputStatisticsOutputDatasetFacet(java.lang.Long,java.lang.Long)">newOutputStatisticsOutputDatasetFacet(Long, Long)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.html" title="class in io.openlineage.client">OpenLineage</a></dt>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.html#newOutputStatisticsOutputDatasetFacet(java.lang.Long,java.lang.Long,java.lang.Long)">newOutputStatisticsOutputDatasetFacet(Long, Long, Long)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.html" title="class in io.openlineage.client">OpenLineage</a></dt>
 <dd>
 <div class="block">Factory method for OutputStatisticsOutputDatasetFacet@param rowCount The number of rows written to the dataset</div>
 </dd>

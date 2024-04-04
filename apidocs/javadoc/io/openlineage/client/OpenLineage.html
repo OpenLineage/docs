@@ -1117,8 +1117,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.DataQualityMetricsInputDatasetFacet.html" title="class in io.openlineage.client">OpenLineage.DataQualityMetricsInputDatasetFacet</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newDataQualityMetricsInputDatasetFacet(java.lang.Long,java.lang.Long,io.openlineage.client.OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetrics)">newDataQualityMetricsInputDatasetFacet</a></span>&#8203;(java.lang.Long&nbsp;rowCount,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newDataQualityMetricsInputDatasetFacet(java.lang.Long,java.lang.Long,java.lang.Long,io.openlineage.client.OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetrics)">newDataQualityMetricsInputDatasetFacet</a></span>&#8203;(java.lang.Long&nbsp;rowCount,
                                       java.lang.Long&nbsp;bytes,
+                                      java.lang.Long&nbsp;fileCount,
                                       <a href="OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetrics.html" title="class in io.openlineage.client">OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetrics</a>&nbsp;columnMetrics)</code></th>
 <td class="colLast">
 <div class="block">Factory method for DataQualityMetricsInputDatasetFacet@param rowCount The number of rows evaluated</div>
@@ -1545,8 +1546,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i68" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.OutputStatisticsOutputDatasetFacet.html" title="class in io.openlineage.client">OpenLineage.OutputStatisticsOutputDatasetFacet</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newOutputStatisticsOutputDatasetFacet(java.lang.Long,java.lang.Long)">newOutputStatisticsOutputDatasetFacet</a></span>&#8203;(java.lang.Long&nbsp;rowCount,
-                                     java.lang.Long&nbsp;size)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newOutputStatisticsOutputDatasetFacet(java.lang.Long,java.lang.Long,java.lang.Long)">newOutputStatisticsOutputDatasetFacet</a></span>&#8203;(java.lang.Long&nbsp;rowCount,
+                                     java.lang.Long&nbsp;size,
+                                     java.lang.Long&nbsp;fileCount)</code></th>
 <td class="colLast">
 <div class="block">Factory method for OutputStatisticsOutputDatasetFacet@param rowCount The number of rows written to the dataset</div>
 </td>
@@ -2025,18 +2027,20 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="newOutputStatisticsOutputDatasetFacet(java.lang.Long,java.lang.Long)">
+<a id="newOutputStatisticsOutputDatasetFacet(java.lang.Long,java.lang.Long,java.lang.Long)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>newOutputStatisticsOutputDatasetFacet</h4>
 <pre class="methodSignature">public&nbsp;<a href="OpenLineage.OutputStatisticsOutputDatasetFacet.html" title="class in io.openlineage.client">OpenLineage.OutputStatisticsOutputDatasetFacet</a>&nbsp;newOutputStatisticsOutputDatasetFacet&#8203;(java.lang.Long&nbsp;rowCount,
-                                                                                            java.lang.Long&nbsp;size)</pre>
+                                                                                            java.lang.Long&nbsp;size,
+                                                                                            java.lang.Long&nbsp;fileCount)</pre>
 <div class="block">Factory method for OutputStatisticsOutputDatasetFacet@param rowCount The number of rows written to the dataset</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>size</code> - The size in bytes written to the dataset</dd>
+<dd><code>fileCount</code> - The number of files written to the dataset</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>OutputStatisticsOutputDatasetFacet</dd>
 </dl>
@@ -2523,7 +2527,7 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="newDataQualityMetricsInputDatasetFacet(java.lang.Long,java.lang.Long,io.openlineage.client.OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetrics)">
+<a id="newDataQualityMetricsInputDatasetFacet(java.lang.Long,java.lang.Long,java.lang.Long,io.openlineage.client.OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetrics)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -2531,11 +2535,13 @@ extends java.lang.Object</pre>
 <h4>newDataQualityMetricsInputDatasetFacet</h4>
 <pre class="methodSignature">public&nbsp;<a href="OpenLineage.DataQualityMetricsInputDatasetFacet.html" title="class in io.openlineage.client">OpenLineage.DataQualityMetricsInputDatasetFacet</a>&nbsp;newDataQualityMetricsInputDatasetFacet&#8203;(java.lang.Long&nbsp;rowCount,
                                                                                               java.lang.Long&nbsp;bytes,
+                                                                                              java.lang.Long&nbsp;fileCount,
                                                                                               <a href="OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetrics.html" title="class in io.openlineage.client">OpenLineage.DataQualityMetricsInputDatasetFacetColumnMetrics</a>&nbsp;columnMetrics)</pre>
 <div class="block">Factory method for DataQualityMetricsInputDatasetFacet@param rowCount The number of rows evaluated</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>bytes</code> - The size in bytes</dd>
+<dd><code>fileCount</code> - The number of files evaluated</dd>
 <dd><code>columnMetrics</code> - The property key is the column name</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>DataQualityMetricsInputDatasetFacet</dd>

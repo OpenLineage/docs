@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -180,10 +180,15 @@ implements <a href="OpenLineage.OutputDatasetFacet.html" title="interface in io.
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.lang.Long</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRowCount()">getRowCount</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getFileCount()">getFileCount</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
+<td class="colFirst"><code>java.lang.Long</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRowCount()">getRowCount</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>java.lang.Long</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSize()">getSize</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
@@ -265,6 +270,19 @@ implements <a href="OpenLineage.OutputDatasetFacet.html" title="interface in io.
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The size in bytes written to the dataset</dd>
+</dl>
+</li>
+</ul>
+<a id="getFileCount()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getFileCount</h4>
+<pre class="methodSignature">public&nbsp;java.lang.Long&nbsp;getFileCount()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The number of files written to the dataset</dd>
 </dl>
 </li>
 </ul>
