@@ -12,19 +12,27 @@ Jobs and Datasets have their own namespaces, job namespaces being derived from s
 
 A dataset, or `table`, is organized according to a producer, namespace, database and (optionally) schema.
 
-| Producer        | Namespace               | Name                       | Example Namespace                                                            | Example Name          |
-|-----------------|-------------------------|----------------------------|------------------------------------------------------------------------------|-----------------------|
-| Postgres        | postgres + host + port  | database + schema + table  | postgres://db.foo.com:6543                                                   | metrics.sales.orders  |
-| MySQL           | mysql + host + port     | database + table           | mysql://db.foo.com:6543                                                      | metrics.orders        | 
-| Cassandra       | cassandra + host + port | keyspace + table           | cassandra://db.foo.com:9042                                                  | metrics.orders        | 
-| S3              | s3 + bucket             | path                       | s3://sales-metrics                                                           | orders.csv            |
-| GCS             | gcs + bucket            | path                       | gcs://sales-metrics                                                          | orders.csv            |
-| HDFS            | hdfs + host + port      | path                       | hdfs://stg.foo.com:3000                                                      | salesorders.csv       |
-| BigQuery        | bigquery                | project + dataset + table  | bigquery                                                                     | metrics.sales.orders  |
-| Redshift        | redshift + host + port  | database + schema + table  | redshift://examplecluster.XXXXXXXXXXXX.us-west-2.redshift.amazonaws.com:5439 | metrics.sales.orders  |
-| Athena          | awsathena + host        | catalog + database + table | awsathena://athena.us-west-2.amazonaws.com                                   | metrics.sales.orders  |
-| Azure Synapse   | producer + host + port  | database + schema + table  | sqlserver://XXXXXXXXXXXX.sql.azuresynapse.net:1433                           | SQLPool1/sales.orders |
-| Azure Cosmos DB | producer + host         | database + 'colls' + table | azurecosmos://XXXXXXXXXXXX.documents.azure.com/dbs                           | metrics.colls.orders  |
+| Data Store | Type | Namespace | Name | Format | 
+|:-----------|:-----------|:---------------------|:-----------------|:-----------|
+| Athena | Warehouse | Host | Catalog, Database, Table | awsathena://athena.{region_name}.amazonaws.com/{catalog}.{database}.{table} |
+| Azure Cosmos DB | Warehouse | Host, Database | Schema, Table | azurecosmos://{host}/dbs/{database}/colls/{table} |
+| Azure Data Explorer | Warehouse | Host | Database, Table | azurekusto://{host}.kusto.windows.net/{database}/{table} | 
+| Azure Synapse | Warehouse | Host, Port, Database | Schema, Table | sqlserver://{host}:{port};database={database}/{schema}.{table} |
+| BigQuery | Warehouse | bigquery | Project ID, dataset, table | bigquery://{project id}.{dataset name}.{table name} |
+| Cassandra | Warehouse | Host, Port | Keyspace, Table | cassandra://{host}:{port}/{keyspace}.{table} |
+| MySQL | Warehouse | Host, Port | Database, Table | mysql://{host}:{port}/{database}.{table} | 
+| Postgres | Warehouse | Host, Port | Database, Schema, Table | postgres://{host}:{port}/{database}.{schema}.{table} |
+| Redshift | Warehouse | Host, Port | Database, Schema, Table | redshift://{cluster_identifier}.{region_name}:{port}/{database}.{schema}.{table} |
+| Snowflake | Warehouse | account identifier (composite of organization name and account name) | Database, Schema, Table | snowflake://{organization name}-{account name}/{database}.{schema}.{table} | 
+| Trino | Warehouse | Host, Port | Catalog, Schema, Table | trino://{host}:{port}/{catalog}.{schema}.{table} |
+| ABFSS (Azure Data Lake Gen2) | Data lake | container, service | path | abfss://{container name}@{service name}/{path} |
+| DBFS (Databricks File System) | Distributed file system | workspace | path | hdfs://{workspace name}/{path} |
+| GCS | Blob storage | bucket | path | gs://{bucket name}/{path} |
+| HDFS | Distributed file system | Namenode host and port | path | hdfs://{namenode host}:{namenode port}/{path} |
+| Kafka | distributed event streaming platform | bootstrap server host and port | topic | kafka://{bootstrap server host}:{port}/{topic name} |
+| Local file system | File system | IP, Port | Path | file://{IP}:{port}/{path} |
+| S3 | Blob Storage | bucket name | path | s3://{bucket name}/{path} |
+| WASBS (Azure Blob Storage) | Blob Storage | container, service | path | wasbs://{container name}@{service name}/{path} |
 
 ## Job Naming
 
