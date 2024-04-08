@@ -1740,7 +1740,7 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code><a href="OpenLineage.SchemaDatasetFacet.html" title="class in io.openlineage.client">OpenLineage.SchemaDatasetFacet</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newSchemaDatasetFacet(java.util.List)">newSchemaDatasetFacet</a></span>&#8203;(java.util.List&lt;<a href="OpenLineage.SchemaDatasetFacetFields.html" title="class in io.openlineage.client">OpenLineage.SchemaDatasetFacetFields</a>&gt;&nbsp;fields)</code></th>
 <td class="colLast">
-<div class="block">Factory method for SchemaDatasetFacet@param fields The fields of the table.</div>
+<div class="block">Factory method for SchemaDatasetFacet@param fields The fields of the data source.</div>
 </td>
 </tr>
 <tr id="i94" class="altColor">
@@ -1752,9 +1752,10 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i95" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.SchemaDatasetFacetFields.html" title="class in io.openlineage.client">OpenLineage.SchemaDatasetFacetFields</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newSchemaDatasetFacetFields(java.lang.String,java.lang.String,java.lang.String)">newSchemaDatasetFacetFields</a></span>&#8203;(java.lang.String&nbsp;name,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#newSchemaDatasetFacetFields(java.lang.String,java.lang.String,java.lang.String,java.util.List)">newSchemaDatasetFacetFields</a></span>&#8203;(java.lang.String&nbsp;name,
                            java.lang.String&nbsp;type,
-                           java.lang.String&nbsp;description)</code></th>
+                           java.lang.String&nbsp;description,
+                           java.util.List&lt;<a href="OpenLineage.SchemaDatasetFacetFields.html" title="class in io.openlineage.client">OpenLineage.SchemaDatasetFacetFields</a>&gt;&nbsp;fields)</code></th>
 <td class="colLast">
 <div class="block">Factory method for SchemaDatasetFacetFields@param name The name of the field.</div>
 </td>
@@ -1963,7 +1964,7 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="newSchemaDatasetFacetFields(java.lang.String,java.lang.String,java.lang.String)">
+<a id="newSchemaDatasetFacetFields(java.lang.String,java.lang.String,java.lang.String,java.util.List)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -1971,12 +1972,14 @@ extends java.lang.Object</pre>
 <h4>newSchemaDatasetFacetFields</h4>
 <pre class="methodSignature">public&nbsp;<a href="OpenLineage.SchemaDatasetFacetFields.html" title="class in io.openlineage.client">OpenLineage.SchemaDatasetFacetFields</a>&nbsp;newSchemaDatasetFacetFields&#8203;(java.lang.String&nbsp;name,
                                                                         java.lang.String&nbsp;type,
-                                                                        java.lang.String&nbsp;description)</pre>
+                                                                        java.lang.String&nbsp;description,
+                                                                        java.util.List&lt;<a href="OpenLineage.SchemaDatasetFacetFields.html" title="class in io.openlineage.client">OpenLineage.SchemaDatasetFacetFields</a>&gt;&nbsp;fields)</pre>
 <div class="block">Factory method for SchemaDatasetFacetFields@param name The name of the field.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>type</code> - The type of the field.</dd>
 <dd><code>description</code> - The description of the field.</dd>
+<dd><code>fields</code> - Nested struct fields.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>SchemaDatasetFacetFields</dd>
 </dl>
@@ -2986,7 +2989,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>newSchemaDatasetFacet</h4>
 <pre class="methodSignature">public&nbsp;<a href="OpenLineage.SchemaDatasetFacet.html" title="class in io.openlineage.client">OpenLineage.SchemaDatasetFacet</a>&nbsp;newSchemaDatasetFacet&#8203;(java.util.List&lt;<a href="OpenLineage.SchemaDatasetFacetFields.html" title="class in io.openlineage.client">OpenLineage.SchemaDatasetFacetFields</a>&gt;&nbsp;fields)</pre>
-<div class="block">Factory method for SchemaDatasetFacet@param fields The fields of the table.</div>
+<div class="block">Factory method for SchemaDatasetFacet@param fields The fields of the data source.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>SchemaDatasetFacet</dd>
