@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 :::warning
 
 * Version `1.8.0` and earlier only supported Scala 2.12 variants of Apache Spark.
-* Version `1.9.0` and later support both Scala 2.12 and 2.13 variants of Apache Spark.
+* Version `1.9.1` and later support both Scala 2.12 and 2.13 variants of Apache Spark.
 
 The above necessitates a change in the artifact identifier for `io.openlineage:openlineage-spark`.
 After version `1.8.0`, the artifact identifier has been updated. For subsequent versions, utilize:
