@@ -17,12 +17,12 @@ You can use the client to create your own custom integrations.
 ## Installation
 
 Download the package using `pip` with 
-```
+```bash
 pip install openlineage-python
 ```
 
-To install the package from source, use 
-```
+To install the package from source, use
+```bash
 python -m pip install .
 ```
 
@@ -80,7 +80,7 @@ environment variables:
   - apiKey - string setting the Authentication HTTP header as the Bearer. (required if `type` is `api_key`)
 
 Example:
-```
+```yaml
 transport:
   type: http
   url: https://backend:5000
@@ -94,7 +94,7 @@ transport:
 - type - string (required)
 
 Example:
-```
+```yaml
 transport:
   type: console
 ```
@@ -115,7 +115,7 @@ It happens due to the Airflow execution and plugin model, which requires us to s
 These are created dynamically for each task execution.
 
 Example:
-```
+```yaml
 transport:
   type: kafka
   config:
@@ -132,7 +132,7 @@ transport:
 - append - boolean . If set to True, each event will be appended to a single file (log_file_path); otherwise, all events will be written separately in distinct files suffixed by a timestring. Default: false. (optional)
 
 Example:
-```
+```yaml
 transport:
   type: file
   log_file_path: ol_events
@@ -158,19 +158,19 @@ To try out the client, follow the steps below to install and explore OpenLineage
 ### Install OpenLineage and Marquez
 
 Clone the Marquez Github repository:
-```
+```bash
 git clone https://github.com/MarquezProject/marquez.git
 ```
 
 ### Install the Python client
-```
+```bash
 pip install openlineage-python
 ```
 
 ### Start Docker and Marquez
 Start Docker Desktop
 Run Marquez with preloaded data:
-```
+```bash
 cd marquez
 ./docker/up.sh --seed
 ```
@@ -182,7 +182,7 @@ Take a moment to explore Marquez to get a sense of how metadata is displayed in 
 Next, configure OpenLineage and add a script to your project that will generate a new job and new datasets within an existing namespace (here we’re using the `food_delivery` namespace that got passed to Marquez with the `–seed` argument we used earlier).
 
 Create a directory for your script:
-```
+```bash
 ..
 mkdir python_scripts && cd python_scripts
 ```
@@ -191,7 +191,7 @@ In the python_scripts directory, create a Python script (we used the name `gener
 
 In `openlineage.yml`, define a transport type and URL to tell OpenLineage where and how to send metadata:
 
-```
+```yaml
 transport:
   type: http
   url: http://localhost:5000
@@ -199,7 +199,7 @@ transport:
 
 In `generate_events.py`, import the Python client and the methods needed to create a job and datasets. Also required (to create a run): the `datetime` and `uuid` packages:
 
-```
+```python
 from openlineage.client.run import RunEvent, RunState, Run, Job, Dataset
 from openlineage.client import OpenLineageClient
 from datetime import datetime
@@ -207,13 +207,13 @@ from uuid import uuid4
 ```
 
 Then, in the same file, initialize the Python client:
-```
+```python
 client = OpenLineageClient.from_environment()
 ```
 
 It is also possible to specify parameters such as URL for client to connect to, without using environment variables or `openlineage.yaml` file, by directly setting it up when instantiating OpenLineageClient:
 
-```
+```python
 client = OpenLineageClient(url="http://localhost:5000")
 ```
 
@@ -221,29 +221,29 @@ client = OpenLineageClient(url="http://localhost:5000")
 
 
 Specify the producer of the new lineage metadata with a string:
-```
-producer = “OpenLineage.io/website/blog”
+```python
+producer = "OpenLineage.io/website/blog"
 ```
 
 Now you can create some basic dataset objects. These require a namespace and name:
-```
-inventory = Dataset(namespace=“food_delivery”, name=“public.inventory”)
-menus = Dataset(namespace=“food_delivery”, name=“public.menus_1”)
-orders = Dataset(namespace=“food_delivery”, name=“public.orders_1”)
+```python
+inventory = Dataset(namespace="food_delivery", name="public.inventory")
+menus = Dataset(namespace="food_delivery", name="public.menus_1")
+orders = Dataset(namespace="food_delivery", name="public.orders_1")
 ```
 
 You can also create a job object (we’ve borrowed this one from the existing `food_delivery` namespace):
-```
-job = Job(namespace=“food_delivery”, name=“example.order_data”)
+```python
+job = Job(namespace="food_delivery", name="example.order_data")
 ```
 
 To create a run object you’ll need to specify a unique ID:
-```
+```python
 run = Run(str(uuid4()))
 ```
 
 a START run event:
-```
+```python
 client.emit(
 	RunEvent(
 		RunState.START,
@@ -254,7 +254,7 @@ client.emit(
 ```
 
 and, finally, a COMPLETE run event:
-```
+```python
 client.emit(
 	RunEvent(
 		RunState.COMPLETE,
@@ -267,7 +267,7 @@ client.emit(
 ```
 
 Now you have a complete script for creating datasets and a run event! Execute it in the terminal to send the metadata to Marquez:
-```
+```bash
 python3 generate_scripts.py
 ```
 
