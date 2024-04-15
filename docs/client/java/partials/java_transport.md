@@ -18,6 +18,7 @@ Allows sending events to HTTP endpoint, using [ApacheHTTPClient](https://hc.apac
   - `type` - string specifying the "api_key" or the fully qualified class name of your TokenProvider. Required if `auth` is provided.
   - `apiKey` - string setting the Authentication HTTP header as the Bearer. Required if `type` is `api_key`.
 - `headers` - dictionary specifying HTTP request headers. Optional.
+- `compression` - string, name of algorithm used by HTTP client to compress request body. Optional, default value `null`, allowed values: `gzip`. Added in v1.13.0.
 
 #### Behavior
 
@@ -63,6 +64,7 @@ transport:
     api_key: f38d2189-c603-4b46-bdea-e573a3b5a7d5
   headers:
     X-Some-Extra-Header: abc
+  compression: gzip
 ```
 
 </TabItem>
@@ -96,6 +98,7 @@ spark.openlineage.transport.timeoutInMillis=5000
 spark.openlineage.transport.auth.type=api_key
 spark.openlineage.transport.auth.apiKey=f38d2189-c603-4b46-bdea-e573a3b5a7d5
 spark.openlineage.transport.headers.X-Some-Extra-Header=abc
+spark.openlineage.transport.compression=gzip
 ```
 
 <details><summary>URL parsing within Spark integration</summary>
@@ -143,6 +146,7 @@ openlineage.transport.timeoutInMillis=5000
 openlineage.transport.auth.type=api_key
 openlineage.transport.auth.apiKey=f38d2189-c603-4b46-bdea-e573a3b5a7d5
 openlineage.transport.headers.X-Some-Extra-Header=abc
+openlineage.transport.compression=gzip
 ```
 
 </TabItem>
@@ -214,6 +218,7 @@ httpConfig.setUrlParams(queryParams);
 httpConfig.setAuth(apiKeyTokenProvider);
 httpConfig.setTimeoutInMillis(headers);
 httpConfig.setHeaders(5000);
+httpConfig.setCompression(HttpConfig.Compression.GZIP);
 
 OpenLineageClient client = OpenLineageClient.builder()
   .transport(

@@ -86,6 +86,7 @@ Allows sending events to HTTP endpoint, using [requests](https://requests.readth
 - `auth` - dictionary specifying authentication options. Optional, by default no authorization is used. If set, requires the `type` property.
   - `type` - string specifying the "api_key" or the fully qualified class name of your TokenProvider. Required if `auth` is provided.
   - `apiKey` - string setting the Authentication HTTP header as the Bearer. Required if `type` is `api_key`.
+- `compression` - string, name of algorithm used by HTTP client to compress request body. Optional, default value `null`, allowed values: `gzip`. Added in v1.13.0.
 
 #### Behavior
 
@@ -106,6 +107,7 @@ transport:
   auth:
     type: api_key
     apiKey: f048521b-dfe8-47cd-9c65-0cb07d57591e
+  compression: gzip
 ```
 
 </TabItem>
@@ -113,7 +115,7 @@ transport:
 
 ```python
 from openlineage.client import OpenLineageClient
-from openlineage.client.transport.http import ApiKeyTokenProvider, HttpConfig, HttpTransport
+from openlineage.client.transport.http import ApiKeyTokenProvider, HttpConfig, HttpCompression, HttpTransport
 
 http_config = HttpConfig(
   url="https://backend:5000",
@@ -121,6 +123,7 @@ http_config = HttpConfig(
   timeout=5,
   verify=False,
   auth=ApiKeyTokenProvider({"apiKey": "f048521b-dfe8-47cd-9c65-0cb07d57591e"}),
+  compression=HttpCompression.GZIP,
 )
 
 client = OpenLineageClient(transport=HttpTransport(http_config))
