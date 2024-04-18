@@ -60,84 +60,224 @@ The following environment variables are available to use:
 
 If you are using Airflow integration, there are additional [environment variables available](../integrations/airflow/usage.md#environment-variables).
 
-
 #### HTTP transport configuration with environment variables
-For backwards compatibility, the simplest HTTP transport configuration, with only a subset of its config, can be done with environment variables 
+
+For backwards compatibility, the simplest HTTP transport configuration, with only a subset of its config, can be done with environment variables
 (all other transport types are only configurable with YAML file). This setup can be done with the following 
-environment variables:  
-`OPENLINEAGE_URL` (required), `OPENLINEAGE_ENDPOINT` (optional, default: api/v1/lineage), `OPENLINEAGE_API_KEY` (optional).
+environment variables:
 
-### Built-in Transport Types
+- `OPENLINEAGE_URL` (required)
+- `OPENLINEAGE_ENDPOINT` (optional, default: `api/v1/lineage`)
+- `OPENLINEAGE_API_KEY` (optional).
 
-##### HTTP
-- type - string (required)
-- url - string (required)
-- endpoint - string specifying the endpoint to which events are sent. Default: api/v1/lineage (optional)
-- timeout - float specifying a timeout value when sending an event. Default: 5 seconds. (optional)
-- verify - boolean specifying whether the client should verify TLS certificates from the backend. Default: true. (optional)
-- auth - dictionary specifying authentication options. Requires the type property. (optional)
-  - type - string specifying the "api_key" or the fully qualified class name of your TokenProvider. (required if `auth` is provided)
-  - apiKey - string setting the Authentication HTTP header as the Bearer. (required if `type` is `api_key`)
+## Built-in Transport Types
 
-Example:
+### HTTP
+
+Allows sending events to HTTP endpoint, using [requests](https://requests.readthedocs.io/).
+
+#### Configuration
+
+- `type` - string, must be `"http"`. Required.
+- `url` - string, base url for HTTP requests. Required.
+- `endpoint` - string specifying the endpoint to which events are sent, appended to `url`. Optional, default: `api/v1/lineage`.
+- `timeout` - float specifying timeout (in seconds) value used while connecting to server. Optional, default: `5`.
+- `verify` - boolean specifying whether the client should verify TLS certificates from the backend. Optional, default: `true`.
+- `auth` - dictionary specifying authentication options. Optional, by default no authorization is used. If set, requires the `type` property.
+  - `type` - string specifying the "api_key" or the fully qualified class name of your TokenProvider. Required if `auth` is provided.
+  - `apiKey` - string setting the Authentication HTTP header as the Bearer. Required if `type` is `api_key`.
+
+#### Behavior
+
+Events are serialized to JSON, and then are send as HTTP POST request with `Content-Type: application/json`.
+
+#### Examples
+
+<Tabs groupId="integrations">
+<TabItem value="yaml" label="Yaml Config">
+
 ```yaml
 transport:
   type: http
   url: https://backend:5000
-  endpoint: events/receive
+  endpoint: api/v1/lineage
+  timeout: 5
+  verify: false
   auth:
     type: api_key
     apiKey: f048521b-dfe8-47cd-9c65-0cb07d57591e
 ```
 
-##### Console 
-- type - string (required)
+</TabItem>
+<TabItem value="python" label="Python Code">
 
-Example:
+```python
+from openlineage.client import OpenLineageClient
+from openlineage.client.transport.http import ApiKeyTokenProvider, HttpConfig, HttpTransport
+
+http_config = HttpConfig(
+  url="https://backend:5000",
+  endpoint="api/v1/lineage",
+  timeout=5,
+  verify=False,
+  auth=ApiKeyTokenProvider({"apiKey": "f048521b-dfe8-47cd-9c65-0cb07d57591e"}),
+)
+
+client = OpenLineageClient(transport=HttpTransport(http_config))
+```
+</TabItem>
+
+</Tabs>
+
+### Console
+
+This straightforward transport emits OpenLineage events directly to the console through a logger.
+No additional configuration is required.
+
+#### Configuration
+
+- `type` - string, must be `"console"`. Required.
+
+#### Behavior
+
+Events are serialized to JSON. Then each event is logged with `INFO` level to logger with name `openlineage.client.transport.console`.
+
+#### Notes
+
+Be cautious when using the `DEBUG` log level, as it might result in double-logging due to the `OpenLineageClient` also logging.
+
+#### Examples
+
+<Tabs groupId="integrations">
+<TabItem value="yaml" label="Yaml Config">
+
 ```yaml
 transport:
   type: console
 ```
 
-##### Kafka
+</TabItem>
+<TabItem value="python" label="Python Code">
+
+```python
+from openlineage.client import OpenLineageClient
+from openlineage.client.transport.console import ConsoleConfig, ConsoleTransport
+
+console_config = ConsoleConfig()
+client = OpenLineageClient(transport=ConsoleTransport(console_config))
+```
+</TabItem>
+
+</Tabs>
+
+### Kafka
 
 Kafka transport requires `confluent-kafka` package to be additionally installed.
-It can be installed also by specifying kafka client extension: `pip install openlineage-python[kafka]` 
+It can be installed also by specifying kafka client extension: `pip install openlineage-python[kafka]`
 
-- type - string (required)
-- config - string containing a Kafka producer config. A dictionary that contains a Kafka producer config as in [Kafka producer config](https://docs.confluent.io/platform/current/clients/confluent-kafka-python/html/index.html#kafka-client-configuration) (required).
-- topic - string specifying the topic on what events will be sent (required)
-- flush - boolean specifying whether Kafka should flush after each event. Default: true. (optional)
+#### Configuration
+
+- `type` - string, must be `"kafka"`. Required.
+- `topic` - string specifying the topic on what events will be sent. Required.
+- `config` - a dictionary containing a Kafka producer config as in [Kafka producer config](https://docs.confluent.io/platform/current/clients/confluent-kafka-python/html/index.html#kafka-client-configuration). Required.
+- `flush` - boolean specifying whether Kafka should flush after each event. Optional, default: `true`.
+
+#### Behavior
+
+- Events are serialized to JSON, and then dispatched to the Kafka topic.
+- If `flush` is `true`, messages will be flushed to the topic after each event being sent.
+
+#### Using with Airflow integration
 
 There's a caveat for using `KafkaTransport` with Airflow integration. In this integration, a Kafka producer needs to be created 
-for each OpenLineage event. 
+for each OpenLineage event.
 It happens due to the Airflow execution and plugin model, which requires us to send messages from worker processes.
 These are created dynamically for each task execution.
 
-Example:
+#### Examples
+
+<Tabs groupId="integrations">
+<TabItem value="yaml" label="Yaml Config">
+
 ```yaml
 transport:
   type: kafka
+  topic: my_topic
   config:
-    bootstrap.servers: mybroker
+    bootstrap.servers: localhost:9092,another.host:9092
     acks: all
     retries: 3
-  topic: my_topic
   flush: true
 ```
 
-#### File
+</TabItem>
+<TabItem value="python" label="Python Code">
 
-- log_file_path - string specifying the path of the file (if append is true, a file path is expected, otherwise a file prefix is expected).  (required)
-- append - boolean . If set to True, each event will be appended to a single file (log_file_path); otherwise, all events will be written separately in distinct files suffixed by a timestring. Default: false. (optional)
+```python
+from openlineage.client import OpenLineageClient
+from openlineage.client.transport.kafka import KafkaConfig, KafkaTransport
 
-Example:
+kafka_config = KafkaConfig(
+  topic="my_topic",
+  config={
+    "bootstrap.servers": "localhost:9092,another.host:9092",
+    "acks": "all",
+    "retries": "3",
+  },
+  flush=True,
+)
+
+client = OpenLineageClient(transport=KafkaTransport(kafka_config))
+```
+</TabItem>
+
+</Tabs>
+
+### File
+
+Designed mainly for integration testing, the `FileTransport` emits OpenLineage events to a given file(s).
+
+#### Configuration
+
+- `type` - string, must be `"file"`. Required.
+- `log_file_path` - string specifying the path of the file or file prefix (when `append` is true). Required.
+- `append` - boolean, see *Behavior* section below. Optional, default: `false`.
+
+#### Behavior
+
+- If the target file is absent, it's created.
+- If `append` is `true`, each event will be appended to a single file `log_file_path`, separated by newlines.
+- If `append` is `false`, each event will be written to as separated file with name `{log_file_path}-{datetime}`.
+
+#### Examples
+
+<Tabs groupId="integrations">
+<TabItem value="yaml" label="Yaml Config">
+
 ```yaml
 transport:
   type: file
-  log_file_path: ol_events
+  log_file_path: /path/to/your/file
   append: false
 ```
+
+</TabItem>
+<TabItem value="python" label="Python Code">
+
+```python
+from openlineage.client import OpenLineageClient
+from openlineage.client.transport.file import FileConfig, FileTransport
+
+file_config = FileConfig(
+  log_file_path="/path/to/your/file",
+  append=False,
+)
+
+client = OpenLineageClient(transport=FileTransport(file_config))
+```
+</TabItem>
+
+</Tabs>
 
 ### Custom Transport Type
 
