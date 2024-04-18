@@ -15,7 +15,7 @@ You can make this file available to the client in three ways (the list also pres
 3. Place an `openlineage.yml` under `.openlineage/` in the user's home directory (`~/.openlineage/openlineage.yml`).
 
 
-### Environment Variables
+## Environment Variables
 The following environment variables are available:
 
 | Name                 | Description                                                                 | Since |
@@ -24,7 +24,7 @@ The following environment variables are available:
 | OPENLINEAGE_DISABLED | When `true`, OpenLineage will not emit events.                              | 0.9.0 |
 
 
-### Facets Configuration
+## Facets Configuration
 
 In YAML configuration file you can also specify a list of disabled facets that will not be included in OpenLineage event.
 
@@ -38,7 +38,7 @@ facets:
     - spark_logicalPlan
 ```
 
-### Transports
+## Transports
 
 import Transports from './partials/java_transport.md';
 
