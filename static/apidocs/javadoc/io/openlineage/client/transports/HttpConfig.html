@@ -27,6 +27,12 @@
     catch(err) {
     }
 //-->
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var altColor = "altColor";
+var rowColor = "rowColor";
+var tableTab = "tableTab";
+var activeTableTab = "activeTableTab";
 var pathtoroot = "../../../../";
 var useModuleDirectories = true;
 loadScripts(document, 'script');</script>
@@ -91,7 +97,7 @@ loadScripts(document, 'script');</script>
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
-<li>Method</li>
+<li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
 <a id="skip.navbar.top">
@@ -178,6 +184,17 @@ implements <a href="TransportConfig.html" title="interface in io.openlineage.cli
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">HttpConfig</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
+<tr class="rowColor">
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.net.URI,java.lang.String,java.lang.Double,java.lang.Integer,io.openlineage.client.transports.TokenProvider,java.util.Map,java.util.Map,io.openlineage.client.transports.HttpConfig.Compression)">HttpConfig</a></span>&#8203;(java.net.URI&nbsp;url,
+          java.lang.String&nbsp;endpoint,
+          java.lang.Double&nbsp;timeout,
+          java.lang.Integer&nbsp;timeoutInMillis,
+          <a href="TokenProvider.html" title="interface in io.openlineage.client.transports">TokenProvider</a>&nbsp;auth,
+          java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt;&nbsp;urlParams,
+          java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt;&nbsp;headers,
+          <a href="HttpConfig.Compression.html" title="enum in io.openlineage.client.transports">HttpConfig.Compression</a>&nbsp;compression)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
 </table>
 </li>
 </ul>
@@ -189,12 +206,145 @@ implements <a href="TransportConfig.html" title="interface in io.openlineage.cli
 <!--   -->
 </a>
 <h3>Method Summary</h3>
+<table class="memberSummary">
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colSecond" scope="col">Method</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+<tr id="i0" class="altColor">
+<td class="colFirst"><code><a href="TokenProvider.html" title="interface in io.openlineage.client.transports">TokenProvider</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAuth()">getAuth</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="HttpConfig.Compression.html" title="enum in io.openlineage.client.transports">HttpConfig.Compression</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCompression()">getCompression</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEndpoint()">getEndpoint</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getHeaders()">getHeaders</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>java.lang.Double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTimeout()">getTimeout</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>java.lang.Integer</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTimeoutInMillis()">getTimeoutInMillis</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>java.net.URI</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getUrl()">getUrl</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getUrlParams()">getUrlParams</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setAuth(io.openlineage.client.transports.TokenProvider)">setAuth</a></span>&#8203;(<a href="TokenProvider.html" title="interface in io.openlineage.client.transports">TokenProvider</a>&nbsp;auth)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setCompression(io.openlineage.client.transports.HttpConfig.Compression)">setCompression</a></span>&#8203;(<a href="HttpConfig.Compression.html" title="enum in io.openlineage.client.transports">HttpConfig.Compression</a>&nbsp;compression)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setEndpoint(java.lang.String)">setEndpoint</a></span>&#8203;(java.lang.String&nbsp;endpoint)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setHeaders(java.util.Map)">setHeaders</a></span>&#8203;(java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt;&nbsp;headers)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i12" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setTimeout(java.lang.Double)">setTimeout</a></span>&#8203;(java.lang.Double&nbsp;timeout)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i13" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setTimeoutInMillis(java.lang.Integer)">setTimeoutInMillis</a></span>&#8203;(java.lang.Integer&nbsp;timeoutInMillis)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i14" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setUrl(java.net.URI)">setUrl</a></span>&#8203;(java.net.URI&nbsp;url)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i15" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setUrlParams(java.util.Map)">setUrlParams</a></span>&#8203;(java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt;&nbsp;urlParams)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i16" class="altColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i17" class="rowColor">
+<td class="colFirst"><code><a href="HttpConfig.html" title="class in io.openlineage.client.transports">HttpConfig</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#withAuth(io.openlineage.client.transports.TokenProvider)">withAuth</a></span>&#8203;(<a href="TokenProvider.html" title="interface in io.openlineage.client.transports">TokenProvider</a>&nbsp;auth)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i18" class="altColor">
+<td class="colFirst"><code><a href="HttpConfig.html" title="class in io.openlineage.client.transports">HttpConfig</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#withCompression(io.openlineage.client.transports.HttpConfig.Compression)">withCompression</a></span>&#8203;(<a href="HttpConfig.Compression.html" title="enum in io.openlineage.client.transports">HttpConfig.Compression</a>&nbsp;compression)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i19" class="rowColor">
+<td class="colFirst"><code><a href="HttpConfig.html" title="class in io.openlineage.client.transports">HttpConfig</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#withEndpoint(java.lang.String)">withEndpoint</a></span>&#8203;(java.lang.String&nbsp;endpoint)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i20" class="altColor">
+<td class="colFirst"><code><a href="HttpConfig.html" title="class in io.openlineage.client.transports">HttpConfig</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#withHeaders(java.util.Map)">withHeaders</a></span>&#8203;(java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt;&nbsp;headers)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i21" class="rowColor">
+<td class="colFirst"><code><a href="HttpConfig.html" title="class in io.openlineage.client.transports">HttpConfig</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#withTimeout(java.lang.Double)">withTimeout</a></span>&#8203;(java.lang.Double&nbsp;timeout)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i22" class="altColor">
+<td class="colFirst"><code><a href="HttpConfig.html" title="class in io.openlineage.client.transports">HttpConfig</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#withTimeoutInMillis(java.lang.Integer)">withTimeoutInMillis</a></span>&#8203;(java.lang.Integer&nbsp;timeoutInMillis)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i23" class="rowColor">
+<td class="colFirst"><code><a href="HttpConfig.html" title="class in io.openlineage.client.transports">HttpConfig</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#withUrl(java.net.URI)">withUrl</a></span>&#8203;(java.net.URI&nbsp;url)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i24" class="altColor">
+<td class="colFirst"><code><a href="HttpConfig.html" title="class in io.openlineage.client.transports">HttpConfig</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#withUrlParams(java.util.Map)">withUrlParams</a></span>&#8203;(java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt;&nbsp;urlParams)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+</table>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -215,10 +365,325 @@ implements <a href="TransportConfig.html" title="interface in io.openlineage.cli
 <a id="&lt;init&gt;()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>HttpConfig</h4>
 <pre>public&nbsp;HttpConfig()</pre>
+</li>
+</ul>
+<a id="&lt;init&gt;(java.net.URI,java.lang.String,java.lang.Double,java.lang.Integer,io.openlineage.client.transports.TokenProvider,java.util.Map,java.util.Map,io.openlineage.client.transports.HttpConfig.Compression)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>HttpConfig</h4>
+<pre>public&nbsp;HttpConfig&#8203;(java.net.URI&nbsp;url,
+                  @Nullable
+                  java.lang.String&nbsp;endpoint,
+                  @Nullable
+                  java.lang.Double&nbsp;timeout,
+                  @Nullable
+                  java.lang.Integer&nbsp;timeoutInMillis,
+                  @Nullable
+                  <a href="TokenProvider.html" title="interface in io.openlineage.client.transports">TokenProvider</a>&nbsp;auth,
+                  @Nullable
+                  java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt;&nbsp;urlParams,
+                  @Nullable
+                  java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt;&nbsp;headers,
+                  @Nullable
+                  <a href="HttpConfig.Compression.html" title="enum in io.openlineage.client.transports">HttpConfig.Compression</a>&nbsp;compression)</pre>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<!-- ============ METHOD DETAIL ========== -->
+<section>
+<ul class="blockList">
+<li class="blockList"><a id="method.detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a id="toString()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>toString</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;toString()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+</dl>
+</li>
+</ul>
+<a id="withUrl(java.net.URI)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withUrl</h4>
+<pre class="methodSignature">public&nbsp;<a href="HttpConfig.html" title="class in io.openlineage.client.transports">HttpConfig</a>&nbsp;withUrl&#8203;(java.net.URI&nbsp;url)</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a clone of this object, except with this updated property (returns <code>this</code> if an identical value is passed).</dd>
+</dl>
+</li>
+</ul>
+<a id="withEndpoint(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withEndpoint</h4>
+<pre class="methodSignature">public&nbsp;<a href="HttpConfig.html" title="class in io.openlineage.client.transports">HttpConfig</a>&nbsp;withEndpoint&#8203;(@Nullable
+                               java.lang.String&nbsp;endpoint)</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a clone of this object, except with this updated property (returns <code>this</code> if an identical value is passed).</dd>
+</dl>
+</li>
+</ul>
+<a id="withTimeout(java.lang.Double)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withTimeout</h4>
+<pre class="methodSignature">public&nbsp;<a href="HttpConfig.html" title="class in io.openlineage.client.transports">HttpConfig</a>&nbsp;withTimeout&#8203;(@Nullable
+                              java.lang.Double&nbsp;timeout)</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a clone of this object, except with this updated property (returns <code>this</code> if an identical value is passed).</dd>
+</dl>
+</li>
+</ul>
+<a id="withTimeoutInMillis(java.lang.Integer)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withTimeoutInMillis</h4>
+<pre class="methodSignature">public&nbsp;<a href="HttpConfig.html" title="class in io.openlineage.client.transports">HttpConfig</a>&nbsp;withTimeoutInMillis&#8203;(@Nullable
+                                      java.lang.Integer&nbsp;timeoutInMillis)</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a clone of this object, except with this updated property (returns <code>this</code> if an identical value is passed).</dd>
+</dl>
+</li>
+</ul>
+<a id="withAuth(io.openlineage.client.transports.TokenProvider)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withAuth</h4>
+<pre class="methodSignature">public&nbsp;<a href="HttpConfig.html" title="class in io.openlineage.client.transports">HttpConfig</a>&nbsp;withAuth&#8203;(@Nullable
+                           <a href="TokenProvider.html" title="interface in io.openlineage.client.transports">TokenProvider</a>&nbsp;auth)</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a clone of this object, except with this updated property (returns <code>this</code> if an identical value is passed).</dd>
+</dl>
+</li>
+</ul>
+<a id="withUrlParams(java.util.Map)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withUrlParams</h4>
+<pre class="methodSignature">public&nbsp;<a href="HttpConfig.html" title="class in io.openlineage.client.transports">HttpConfig</a>&nbsp;withUrlParams&#8203;(@Nullable
+                                java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt;&nbsp;urlParams)</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a clone of this object, except with this updated property (returns <code>this</code> if an identical value is passed).</dd>
+</dl>
+</li>
+</ul>
+<a id="withHeaders(java.util.Map)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withHeaders</h4>
+<pre class="methodSignature">public&nbsp;<a href="HttpConfig.html" title="class in io.openlineage.client.transports">HttpConfig</a>&nbsp;withHeaders&#8203;(@Nullable
+                              java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt;&nbsp;headers)</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a clone of this object, except with this updated property (returns <code>this</code> if an identical value is passed).</dd>
+</dl>
+</li>
+</ul>
+<a id="withCompression(io.openlineage.client.transports.HttpConfig.Compression)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withCompression</h4>
+<pre class="methodSignature">public&nbsp;<a href="HttpConfig.html" title="class in io.openlineage.client.transports">HttpConfig</a>&nbsp;withCompression&#8203;(@Nullable
+                                  <a href="HttpConfig.Compression.html" title="enum in io.openlineage.client.transports">HttpConfig.Compression</a>&nbsp;compression)</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a clone of this object, except with this updated property (returns <code>this</code> if an identical value is passed).</dd>
+</dl>
+</li>
+</ul>
+<a id="getUrl()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getUrl</h4>
+<pre class="methodSignature">public&nbsp;java.net.URI&nbsp;getUrl()</pre>
+</li>
+</ul>
+<a id="setUrl(java.net.URI)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setUrl</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setUrl&#8203;(java.net.URI&nbsp;url)</pre>
+</li>
+</ul>
+<a id="getEndpoint()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getEndpoint</h4>
+<pre class="methodSignature">@Nullable
+public&nbsp;java.lang.String&nbsp;getEndpoint()</pre>
+</li>
+</ul>
+<a id="setEndpoint(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setEndpoint</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setEndpoint&#8203;(@Nullable
+                        java.lang.String&nbsp;endpoint)</pre>
+</li>
+</ul>
+<a id="getTimeout()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getTimeout</h4>
+<pre class="methodSignature">@Nullable
+public&nbsp;java.lang.Double&nbsp;getTimeout()</pre>
+</li>
+</ul>
+<a id="setTimeout(java.lang.Double)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setTimeout</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setTimeout&#8203;(@Nullable
+                       java.lang.Double&nbsp;timeout)</pre>
+</li>
+</ul>
+<a id="getTimeoutInMillis()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getTimeoutInMillis</h4>
+<pre class="methodSignature">@Nullable
+public&nbsp;java.lang.Integer&nbsp;getTimeoutInMillis()</pre>
+</li>
+</ul>
+<a id="setTimeoutInMillis(java.lang.Integer)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setTimeoutInMillis</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setTimeoutInMillis&#8203;(@Nullable
+                               java.lang.Integer&nbsp;timeoutInMillis)</pre>
+</li>
+</ul>
+<a id="getAuth()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getAuth</h4>
+<pre class="methodSignature">@Nullable
+public&nbsp;<a href="TokenProvider.html" title="interface in io.openlineage.client.transports">TokenProvider</a>&nbsp;getAuth()</pre>
+</li>
+</ul>
+<a id="setAuth(io.openlineage.client.transports.TokenProvider)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setAuth</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setAuth&#8203;(@Nullable
+                    <a href="TokenProvider.html" title="interface in io.openlineage.client.transports">TokenProvider</a>&nbsp;auth)</pre>
+</li>
+</ul>
+<a id="getUrlParams()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getUrlParams</h4>
+<pre class="methodSignature">@Nullable
+public&nbsp;java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt;&nbsp;getUrlParams()</pre>
+</li>
+</ul>
+<a id="setUrlParams(java.util.Map)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setUrlParams</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setUrlParams&#8203;(@Nullable
+                         java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt;&nbsp;urlParams)</pre>
+</li>
+</ul>
+<a id="getHeaders()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getHeaders</h4>
+<pre class="methodSignature">@Nullable
+public&nbsp;java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt;&nbsp;getHeaders()</pre>
+</li>
+</ul>
+<a id="setHeaders(java.util.Map)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setHeaders</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setHeaders&#8203;(@Nullable
+                       java.util.Map&lt;java.lang.String,&#8203;java.lang.String&gt;&nbsp;headers)</pre>
+</li>
+</ul>
+<a id="getCompression()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getCompression</h4>
+<pre class="methodSignature">@Nullable
+public&nbsp;<a href="HttpConfig.Compression.html" title="enum in io.openlineage.client.transports">HttpConfig.Compression</a>&nbsp;getCompression()</pre>
+</li>
+</ul>
+<a id="setCompression(io.openlineage.client.transports.HttpConfig.Compression)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>setCompression</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setCompression&#8203;(@Nullable
+                           <a href="HttpConfig.Compression.html" title="enum in io.openlineage.client.transports">HttpConfig.Compression</a>&nbsp;compression)</pre>
 </li>
 </ul>
 </li>
@@ -281,7 +746,7 @@ implements <a href="TransportConfig.html" title="interface in io.openlineage.cli
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
-<li>Method</li>
+<li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
 <a id="skip.navbar.bottom">
