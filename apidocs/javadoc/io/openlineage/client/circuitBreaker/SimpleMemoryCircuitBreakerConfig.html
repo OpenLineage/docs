@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -166,8 +166,14 @@ implements <a href="CircuitBreakerConfig.html" title="interface in io.openlineag
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.Integer,java.lang.Integer)">SimpleMemoryCircuitBreakerConfig</a></span>&#8203;(java.lang.Integer&nbsp;memoryThreshold,
-                                java.lang.Integer&nbsp;circuitCheckIntervalInMillis)</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int,int)">SimpleMemoryCircuitBreakerConfig</a></span>&#8203;(int&nbsp;memoryThreshold,
+                                int&nbsp;circuitCheckIntervalInMillis)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.Integer,java.lang.Integer,java.lang.Integer)">SimpleMemoryCircuitBreakerConfig</a></span>&#8203;(java.lang.Integer&nbsp;memoryThreshold,
+                                java.lang.Integer&nbsp;circuitCheckIntervalInMillis,
+                                java.lang.Integer&nbsp;timeoutInSeconds)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -204,33 +210,48 @@ implements <a href="CircuitBreakerConfig.html" title="interface in io.openlineag
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
+<td class="colFirst"><code>java.lang.Integer</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTimeoutInSeconds()">getTimeoutInSeconds</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hashCode()">hashCode</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setCircuitCheckIntervalInMillis(java.lang.Integer)">setCircuitCheckIntervalInMillis</a></span>&#8203;(java.lang.Integer&nbsp;circuitCheckIntervalInMillis)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setMemoryThreshold(java.lang.Integer)">setMemoryThreshold</a></span>&#8203;(java.lang.Integer&nbsp;memoryThreshold)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setTimeoutInSeconds(java.lang.Integer)">setTimeoutInSeconds</a></span>&#8203;(java.lang.Integer&nbsp;timeoutInSeconds)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code><a href="SimpleMemoryCircuitBreakerConfig.html" title="class in io.openlineage.client.circuitBreaker">SimpleMemoryCircuitBreakerConfig</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#withCircuitCheckIntervalInMillis(java.lang.Integer)">withCircuitCheckIntervalInMillis</a></span>&#8203;(java.lang.Integer&nbsp;circuitCheckIntervalInMillis)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code><a href="SimpleMemoryCircuitBreakerConfig.html" title="class in io.openlineage.client.circuitBreaker">SimpleMemoryCircuitBreakerConfig</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#withMemoryThreshold(java.lang.Integer)">withMemoryThreshold</a></span>&#8203;(java.lang.Integer&nbsp;memoryThreshold)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code><a href="SimpleMemoryCircuitBreakerConfig.html" title="class in io.openlineage.client.circuitBreaker">SimpleMemoryCircuitBreakerConfig</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#withTimeoutInSeconds(java.lang.Integer)">withTimeoutInSeconds</a></span>&#8203;(java.lang.Integer&nbsp;timeoutInSeconds)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -266,6 +287,16 @@ implements <a href="CircuitBreakerConfig.html" title="interface in io.openlineag
 <pre>public&nbsp;SimpleMemoryCircuitBreakerConfig&#8203;(int&nbsp;memoryThreshold)</pre>
 </li>
 </ul>
+<a id="&lt;init&gt;(int,int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>SimpleMemoryCircuitBreakerConfig</h4>
+<pre>public&nbsp;SimpleMemoryCircuitBreakerConfig&#8203;(int&nbsp;memoryThreshold,
+                                        int&nbsp;circuitCheckIntervalInMillis)</pre>
+</li>
+</ul>
 <a id="&lt;init&gt;()">
 <!--   -->
 </a>
@@ -275,14 +306,15 @@ implements <a href="CircuitBreakerConfig.html" title="interface in io.openlineag
 <pre>public&nbsp;SimpleMemoryCircuitBreakerConfig()</pre>
 </li>
 </ul>
-<a id="&lt;init&gt;(java.lang.Integer,java.lang.Integer)">
+<a id="&lt;init&gt;(java.lang.Integer,java.lang.Integer,java.lang.Integer)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>SimpleMemoryCircuitBreakerConfig</h4>
 <pre>public&nbsp;SimpleMemoryCircuitBreakerConfig&#8203;(java.lang.Integer&nbsp;memoryThreshold,
-                                        java.lang.Integer&nbsp;circuitCheckIntervalInMillis)</pre>
+                                        java.lang.Integer&nbsp;circuitCheckIntervalInMillis,
+                                        java.lang.Integer&nbsp;timeoutInSeconds)</pre>
 </li>
 </ul>
 </li>
@@ -360,6 +392,19 @@ implements <a href="CircuitBreakerConfig.html" title="interface in io.openlineag
 </dl>
 </li>
 </ul>
+<a id="withTimeoutInSeconds(java.lang.Integer)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withTimeoutInSeconds</h4>
+<pre class="methodSignature">public&nbsp;<a href="SimpleMemoryCircuitBreakerConfig.html" title="class in io.openlineage.client.circuitBreaker">SimpleMemoryCircuitBreakerConfig</a>&nbsp;withTimeoutInSeconds&#8203;(java.lang.Integer&nbsp;timeoutInSeconds)</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a clone of this object, except with this updated property (returns <code>this</code> if an identical value is passed).</dd>
+</dl>
+</li>
+</ul>
 <a id="getMemoryThreshold()">
 <!--   -->
 </a>
@@ -390,10 +435,28 @@ implements <a href="CircuitBreakerConfig.html" title="interface in io.openlineag
 <a id="setCircuitCheckIntervalInMillis(java.lang.Integer)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>setCircuitCheckIntervalInMillis</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setCircuitCheckIntervalInMillis&#8203;(java.lang.Integer&nbsp;circuitCheckIntervalInMillis)</pre>
+</li>
+</ul>
+<a id="getTimeoutInSeconds()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getTimeoutInSeconds</h4>
+<pre class="methodSignature">public&nbsp;java.lang.Integer&nbsp;getTimeoutInSeconds()</pre>
+</li>
+</ul>
+<a id="setTimeoutInSeconds(java.lang.Integer)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>setTimeoutInSeconds</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setTimeoutInSeconds&#8203;(java.lang.Integer&nbsp;timeoutInSeconds)</pre>
 </li>
 </ul>
 </li>
