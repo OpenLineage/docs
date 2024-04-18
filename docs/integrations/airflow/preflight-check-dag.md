@@ -6,7 +6,7 @@ title: Preflight check DAG
 
 ## Purpose
 
-The preflight check DAG is created to verify the setup of OpenLineage within an Airflow environment. It checks the Airflow version, the version of the installed OpenLineage package, and the configuration settings read by the OpenLineage listener. This validation is crucial because, after setting up OpenLineage with Airflow and configuring necessary environment variables, users need confirmation that the setup is correctly done to start receiving DAG/task start/end events.
+The preflight check DAG is created to verify the setup of OpenLineage within an Airflow environment. It checks the Airflow version, the version of the installed OpenLineage package, and the configuration settings read by the OpenLineage listener. This validation is crucial because, after setting up OpenLineage with Airflow and configuring necessary environment variables, users need confirmation that the setup is correctly done to start receiving OL events.
 
 ## Configuration Variables
 
@@ -23,7 +23,7 @@ The DAG comprises several key functions, each designed to perform specific valid
 2. **Airflow Version Compatibility**: Ensures that the Airflow version is compatible with OpenLineage. OpenLineage requires Airflow version 2.1 or newer.
 3. **Transport and Configuration Validation**: Checks if necessary transport settings and configurations are set for OpenLineage to communicate with the specified backend.
 4. **Backend Connectivity**: Verifies the connection to the specified `LINEAGE_BACKEND` to ensure that OpenLineage can successfully send events.
-5. **Listener Accessibility and OpenLineage Plugin Checks**: Ensures that the OpenLineage listener is accessible and that OpenLineage is not disabled.
+5. **Listener Accessibility and OpenLineage Plugin Checks**: Ensures that the OpenLineage listener is accessible and that OpenLineage is not disabled(by [environment variable](https://airflow.apache.org/docs/apache-airflow-providers-openlineage/stable/guides/user.html#:~:text=OPENLINEAGE_DISABLED%20is%20an%20equivalent%20of%20AIRFLOW__OPENLINEAGE__DISABLED.) or [config](https://airflow.apache.org/docs/apache-airflow-providers-openlineage/stable/guides/user.html#disable)).
 
 ### DAG Tasks
 
@@ -38,10 +38,10 @@ The DAG defines three main tasks that sequentially execute the above validations
 To use this DAG:
 
 1. Ensure that OpenLineage is installed within your Airflow environment.
-2. Set the necessary environment variables for OpenLineage, such as the namespace and the URL or transport mechanism.
+2. Set the necessary environment variables for OpenLineage, such as the namespace and the URL or transport mechanism[provider package docs](https://airflow.apache.org/docs/apache-airflow-providers-openlineage/stable/guides/user.html) or [OL docs](https://openlineage.io/docs/integrations/airflow/usage).
 3. Configure the `BYPASS_LATEST_VERSION_CHECK` and `LINEAGE_BACKEND` variables as needed.
 4. Add the DAG file to your Airflow DAGs folder.
-5. Trigger the DAG manually or allow it to run automatically based on its schedule to perform the preflight checks.
+5. Trigger the DAG manually or just enable it and allow it to run once automatically based on its schedule (@once) to perform the preflight checks.
 
 ## Preflight check DAG code
 ```python
@@ -62,7 +62,7 @@ from airflow.utils.dates import days_ago
 # Set this to True to bypass the latest version check for OpenLineage package.
 # Version check will be skipped if unable to access PyPI URL
 BYPASS_LATEST_VERSION_CHECK = False
-# Update this if using any other backend for OpenLineage events ingestion
+# Update this to `CUSTOM` if using any other backend for OpenLineage events ingestion
 # When using custom transport - implement custom checks in _verify_custom_backend function
 LINEAGE_BACKEND = "MARQUEZ"
 
@@ -273,7 +273,7 @@ def verify_backend(backend_type: str, config: dict):
         return _verify_marquez_http_backend(config)
     elif backend_type == "atlan":
         return _verify_atlan_http_backend(config)
-    elif backend_type == "marquez":
+    elif backend_type == "custom":
         return _verify_custom_backend(config)
     raise ValueError(f"Unsupported backend type: {backend_type}")
 
