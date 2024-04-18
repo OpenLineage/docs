@@ -232,12 +232,24 @@ This transport requires the artifact `org.apache.kafka:kafka-clients:3.1.0` (or 
 
 - `type` - string, must be `"kafka"`. Required.
 - `topicName` - string specifying the topic on what events will be sent. Required.
-- `localServerId` - string, id of local server. Required.
 - `properties` - a dictionary containing a Kafka producer config as in [Kafka producer config](http://kafka.apache.org/0100/documentation.html#producerconfigs). Required.
+- `localServerId` - **deprecated**, renamed to `messageKey` since v1.13.0.
+- `messageKey` - string, key for all Kafka messages produced by transport. Optional, default value described below. Added in v1.13.0.
+
+  Default values for `messageKey` are:
+  - `run:{parentJob.namespace}/{parentJob.name}` - for RunEvent with parent facet
+  - `run:{job.namespace}/{job.name}` - for RunEvent
+  - `job:{job.namespace}/{job.name}` - for JobEvent
+  - `dataset:{dataset.namespace}/{dataset.name}` - for DatasetEvent
 
 #### Behavior
 
 Events are serialized to JSON, and then dispatched to the Kafka topic.
+
+#### Notes
+
+It is recommended to provide `messageKey` if Job hierarchy is used. It can be any string, but it should be the same for all jobs in
+hierarchy, like `Airflow task -> Spark application -> Spark task runs`.
 
 #### Examples
 
@@ -254,7 +266,7 @@ transport:
     retries: 3
     key.serializer: org.apache.kafka.common.serialization.StringSerializer
     value.serializer: org.apache.kafka.common.serialization.StringSerializer
-  localServerId: some-value
+  messageKey: some-value
 ```
 
 </TabItem>
@@ -263,13 +275,12 @@ transport:
 ```ini
 spark.openlineage.transport.type=kafka
 spark.openlineage.transport.topicName=openlineage.events
-spark.openlineage.transport.localServerId=xxxxxxxx
 spark.openlineage.transport.properties.bootstrap.servers=localhost:9092,another.host:9092
 spark.openlineage.transport.properties.acks=all
 spark.openlineage.transport.properties.retries=3
 spark.openlineage.transport.properties.key.serializer=org.apache.kafka.common.serialization.StringSerializer
 spark.openlineage.transport.properties.value.serializer=org.apache.kafka.common.serialization.StringSerializer
-spark.openlineage.transport.properties.localServerId=some-value
+spark.openlineage.transport.messageKey=some-value
 ```
 
 </TabItem>
@@ -278,13 +289,12 @@ spark.openlineage.transport.properties.localServerId=some-value
 ```ini
 openlineage.transport.type=kafka
 openlineage.transport.topicName=openlineage.events
-openlineage.transport.localServerId=xxxxxxxx
 openlineage.transport.properties.bootstrap.servers=localhost:9092,another.host:9092
 openlineage.transport.properties.acks=all
 openlineage.transport.properties.retries=3
 openlineage.transport.properties.key.serializer=org.apache.kafka.common.serialization.StringSerializer
 openlineage.transport.properties.value.serializer=org.apache.kafka.common.serialization.StringSerializer
-openlineage.transport.properties.localServerId=some-value
+openlineage.transport.messageKey=some-value
 ```
 
 </TabItem>
@@ -317,6 +327,16 @@ OpenLineageClient client = OpenLineageClient.builder()
 
 </TabItem>
 </Tabs>
+
+*Notes*:
+It is recommended to provide `messageKey` if Job hierarchy is used. It can be any string, but it should be the same for all jobs in
+hierarchy, like `Airflow task -> Spark application`.
+
+Default values are:
+- `run:{parentJob.namespace}/{parentJob.name}/{parentRun.id}` - for RunEvent with parent facet
+- `run:{job.namespace}/{job.name}/{run.id}` - for RunEvent
+- `job:{job.namespace}/{job.name}` - for JobEvent
+- `dataset:{dataset.namespace}/{dataset.name}` - for DatasetEvent
 
 ### [Kinesis](https://github.com/OpenLineage/OpenLineage/blob/main/client/java/src/main/java/io/openlineage/client/transports/KinesisTransport.java)
 

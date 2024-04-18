@@ -181,11 +181,23 @@ It can be installed also by specifying kafka client extension: `pip install open
 - `topic` - string specifying the topic on what events will be sent. Required.
 - `config` - a dictionary containing a Kafka producer config as in [Kafka producer config](https://docs.confluent.io/platform/current/clients/confluent-kafka-python/html/index.html#kafka-client-configuration). Required.
 - `flush` - boolean specifying whether Kafka should flush after each event. Optional, default: `true`.
+- `messageKey` - string, key for all Kafka messages produced by transport. Optional, default value described below. Added in v1.13.0.
+
+  Default values for `messageKey` are:
+  - `run:{parentJob.namespace}/{parentJob.name}` - for RunEvent with parent facet
+  - `run:{job.namespace}/{job.name}` - for RunEvent
+  - `job:{job.namespace}/{job.name}` - for JobEvent
+  - `dataset:{dataset.namespace}/{dataset.name}` - for DatasetEvent
 
 #### Behavior
 
 - Events are serialized to JSON, and then dispatched to the Kafka topic.
 - If `flush` is `true`, messages will be flushed to the topic after each event being sent.
+
+#### Notes
+
+It is recommended to provide `messageKey` if Job hierarchy is used. It can be any string, but it should be the same for all jobs in
+hierarchy, like `Airflow task -> Spark application -> Spark task runs`.
 
 #### Using with Airflow integration
 
@@ -208,6 +220,7 @@ transport:
     acks: all
     retries: 3
   flush: true
+  messageKey: some-value
 ```
 
 </TabItem>
@@ -225,6 +238,7 @@ kafka_config = KafkaConfig(
     "retries": "3",
   },
   flush=True,
+  messageKey="some",
 )
 
 client = OpenLineageClient(transport=KafkaTransport(kafka_config))
