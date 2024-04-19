@@ -81,3 +81,9 @@ import CircuitBreakers from './partials/java_circuit_breaker.md';
 
 <CircuitBreakers/>
 
+## Metrics
+
+import Metrics from './partials/java_metrics.md';
+
+<Metrics/>
+
