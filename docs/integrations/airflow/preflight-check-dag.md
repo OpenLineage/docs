@@ -13,7 +13,7 @@ The preflight check DAG is created to verify the setup of OpenLineage within an 
 The DAG introduces two configurable variables that users can set according to their requirements:
 
 - `BYPASS_LATEST_VERSION_CHECK`: Set this to `True` to skip checking for the latest version of the OpenLineage package. This is useful when accessing the PyPI URL is not possible or if users prefer not to upgrade.
-- `LINEAGE_BACKEND`: This variable specifies the backend used for OpenLineage events ingestion. By default, it is set to `"MARQUEZ"`. Users utilizing a custom backend for OpenLineage should implement custom checks within the `_verify_custom_backend` function.
+- `LINEAGE_BACKEND`: This variable specifies the backend used for OpenLineage events ingestion. By default, it is set to `MARQUEZ`. Users utilizing a custom backend for OpenLineage should implement custom checks within the `_verify_custom_backend` function.
 
 ## Implementation
 
@@ -23,7 +23,7 @@ The DAG comprises several key functions, each designed to perform specific valid
 2. **Airflow Version Compatibility**: Ensures that the Airflow version is compatible with OpenLineage. OpenLineage requires Airflow version 2.1 or newer.
 3. **Transport and Configuration Validation**: Checks if necessary transport settings and configurations are set for OpenLineage to communicate with the specified backend.
 4. **Backend Connectivity**: Verifies the connection to the specified `LINEAGE_BACKEND` to ensure that OpenLineage can successfully send events.
-5. **Listener Accessibility and OpenLineage Plugin Checks**: Ensures that the OpenLineage listener is accessible and that OpenLineage is not disabled(by [environment variable](https://airflow.apache.org/docs/apache-airflow-providers-openlineage/stable/guides/user.html#:~:text=OPENLINEAGE_DISABLED%20is%20an%20equivalent%20of%20AIRFLOW__OPENLINEAGE__DISABLED.) or [config](https://airflow.apache.org/docs/apache-airflow-providers-openlineage/stable/guides/user.html#disable)).
+5. **Listener Accessibility and OpenLineage Plugin Checks**: Ensures that the OpenLineage listener is accessible and that OpenLineage is not disabled (by [environment variable](https://airflow.apache.org/docs/apache-airflow-providers-openlineage/stable/guides/user.html#:~:text=OPENLINEAGE_DISABLED%20is%20an%20equivalent%20of%20AIRFLOW__OPENLINEAGE__DISABLED.) or [config](https://airflow.apache.org/docs/apache-airflow-providers-openlineage/stable/guides/user.html#disable)).
 
 ### DAG Tasks
 
@@ -38,7 +38,7 @@ The DAG defines three main tasks that sequentially execute the above validations
 To use this DAG:
 
 1. Ensure that OpenLineage is installed within your Airflow environment.
-2. Set the necessary environment variables for OpenLineage, such as the namespace and the URL or transport mechanism[provider package docs](https://airflow.apache.org/docs/apache-airflow-providers-openlineage/stable/guides/user.html) or [OL docs](https://openlineage.io/docs/integrations/airflow/usage).
+2. Set the necessary environment variables for OpenLineage, such as the namespace and the URL or transport mechanism using [provider package docs](https://airflow.apache.org/docs/apache-airflow-providers-openlineage/stable/guides/user.html) or [OL docs](https://openlineage.io/docs/integrations/airflow/usage).
 3. Configure the `BYPASS_LATEST_VERSION_CHECK` and `LINEAGE_BACKEND` variables as needed.
 4. Add the DAG file to your Airflow DAGs folder.
 5. Trigger the DAG manually or just enable it and allow it to run once automatically based on its schedule (@once) to perform the preflight checks.
