@@ -202,22 +202,25 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>static <a href="OpenLineageYaml.html" title="class in io.openlineage.client">OpenLineageYaml</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#loadOpenLineageJson(java.io.InputStream)">loadOpenLineageJson</a></span>&#8203;(java.io.InputStream&nbsp;inputStream)</code></th>
+<td class="colFirst"><code>static &lt;T extends <a href="OpenLineageConfig.html" title="class in io.openlineage.client">OpenLineageConfig</a>&gt;<br>T</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#loadOpenLineageConfigJson(java.io.InputStream,com.fasterxml.jackson.core.type.TypeReference)">loadOpenLineageConfigJson</a></span>&#8203;(java.io.InputStream&nbsp;inputStream,
+                         com.fasterxml.jackson.core.type.TypeReference&lt;T&gt;&nbsp;valueTypeRef)</code></th>
 <td class="colLast">
 <div class="block">Loads and parses OpenLineage JSON configuration from an <code>InputStream</code>.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>static <a href="OpenLineageYaml.html" title="class in io.openlineage.client">OpenLineageYaml</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#loadOpenLineageYaml(io.openlineage.client.ConfigPathProvider)">loadOpenLineageYaml</a></span>&#8203;(<a href="ConfigPathProvider.html" title="interface in io.openlineage.client">ConfigPathProvider</a>&nbsp;configPathProvider)</code></th>
+<td class="colFirst"><code>static &lt;T extends <a href="OpenLineageConfig.html" title="class in io.openlineage.client">OpenLineageConfig</a>&gt;<br>T</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#loadOpenLineageConfigYaml(io.openlineage.client.ConfigPathProvider,com.fasterxml.jackson.core.type.TypeReference)">loadOpenLineageConfigYaml</a></span>&#8203;(<a href="ConfigPathProvider.html" title="interface in io.openlineage.client">ConfigPathProvider</a>&nbsp;configPathProvider,
+                         com.fasterxml.jackson.core.type.TypeReference&lt;T&gt;&nbsp;valueTypeRef)</code></th>
 <td class="colLast">
 <div class="block">Loads and parses OpenLineage configuration from the provided paths.</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
-<td class="colFirst"><code>static <a href="OpenLineageYaml.html" title="class in io.openlineage.client">OpenLineageYaml</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#loadOpenLineageYaml(java.io.InputStream)">loadOpenLineageYaml</a></span>&#8203;(java.io.InputStream&nbsp;inputStream)</code></th>
+<td class="colFirst"><code>static &lt;T extends <a href="OpenLineageConfig.html" title="class in io.openlineage.client">OpenLineageConfig</a>&gt;<br>T</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#loadOpenLineageConfigYaml(java.io.InputStream,com.fasterxml.jackson.core.type.TypeReference)">loadOpenLineageConfigYaml</a></span>&#8203;(java.io.InputStream&nbsp;inputStream,
+                         com.fasterxml.jackson.core.type.TypeReference&lt;T&gt;&nbsp;valueTypeRef)</code></th>
 <td class="colLast">
 <div class="block">Loads and parses OpenLineage YAML configuration from an <code>InputStream</code>.</div>
 </td>
@@ -471,14 +474,15 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="loadOpenLineageYaml(io.openlineage.client.ConfigPathProvider)">
+<a id="loadOpenLineageConfigYaml(io.openlineage.client.ConfigPathProvider,com.fasterxml.jackson.core.type.TypeReference)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>loadOpenLineageYaml</h4>
-<pre class="methodSignature">public static&nbsp;<a href="OpenLineageYaml.html" title="class in io.openlineage.client">OpenLineageYaml</a>&nbsp;loadOpenLineageYaml&#8203;(<a href="ConfigPathProvider.html" title="interface in io.openlineage.client">ConfigPathProvider</a>&nbsp;configPathProvider)
-                                           throws <a href="OpenLineageClientException.html" title="class in io.openlineage.client">OpenLineageClientException</a></pre>
+<h4>loadOpenLineageConfigYaml</h4>
+<pre class="methodSignature">public static&nbsp;&lt;T extends <a href="OpenLineageConfig.html" title="class in io.openlineage.client">OpenLineageConfig</a>&gt;&nbsp;T&nbsp;loadOpenLineageConfigYaml&#8203;(<a href="ConfigPathProvider.html" title="interface in io.openlineage.client">ConfigPathProvider</a>&nbsp;configPathProvider,
+                                                                        com.fasterxml.jackson.core.type.TypeReference&lt;T&gt;&nbsp;valueTypeRef)
+                                                                 throws <a href="OpenLineageClientException.html" title="class in io.openlineage.client">OpenLineageClientException</a></pre>
 <div class="block">Loads and parses OpenLineage configuration from the provided paths. Throws an <a href="OpenLineageClientException.html" title="class in io.openlineage.client"><code>OpenLineageClientException</code></a> if one of the following conditions are met:
 
  <ol>
@@ -487,49 +491,60 @@ extends java.lang.Object</pre>
    <li>Load the default configuration from the classpath if no file is found
  </ol></div>
 <dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>T</code> - generic type of merged config</dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>configPathProvider</code> - Provides the paths where the configuration files can be found.</dd>
+<dd><code>valueTypeRef</code> - The type to convert the JSON string into.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>An instance of <a href="OpenLineageYaml.html" title="class in io.openlineage.client"><code>OpenLineageYaml</code></a> containing the parsed configuration.</dd>
+<dd>An instance of <a href="OpenLineageConfig.html" title="class in io.openlineage.client"><code>OpenLineageConfig</code></a> containing the parsed configuration.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="OpenLineageClientException.html" title="class in io.openlineage.client">OpenLineageClientException</a></code> - According to the rules defined above.</dd>
 </dl>
 </li>
 </ul>
-<a id="loadOpenLineageYaml(java.io.InputStream)">
+<a id="loadOpenLineageConfigYaml(java.io.InputStream,com.fasterxml.jackson.core.type.TypeReference)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>loadOpenLineageYaml</h4>
-<pre class="methodSignature">public static&nbsp;<a href="OpenLineageYaml.html" title="class in io.openlineage.client">OpenLineageYaml</a>&nbsp;loadOpenLineageYaml&#8203;(java.io.InputStream&nbsp;inputStream)
-                                           throws <a href="OpenLineageClientException.html" title="class in io.openlineage.client">OpenLineageClientException</a></pre>
+<h4>loadOpenLineageConfigYaml</h4>
+<pre class="methodSignature">public static&nbsp;&lt;T extends <a href="OpenLineageConfig.html" title="class in io.openlineage.client">OpenLineageConfig</a>&gt;&nbsp;T&nbsp;loadOpenLineageConfigYaml&#8203;(java.io.InputStream&nbsp;inputStream,
+                                                                        com.fasterxml.jackson.core.type.TypeReference&lt;T&gt;&nbsp;valueTypeRef)
+                                                                 throws <a href="OpenLineageClientException.html" title="class in io.openlineage.client">OpenLineageClientException</a></pre>
 <div class="block">Loads and parses OpenLineage YAML configuration from an <code>InputStream</code>.</div>
 <dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>T</code> - generic type of merged config</dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>inputStream</code> - The <code>InputStream</code> from which to load the configuration.</dd>
+<dd><code>valueTypeRef</code> - The type to convert the JSON string into.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>An instance of <a href="OpenLineageYaml.html" title="class in io.openlineage.client"><code>OpenLineageYaml</code></a> containing the parsed YAML configuration.</dd>
+<dd>An instance of <a href="OpenLineageConfig.html" title="class in io.openlineage.client"><code>OpenLineageConfig</code></a> containing the parsed YAML configuration.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="OpenLineageClientException.html" title="class in io.openlineage.client">OpenLineageClientException</a></code> - If an error occurs while reading or parsing the
      configuration.</dd>
 </dl>
 </li>
 </ul>
-<a id="loadOpenLineageJson(java.io.InputStream)">
+<a id="loadOpenLineageConfigJson(java.io.InputStream,com.fasterxml.jackson.core.type.TypeReference)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>loadOpenLineageJson</h4>
-<pre class="methodSignature">public static&nbsp;<a href="OpenLineageYaml.html" title="class in io.openlineage.client">OpenLineageYaml</a>&nbsp;loadOpenLineageJson&#8203;(java.io.InputStream&nbsp;inputStream)
-                                           throws <a href="OpenLineageClientException.html" title="class in io.openlineage.client">OpenLineageClientException</a></pre>
+<h4>loadOpenLineageConfigJson</h4>
+<pre class="methodSignature">public static&nbsp;&lt;T extends <a href="OpenLineageConfig.html" title="class in io.openlineage.client">OpenLineageConfig</a>&gt;&nbsp;T&nbsp;loadOpenLineageConfigJson&#8203;(java.io.InputStream&nbsp;inputStream,
+                                                                        com.fasterxml.jackson.core.type.TypeReference&lt;T&gt;&nbsp;valueTypeRef)
+                                                                 throws <a href="OpenLineageClientException.html" title="class in io.openlineage.client">OpenLineageClientException</a></pre>
 <div class="block">Loads and parses OpenLineage JSON configuration from an <code>InputStream</code>.</div>
 <dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>T</code> - generic type of merged config</dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>inputStream</code> - The <code>InputStream</code> from which to load the configuration.</dd>
+<dd><code>valueTypeRef</code> - The type to convert the JSON string into.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>An instance of <a href="OpenLineageYaml.html" title="class in io.openlineage.client"><code>OpenLineageYaml</code></a> containing the parsed JSON configuration.</dd>
+<dd>An instance of <a href="OpenLineageConfig.html" title="class in io.openlineage.client"><code>OpenLineageConfig</code></a> containing the parsed JSON configuration.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="OpenLineageClientException.html" title="class in io.openlineage.client">OpenLineageClientException</a></code> - If an error occurs while reading or parsing the
      configuration.</dd>
