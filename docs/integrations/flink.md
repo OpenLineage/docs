@@ -118,10 +118,12 @@ and allows all the configuration features present there to be used. The configur
 
 The following parameters can be specified:
 
-| Parameter                                | Definition                                                                                                                                          | Example                           |
-------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------
-| openlineage.transport.type         | The transport type used for event emit, default type is `console`                                                                                   | http                              |
-| openlineage.facets.disabled        | List of facets to disable, enclosed in `[]` (required from 0.21.x) and separated by `;` | \[some_facet1;some_facet1\] |
+| Parameter                                | Definition                                                                                                                                                                          | Example                           |
+------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------
+| openlineage.transport.type         | The transport type used for event emit, default type is `console`                                                                                                                   | http                              |
+| openlineage.facets.disabled        | List of facets to disable, enclosed in `[]` (required from 0.21.x) and separated by `;`                                                                                             | \[some_facet1;some_facet1\] |
+| openlineage.job.owners.<ownership-type\>     | Specifies ownership of the job. Multiple entries with different types are allowed. Config key name and value are used to create job ownership type and name (available since 1.13). | openlineage.job.owners.team="Some Team" |
+
 
 
 ## Transports
