@@ -27,8 +27,8 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":42};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"],32:["t6","Deprecated Methods"]};
+var data = {"i0":10,"i1":10,"i2":10};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -173,7 +173,7 @@ extends <a href="Transport.html" title="class in io.openlineage.client.transport
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t6" class="tableTab"><span><a href="javascript:show(32);">Deprecated Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colSecond" scope="col">Method</th>
@@ -193,15 +193,6 @@ extends <a href="Transport.html" title="class in io.openlineage.client.transport
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#emit(io.openlineage.client.OpenLineage.RunEvent)">emit</a></span>&#8203;(<a href="../OpenLineage.RunEvent.html" title="class in io.openlineage.client">OpenLineage.RunEvent</a>&nbsp;runEvent)</code></th>
 <td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i3" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#emit(java.lang.String)">emit</a></span>&#8203;(java.lang.String&nbsp;eventJson)</code></th>
-<td class="colLast">
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="deprecationComment">Since version 1.13.0.</div>
-</div>
-</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -269,7 +260,7 @@ extends <a href="Transport.html" title="class in io.openlineage.client.transport
 <pre class="methodSignature">public&nbsp;void&nbsp;emit&#8203;(@NonNull
                  <a href="../OpenLineage.DatasetEvent.html" title="class in io.openlineage.client">OpenLineage.DatasetEvent</a>&nbsp;datasetEvent)</pre>
 <dl>
-<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Transport.html#emit(io.openlineage.client.OpenLineage.DatasetEvent)">emit</a></code>&nbsp;in class&nbsp;<code><a href="Transport.html" title="class in io.openlineage.client.transports">Transport</a></code></dd>
 </dl>
 </li>
@@ -277,35 +268,14 @@ extends <a href="Transport.html" title="class in io.openlineage.client.transport
 <a id="emit(io.openlineage.client.OpenLineage.JobEvent)">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>emit</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;emit&#8203;(@NonNull
                  <a href="../OpenLineage.JobEvent.html" title="class in io.openlineage.client">OpenLineage.JobEvent</a>&nbsp;jobEvent)</pre>
 <dl>
-<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="Transport.html#emit(io.openlineage.client.OpenLineage.JobEvent)">emit</a></code>&nbsp;in class&nbsp;<code><a href="Transport.html" title="class in io.openlineage.client.transports">Transport</a></code></dd>
-</dl>
-</li>
-</ul>
-<a id="emit(java.lang.String)">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>emit</h4>
-<pre class="methodSignature">@Deprecated
-public&nbsp;void&nbsp;emit&#8203;(java.lang.String&nbsp;eventJson)</pre>
-<div class="deprecationBlock"><span class="deprecatedLabel">Deprecated.</span>
-<div class="deprecationComment"><p>Since version 1.13.0.
-     <p>Will be removed in version 1.16.0.
-     <p>Please use <a href="#emit(io.openlineage.client.OpenLineage.DatasetEvent)"><code>emit(OpenLineage.DatasetEvent)</code></a> or <a href="#emit(io.openlineage.client.OpenLineage.JobEvent)"><code>emit(OpenLineage.JobEvent)</code></a> instead</div>
-</div>
-<dl>
-<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="Transport.html#emit(java.lang.String)">emit</a></code>&nbsp;in class&nbsp;<code><a href="Transport.html" title="class in io.openlineage.client.transports">Transport</a></code></dd>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>eventJson</code> - string json event</dd>
 </dl>
 </li>
 </ul>
