@@ -87,3 +87,8 @@ import Metrics from './partials/java_metrics.md';
 
 <Metrics/>
 
+## Dataset Namespace Resolver
+
+import DatasetNamespaceResolver from './partials/java_namespace_resolver.md';
+
+<DatasetNamespaceResolver/>
