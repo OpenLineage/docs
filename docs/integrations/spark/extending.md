@@ -109,6 +109,15 @@ runtime.
 can also be attached, though `CustomFacetBuilder`s _may_ override facets attached directly to the
 dataset.
 
+Spark job's naming logic appends output dataset's identifier as job suffix. In order to provide a job suffix, a `QueryPlanVisitor` 
+needs to implement [`JobNameSuffixProvider`](https://github.com/OpenLineage/OpenLineage/blob/main/integration/spark/shared/src/main/java/io/openlineage/spark/api/JobNameSuffixProvider.java)
+interface. Otherwise no suffix will be appended. Job suffix should contain human-readable name
+of the dataset so that consumers of OpenLineage events can correlate events with particular
+Spark actions within their code. The logic to extract dataset name should not depend on the existence
+of the dataset as in case of creating new dataset it may not exist at the moment of assigning job suffix.
+In most cases, the suffix should contain spark catalog, database and table separated by `.` which shall be
+extracted from LogicalPlan nodes properties.
+
 ### [`InputDatasetBuilder`](https://github.com/OpenLineage/OpenLineage/blob/main/integration/spark/shared/src/main/java/io/openlineage/spark/api/AbstractInputDatasetBuilder.java) and [`OutputDatasetBuilder`](https://github.com/OpenLineage/OpenLineage/blob/main/integration/spark/shared/src/main/common/java/io/openlineage/spark/api/AbstractOutputDatasetBuilder.java)
 Similar to the `QueryPlanVisitor`s, `InputDatasetBuilder`s and `OutputDatasetBuilder`s are
 `PartialFunction`s defined for a specific input (see below for the list of Spark listener events and
@@ -117,6 +126,15 @@ scheduler objects that can be passed to a builder) that can generate either an `
 [`AbstractInputDatasetBuilder`](https://github.com/OpenLineage/OpenLineage/blob/main/integration/spark/shared/src/main/java/io/openlineage/spark/api/AbstractInputDatasetBuilder.java)
 and [`AbstractOutputDatasetBuilder`](https://github.com/OpenLineage/OpenLineage/blob/main/integration/spark/shared/src/main/java/io/openlineage/spark/api/AbstractOutputDatasetBuilder.java)
 are available for builders to extend.
+
+Spark job's naming logic appends output dataset's identifier as job suffix. 
+In order to provide a job suffix, a `OutputDatasetBuilder` needs to implement [`JobNameSuffixProvider`](https://github.com/OpenLineage/OpenLineage/blob/main/integration/spark/shared/src/main/java/io/openlineage/spark/api/JobNameSuffixProvider.java)
+interface. Otherwise no suffix will be appended. Job suffix should contain human-readable name 
+of the dataset so that consumers of OpenLineage events can correlate events with particular
+Spark actions within their code. The logic to extract dataset name should not depend on the existence
+of the dataset as in case of creating new dataset it may not exist at the moment of assigning job suffix.
+In most cases, the suffix should contain spark catalog, database and table separated by `.` which shall be
+extracted from LogicalPlan nodes properties.
 
 ### [`CustomFacetBuilder`](https://github.com/OpenLineage/OpenLineage/blob/main/integration/spark/shared/src/main/java/io/openlineage/spark/api/CustomFacetBuilder.java)
 `CustomFacetBuilders` evaluate Spark event types and scheduler objects (see below) to construct custom
