@@ -10,7 +10,7 @@ This integration is known to work with Trino 450 and later.
 Trino is a distributed SQL query engine targeted for big data analytical workloads. Trino queries are typically run on 
 Trino `cluster`, where distributed set of Trino `workers` provides compute power and Trino `coordinator` is responsible 
 for query submission. By a rich set of available connectors, you can use Trino to execute SQL queries with the same exact
-syntax on [different underlying systems](https://trino.io/docs/current/connector.html) - such as RDBMs databases, hive metastore, s3 and others
+syntax [on different underlying systems](https://trino.io/docs/current/connector.html) - such as RDBMs databases, hive metastore, s3 and others.
 
 Trino enables running queries for fetching the data as well as creating new structures - such as tables, views or materialized views.
 
@@ -48,12 +48,12 @@ Make sure to set:
 event-listener.config-files=etc/openlineage-event-listener.properties
 ```
 
-Make sure that the path to openlineage-event-listener.properties is recognizable by Trino coordinator.
+Make sure that the path to `event-listener.config-files` is recognizable by Trino coordinator.
 
 ### Official documentation
 
 Current documentation on Trino OpenLineage Event Listener with full list of available configuration options
-[is maintained here.](https://trino.io/docs/current/admin/event-listeners-openlineage.html)
+[is maintained here](https://trino.io/docs/current/admin/event-listeners-openlineage.html).
 
 ## Feedback
 
