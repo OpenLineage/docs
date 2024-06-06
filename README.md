@@ -16,7 +16,12 @@ If you are familiar with the GitHub pull request process, it is easy to propose 
 3. Create an `index.mdx` file in the new directory containing your blog content. Use one of the other posts as a template. The `title`, `date`, `authors`, and `description` front matter fields are all required.
 4. Add your author information -- name, title, url (optional), and image_url (optional) -- to `blog/authors.yml`. 
 5. Build the site locally if you want to see it in a browser and build confidence in your formatting choices.
-6. Commit your changes and submit a pull request. 
+6. Commit your changes and submit a pull request.
+
+### New ecosystem partners for the Ecosystem page
+
+- Add a rectangular logo in SVG format twice as wide as it is tall to static/img.
+- Add a record to the appropriate file and array in static/ecosystem, using simply the filename of the logo for the image value.
 
 ### Changes to basepages
 
