@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -169,16 +169,21 @@ implements <a href="MergeConfig.html" title="interface in io.openlineage.client"
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><code>protected <a href="dataset/DatasetConfig.html" title="class in io.openlineage.client.dataset">DatasetConfig</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#datasetConfig">datasetConfig</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code>protected <a href="transports/FacetsConfig.html" title="class in io.openlineage.client.transports">FacetsConfig</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#facetsConfig">facetsConfig</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>protected java.util.Map&lt;java.lang.String,&#8203;java.lang.Object&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#metricsConfig">metricsConfig</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>protected <a href="transports/TransportConfig.html" title="interface in io.openlineage.client.transports">TransportConfig</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#transportConfig">transportConfig</a></span></code></th>
 <td class="colLast">&nbsp;</td>
@@ -205,8 +210,9 @@ implements <a href="MergeConfig.html" title="interface in io.openlineage.client"
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(io.openlineage.client.transports.TransportConfig,io.openlineage.client.transports.FacetsConfig,io.openlineage.client.circuitBreaker.CircuitBreakerConfig,java.util.Map)">OpenLineageConfig</a></span>&#8203;(<a href="transports/TransportConfig.html" title="interface in io.openlineage.client.transports">TransportConfig</a>&nbsp;transportConfig,
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(io.openlineage.client.transports.TransportConfig,io.openlineage.client.transports.FacetsConfig,io.openlineage.client.dataset.DatasetConfig,io.openlineage.client.circuitBreaker.CircuitBreakerConfig,java.util.Map)">OpenLineageConfig</a></span>&#8203;(<a href="transports/TransportConfig.html" title="interface in io.openlineage.client.transports">TransportConfig</a>&nbsp;transportConfig,
                  <a href="transports/FacetsConfig.html" title="class in io.openlineage.client.transports">FacetsConfig</a>&nbsp;facetsConfig,
+                 <a href="dataset/DatasetConfig.html" title="class in io.openlineage.client.dataset">DatasetConfig</a>&nbsp;datasetConfig,
                  <a href="circuitBreaker/CircuitBreakerConfig.html" title="interface in io.openlineage.client.circuitBreaker">CircuitBreakerConfig</a>&nbsp;circuitBreaker,
                  java.util.Map&lt;java.lang.String,&#8203;java.lang.Object&gt;&nbsp;metricsConfig)</code></th>
 <td class="colLast">&nbsp;</td>
@@ -235,43 +241,53 @@ implements <a href="MergeConfig.html" title="interface in io.openlineage.client"
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="dataset/DatasetConfig.html" title="class in io.openlineage.client.dataset">DatasetConfig</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDatasetConfig()">getDatasetConfig</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="transports/FacetsConfig.html" title="class in io.openlineage.client.transports">FacetsConfig</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getFacetsConfig()">getFacetsConfig</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.util.Map&lt;java.lang.String,&#8203;java.lang.Object&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getMetricsConfig()">getMetricsConfig</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="transports/TransportConfig.html" title="interface in io.openlineage.client.transports">TransportConfig</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTransportConfig()">getTransportConfig</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineageConfig.html" title="class in io.openlineage.client">OpenLineageConfig</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#mergeWithNonNull(io.openlineage.client.OpenLineageConfig)">mergeWithNonNull</a></span>&#8203;(<a href="OpenLineageConfig.html" title="class in io.openlineage.client">OpenLineageConfig</a>&nbsp;other)</code></th>
 <td class="colLast">
 <div class="block">Overwrites existing object with properties of other config entries whenever they're present.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setCircuitBreaker(io.openlineage.client.circuitBreaker.CircuitBreakerConfig)">setCircuitBreaker</a></span>&#8203;(<a href="circuitBreaker/CircuitBreakerConfig.html" title="interface in io.openlineage.client.circuitBreaker">CircuitBreakerConfig</a>&nbsp;circuitBreaker)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setDatasetConfig(io.openlineage.client.dataset.DatasetConfig)">setDatasetConfig</a></span>&#8203;(<a href="dataset/DatasetConfig.html" title="class in io.openlineage.client.dataset">DatasetConfig</a>&nbsp;datasetConfig)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setFacetsConfig(io.openlineage.client.transports.FacetsConfig)">setFacetsConfig</a></span>&#8203;(<a href="transports/FacetsConfig.html" title="class in io.openlineage.client.transports">FacetsConfig</a>&nbsp;facetsConfig)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setMetricsConfig(java.util.Map)">setMetricsConfig</a></span>&#8203;(java.util.Map&lt;java.lang.String,&#8203;java.lang.Object&gt;&nbsp;metricsConfig)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setTransportConfig(io.openlineage.client.transports.TransportConfig)">setTransportConfig</a></span>&#8203;(<a href="transports/TransportConfig.html" title="interface in io.openlineage.client.transports">TransportConfig</a>&nbsp;transportConfig)</code></th>
 <td class="colLast">&nbsp;</td>
@@ -325,6 +341,15 @@ implements <a href="MergeConfig.html" title="interface in io.openlineage.client"
 <pre>protected&nbsp;<a href="transports/FacetsConfig.html" title="class in io.openlineage.client.transports">FacetsConfig</a> facetsConfig</pre>
 </li>
 </ul>
+<a id="datasetConfig">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>datasetConfig</h4>
+<pre>protected&nbsp;<a href="dataset/DatasetConfig.html" title="class in io.openlineage.client.dataset">DatasetConfig</a> datasetConfig</pre>
+</li>
+</ul>
 <a id="circuitBreaker">
 <!--   -->
 </a>
@@ -362,7 +387,7 @@ implements <a href="MergeConfig.html" title="interface in io.openlineage.client"
 <pre>public&nbsp;OpenLineageConfig()</pre>
 </li>
 </ul>
-<a id="&lt;init&gt;(io.openlineage.client.transports.TransportConfig,io.openlineage.client.transports.FacetsConfig,io.openlineage.client.circuitBreaker.CircuitBreakerConfig,java.util.Map)">
+<a id="&lt;init&gt;(io.openlineage.client.transports.TransportConfig,io.openlineage.client.transports.FacetsConfig,io.openlineage.client.dataset.DatasetConfig,io.openlineage.client.circuitBreaker.CircuitBreakerConfig,java.util.Map)">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -370,6 +395,7 @@ implements <a href="MergeConfig.html" title="interface in io.openlineage.client"
 <h4>OpenLineageConfig</h4>
 <pre>public&nbsp;OpenLineageConfig&#8203;(<a href="transports/TransportConfig.html" title="interface in io.openlineage.client.transports">TransportConfig</a>&nbsp;transportConfig,
                          <a href="transports/FacetsConfig.html" title="class in io.openlineage.client.transports">FacetsConfig</a>&nbsp;facetsConfig,
+                         <a href="dataset/DatasetConfig.html" title="class in io.openlineage.client.dataset">DatasetConfig</a>&nbsp;datasetConfig,
                          <a href="circuitBreaker/CircuitBreakerConfig.html" title="interface in io.openlineage.client.circuitBreaker">CircuitBreakerConfig</a>&nbsp;circuitBreaker,
                          java.util.Map&lt;java.lang.String,&#8203;java.lang.Object&gt;&nbsp;metricsConfig)</pre>
 </li>
@@ -420,6 +446,15 @@ implements <a href="MergeConfig.html" title="interface in io.openlineage.client"
 <pre class="methodSignature">public&nbsp;<a href="transports/FacetsConfig.html" title="class in io.openlineage.client.transports">FacetsConfig</a>&nbsp;getFacetsConfig()</pre>
 </li>
 </ul>
+<a id="getDatasetConfig()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDatasetConfig</h4>
+<pre class="methodSignature">public&nbsp;<a href="dataset/DatasetConfig.html" title="class in io.openlineage.client.dataset">DatasetConfig</a>&nbsp;getDatasetConfig()</pre>
+</li>
+</ul>
 <a id="getCircuitBreaker()">
 <!--   -->
 </a>
@@ -454,6 +489,15 @@ implements <a href="MergeConfig.html" title="interface in io.openlineage.client"
 <li class="blockList">
 <h4>setFacetsConfig</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setFacetsConfig&#8203;(<a href="transports/FacetsConfig.html" title="class in io.openlineage.client.transports">FacetsConfig</a>&nbsp;facetsConfig)</pre>
+</li>
+</ul>
+<a id="setDatasetConfig(io.openlineage.client.dataset.DatasetConfig)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setDatasetConfig</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setDatasetConfig&#8203;(<a href="dataset/DatasetConfig.html" title="class in io.openlineage.client.dataset">DatasetConfig</a>&nbsp;datasetConfig)</pre>
 </li>
 </ul>
 <a id="setCircuitBreaker(io.openlineage.client.circuitBreaker.CircuitBreakerConfig)">
