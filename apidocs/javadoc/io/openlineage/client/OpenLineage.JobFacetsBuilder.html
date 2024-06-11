@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -198,15 +198,20 @@ implements <a href="OpenLineage.Builder.html" title="interface in io.openlineage
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.JobFacetsBuilder.html" title="class in io.openlineage.client">OpenLineage.JobFacetsBuilder</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#jobType(io.openlineage.client.OpenLineage.JobTypeJobFacet)">jobType</a></span>&#8203;(<a href="OpenLineage.JobTypeJobFacet.html" title="class in io.openlineage.client">OpenLineage.JobTypeJobFacet</a>&nbsp;jobType)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#gcp_common(io.openlineage.client.OpenLineage.GcpCommonJobFacet)">gcp_common</a></span>&#8203;(<a href="OpenLineage.GcpCommonJobFacet.html" title="class in io.openlineage.client">OpenLineage.GcpCommonJobFacet</a>&nbsp;gcp_common)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.JobFacetsBuilder.html" title="class in io.openlineage.client">OpenLineage.JobFacetsBuilder</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#ownership(io.openlineage.client.OpenLineage.OwnershipJobFacet)">ownership</a></span>&#8203;(<a href="OpenLineage.OwnershipJobFacet.html" title="class in io.openlineage.client">OpenLineage.OwnershipJobFacet</a>&nbsp;ownership)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#jobType(io.openlineage.client.OpenLineage.JobTypeJobFacet)">jobType</a></span>&#8203;(<a href="OpenLineage.JobTypeJobFacet.html" title="class in io.openlineage.client">OpenLineage.JobTypeJobFacet</a>&nbsp;jobType)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
+<td class="colFirst"><code><a href="OpenLineage.JobFacetsBuilder.html" title="class in io.openlineage.client">OpenLineage.JobFacetsBuilder</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#ownership(io.openlineage.client.OpenLineage.OwnershipJobFacet)">ownership</a></span>&#8203;(<a href="OpenLineage.OwnershipJobFacet.html" title="class in io.openlineage.client">OpenLineage.OwnershipJobFacet</a>&nbsp;ownership)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.JobFacetsBuilder.html" title="class in io.openlineage.client">OpenLineage.JobFacetsBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#put(java.lang.String,io.openlineage.client.OpenLineage.JobFacet)">put</a></span>&#8203;(java.lang.String&nbsp;key,
    <a href="OpenLineage.JobFacet.html" title="interface in io.openlineage.client">OpenLineage.JobFacet</a>&nbsp;value)</code></th>
@@ -214,17 +219,17 @@ implements <a href="OpenLineage.Builder.html" title="interface in io.openlineage
 <div class="block">add additional properties</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.JobFacetsBuilder.html" title="class in io.openlineage.client">OpenLineage.JobFacetsBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sourceCode(io.openlineage.client.OpenLineage.SourceCodeJobFacet)">sourceCode</a></span>&#8203;(<a href="OpenLineage.SourceCodeJobFacet.html" title="class in io.openlineage.client">OpenLineage.SourceCodeJobFacet</a>&nbsp;sourceCode)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="OpenLineage.JobFacetsBuilder.html" title="class in io.openlineage.client">OpenLineage.JobFacetsBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sourceCodeLocation(io.openlineage.client.OpenLineage.SourceCodeLocationJobFacet)">sourceCodeLocation</a></span>&#8203;(<a href="OpenLineage.SourceCodeLocationJobFacet.html" title="class in io.openlineage.client">OpenLineage.SourceCodeLocationJobFacet</a>&nbsp;sourceCodeLocation)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="OpenLineage.JobFacetsBuilder.html" title="class in io.openlineage.client">OpenLineage.JobFacetsBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#sql(io.openlineage.client.OpenLineage.SQLJobFacet)">sql</a></span>&#8203;(<a href="OpenLineage.SQLJobFacet.html" title="class in io.openlineage.client">OpenLineage.SQLJobFacet</a>&nbsp;sql)</code></th>
 <td class="colLast">&nbsp;</td>
@@ -282,6 +287,21 @@ implements <a href="OpenLineage.Builder.html" title="interface in io.openlineage
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>jobType</code> - the jobType</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this</dd>
+</dl>
+</li>
+</ul>
+<a id="gcp_common(io.openlineage.client.OpenLineage.GcpCommonJobFacet)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>gcp_common</h4>
+<pre class="methodSignature">public&nbsp;<a href="OpenLineage.JobFacetsBuilder.html" title="class in io.openlineage.client">OpenLineage.JobFacetsBuilder</a>&nbsp;gcp_common&#8203;(<a href="OpenLineage.GcpCommonJobFacet.html" title="class in io.openlineage.client">OpenLineage.GcpCommonJobFacet</a>&nbsp;gcp_common)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>gcp_common</code> - the gcp_common</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>this</dd>
 </dl>
