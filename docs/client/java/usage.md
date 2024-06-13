@@ -52,6 +52,8 @@ import io.openlineage.client.OpenLineage.Run;
 import io.openlineage.client.OpenLineage.RunFacets;
 import io.openlineage.client.OpenLineage.RunEvent.EventType;
 import io.openlineage.client.transports.ConsoleTransport;
+import io.openlineage.client.utils.UUIDUtils;
+
 import java.net.URI;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -87,7 +89,7 @@ public class OpenLineageClientTest
         ZonedDateTime now = ZonedDateTime.now(ZoneId.of("UTC"));
         URI producer = URI.create("producer");
         OpenLineage ol = new OpenLineage(producer);
-        UUID runId = UUID.randomUUID();
+        UUID runId = UUIDUtils.generateNewUUID();
 
         // run facets
         RunFacets runFacets =
@@ -220,6 +222,7 @@ import io.openlineage.client.OpenLineage.Run;
 import io.openlineage.client.OpenLineage.RunFacets;
 import io.openlineage.client.OpenLineage.RunEvent.EventType;
 import io.openlineage.client.transports.HttpTransport;
+import io.openlineage.client.utils.UUIDUtils;
 
 import java.net.URI;
 import java.time.ZoneId;
@@ -268,7 +271,7 @@ public class OpenLineageClientTest
         OpenLineage ol = new OpenLineage(producer);
 
         if (runId == null) {
-            runId = UUID.randomUUID();
+            runId = UUIDUtils.generateNewUUID();
         }
 
         // run facets

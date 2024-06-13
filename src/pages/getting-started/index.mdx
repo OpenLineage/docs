@@ -52,7 +52,7 @@ Marquez, the reference implementation of the OpenLineage standard, is an [LF AI 
 
 In this example, you will learn how to collect dataset and job metadata using the [Marquez](https://marquezproject.github.io/marquez/) [LineageAPI](https://marquezproject.github.io/marquez/openapi.html#tag/Lineage) and [UI](https://github.com/MarquezProject/marquez/tree/main/web).
 
-When you submit a lineage event, you first need to define a unique `run ID` similar to `d46e465b-d358-4d32-83d4-df660ff614dd`. UUID format is recommended, and it should be unique. This run ID will enable the tracking of run-level metadata over time for a _job_ that may have a name, like `my-job`. So, let's get started!
+When you submit a lineage event, you first need to define a unique `run ID` similar to `0176a8c2-fe01-7439-87e6-56a1a1b4029f`. [UUIDv7](https://datatracker.ietf.org/doc/draft-ietf-uuidrev-rfc4122bis/) format is recommended, and it should be unique. This run ID will enable the tracking of run-level metadata over time for a _job_ that may have a name, like `my-job`. So, let's get started!
 
 :::info
 The example shows how to collect metadata via direct HTTP API calls using `curl`. But, you can also get started using either of our client libraries for [Java](https://github.com/MarquezProject/marquez/tree/main/clients/java) or [Python](https://github.com/MarquezProject/marquez/tree/main/clients/python).
@@ -60,7 +60,7 @@ The example shows how to collect metadata via direct HTTP API calls using `curl`
 
 ### Step 1: Start a Run
 
-Use the run ID `d46e465b-d358-4d32-83d4-df660ff614dd` to **start** the run for `my-job` with `my-input` as the input dataset:
+Use the run ID `0176a8c2-fe01-7439-87e6-56a1a1b4029f` to **start** the run for `my-job` with `my-input` as the input dataset:
 
 #### REQUEST
 
@@ -71,7 +71,7 @@ $ curl -X POST http://localhost:5000/api/v1/lineage \
         "eventType": "START",
         "eventTime": "2020-12-28T19:52:00.001+10:00",
         "run": {
-          "runId": "d46e465b-d358-4d32-83d4-df660ff614dd"
+          "runId": "0176a8c2-fe01-7439-87e6-56a1a1b4029f"
         },
         "job": {
           "namespace": "my-namespace",
@@ -92,7 +92,7 @@ $ curl -X POST http://localhost:5000/api/v1/lineage \
 
 ### Step 2: Complete a Run
 
-Use `d46e465b-d358-4d32-83d4-df660ff614dd` to **complete** the run for `my-job` with `my-output` as the output dataset. We also specify the [schema](https://github.com/OpenLineage/OpenLineage/blob/main/spec/OpenLineage.md#dataset-facets) **facet** to collect the schema for `my-output` before marking the run as completed. Note, you don't have to specify the input dataset `my-input` again for the run since it has already been associated with the run ID:
+Use `0176a8c2-fe01-7439-87e6-56a1a1b4029f` to **complete** the run for `my-job` with `my-output` as the output dataset. We also specify the [schema](https://github.com/OpenLineage/OpenLineage/blob/main/spec/OpenLineage.md#dataset-facets) **facet** to collect the schema for `my-output` before marking the run as completed. Note, you don't have to specify the input dataset `my-input` again for the run since it has already been associated with the run ID:
 
 #### REQUEST
 
@@ -103,7 +103,7 @@ $ curl -X POST http://localhost:5000/api/v1/lineage \
         "eventType": "COMPLETE",
         "eventTime": "2020-12-28T20:52:00.001+10:00",
         "run": {
-          "runId": "d46e465b-d358-4d32-83d4-df660ff614dd"
+          "runId": "0176a8c2-fe01-7439-87e6-56a1a1b4029f"
         },
         "job": {
           "namespace": "my-namespace",
