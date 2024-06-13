@@ -106,6 +106,10 @@ def validate_ol_installation() -> None:
         library_name = "apache-airflow-providers-openlineage"
 
     library_version = _get_installed_package_version(library_name)
+    if Version(airflow_version) >= Version("2.10.0") and Version(library_version) <= Version("1.18.0"):
+        raise ValueError(
+            f"Airflow version `{airflow_version}` requires `{library_name}` version >=1.18.0. "
+        )
     if BYPASS_LATEST_VERSION_CHECK:
         log.info(f"Bypassing the latest version check for `{library_name}`")
         return
