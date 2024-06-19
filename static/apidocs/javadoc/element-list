@@ -5,4 +5,5 @@ io.openlineage.client.dataset.namespace.resolver
 io.openlineage.client.metrics
 io.openlineage.client.transports
 io.openlineage.client.utils
+io.openlineage.client.utils.jdbc
 io.openlineage.server
