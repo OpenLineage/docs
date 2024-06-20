@@ -63,5 +63,12 @@ export const Producers: Array<Partner> = [
         description: "The OpenLineage Spark Agent uses jvm instrumentation to emit OpenLineage metadata.",
         docs_url: "",
         org_url: "https://spark.apache.org"
-    }
+    },
+    {
+        image: "trino_og.svg",
+        org: "Trino",
+        description: "The OpenLineage event listener plugin allows streaming of lineage information, encoded in JSON format aligned with OpenLineage specification, to an external, OpenLineage copmpatible API, by POSTing them to a specified URI.",
+        docs_url: "https://trino.io/docs/current/admin/event-listeners-openlineage.html",
+        org_url: "https://trino.io/"
+    },
 ]
