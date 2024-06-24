@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":9,"i1":9};
+var data = {"i0":9,"i1":9,"i2":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -189,6 +189,13 @@ extends java.lang.Object</pre>
 <div class="block">Get DatasetIdentifier from table location URI and name</div>
 </td>
 </tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>static java.net.URI</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toLocation(io.openlineage.client.utils.DatasetIdentifier)">toLocation</a></span>&#8203;(<a href="../DatasetIdentifier.html" title="class in io.openlineage.client.utils">DatasetIdentifier</a>&nbsp;di)</code></th>
+<td class="colLast">
+<div class="block">Get URI from DatasetIdentifier</div>
+</td>
+</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
@@ -251,7 +258,7 @@ extends java.lang.Object</pre>
 <a id="fromLocationAndName(java.net.URI,java.lang.String)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>fromLocationAndName</h4>
 <pre class="methodSignature">public static&nbsp;<a href="../DatasetIdentifier.html" title="class in io.openlineage.client.utils">DatasetIdentifier</a>&nbsp;fromLocationAndName&#8203;(java.net.URI&nbsp;location,
@@ -263,6 +270,22 @@ extends java.lang.Object</pre>
 <dd><code>name</code> - table name</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>DatasetIdentifier</dd>
+</dl>
+</li>
+</ul>
+<a id="toLocation(io.openlineage.client.utils.DatasetIdentifier)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>toLocation</h4>
+<pre class="methodSignature">public static&nbsp;java.net.URI&nbsp;toLocation&#8203;(<a href="../DatasetIdentifier.html" title="class in io.openlineage.client.utils">DatasetIdentifier</a>&nbsp;di)</pre>
+<div class="block">Get URI from DatasetIdentifier</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>di</code> - dataset identifier</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>URI</dd>
 </dl>
 </li>
 </ul>
