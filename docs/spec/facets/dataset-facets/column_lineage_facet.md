@@ -69,6 +69,32 @@ An OpenLinage run state update that represent this query using column-level line
                                             "masking": false
                                         }
                                     ]
+                                },
+                                {
+                                    "namespace": "food_delivery",
+                                    "name": "public.delivery_7_days",
+                                    "field": "order_placed_on",
+                                    "transformations": [
+                                        {
+                                            "type": "INDIRECT",
+                                            "subtype": "SORT",
+                                            "description": "",
+                                            "masking": false
+                                        }
+                                    ]
+                                },
+                                {
+                                    "namespace": "food_delivery",
+                                    "name": "public.delivery_7_days",
+                                    "field": "order_delivered_on",
+                                    "transformations": [
+                                        {
+                                            "type": "INDIRECT",
+                                            "subtype": "SORT",
+                                            "description": "",
+                                            "masking": false
+                                        }
+                                    ]
                                 }
                             ]
                         },
@@ -84,8 +110,27 @@ An OpenLinage run state update that represent this query using column-level line
                                             "subtype": "IDENTITY",
                                             "description": "",
                                             "masking": false
+                                        },
+                                        {
+                                            "type": "INDIRECT",
+                                            "subtype": "SORT",
+                                            "description": "",
+                                            "masking": false
                                         }
                                     ]                                  
+                                },
+                                {
+                                    "namespace": "food_delivery",
+                                    "name": "public.delivery_7_days",
+                                    "field": "order_delivered_on",
+                                    "transformations": [
+                                        {
+                                            "type": "INDIRECT",
+                                            "subtype": "SORT",
+                                            "description": "",
+                                            "masking": false
+                                        }
+                                    ]
                                 }
                             ]
                         },
@@ -99,6 +144,25 @@ An OpenLinage run state update that represent this query using column-level line
                                         {
                                             "type": "DIRECT",
                                             "subtype": "IDENTITY",
+                                            "description": "",
+                                            "masking": false
+                                        },
+                                        {
+                                            "type": "INDIRECT",
+                                            "subtype": "SORT",
+                                            "description": "",
+                                            "masking": false
+                                        }
+                                    ]
+                                },
+                                {
+                                    "namespace": "food_delivery",
+                                    "name": "public.delivery_7_days",
+                                    "field": "order_placed_on",
+                                    "transformations": [
+                                        {
+                                            "type": "INDIRECT",
+                                            "subtype": "SORT",
                                             "description": "",
                                             "masking": false
                                         }
@@ -118,6 +182,12 @@ An OpenLinage run state update that represent this query using column-level line
                                             "subtype": "TRANSFORMATION",
                                             "description": "",
                                             "masking": false
+                                        },
+                                        {
+                                          "type": "INDIRECT",
+                                          "subtype": "SORT",
+                                          "description": "",
+                                          "masking": false
                                         }
                                     ]
                                 },
@@ -131,6 +201,12 @@ An OpenLinage run state update that represent this query using column-level line
                                             "subtype": "TRANSFORMATION",
                                             "description": "",
                                             "masking": false
+                                        },
+                                        {
+                                          "type": "INDIRECT",
+                                          "subtype": "SORT",
+                                          "description": "",
+                                          "masking": false
                                         }
                                     ]
                                 }
