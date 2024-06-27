@@ -21,6 +21,7 @@ import io.openlineage.client.OpenLineage.Run;
 import io.openlineage.client.OpenLineage.RunFacets;
 import io.openlineage.client.OpenLineage.RunEvent.EventType;
 import io.openlineage.client.transports.HttpTransport;
+import io.openlineage.client.utils.UUIDUtils;
 
 import java.net.URI;
 import java.time.ZoneId;
@@ -75,7 +76,7 @@ public class OpenLineageClientTest
         OpenLineage ol = new OpenLineage(producer);
 
         if (runId == null) {
-            runId = UUID.randomUUID();
+            runId = UUIDUtils.generateNewUUID();
         }
 
         // run facets

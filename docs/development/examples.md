@@ -5,7 +5,7 @@ sidebar_position: 2
 
 ## Simple Examples
 
-### START event with single input 
+### START event with single input
 
 This is a START event with a single PostgreSQL input dataset.
 
@@ -46,7 +46,7 @@ This is a COMPLETE event with a single PostgreSQL output dataset.
   "outputs": [{
     "namespace": "postgres://workshop-db:None",
     "name": "workshop.public.unpaid_taxes"
-  }],     
+  }],
   "producer": "https://github.com/OpenLineage/OpenLineage/blob/v1-0-0/client"
 }
 ```

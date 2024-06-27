@@ -29,7 +29,7 @@ from openlineage.client.facet import (
     DataQualityMetricsInputDatasetFacet,
     ColumnMetric,
 )
-import uuid
+from openlineage.client.uuid import generate_new_uuid
 from datetime import datetime, timezone, timedelta
 import time
 from random import random
@@ -106,17 +106,15 @@ now = datetime.now(timezone.utc)
 
 # generates run Event
 def runEvents(job_name, sql, inputs, outputs, hour, min, location, duration):
-    run_id = str(uuid.uuid4())
+    run_id = str(generate_new_uuid())
     myjob = job(job_name, sql, location)
     myrun = run(run_id, hour)
-    st = now + timedelta(hours=hour, minutes=min, seconds=20 + round(random() * 10))
-    end = st + timedelta(minutes=duration, seconds=20 + round(random() * 10))
-    started_at = st.isoformat()
-    ended_at = end.isoformat()
+    started_at = now + timedelta(hours=hour, minutes=min, seconds=20 + round(random() * 10))
+    ended_at = started_at + timedelta(minutes=duration, seconds=20 + round(random() * 10))
     return (
         RunEvent(
             eventType=RunState.START,
-            eventTime=started_at,
+            eventTime=started_at.isoformat(),
             run=myrun,
             job=myjob,
             producer=PRODUCER,
@@ -125,7 +123,7 @@ def runEvents(job_name, sql, inputs, outputs, hour, min, location, duration):
         ),
         RunEvent(
             eventType=RunState.COMPLETE,
-            eventTime=ended_at,
+            eventTime=ended_at.isoformat(),
             run=myrun,
             job=myjob,
             producer=PRODUCER,

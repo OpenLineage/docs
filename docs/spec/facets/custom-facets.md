@@ -133,7 +133,7 @@ from openlineage.client.facet import (
     SourceCodeLocationJobFacet,
     NominalTimeRunFacet,
 )
-import uuid
+from openlineage.client.uuid import generate_new_uuid
 from datetime import datetime, timezone, timedelta
 from typing import List
 import attr
@@ -227,7 +227,7 @@ now = datetime.now(timezone.utc)
 
 # generates run Event
 def runEvents(job_name, sql, inputs, outputs, hour, min, location, duration):
-    run_id = str(uuid.uuid4())
+    run_id = str(generate_new_uuid())
     myjob = job(job_name, sql, location)
     myrun = run(run_id, hour, 'user_1', 25, 'user_1@email.com')
     st = now + timedelta(hours=hour, minutes=min, seconds=20 + round(random() * 10))

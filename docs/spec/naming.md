@@ -52,7 +52,8 @@ Runs are named using client-generated UUIDs. The OpenLineage client is responsib
 
 ```python
 from openlineage.client.run import Run
-run = Run(str(uuid4()))
+from openlineage.client.uuid import generate_new_uuid
+run = Run(str(generate_new_uuid()))
 ```
 
 ## Why Naming Matters
