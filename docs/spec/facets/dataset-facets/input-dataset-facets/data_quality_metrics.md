@@ -13,8 +13,9 @@ Example:
         "inputFacets": {
             "dataQualityMetrics": {
                 "_producer": "https://some.producer.com/version/1.0",
-                "_schemaURL": "https://openlineage.io/spec/facets/1-0-0/DataQualityMetricsInputDatasetFacet.json",
+                "_schemaURL": "https://openlineage.io/spec/facets/1-0-2/DataQualityMetricsInputDatasetFacet.json",
                 "rowCount": 123,
+                "fileCount": 5,
                 "bytes": 35602,
                 "columnMetrics": {
                     "column_one": {
@@ -66,4 +67,4 @@ Example:
     ...
 }
 ```
-The facet specification can be found [here](https://openlineage.io/spec/facets/1-0-0/DataQualityMetricsInputDatasetFacet.json).
+The facet specification can be found [here](https://openlineage.io/spec/facets/1-0-2/DataQualityMetricsInputDatasetFacet.json).
