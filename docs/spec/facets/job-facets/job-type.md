@@ -16,16 +16,13 @@ Example:
     ...
     "job": {
         "facets": {
-			"jobType": {
-              "jobType": {
+            "jobType": {
                 "processingType": "BATCH",
                 "integration": "SPARK",
                 "jobType": "QUERY",
                 "_producer": "https://github.com/OpenLineage/OpenLineage/blob/v1-0-0/client",
                 "_schemaURL": "https://openlineage.io/spec/facets/2-0-2/JobTypeJobFacet.json"
-              }
             }
-
         }
 	...
 }
