@@ -58,6 +58,13 @@ export const Producers: Array<Partner> = [
         org_url: "https://docs.google.com/presentation/d/e/2PACX-1vTCfQcWUM_9e-lNlBqtaWLPjQ7ihvwHPjq0sJ47eJjjc0zNoLXlWOdcznE90t6IVNGBWFwGZBoU-d-o/pub?start=true&loop=true&delayms=3000&slide=id.g136261d2e68_0_1"
     },
     {
+        image: "snowflake_logo.svg",
+        org: "Snowflake",
+        description: "Snowflake's OpenLineage Adapter creates an account-scoped view from ACCESS_HISTORY and QUERY_HISTORY to output each query that accesses tables in OpenLineage JsonSchema specification.",
+        docs_url: "https://github.com/Snowflake-Labs/OpenLineage-AccessHistory-Setup",
+        org_url: "https://developers.snowflake.com/"
+    },
+    {
         image: "spark_logo.svg",
         org: "Spark",
         description: "The OpenLineage Spark Agent uses jvm instrumentation to emit OpenLineage metadata.",
