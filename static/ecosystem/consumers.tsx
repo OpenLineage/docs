@@ -87,5 +87,5 @@ export const Consumers: Array<Partner> = [
     description: "An OpenLineage connector collects OpenLineage events via a KafkaConsumer and transforms them into OpenMetadata Lineage edges.",
     docs_url: "https://github.com/open-metadata/OpenMetadata/pull/15317",
     org_url: "https://open-metadata.org/"
-  },
+  }, 
   ]
