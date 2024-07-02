@@ -88,11 +88,4 @@ export const Consumers: Array<Partner> = [
     docs_url: "https://github.com/open-metadata/OpenMetadata/pull/15317",
     org_url: "https://open-metadata.org/"
   },
-  {
-    image: "snowflake_logo.svg",
-    org: "Snowflake",
-    description: "Snowflake's OpenLineage Adapter creates an account-scoped view from ACCESS_HISTORY and QUERY_HISTORY to output each query that accesses tables in OpenLineage JsonSchema specification.",
-    docs_url: "https://github.com/Snowflake-Labs/OpenLineage-AccessHistory-Setup",
-    org_url: "https://developers.snowflake.com/"
-  }
   ]

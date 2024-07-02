@@ -65,6 +65,13 @@ export const Producers: Array<Partner> = [
         org_url: "https://spark.apache.org"
     },
     {
+        image: "snowflake_logo.svg",
+        org: "Snowflake",
+        description: "Snowflake's OpenLineage Adapter creates an account-scoped view from ACCESS_HISTORY and QUERY_HISTORY to output each query that accesses tables in OpenLineage JsonSchema specification.",
+        docs_url: "https://github.com/Snowflake-Labs/OpenLineage-AccessHistory-Setup",
+        org_url: "https://developers.snowflake.com/"
+    },
+    {
         image: "trino_og.svg",
         org: "Trino",
         description: "The OpenLineage event listener plugin allows streaming of lineage information, encoded in JSON format aligned with OpenLineage specification, to an external, OpenLineage copmpatible API, by POSTing them to a specified URI.",
