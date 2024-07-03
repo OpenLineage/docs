@@ -71,6 +71,21 @@ the config has to match images available.
 * `sparkConf` can be used to pass any spark configuration entries. OpenLineage transport defined is file based with a specified file location and is set within the test being run. Those settings should not be overrider. 
 * `packages` lets define custom jar packages to be installed with `spark-submit` command. 
 
+As of version 1.18, Spark configuration can accept instead of `sparkVersion`, a configuration 
+entries to determine Docker image to be run on:
+```yaml
+appName: "CLI test application"
+docker:
+  image: "apache/spark:3.3.3-scala2.12-java11-python3-ubuntu"
+  sparkSubmit: /opt/spark/bin/spark-submit
+  waitForLogMessage: ".*ShutdownHookManager: Shutdown hook called.*"
+scalaBinaryVersion: 2.12
+```
+where: 
+ * `image` specifies docker image to be used to run Spark job,
+ * `sparkSubmit` is file location of `spark-submit` command,
+ * `waitForLogMessage` is regex for log entry determining a Spark job is finished. 
+
 ### Tests definition directories
 
  * Specified test directory should contain one ore more directories and each of the subdirectories contains separate test definition. 
