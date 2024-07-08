@@ -242,10 +242,12 @@ WHERE pred = true;
 
 #### Subtype
 Contains more specific information about the transformation
+
 Direct
 - Identity - output value is taken as is from the input
 - Transformation - output value is transformed source value from input row 
 - Aggregation - output value is aggregation of source values from multiple input rows
+
 Indirect
 - Join - input used in join condition
 - GroupBy - output is aggregated based on input (e.g. `GROUP BY` clause)
