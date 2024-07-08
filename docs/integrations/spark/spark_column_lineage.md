@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 7
 title: Column-Level Lineage
 ---
 
@@ -12,7 +12,11 @@ Column-level lineage works only with Spark 3.
 Column-level lineage for Spark is turned on by default and requires no additional work to be done. The following documentation describes its internals. 
 :::
 
-Column-level lineage provides fine grained information on datasets' dependencies. Not only do we know the dependency exists, but we are also able to understand which input columns are used to produce output columns. This allows for answering questions like *Which root input columns are used to construct column x?* 
+:::info
+Lineage contains information about what fields were used to create of influence the field but also how, see [Transformation Types](spec/facets/dataset-facets/column_lineage_facet.md#transformation-type)
+:::
+
+Column-level lineage provides fine-grained information on datasets dependencies. Not only do we know the dependency exists, but we are also able to understand which input columns are used to produce output columns. This allows for answering questions like *Which root input columns are used to construct column x?* 
 
 ## Standard specification
 
@@ -24,16 +28,70 @@ Column-level lineage has been implemented separately from the rest of builders a
 
 * Class `ColumnLevelLineageUtils.java` is an entry point to run the mechanism and is used within `OpenLineageRunEventBuilder`.
 
-* Classes `ColumnLevelLineageUtilsNonV2CatalogTest` and `ColumnLevelLineageUtilsV2CatalogTest` contain real-life test cases which run Spark jobs and get an access to the last query plan executed. They evaluate column-level lineage based on the plan and expected output schema. Then, they verify if this meets the requirements. This allows testing column-level lineage behavior in real scenarios. The more tests and scenarios put here, the better.
+* Classes `ColumnLevelLineageUtilsNonV2CatalogTest` and `ColumnLevelLineageUtilsV2CatalogTest` contain real-life test cases which run Spark jobs and get an access to the last query plan executed.
+  They evaluate column-level lineage based on the plan and expected output schema.
+  Then, they verify if this meets the requirements.
+  This allows testing column-level lineage behavior in real scenarios. The more tests and scenarios put here, the better.
 
-* Class `ColumnLevelLineageBuilder` is used when traversing logical plans to store all the information required to produce column-level lineage. It allows storing input/output columns. It also stores dependencies between the expressions contained in query plan. Once inputs, outputs and dependencies are filled, build method is used to produce output facet (`ColumnLineageDatasetFacetFields`).
+* Class `ColumnLevelLineageBuilder` contains both the logic of building output facet (`ColumnLineageDatasetFacetFields`) 
+and datastructures containing necessary information:
+  * schema - `SchemaDatasetFacet` contains information about output schema 
+  * inputs - map pointing from `ExprId` to column name and `DatasetIdentifier` identifying the datasource 
+  * outputs - map pointing from output field name to its `ExprId`
+  * exprDependencies - map pointing from `ExprId` to set of its `Dependency` objects containing `ExprId` and information about type of the dependency.
+  * datasetDependencies - list of `ExprId` representing pseudo-expressions representing operations like `filter`, `join` etc.
+  * externalExpressionMappings - map poiting from `ColumnMeta` object to `ExprId` used for dependencies extracted by `sql-parser`
 
-* The mechanism gets output schema and logical plan as input. Output schemas are tightly coupled with root nodes of execution plans, however we do already have this information extracted within the other visitors and dataset input builders.
-`OutputFieldsCollector` class is used to traverse the plan to gather the outputs. Outputs can be extracted from `Aggregate` or `Project` and each output field has its `ExprId` (expression id) attached from the plan.
 
-* `InputFieldsCollector` class is used to collect the inputs which can be extracted from `DataSourceV2Relation`, `DataSourceV2ScanRelation`, `HiveTableRelation` or `LogicalRelation`. Each input field has its `ExprId` within the plan. Each input is identified by `DatasetIdentifier`, which means it contains name and namespace, of a dataset and an input field.
+* Class `ColumnLevelLineageBuilder` is used when traversing logical plans to store all the information required to produce column-level lineage.
+  It allows storing input/output columns. It also stores dependencies between the expressions contained in query plan.
+  Once inputs, outputs and dependencies are filled, build method is used to produce output facet (`ColumnLineageDatasetFacetFields`).
 
-* `FieldDependenciesCollector` traverses the plan to identify dependencies between different `ExprId`. Dependencies map parent expressions to children expressions'. This is used to identify inputs used to evaluate certain output.
+* `OutputFieldsCollector` class is used to traverse the plan to gather the `outputs`, 
+even though the information about output dataset is already in `schema`, it's not coupled information about the outputs `ExprId`.
+The collector traverses the plan and matches the outputs existing there, inside `Aggregate` or `Project` objects, with the ones in `schema` by their name.
+
+* `InputFieldsCollector` class is used to collect the inputs which can be extracted from `DataSourceV2Relation`, `DataSourceV2ScanRelation`, `HiveTableRelation` or `LogicalRelation`. 
+Each input field has its `ExprId` within the plan. Each input is identified by `DatasetIdentifier`, which means it contains name and namespace, of a dataset and an input field.
+
+* `ExpressionDependenciesCollector` traverses the plan to identify dependencies between different expressions using their `ExprId`. Dependencies map parent expressions to its dependencies with additional information about the transformation type. 
+This is used evaluate which inputs influenced certain output and what kind of influence was it.
+
+### Expression dependency collection process
+  
+For each node in `LogicalPlan` the `ExpressionDependencyCollector` attempts to extract the column lineage information based on its type.
+First it goes through `ColumnLineageVisitors` to check if any applies to current node, if so then it extract dependencies from them.
+Next if the node is `LogicalRelation` and relation type is `JDBCRelation`, the sql-parser extracts lineage data from query string itself.
+
+:::warning
+
+Because Sql parser only parses the query string in `JDBCRelation` it does not collect information about input field types or transformation types.
+The only info collected is the name of the table/view and field, as it is mentioned in the query.
+:::
+
+After that all that's left are following types of nodes: `Project`,`Aggregate`, `Join`, `Filter`, `Sort`. 
+Each of them contains dependency expressions that can be added to one of the lists `expressions` or `datasetDependencies`.
+
+When node is `Aggregate`, `Join`, `Filter` or `Sort` it contains dependencies that don't affect one single output but all the outputs, 
+so they need to be treated differently than normal dependencies.
+For each of those nodes the new `ExprId` is created to represent "all outputs", all its dependencies will be of `INDIRECT` type.
+
+For each of the `expressions` the collector tries to go through it and possible children expressions and add them to `exprDependencies` map with appropriate transformation type and `masking` flag.
+Most of the expressions represent `DIRECT` transformation, only exceptions are `If` and `CaseWhen` which contain condition expressions.
+
+### Facet building process
+
+For each of the outputs `ColumnLevelLineageBuilder` goes through the `exprDependencies` to build the list final dependencies, then using `inputs` maps them to fields in datasets.
+During the process it also unravels the transformation type between the input and output. 
+To unravel two dependencies implement following logic:
+- if current type is `INDIRECT` the result takes the type and subtype from current
+- if current type is `DIRECT` and other one is null, result is null
+- if current type is `DIRECT` and other is `INDIRECT` the result takes type and subtype from other
+- if both are `DIRECT` the result is type `DIRECT`, subtype is the first existing from the order `AGGREGATION`, `TRANSFORMATION`, `IDENTITY`
+- if any of the transformations is masking, the result is masking
+
+The inputs are also mapped for all dataset dependencies. The result is added to each output. 
+Finally, the list of outputs with all their inputs is mapped to `ColumnLineageDatasetFacetFields` object.
 
 ## Writing custom extensions
 
@@ -77,11 +135,3 @@ interface CustomColumnLineageVisitor {
 }
 ```
 and making it available for Service Loader (implementation class name has to be put in a resource file `META-INF/services/io.openlineage.spark.agent.lifecycle.plan.column.CustomColumnLineageVisitor`).
-
-
-## Future work
-
-Current version of the mechanism allows finding input fields that were used to produce the output field but does not determine how were they used. This simplification allowed us to built column-level lineage feature at the minimum amount of code written. Given an incredible amount of Spark's functions, operators and expressions, our implementation needs just to know it was `UnaryOperator`, `BinaryOperator`, etc. without a requirement to understand the operation it performs. This approach still has some room for extensions like:
- * Being able to find out if an output field is a simple copy of input one or some modification has been applied.
- * Assume there exist a mechanism within an organisation to blur personal data. Be able to extract information if the output still contains personal data or it got blurred.
-
