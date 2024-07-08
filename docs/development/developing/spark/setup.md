@@ -13,7 +13,7 @@ Testing requires a Java 8 JVM to test the Scala Spark components.
 
 ## Preparation
 
-The integration depends on three libraries that are build locally `openlineage-java`, `spark-interfaces-scala` and `openlineage-sql-java`,
+The integration depends on four libraries that are build locally `openlineage-java`, `spark-extension-interfaces`, `spark-extension-entrypoint` and `openlineage-sql-java`,
 so before any testing or building of a package you need to publish the appropriate artifacts to local maven repository.
 To build the packages you need to execute.
 
@@ -22,9 +22,14 @@ To install `openlineage-java` in local maven repo run:
 cd ../../client/java/ && ./gradlew publishToMavenLocal
 ```
 
-For `spark-interfaces-scala` run:
+For `spark-extension-interfaces` run:
 ```sh
-cd ../../integration/spark-interfaces-scala && ./gradlew publishToMavenLocal -Pscala.binary.version=2.12
+cd ../../integration/spark-extension-interfaces && ./gradlew publishToMavenLocal
+```
+
+For `spark-extension-entrypoint` run:
+```sh
+cd ../../integration/spark-extension-entrypoint && ./gradlew publishToMavenLocal
 ```
 
 For `openlineage-sql-java` run:
