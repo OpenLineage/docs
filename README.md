@@ -1,5 +1,7 @@
 # OpenLineage Docs
 
+[![Covered by Argos Visual Testing](https://argos-ci.com/badge.svg)](https://app.argos-ci.com/pawel-big-lebowski/docs/reference?utm_source=OpenLineage&utm_campaign=oss)
+
 This is a Docusaurus site, and all content can be found in `docs/`. Contributions are welcome in the form of issues or pull requests. Pages that require attention have been marked with Docusaurus Admonitions.
 
 ### New posts
