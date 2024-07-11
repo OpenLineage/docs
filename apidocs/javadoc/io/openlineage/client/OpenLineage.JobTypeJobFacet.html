@@ -296,7 +296,7 @@ implements <a href="OpenLineage.JobFacet.html" title="interface in io.openlineag
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getIntegration()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>OpenLineage integration type of this job: SPARK|DBT|AIRFLOW|FLINK</dd>
+<dd>OpenLineage integration type of this job: for example SPARK|DBT|AIRFLOW|FLINK</dd>
 </dl>
 </li>
 </ul>
@@ -309,7 +309,7 @@ implements <a href="OpenLineage.JobFacet.html" title="interface in io.openlineag
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getJobType()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>Run type like: QUERY|COMMAND|DAG|TASK|JOB|MODEL</dd>
+<dd>Run type, for example: QUERY|COMMAND|DAG|TASK|JOB|MODEL. This is an integration-specific field.</dd>
 </dl>
 </li>
 </ul>

@@ -281,7 +281,7 @@ implements <a href="OpenLineage.Builder.html" title="interface in io.openlineage
 <pre class="methodSignature">public&nbsp;<a href="OpenLineage.JobTypeJobFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.JobTypeJobFacetBuilder</a>&nbsp;integration&#8203;(java.lang.String&nbsp;integration)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>integration</code> - OpenLineage integration type of this job: SPARK|DBT|AIRFLOW|FLINK</dd>
+<dd><code>integration</code> - OpenLineage integration type of this job: for example SPARK|DBT|AIRFLOW|FLINK</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>this</dd>
 </dl>
@@ -296,7 +296,7 @@ implements <a href="OpenLineage.Builder.html" title="interface in io.openlineage
 <pre class="methodSignature">public&nbsp;<a href="OpenLineage.JobTypeJobFacetBuilder.html" title="class in io.openlineage.client">OpenLineage.JobTypeJobFacetBuilder</a>&nbsp;jobType&#8203;(java.lang.String&nbsp;jobType)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>jobType</code> - Run type like: QUERY|COMMAND|DAG|TASK|JOB|MODEL</dd>
+<dd><code>jobType</code> - Run type, for example: QUERY|COMMAND|DAG|TASK|JOB|MODEL. This is an integration-specific field.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>this</dd>
 </dl>
