@@ -1,5 +1,5 @@
 # Dependencies
-/node_modules
+node_modules
 
 # Production
 /build
@@ -21,3 +21,6 @@ yarn-error.log*
 
 # intellij
 .idea
+
+argos/screenshots
+argos/test-results
