@@ -146,11 +146,6 @@ const config = {
       defer: true,
       'data-domain': 'openlineage.io',
     },
-    'js/google_analytics.js',
-    {
-      src: 'https://www.googletagmanager.com/gtag/js?id=G-QMTWMLMX4M',
-      async: true,
-    },
   ],
 };
 
