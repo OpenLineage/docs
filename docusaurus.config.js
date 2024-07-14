@@ -81,6 +81,10 @@ const config = {
           ],
           mdxPageComponent: '@theme/MDXPage',
         },
+        gtag: {
+          trackingID: 'G-QMTWMLMX4M',
+          anonymizeIP: true,
+        },
       }),
     ],
   ],
