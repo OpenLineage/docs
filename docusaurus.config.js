@@ -81,6 +81,10 @@ const config = {
           ],
           mdxPageComponent: '@theme/MDXPage',
         },
+        gtag: {
+          trackingID: 'G-QMTWMLMX4M',
+          anonymizeIP: true,
+        },
       }),
     ],
   ],
@@ -141,11 +145,6 @@ const config = {
       src: 'https://plausible.io/js/script.js',
       defer: true,
       'data-domain': 'openlineage.io',
-    },
-    'js/google_analytics.js',
-    {
-      src: 'https://www.googletagmanager.com/gtag/js?id=G-QMTWMLMX4M',
-      async: true,
     },
   ],
 };
