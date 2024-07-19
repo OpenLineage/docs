@@ -22,6 +22,7 @@ A dataset, or `table`, is organized according to a producer, namespace, database
 | Cassandra | Warehouse | cassandra://{host}:{port} | {keyspace}.{table} |
 | MySQL | Warehouse | mysql://{host}:{port} | {database}.{table} |
 | Postgres | Warehouse | postgres://{host}:{port} | {database}.{schema}.{table} |
+| Teradata | Warehouse | teradata://{host}:{port} | {database}.{table} |
 | Redshift | Warehouse | redshift://{cluster_identifier}.{region_name}:{port} | {database}.{schema}.{table} |
 | Snowflake | Warehouse | snowflake://{organization name}-{account name} | {database}.{schema}.{table} |
 | Trino | Warehouse | trino://{host}:{port} | {catalog}.{schema}.{table} |
