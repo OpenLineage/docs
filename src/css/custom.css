@@ -432,13 +432,13 @@ code .token-line {
 }
 
 .theme-doc-markdown ol {
-  list-style-type: inherit;
+  list-style-type: decimal;
   margin: 0 0 var(--ifm-list-margin);
   padding-left: var(--ifm-list-left-padding);
 }
 
 .theme-doc-markdown ul {
-  list-style-type: inherit;
+  list-style-type: disc;
   margin: 0 0 var(--ifm-list-margin);
   padding-left: var(--ifm-list-left-padding);
 }
