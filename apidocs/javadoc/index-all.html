@@ -827,7 +827,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/transports/FacetsConfig.html#%3Cinit%3E()">FacetsConfig()</a></span> - Constructor for class io.openlineage.client.transports.<a href="io/openlineage/client/transports/FacetsConfig.html" title="class in io.openlineage.client.transports">FacetsConfig</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="io/openlineage/client/transports/FacetsConfig.html#%3Cinit%3E(java.lang.String%5B%5D,java.lang.String%5B%5D)">FacetsConfig(String[], String[])</a></span> - Constructor for class io.openlineage.client.transports.<a href="io/openlineage/client/transports/FacetsConfig.html" title="class in io.openlineage.client.transports">FacetsConfig</a></dt>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/transports/FacetsConfig.html#%3Cinit%3E(java.lang.String%5B%5D,java.lang.String%5B%5D,java.util.Map)">FacetsConfig(String[], String[], Map&lt;String, Boolean&gt;)</a></span> - Constructor for class io.openlineage.client.transports.<a href="io/openlineage/client/transports/FacetsConfig.html" title="class in io.openlineage.client.transports">FacetsConfig</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.RunEvent.EventType.html#FAIL">FAIL</a></span> - io.openlineage.client.<a href="io/openlineage/client/OpenLineage.RunEvent.EventType.html" title="enum in io.openlineage.client">OpenLineage.RunEvent.EventType</a></dt>
 <dd>&nbsp;</dd>
@@ -1361,6 +1361,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.DatasetFacets.html#getDataSource()">getDataSource()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.DatasetFacets.html" title="class in io.openlineage.client">OpenLineage.DatasetFacets</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/transports/FacetsConfig.html#getDeprecatedDisabledFacets()">getDeprecatedDisabledFacets()</a></span> - Method in class io.openlineage.client.transports.<a href="io/openlineage/client/transports/FacetsConfig.html" title="class in io.openlineage.client.transports">FacetsConfig</a></dt>
+<dd>
+<div class="deprecationBlock"><span class="deprecatedLabel">Deprecated.</span></div>
+</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.ColumnLineageDatasetFacetFieldsAdditionalInputFieldsTransformations.html#getDescription()">getDescription()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.ColumnLineageDatasetFacetFieldsAdditionalInputFieldsTransformations.html" title="class in io.openlineage.client">OpenLineage.ColumnLineageDatasetFacetFieldsAdditionalInputFieldsTransformations</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.DocumentationDatasetFacet.html#getDescription()">getDescription()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.DocumentationDatasetFacet.html" title="class in io.openlineage.client">OpenLineage.DocumentationDatasetFacet</a></dt>
@@ -1379,6 +1383,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineage.JobFacets.html#getDocumentation()">getDocumentation()</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineage.JobFacets.html" title="class in io.openlineage.client">OpenLineage.JobFacets</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/transports/FacetsConfig.html#getEffectiveDisabledFacets()">getEffectiveDisabledFacets()</a></span> - Method in class io.openlineage.client.transports.<a href="io/openlineage/client/transports/FacetsConfig.html" title="class in io.openlineage.client.transports">FacetsConfig</a></dt>
+<dd>
+<div class="block">Merges deprecated and new mechanism for disabled facets into one effective list</div>
+</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/transports/HttpConfig.html#getEndpoint()">getEndpoint()</a></span> - Method in class io.openlineage.client.transports.<a href="io/openlineage/client/transports/HttpConfig.html" title="class in io.openlineage.client.transports">HttpConfig</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/transports/HttpTransport.Builder.html#getEndpoint()">getEndpoint()</a></span> - Method in class io.openlineage.client.transports.<a href="io/openlineage/client/transports/HttpTransport.Builder.html" title="class in io.openlineage.client.transports">HttpTransport.Builder</a></dt>
@@ -2883,6 +2891,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/utils/filesystem/ObjectStorageDatasetExtractor.html#%3Cinit%3E(java.lang.String)">ObjectStorageDatasetExtractor(String)</a></span> - Constructor for class io.openlineage.client.utils.filesystem.<a href="io/openlineage/client/utils/filesystem/ObjectStorageDatasetExtractor.html" title="class in io.openlineage.client.utils.filesystem">ObjectStorageDatasetExtractor</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/transports/FacetsConfig.html#onOtherProperty(java.lang.String,java.lang.Object)">onOtherProperty(String, Object)</a></span> - Method in class io.openlineage.client.transports.<a href="io/openlineage/client/transports/FacetsConfig.html" title="class in io.openlineage.client.transports">FacetsConfig</a></dt>
+<dd>
+<div class="block">This method accepts every other property we may receive in configuration.</div>
+</dd>
 <dt><a href="io/openlineage/client/OpenLineage.html" title="class in io.openlineage.client"><span class="typeNameLink">OpenLineage</span></a> - Class in <a href="io/openlineage/client/package-summary.html">io.openlineage.client</a></dt>
 <dd>
 <div class="block">Usage:</div>
@@ -3939,7 +3951,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/OpenLineageConfig.html#setDatasetConfig(io.openlineage.client.dataset.DatasetConfig)">setDatasetConfig(DatasetConfig)</a></span> - Method in class io.openlineage.client.<a href="io/openlineage/client/OpenLineageConfig.html" title="class in io.openlineage.client">OpenLineageConfig</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="io/openlineage/client/transports/FacetsConfig.html#setDisabledFacets(java.lang.String%5B%5D)">setDisabledFacets(String[])</a></span> - Method in class io.openlineage.client.transports.<a href="io/openlineage/client/transports/FacetsConfig.html" title="class in io.openlineage.client.transports">FacetsConfig</a></dt>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/transports/FacetsConfig.html#setDeprecatedDisabledFacets(java.lang.String%5B%5D)">setDeprecatedDisabledFacets(String[])</a></span> - Method in class io.openlineage.client.transports.<a href="io/openlineage/client/transports/FacetsConfig.html" title="class in io.openlineage.client.transports">FacetsConfig</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/openlineage/client/transports/FacetsConfig.html#setDisabledFacets(java.util.Map)">setDisabledFacets(Map&lt;String, Boolean&gt;)</a></span> - Method in class io.openlineage.client.transports.<a href="io/openlineage/client/transports/FacetsConfig.html" title="class in io.openlineage.client.transports">FacetsConfig</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/openlineage/client/transports/HttpConfig.html#setEndpoint(java.lang.String)">setEndpoint(String)</a></span> - Method in class io.openlineage.client.transports.<a href="io/openlineage/client/transports/HttpConfig.html" title="class in io.openlineage.client.transports">HttpConfig</a></dt>
 <dd>&nbsp;</dd>
