@@ -27,8 +27,8 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var data = {"i0":10,"i1":42,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"],32:["t6","Deprecated Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -162,8 +162,9 @@ implements <a href="../MergeConfig.html" title="interface in io.openlineage.clie
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String%5B%5D,java.lang.String%5B%5D)">FacetsConfig</a></span>&#8203;(java.lang.String[]&nbsp;disabledFacets,
-            java.lang.String[]&nbsp;customEnvironmentVariables)</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String%5B%5D,java.lang.String%5B%5D,java.util.Map)">FacetsConfig</a></span>&#8203;(java.lang.String[]&nbsp;deprecatedDisabledFacets,
+            java.lang.String[]&nbsp;customEnvironmentVariables,
+            java.util.Map&lt;java.lang.String,&#8203;java.lang.Boolean&gt;&nbsp;disabledFacets)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -178,7 +179,7 @@ implements <a href="../MergeConfig.html" title="interface in io.openlineage.clie
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t6" class="tableTab"><span><a href="javascript:show(32);">Deprecated Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colSecond" scope="col">Method</th>
@@ -191,22 +192,49 @@ implements <a href="../MergeConfig.html" title="interface in io.openlineage.clie
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.lang.String[]</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDeprecatedDisabledFacets()">getDeprecatedDisabledFacets</a></span>()</code></th>
+<td class="colLast">
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>java.util.Map&lt;java.lang.String,&#8203;java.lang.Boolean&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDisabledFacets()">getDisabledFacets</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>java.lang.String[]</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEffectiveDisabledFacets()">getEffectiveDisabledFacets</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Merges deprecated and new mechanism for disabled facets into one effective list</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="FacetsConfig.html" title="class in io.openlineage.client.transports">FacetsConfig</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#mergeWithNonNull(io.openlineage.client.transports.FacetsConfig)">mergeWithNonNull</a></span>&#8203;(<a href="FacetsConfig.html" title="class in io.openlineage.client.transports">FacetsConfig</a>&nbsp;facetsConfig)</code></th>
 <td class="colLast">
 <div class="block">Method to create new config class based on current instance and non-null argument value.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setDisabledFacets(java.lang.String%5B%5D)">setDisabledFacets</a></span>&#8203;(java.lang.String[]&nbsp;disabledFacets)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onOtherProperty(java.lang.String,java.lang.Object)">onOtherProperty</a></span>&#8203;(java.lang.String&nbsp;key,
+               java.lang.Object&nbsp;value)</code></th>
+<td class="colLast">
+<div class="block">This method accepts every other property we may receive in configuration.</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setDeprecatedDisabledFacets(java.lang.String%5B%5D)">setDeprecatedDisabledFacets</a></span>&#8203;(java.lang.String[]&nbsp;disabledFacets)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setDisabledFacets(java.util.Map)">setDisabledFacets</a></span>&#8203;(java.util.Map&lt;java.lang.String,&#8203;java.lang.Boolean&gt;&nbsp;disabledFacets)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
@@ -251,14 +279,15 @@ implements <a href="../MergeConfig.html" title="interface in io.openlineage.clie
 <pre>public&nbsp;FacetsConfig()</pre>
 </li>
 </ul>
-<a id="&lt;init&gt;(java.lang.String[],java.lang.String[])">
+<a id="&lt;init&gt;(java.lang.String[],java.lang.String[],java.util.Map)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>FacetsConfig</h4>
-<pre>public&nbsp;FacetsConfig&#8203;(java.lang.String[]&nbsp;disabledFacets,
-                    java.lang.String[]&nbsp;customEnvironmentVariables)</pre>
+<pre>public&nbsp;FacetsConfig&#8203;(java.lang.String[]&nbsp;deprecatedDisabledFacets,
+                    java.lang.String[]&nbsp;customEnvironmentVariables,
+                    java.util.Map&lt;java.lang.String,&#8203;java.lang.Boolean&gt;&nbsp;disabledFacets)</pre>
 </li>
 </ul>
 </li>
@@ -271,6 +300,32 @@ implements <a href="../MergeConfig.html" title="interface in io.openlineage.clie
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a id="setDeprecatedDisabledFacets(java.lang.String[])">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setDeprecatedDisabledFacets</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setDeprecatedDisabledFacets&#8203;(java.lang.String[]&nbsp;disabledFacets)</pre>
+</li>
+</ul>
+<a id="onOtherProperty(java.lang.String,java.lang.Object)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onOtherProperty</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;onOtherProperty&#8203;(java.lang.String&nbsp;key,
+                            java.lang.Object&nbsp;value)</pre>
+<div class="block">This method accepts every other property we may receive in configuration. The only supported
+ properties now are the "disabled" facet properties. The rest is silently ignored.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>key</code> - the name of the property which is not directly deserialized to any other field</dd>
+<dd><code>value</code> - the value of the property. Can be a map for nested fields</dd>
+</dl>
+</li>
+</ul>
 <a id="mergeWithNonNull(io.openlineage.client.transports.FacetsConfig)">
 <!--   -->
 </a>
@@ -292,6 +347,20 @@ implements <a href="../MergeConfig.html" title="interface in io.openlineage.clie
 </dl>
 </li>
 </ul>
+<a id="getEffectiveDisabledFacets()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getEffectiveDisabledFacets</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String[]&nbsp;getEffectiveDisabledFacets()</pre>
+<div class="block">Merges deprecated and new mechanism for disabled facets into one effective list</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>an array of disabled facets including facets from new and deprecated mechanisms.</dd>
+</dl>
+</li>
+</ul>
 <a id="toString()">
 <!--   -->
 </a>
@@ -305,31 +374,42 @@ implements <a href="../MergeConfig.html" title="interface in io.openlineage.clie
 </dl>
 </li>
 </ul>
+<a id="getDeprecatedDisabledFacets()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDeprecatedDisabledFacets</h4>
+<pre class="methodSignature">@Deprecated
+public&nbsp;java.lang.String[]&nbsp;getDeprecatedDisabledFacets()</pre>
+<div class="deprecationBlock"><span class="deprecatedLabel">Deprecated.</span></div>
+</li>
+</ul>
+<a id="getCustomEnvironmentVariables()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getCustomEnvironmentVariables</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String[]&nbsp;getCustomEnvironmentVariables()</pre>
+</li>
+</ul>
 <a id="getDisabledFacets()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>getDisabledFacets</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String[]&nbsp;getDisabledFacets()</pre>
+<pre class="methodSignature">public&nbsp;java.util.Map&lt;java.lang.String,&#8203;java.lang.Boolean&gt;&nbsp;getDisabledFacets()</pre>
 </li>
 </ul>
-<a id="setDisabledFacets(java.lang.String[])">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setDisabledFacets</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;setDisabledFacets&#8203;(java.lang.String[]&nbsp;disabledFacets)</pre>
-</li>
-</ul>
-<a id="getCustomEnvironmentVariables()">
+<a id="setDisabledFacets(java.util.Map)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>getCustomEnvironmentVariables</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String[]&nbsp;getCustomEnvironmentVariables()</pre>
+<h4>setDisabledFacets</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setDisabledFacets&#8203;(java.util.Map&lt;java.lang.String,&#8203;java.lang.Boolean&gt;&nbsp;disabledFacets)</pre>
 </li>
 </ul>
 </li>
