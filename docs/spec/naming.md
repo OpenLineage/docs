@@ -27,14 +27,14 @@ A dataset, or `table`, is organized according to a producer, namespace, database
 | Redshift | Warehouse | redshift://{cluster_identifier}.{region_name}:{port} | {database}.{schema}.{table} |
 | Snowflake | Warehouse | snowflake://{organization name}-{account name} | {database}.{schema}.{table} |
 | Trino | Warehouse | trino://{host}:{port} | {catalog}.{schema}.{table} |
-| ABFSS (Azure Data Lake Gen2) | Data lake | abfss://{container name}@{service name} | {path} |
+| ABFSS (Azure Data Lake Gen2) | Data lake | abfss://{container name}@{service name}.dfs.core.windows.net | {path} |
 | DBFS (Databricks File System) | Distributed file system | hdfs://{workspace name} | {path} |
 | GCS | Blob storage | gs://{bucket name} | {object key} |
 | HDFS | Distributed file system | hdfs://{namenode host}:{namenode port} | {path} |
 | Kafka | distributed event streaming platform | kafka://{bootstrap server host}:{port} | {topic} |
 | Local file system | File system | file://{host} | {path} |
 | S3 | Blob Storage | s3://{bucket name} | {object key} |
-| WASBS (Azure Blob Storage) | Blob Storage | wasbs://{container name}@{service name} | {object key} |
+| WASBS (Azure Blob Storage) | Blob Storage | wasbs://{container name}@{service name}.dfs.core.windows.net | {object key} |
 
 ## Job Naming
 
