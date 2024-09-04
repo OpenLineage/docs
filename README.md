@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> Deprecated in favor of the OpenLineage [monorepo](https://github.com/OpenLineage/OpenLineage/tree/main/website).
+
 # OpenLineage Docs
 
 [![Covered by Argos Visual Testing](https://argos-ci.com/badge.svg)](https://app.argos-ci.com/pawel-big-lebowski/docs/reference?utm_source=OpenLineage&utm_campaign=oss)
