@@ -1,8 +1,5 @@
-:::info
-
+[!IMPORTANT]
 Deprecated in favor of the OpenLineage [monorepo](https://github.com/OpenLineage/OpenLineage/tree/main/website).
-
-:::
 
 # OpenLineage Docs
 
